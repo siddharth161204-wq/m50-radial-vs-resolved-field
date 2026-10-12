@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: If you use this work, please cite it as below.
+title: "The axial blind spot of a radial cell model: the temperature field a multi-unit model assumes, tested on the LG M50 and a 4680"
+type: software
+authors:
+  - family-names: Satte
+    given-names: Siddharth
+    affiliation: Independent Researcher
+    orcid: https://orcid.org/0009-0001-3584-1008
+version: v1.0.0
+doi: 10.5281/zenodo.23320970
+date-released: 2026-10-12
+repository-code: https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - lithium-ion battery
+  - cylindrical cell
+  - multi-unit model
+  - thermal model
+  - anisotropic conduction
+  - finite element method
+  - 4680
+  - pre-registration
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23320970
+    description: The archived version v1.0.0 on Zenodo

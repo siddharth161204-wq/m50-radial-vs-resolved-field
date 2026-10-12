@@ -801,6 +801,13 @@
     }
   },
   "D13_diagnostic_two_cell_tensor": {
+    "21700_a_eq_refine2_ktheta-along_Chen2020_m5C_2C.json": {
+      "refine": 2.0,
+      "dT_cs_3d_K": 4.242389722356028,
+      "dT_cs_1d_K": 4.264118904291381,
+      "rel_diff": -0.0050958198922373965,
+      "profile_rel": 0.005088321760987837
+    },
     "21700_a_eq_ktheta-along_Chen2020_m5C_2C.json": {
       "refine": 1.0,
       "dT_cs_3d_K": 4.191751260571992,

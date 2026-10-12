@@ -226,9 +226,16 @@ class Cell3D:
         out["dT_axial"] = max(out["dT_axial_bottom"], out["dT_axial_top"])
         return out
 
-    def run(self, q_of_t, t_end, T_amb_C, dt_target=1.0, series_every=10.0, verbose=False):
+    def run(self, q_of_t, t_end, T_amb_C, dt_target=1.0, series_every=10.0, verbose=False, snap_times=(),
+            stop_after=None):
+        """snap_times: extra snapshots at the steps nearest these times; stop_after: end the run after the step nearest
+        this time (the step size stays that of the full discharge, so the fields equal the full run's). Both are
+        used only by the post-hoc analysis (D15); the registered runs use neither."""
         n = int(math.ceil(t_end / dt_target - 1e-9))
         dt = t_end / n
+        snap_steps = {int(round(ts / dt)): ts for ts in snap_times}
+        snaps = {}
+        n_run = n if stop_after is None else min(n, int(round(stop_after / dt)))
         d_out = self.d_conv + self.d_tab
         A = (self.K + sp.diags(self.Cap / dt + d_out)).tocsr()
         t0 = time.time()
@@ -247,7 +254,14 @@ class Cell3D:
         every = max(1, int(round(series_every / dt)))
         t1 = time.time()
         T_prev = T.copy()
-        for k in range(n):
+        # heat lost through each surface group, for the post-hoc split (D15)
+        groups = {}
+        for g_ in self.bcd["conv"]:
+            w_ = self.w[g_] / (2 * self.w[g_].sum())
+            groups[g_] = self.bcd["h"] * self.A_exact[g_] * w_
+        E_group = {g_: 0.0 for g_ in groups}
+        E_tab = 0.0
+        for k in range(n_run):
             t = (k + 1) * dt
             Q = q_of_t(t) * self.V_exact
             rhs = self.Cap / dt * T + d_out * Ta + self.w_src * Q
@@ -256,11 +270,16 @@ class Cell3D:
             T = solver.solve(rhs, x0=x0)
             E_gen += dt * Q / 2
             E_out += dt * float(d_out @ (T - Ta))
+            for g_, dg in groups.items():
+                E_group[g_] += dt * float(dg @ (T - Ta))
+            E_tab += dt * float(np.sum(self.d_tab * (T - Ta)))
+            if (k + 1) in snap_steps:
+                snaps[snap_steps[k + 1]] = self.snapshot(T, t)
             Ts = T[self.i_surf_mid].mean()
             dT = T[self.i_core_mid] - Ts
             if dT > best["dT"]:
                 best = {"dT": dT, "t": t, "T": T.copy()}
-            if (k + 1) % every == 0 or k == n - 1:
+            if (k + 1) % every == 0 or k == n_run - 1:
                 series.append([t, T[self.i_core_mid], Ts, dT, T[self.i_core_mid] - T[self.i_core_bottom],
                                T[self.i_core_mid] - T[self.i_core_top], T.max(), float(self.Cap @ T / self.Cap.sum())])
             if verbose and (k + 1) % 200 == 0:
@@ -274,7 +293,9 @@ class Cell3D:
             "cg_iterations_mean": float(np.mean(solver.iters)) if solver.iters else None,
             "energy_J": {"generated": 2 * E_gen, "lost": 2 * E_out, "stored": 2 * stored,
                          "residual_rel": (stored + E_out - E_gen) / E_gen if E_gen else None},
-            "end": self.snapshot(T, t_end), "max_dT": self.snapshot(best["T"], best["t"]),
+            "end": self.snapshot(T, n_run * dt), "max_dT": self.snapshot(best["T"], best["t"]),
+            "snaps": snaps, "stopped_at_s": n_run * dt,
+            "heat_lost_by_surface_J": {**{g_: 2 * v for g_, v in E_group.items()}, "strips": 2 * E_tab},
             "series_columns": ["t_s", "T_core_mid", "T_surface_mid", "dT_core_surface", "dT_axial_bottom",
                                "dT_axial_top", "T_max", "T_mean"],
             "series": np.array(series).tolist(),

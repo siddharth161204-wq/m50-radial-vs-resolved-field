@@ -1,0 +1,38 @@
+{
+  "-5 C": {
+    "t_end_s": 557.7599119093002,
+    "capacity_Ah": 2.3239996329554833,
+    "positive_surface_stoichiometry_min_max": [
+      0.32080144489585305,
+      0.9997828069038901
+    ],
+    "positive_average_stoichiometry": 0.5299829779804436,
+    "negative_surface_stoichiometry_min_max": [
+      0.24175898642549642,
+      0.5968639387285646
+    ],
+    "negative_average_stoichiometry": 0.5118271852874559,
+    "electrolyte_concentration_min_max_mol_m3": [
+      -5.530522564450893e-06,
+      3488.387872494087
+    ]
+  },
+  "+25 C": {
+    "t_end_s": 558.2810909773825,
+    "capacity_Ah": 2.326171212405842,
+    "positive_surface_stoichiometry_min_max": [
+      0.32068897921566847,
+      0.9998137169041608
+    ],
+    "positive_average_stoichiometry": 0.5302316610129288,
+    "negative_surface_stoichiometry_min_max": [
+      0.23926849374138118,
+      0.5973243662111565
+    ],
+    "negative_average_stoichiometry": 0.5114545492391364,
+    "electrolyte_concentration_min_max_mol_m3": [
+      -4.4889347534684025e-05,
+      3486.3824647823635
+    ]
+  }
+}

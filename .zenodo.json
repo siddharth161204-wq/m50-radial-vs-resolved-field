@@ -1,0 +1,68 @@
+{
+  "title": "The axial blind spot of a radial cell model: the temperature field a multi-unit model assumes, tested on the LG M50 and a 4680",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Satte, Siddharth",
+      "affiliation": "Independent Researcher",
+      "orcid": "0009-0001-3584-1008"
+    }
+  ],
+  "description": "Pre-registered comparison of the one-dimensional radial thermal model that gives each spiral unit its temperature in the multi-unit model of Yang, Cui and Tartakovsky (J. Electrochem. Soc. 173 (2026) 050520) with a resolved three-dimensional cell (anisotropic jelly roll and steel can, scikit-fem), with the heat held equal: PyBaMM's Doyle-Fuller-Newman model with the Chen2020 parameter set at 1.25C, 2C and 3C and ambients of minus 5 C and 25 C, applied uniformly per volume, O'Regan et al. 2022 thermal properties, the paper's h = 400 W/(m2 K), an LG M50 21700 (45 units) and a 4680 with the same properties (111 units). The predictions were committed and pushed (commit b92f9a8) before any three-dimensional field was computed. The paper's radial model carries no heat along the axis, which in three dimensions means insulated ends. Under that condition the resolved cell supports it: at 2C and minus 5 C every unit lies within 0.29 K of its radial temperature in the M50 and within 1.2 K in the 4680. With the ends cooled at the same h, the axial difference along the core that the radial model cannot see is 37 % of the radial core-to-surface difference in the M50 and 32 % in the 4680, at every rate and ambient run. The radial model then puts every unit too warm, by 0.48 to 1.59 K in the M50 and 1.9 to 11.3 K in the 4680, and overstates the unit-to-unit spread by 34 to 36 % in the M50 and 78 to 101 % in the 4680. These are temperature offsets, not energy errors. The kelvin values belong to this study's heat and properties: the paper's own unit differences are 2.2 and 1.7 times this radial model's at 1.25C and 2C at 25 C, where both discharges end near full, and 3.5 to 3.6 times at 2C and minus 5 C at the paper's earlier end of discharge. Its property source (its ref. 33) was not read. An independent axisymmetric recomputation and an independent audit report are included. Code under the MIT licence; note, figure and results under CC BY 4.0.",
+  "license": "MIT",
+  "version": "v1.0.0",
+  "keywords": [
+    "lithium-ion battery",
+    "cylindrical cell",
+    "multi-unit model",
+    "thermal model",
+    "anisotropic conduction",
+    "finite element method",
+    "4680",
+    "pre-registration"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field/tree/v1.0.0",
+      "relation": "isSupplementTo",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "10.5281/zenodo.23253738",
+      "relation": "isDerivedFrom",
+      "scheme": "doi",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "10.1149/1945-7111/ae4b6d",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1016/j.jpowsour.2025.238948",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1149/1945-7111/ab9050",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.1016/j.electacta.2022.140700",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    },
+    {
+      "identifier": "10.5334/jors.309",
+      "relation": "references",
+      "scheme": "doi",
+      "resource_type": "publication-article"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>The axial blind spot of a radial cell model</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="note.css" />
+</head>
+<body>
+<h1
+id="the-axial-blind-spot-of-a-radial-cell-model-the-temperature-field-a-multi-unit-model-assumes-tested-on-the-lg-m50-and-a-4680">The
+axial blind spot of a radial cell model: the temperature field a
+multi-unit model assumes, tested on the LG M50 and a 4680</h1>
+<p>Siddharth Satte, Independent researcher, Pune, India, 12 October
+2026. doi.org/10.5281/zenodo.23320970. Predictions commit b92f9a8,
+public at 11:12 UTC before any three-dimensional field was computed. <a
+href="https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field"
+class="nobr">github.com/siddharth161204-wq/m50-radial-vs-resolved-field</a>.</p>
+<div class="headline">
+<ol type="1">
+<li>In the multi-unit model of Yang, Cui and Tartakovsky (J.
+Electrochem. Soc. 173 (2026) 050520), each unit takes its temperature
+from a radial model, which in three dimensions means insulated ends.
+Under that condition the resolved cell agrees: at 2C and minus 5 C every
+unit lies within 0.29 K of the radial value in the LG M50 and within 1.2
+K in a 4680. With the ends cooled at the paper’s own h = 400
+W/(m<sup>2</sup> K), the axial difference along the core that a radial
+model cannot see is 37 % of the radial core-to-surface difference in the
+M50 (1.28 of 3.45 K) and 32 % in the 4680 (3.44 of 10.61 K), at every
+rate and ambient run.</li>
+<li>The radial model then puts every unit too warm: by 0.48 to 1.59 K in
+the M50 (mean 1.19 K, 31 of 45 units by more than 1 K) and by 1.9 to
+11.3 K in the 4680 (mean 8.0 K). It overstates the unit-to-unit spread
+by 36 % (4.17 against 3.06 K) and by 98 % (18.9 against 9.5 K).</li>
+</ol>
+</div>
+<p><img src="../results/figure.png" /></p>
+<p>Figure 1. 2C and minus 5 C, end of discharge (1706.7 s). Left:
+mid-height temperature above the mid-height surface temperature, M50,
+the radial model against the resolved cell under the four boundary
+conditions. Second: axis temperature relative to mid-height, base to
+cap, same cases. Right, two panels: unit temperatures above ambient in
+the M50 and the 4680, the radial model (dashed) against the resolved
+annulus averages with the ends insulated (a) and cooled (b).</p>
+<h2 id="method">Method</h2>
+<ol type="1">
+<li>Heat: PyBaMM’s Doyle-Fuller-Newman model, parameter set Chen2020,
+discharging at 1.25C, 2C and 3C from 100 % SOC to 2.5 V at minus 5 C and
+25 C, with the lumped thermal model at h = 400 on the side. The total
+heat is applied uniformly per volume in every thermal model, and the
+4680 gets the same W/m<sup>3</sup>.</li>
+<li>Properties: O’Regan et al. (Electrochim. Acta 425 (2022) 140700)
+through PyBaMM at 25 C: 2938.7 kg/m<sup>3</sup>, 842.4 J/(kg K), and
+1.225 W/(m K) across and 25.09 W/(m K) along the layers. The can is 0.25
+mm of steel at 15 W/(m K) and 841.7 J/(m<sup>2</sup> K).</li>
+<li>Radial model: the paper’s Eq. 2 and 4 on a solid cylinder, with 45
+units (21.1 by 70.1 mm) and 111 units (46 by 80 mm) as equal-thickness
+annuli and the can’s heat capacity at the surface. A unit’s temperature
+is its annulus average.</li>
+<li>Resolved cell: the scikit-fem cell of the two-cell study
+(doi.org/10.5281/zenodo.23253738), with an anisotropic roll and the can
+as a shell on every surface. Unit averages are taken over the annulus
+and the full height.</li>
+<li>Boundary conditions: (a) side at h = 400, ends insulated; (b) side
+and ends at h = 400; (c) as (b) plus two nickel strips (6.2 mW/K each)
+to busbars at ambient; (d) as (b) at h = 25. The 4680 runs (a) and
+(b).</li>
+<li>Checks:
+<ul>
+<li>With the can on the side only, the resolved cell matches the radial
+model within 0.15 %. This holds after the circumferential conductivity
+was set to the radial value, because the along-layer value failed this
+test by 1.7 % on the coarse mesh near the axis.</li>
+<li>Energy closes to 2e-12.</li>
+<li>A mesh with every spacing halved changes the core-to-surface
+difference by 0.09 %.</li>
+<li>An independent axisymmetric solver agrees within 0.15 %.</li>
+</ul></li>
+</ol>
+<h2 id="limits">Limits</h2>
+<ol type="1">
+<li>The source is uniform where the paper’s is unit-resolved and
+temperature-dependent. The heat is PyBaMM’s default total, without the
+heat of mixing, which would add 36 to 54 % for this set. The
+axial-to-radial fractions are the same at every rate and ambient; the
+spread overstatement is 34 to 36 % in the M50 and 78 to 101 % in the
+4680; the kelvin values scale with the heat.</li>
+<li>The property source differs from the paper’s (its ref. 33, which was
+not read). The paper’s unit differences are larger than this radial
+model’s: 2.2 and 1.7 times at 1.25C and 2C at 25 C, where both
+discharges end near full, and 3.5 to 3.6 times at 2C and minus 5 C,
+where the paper’s discharge ends at 1.34 to 1.50 A h against 4.74 A h
+here. Its heat is larger or its conductivity lower. The roll touches the
+can’s end caps directly, so the end effects are upper bounds.</li>
+<li>No electrochemical feedback is computed here. The offsets are
+temperature offsets, which the paper’s surrogate would turn into current
+and energy differences, not energy errors.</li>
+</ol>
+<h2 id="prediction-scorecard">Prediction scorecard</h2>
+<table>
+<colgroup>
+<col style="width: 1%" />
+<col style="width: 48%" />
+<col style="width: 5%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Prediction</th>
+<th>Result</th>
+<th>Computed</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>P1</td>
+<td>Side cooling only: mid-height core-to-surface 3 to 10 K at 2C, minus
+5 C</td>
+<td>Held</td>
+<td>4.12 K (central 6 K)</td>
+</tr>
+<tr class="even">
+<td>P2</td>
+<td>End cooling changes it by under 30 %, axial over a third of
+radial</td>
+<td>Held</td>
+<td>-16 % and 0.37 (central 15 % and 0.5)</td>
+</tr>
+<tr class="odd">
+<td>P3</td>
+<td>End cooling: radial units 1 to 3 K too warm, about equally, spread
+within 20 %</td>
+<td>Failed</td>
+<td>Mean 1.19 K, all positive; the spread falls 27 %</td>
+</tr>
+<tr class="even">
+<td>P4</td>
+<td>The 4680’s axial-to-radial ratio is smaller than the 21700’s</td>
+<td>Held</td>
+<td>0.32 against 0.37 (central 0.3 against 0.5)</td>
+</tr>
+<tr class="odd">
+<td>P5</td>
+<td>At h = 25 both differences are below 1 K at 2C</td>
+<td>Failed</td>
+<td>Radial 3.18 and 2.62 K, axial 0.79 and 0.65 K</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-it-means-for-the-papers-numbers">What it means for the
+paper’s numbers</h2>
+<p>Under the condition the paper’s radial model implies, insulated ends,
+the resolved field supports it. If a cell’s ends exchange heat as its
+side does, the unit temperatures that drive the paper’s current
+redistribution are too warm, and their spread too wide by about a third
+in the M50 and by up to a factor of two in the 4680, so its 3.45 % and
+11.32 % energy overestimates and its difference of more than 30 C across
+the 4680 would be expected to shrink, by an amount this study does not
+compute.</p>
+</body>
+</html>

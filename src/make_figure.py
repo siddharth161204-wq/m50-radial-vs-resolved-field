@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """The study's figure (brief step 6), at 2C and minus 5 C, end of discharge, registered inputs.
 
-(a) the mid-height radial profile above the surface temperature: one-dimensional model against the resolved cell
-    under the four boundary conditions (21700);
-(b) the temperature along the axis relative to mid-height (21700);
-(c) unit temperatures above ambient, one-dimensional against the resolved annulus averages, for the 21700 and the
-    4680 (two panels side by side, each on its own scale).
+left: the mid-height radial profile above the surface temperature, one-dimensional model against the resolved cell
+    under the four boundary conditions (21700, the M50);
+second: the temperature along the axis relative to mid-height (M50);
+right, two panels: unit temperatures above ambient, one-dimensional against the resolved annulus averages, for the
+    M50 and the 4680, each on its own scale.
+The panels carry no letters, because (a) to (d) name the boundary conditions.
 Usage: python3 src/make_figure.py   (writes results/figure.png and results/figure.pdf)
 """
 import json
@@ -64,7 +65,7 @@ def main():
     ax[0].set_ylim(bottom=0)
     ax[0].set_xlabel("radius (mm)")
     ax[0].set_ylabel("T minus surface T at mid-height (K)")
-    ax[0].set_title("(a) radial profile, 21700", loc="left")
+    ax[0].set_title("Radial profile at mid-height, M50", loc="left")
 
     # (b) along the axis, relative to mid-height
     ax[1].axhline(0.0, color=COL["1d"], label=LAB["1d"], **STY["1d"])
@@ -77,7 +78,7 @@ def main():
     ax[1].set_xlim(0, C.CELLS["21700"]["H"] * 1e3)
     ax[1].set_xlabel("height (mm), base to cap")
     ax[1].set_ylabel("axis T minus mid-height axis T (K)")
-    ax[1].set_title("(b) along the axis, 21700", loc="left")
+    ax[1].set_title("Along the axis, M50", loc="left")
     # (c) unit temperatures above ambient, 21700 and 4680
     for k, cell in enumerate(("21700", "4680")):
         a_ = ax[2 + k]
@@ -92,7 +93,7 @@ def main():
         a_.set_xlim(1, n)
         a_.set_ylim(bottom=0)
         a_.set_xlabel("unit, core to surface")
-        a_.set_title(f"(c) units, {cell}", loc="left")
+        a_.set_title(f"Units, {'M50' if cell == '21700' else cell}", loc="left")
         if k == 0:
             a_.set_ylabel("unit T above ambient (K)")
     for a_ in ax:

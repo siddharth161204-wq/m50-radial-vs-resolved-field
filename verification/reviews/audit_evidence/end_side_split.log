@@ -1,0 +1,8 @@
+# python3 -I end_side_split.py <heat csv> R H Nr Nz ends_cooled endcap_capacity endcap_conduction
+R 23.00 mm H 80.0 mm grid 46x80 ends_cooled True: core-surface 10.610 K, axial 3.432 K; time-integrated loss: side 20199 J, ends 12251 J (ends 37.8 %); at end of discharge: side 15.312 W, ends 9.360 W (ends 37.9 %); gen 35296 J
+R 23.00 mm H 80.0 mm grid 92x160 ends_cooled True: core-surface 10.611 K, axial 3.433 K; time-integrated loss: side 20196 J, ends 12254 J (ends 37.8 %); at end of discharge: side 15.309 W, ends 9.362 W (ends 37.9 %); gen 35296 J
+R 23.00 mm H 80.0 mm grid 46x80 ends_cooled False: core-surface 18.165 K, axial 0.396 K; time-integrated loss: side 30520 J, ends 0 J (ends 0.0 %); at end of discharge: side 24.060 W, ends 0.000 W (ends 0.0 %); gen 35296 J
+R 10.55 mm H 70.1 mm grid 42x70 ends_cooled True: core-surface 3.449 K, axial 1.277 K; time-integrated loss: side 5107 J, ends 1170 J (ends 18.6 %); at end of discharge: side 3.774 W, ends 0.865 W (ends 18.6 %); gen 6507 J
+R 10.55 mm H 70.1 mm grid 42x70 ends_cooled False: core-surface 4.116 K, axial 0.313 K; time-integrated loss: side 6223 J, ends 0 J (ends 0.0 %); at end of discharge: side 4.623 W, ends 0.000 W (ends 0.0 %); gen 6507 J
+R 10.55 mm H 70.1 mm grid 42x70 ends_cooled False: core-surface 4.263 K, axial 0.001 K; time-integrated loss: side 6215 J, ends 0 J (ends 0.0 %); at end of discharge: side 4.621 W, ends 0.000 W (ends 0.0 %); gen 6507 J
+R 10.55 mm H 70.1 mm grid 42x70 ends_cooled False: core-surface 4.117 K, axial 0.311 K; time-integrated loss: side 6225 J, ends 0 J (ends 0.0 %); at end of discharge: side 4.624 W, ends 0.000 W (ends 0.0 %); gen 6507 J

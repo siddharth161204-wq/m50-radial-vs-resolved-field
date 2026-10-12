@@ -1,0 +1,197 @@
+{
+  "heat": "Chen2020_m5C_2C",
+  "paper_end_times_s": {
+    "1.34 A h": 482.4,
+    "1.50 A h": 540.0
+  },
+  "cases": {
+    "21700_b": {
+      "stopped_at_s": 1706.7446,
+      "heat_lost_by_surface_J": {
+        "lateral": 5107.425469207913,
+        "top": 584.8556066663062,
+        "bottom": 585.022506656281,
+        "strips": 0.0
+      },
+      "energy_residual_rel": 6.149609001586179e-15,
+      "ends_share_of_heat_lost": 0.18636634311877381,
+      "1.34 A h": {
+        "t_s": 481.92788353837136,
+        "dT_cs_3d_K": 2.6706525116237234,
+        "dT_cs_1d_K": 3.298157291248266,
+        "dT_axial_K": 0.9922283293032604,
+        "axial_over_radial": 0.37153030017371974,
+        "mean_offset_K": 0.9185023877759008,
+        "min_offset_K": 0.3692145632663997,
+        "max_offset_K": 1.2275288382385776,
+        "n_units_over_1K": 22,
+        "spread_1d_K": 3.2246541,
+        "spread_3d_K": 2.3665096144955515,
+        "spread_overstatement": 0.36262032499173746
+      },
+      "1.50 A h": {
+        "t_s": 539.9192056239016,
+        "dT_cs_3d_K": 2.693045914535233,
+        "dT_cs_1d_K": 3.3291854434737655,
+        "dT_axial_K": 1.0007498334988827,
+        "axial_over_radial": 0.37160518805027226,
+        "mean_offset_K": 0.9299670870685156,
+        "min_offset_K": 0.3739316072699417,
+        "max_offset_K": 1.2429149190432982,
+        "n_units_over_1K": 22,
+        "spread_1d_K": 3.2550887,
+        "spread_3d_K": 2.386273430902372,
+        "spread_overstatement": 0.3640887326013953
+      },
+      "end_of_discharge": {
+        "t_s": 1706.7446,
+        "dT_cs_3d_K": 3.4531382242287103,
+        "dT_cs_1d_K": 4.264118904291381,
+        "dT_axial_K": 1.2825409326461843,
+        "axial_over_radial": 0.3714131463511431,
+        "mean_offset_K": 1.1870439634834766,
+        "min_offset_K": 0.47718937695559793,
+        "max_offset_K": 1.5862793598187455,
+        "n_units_over_1K": 31,
+        "spread_1d_K": 4.1688856,
+        "spread_3d_K": 3.060013449589638,
+        "spread_overstatement": 0.3623749269987906
+      },
+      "axial_over_radial_from_100s": {
+        "min": 0.3684684094858844,
+        "max": 0.37175327926081453
+      }
+    },
+    "21700_a": {
+      "stopped_at_s": 539.9192056239016,
+      "heat_lost_by_surface_J": {
+        "lateral": 1649.6714304864336,
+        "strips": 0.0
+      },
+      "energy_residual_rel": 3.0374999251034183e-15,
+      "ends_share_of_heat_lost": 0.0,
+      "1.34 A h": {
+        "t_s": 481.92788353837136,
+        "dT_cs_3d_K": 3.1885302442999732,
+        "dT_cs_1d_K": 3.298157291248266,
+        "dT_axial_K": 0.2445375651783292,
+        "axial_over_radial": 0.07669287930245626,
+        "mean_offset_K": 0.14419710176011688,
+        "min_offset_K": 0.003213002617063143,
+        "max_offset_K": 0.2244542577290346,
+        "n_units_over_1K": 0,
+        "spread_1d_K": 3.2246541,
+        "spread_3d_K": 3.0054799368501075,
+        "spread_overstatement": 0.07292484653203113
+      },
+      "1.50 A h": {
+        "t_s": 539.9192056239016,
+        "dT_cs_3d_K": 3.218048243902676,
+        "dT_cs_1d_K": 3.3291854434737655,
+        "dT_axial_K": 0.2468825504860408,
+        "axial_over_radial": 0.07671810108932205,
+        "mean_offset_K": 0.14601422730636737,
+        "min_offset_K": 0.003424976930847645,
+        "max_offset_K": 0.22726062679439502,
+        "n_units_over_1K": 0,
+        "spread_1d_K": 3.2550887,
+        "spread_3d_K": 3.0333374522427494,
+        "spread_overstatement": 0.0731047076853566
+      }
+    },
+    "4680_b": {
+      "stopped_at_s": 1706.7446,
+      "heat_lost_by_surface_J": {
+        "lateral": 20196.34367977439,
+        "top": 6126.487383475995,
+        "bottom": 6127.179303501327,
+        "strips": 0.0
+      },
+      "energy_residual_rel": -5.978057532897278e-14,
+      "ends_share_of_heat_lost": 0.3776167264196757,
+      "1.34 A h": {
+        "t_s": 481.92788353837136,
+        "dT_cs_3d_K": 8.026003296129826,
+        "dT_cs_1d_K": 12.941215375089552,
+        "dT_axial_K": 2.603140756218874,
+        "axial_over_radial": 0.3243383612207236,
+        "mean_offset_K": 4.789839394727673,
+        "min_offset_K": 1.1777029938870966,
+        "max_offset_K": 6.773576941669611,
+        "n_units_over_1K": 111,
+        "spread_1d_K": 12.8173777,
+        "spread_3d_K": 7.221503752217486,
+        "spread_overstatement": 0.7748904023021805
+      },
+      "1.50 A h": {
+        "t_s": 539.9192056239016,
+        "dT_cs_3d_K": 8.20354489226178,
+        "dT_cs_1d_K": 13.569761882658973,
+        "dT_axial_K": 2.6595919753013635,
+        "axial_over_radial": 0.32420033171392737,
+        "mean_offset_K": 5.172697813342509,
+        "min_offset_K": 1.2698364128415816,
+        "max_offset_K": 7.33032529885148,
+        "n_units_over_1K": 111,
+        "spread_1d_K": 13.4416023,
+        "spread_3d_K": 7.381113413990102,
+        "spread_overstatement": 0.821080580407137
+      },
+      "end_of_discharge": {
+        "t_s": 1706.7446,
+        "dT_cs_3d_K": 10.612625751649684,
+        "dT_cs_1d_K": 19.113299968541824,
+        "dT_axial_K": 3.439458137695759,
+        "axial_over_radial": 0.3240911550245811,
+        "mean_offset_K": 7.960864522793848,
+        "min_offset_K": 1.9490558240441933,
+        "max_offset_K": 11.337911553852052,
+        "n_units_over_1K": 111,
+        "spread_1d_K": 18.9375827,
+        "spread_3d_K": 9.548726970192142,
+        "spread_overstatement": 0.9832573241560527
+      },
+      "axial_over_radial_from_100s": {
+        "min": 0.32379549408745617,
+        "max": 0.3336362435127619
+      }
+    },
+    "4680_a": {
+      "stopped_at_s": 539.9192056239016,
+      "heat_lost_by_surface_J": {
+        "lateral": 6675.000313287042,
+        "strips": 0.0
+      },
+      "energy_residual_rel": -1.852951581650987e-13,
+      "ends_share_of_heat_lost": 0.0,
+      "1.34 A h": {
+        "t_s": 481.92788353837136,
+        "dT_cs_3d_K": 12.456027039744512,
+        "dT_cs_1d_K": 12.941215375089552,
+        "dT_axial_K": 0.2686383158648624,
+        "axial_over_radial": 0.021566934224507953,
+        "mean_offset_K": 0.41553118443047626,
+        "min_offset_K": -0.030898355070126726,
+        "max_offset_K": 0.6363100007727276,
+        "n_units_over_1K": 0,
+        "spread_1d_K": 12.8173777,
+        "spread_3d_K": 12.15284775447839,
+        "spread_overstatement": 0.05468100637373041
+      },
+      "1.50 A h": {
+        "t_s": 539.9192056239016,
+        "dT_cs_3d_K": 13.032127613862741,
+        "dT_cs_1d_K": 13.569761882658973,
+        "dT_axial_K": 0.2827790144258966,
+        "axial_over_radial": 0.021698606920108304,
+        "mean_offset_K": 0.4565725748864487,
+        "min_offset_K": -0.027381553195032327,
+        "max_offset_K": 0.7007532373115097,
+        "n_units_over_1K": 0,
+        "spread_1d_K": 13.4416023,
+        "spread_3d_K": 12.716234419246002,
+        "spread_overstatement": 0.05704266348347242
+      }
+    }
+  }
+}
