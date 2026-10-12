@@ -1,0 +1,58 @@
+{
+  "21700 dt 1.0 s, 20 elements per unit": {
+    "dT_core_surface_K": 4.264118904291381,
+    "unit_spread_K": 4.168885574264269,
+    "T_mean_C": -0.378022851233383,
+    "energy_residual_rel": -4.3187138663121075e-13,
+    "change_dT_rel": 0.0
+  },
+  "21700 dt 0.25 s, 20 elements per unit": {
+    "dT_core_surface_K": 4.2638675217435935,
+    "unit_spread_K": 4.168639224727416,
+    "T_mean_C": -0.3782814013196621,
+    "energy_residual_rel": 1.5787260188028152e-13,
+    "change_dT_rel": -5.895298734159837e-05
+  },
+  "21700 dt 1.0 s, 5 elements per unit": {
+    "dT_core_surface_K": 4.264213620993344,
+    "unit_spread_K": 4.168941689941811,
+    "T_mean_C": -0.3780298155264172,
+    "energy_residual_rel": -1.735323502725046e-13,
+    "change_dT_rel": 2.2212490807138607e-05
+  },
+  "21700 dt 1.0 s, 40 elements per unit": {
+    "dT_core_surface_K": 4.264113351329239,
+    "unit_spread_K": 4.168882774855033,
+    "T_mean_C": -0.3780225030104133,
+    "energy_residual_rel": 4.984940143329402e-14,
+    "change_dT_rel": -1.3022531188955355e-06
+  },
+  "4680 dt 1.0 s, 20 elements per unit": {
+    "dT_core_surface_K": 19.113299968541824,
+    "unit_spread_K": 18.937582729382317,
+    "T_mean_C": 9.814073614098604,
+    "energy_residual_rel": 1.7173268944711465e-12,
+    "change_dT_rel": 0.0
+  },
+  "4680 dt 0.25 s, 20 elements per unit": {
+    "dT_core_surface_K": 19.113133413620893,
+    "unit_spread_K": 18.93742100800927,
+    "T_mean_C": 9.813759072792216,
+    "energy_residual_rel": -1.3062362418137057e-14,
+    "change_dT_rel": -8.714085019567719e-06
+  },
+  "4680 dt 1.0 s, 5 elements per unit": {
+    "dT_core_surface_K": 19.113375151907096,
+    "unit_spread_K": 18.9376309459118,
+    "T_mean_C": 9.814067237204315,
+    "energy_residual_rel": -4.2217454577150404e-14,
+    "change_dT_rel": 3.9335627755043845e-06
+  },
+  "4680 dt 1.0 s, 40 elements per unit": {
+    "dT_core_surface_K": 19.113295616568227,
+    "unit_spread_K": 18.937580322946925,
+    "T_mean_C": 9.814073932818317,
+    "energy_residual_rel": -2.9938771772477318e-12,
+    "change_dT_rel": -2.2769347018947173e-07
+  }
+}
