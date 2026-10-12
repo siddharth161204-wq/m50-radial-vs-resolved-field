@@ -79,8 +79,10 @@ class Radial1D:
         self.U = U
         self.unit_edges = np.linspace(0.0, self.R, self.n_units + 1)
 
-    def run(self, q_of_t, t_end, T_amb_C, dt_target=1.0):
+    def run(self, q_of_t, t_end, T_amb_C, dt_target=1.0, snap_times=()):
         n, dt = time_grid(t_end, dt_target)
+        snap_steps = {int(round(ts / dt)): ts for ts in snap_times}
+        snaps = {}
         A = (self.K + sp.diags(self.C / dt + self.d_conv)).tocsc()
         lu = spla.splu(A)
         Ta = T_amb_C
@@ -101,6 +103,8 @@ class Radial1D:
             series[k + 1] = [t, T[0], T[-1], float(self.w_vol @ T / self.w_vol.sum()), dT]
             if dT > best["dT"]:
                 best = {"dT": dT, "t": t, "T": T.copy()}
+            if (k + 1) in snap_steps:
+                snaps[snap_steps[k + 1]] = self._snap(T, self.U @ T, t, every=1)
         stored = self.C @ T - E0
         units_end = self.U @ T
         units_max = self.U @ best["T"]
@@ -109,7 +113,7 @@ class Radial1D:
             "end": self._snap(T, units_end, t_end), "max_dT": self._snap(best["T"], units_max, best["t"]),
             "energy_per_m": {"generated": E_gen, "lost": E_out, "stored": stored,
                              "residual_rel": (stored + E_out - E_gen) / E_gen},
-            "series": series,
+            "series": series, "snaps": snaps,
         }
         return res
 
@@ -152,6 +156,7 @@ def main():
         m = Radial1D(cell, props=props, can=can)
         r = m.run(q_of_t, t_end, amb_of(name))
         r.pop("series")
+        r.pop("snaps")
         out[kind][key] = r
         e, mx = r["end"], r["max_dT"]
         rows.append([kind, key, cell, t_end, e["dT_core_surface"], e["unit_spread"], e["T_core"], e["T_surface"],

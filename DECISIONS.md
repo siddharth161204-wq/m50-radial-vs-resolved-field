@@ -92,3 +92,11 @@ D11. The checks:
 ## Registration
 
 D12. The predictions are the brief's P1 to P5. Each has a scoring rule in predictions.md, committed and pushed to the public repository before any three-dimensional field is computed. The registered results use the Chen2020 heat and the 25 C properties. The secondary results use the ORegan2022 heat and the minus 5 C properties for the minus 5 C runs, and they are reported beside the registered ones without being scored.
+
+## Added after the predictions were public
+
+D13. V1 failed as first run and was fixed before any other case ran. The equivalence run at 2C and minus 5 C (the two-cell study's conductivity tensor, in which the along-layer value also acts around the circumference) gave a mid-height core-to-surface difference 1.7 % below the one-dimensional model's (4.192 against 4.264 K). The deficit was largest at the axis and fell to zero at the surface.
+
+The cause is a discretisation error, not physics. Near the axis the two-cell mesh has few, wide triangles that are not aligned with the radius: the first ring carries 4 segments over half a circle. On those triangles the finite-element gradient of a radial field has a spurious circumferential part, and a circumferential conductivity twenty times the radial one turns that part into heat flow, which makes the roll look more conductive than it is. With the circumferential conductivity set to the across-layer value, the same run matches the one-dimensional model within 0.15 % (4.270 against 4.264 K).
+
+Every field in this study is axisymmetric: a uniform source, and convection and strips that do not vary around the circumference. The circumferential conductivity therefore cannot change the exact solution, and every run uses the across-layer value for it. The conductivities that carry heat here, 1.2251 W/(m K) across the layers (radial) and 25.092 W/(m K) along them (axial), are unchanged. The first equivalence run is kept in results/fields_superseded/ for the record.

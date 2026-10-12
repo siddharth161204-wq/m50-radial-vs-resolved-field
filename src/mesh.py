@@ -95,7 +95,8 @@ def build_mesh(R, Lz, refine=1.0):
     mesh = MeshTet(p, t)
     info = {"n_rings": len(rings), "n_layers": nz, "n_nodes_2d": n2, "n_tris_2d": len(tris),
             "n_nodes": int(p.shape[1]), "n_tets": int(t.shape[1]), "min_abs_vol": float(np.abs(vol).min())}
-    extr = {"pts2": pts2, "tris": tris, "z": np.asarray(z), "n2": n2, "rings": np.asarray(rings)}
+    extr = {"pts2": pts2, "tris": tris, "z": np.asarray(z), "n2": n2, "rings": np.asarray(rings), "R": R,
+            "n_outer": len(ring_nodes[-1][0]) - 1}
     return mesh, info, extr
 
 
@@ -125,9 +126,19 @@ class FieldSampler:
         x, y, z = (np.asarray(v, dtype=float).ravel() for v in (x, y, z))
         it = self.finder(x, y)
         bad = it < 0
-        if bad.any():   # points on the outer boundary or the symmetry line: nudge inward by 1e-12 relative
-            x2, y2 = x[bad] * (1 - 1e-9), np.maximum(y[bad], 1e-12)
-            it[bad] = self.finder(x2, y2)
+        if bad.any():
+            # The outer ring is a polygon inscribed in the circle r = R, so a point on (or within a few micrometres
+            # inside) the circle can lie just outside it. Such a point is moved along its radius onto the polygon's
+            # edge, where the finite-element field takes its boundary value.
+            n = self.e["n_outer"]
+            R = self.e["R"]
+            th = np.arctan2(y[bad], x[bad])
+            j = np.clip(np.floor(th / (np.pi / n)), 0, n - 1)
+            th_mid = (j + 0.5) * np.pi / n
+            r_chord = R * np.cos(np.pi / (2 * n)) / np.cos(th - th_mid)
+            r = np.minimum(np.hypot(x[bad], y[bad]), r_chord * (1 - 1e-10))
+            x[bad], y[bad] = r * np.cos(th), r * np.sin(th)
+            it[bad] = self.finder(x[bad], y[bad])
             if (it < 0).any():
                 raise ValueError(f"{int((it < 0).sum())} points outside the mesh")
         pts2 = self.e["pts2"]

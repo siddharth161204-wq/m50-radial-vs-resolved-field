@@ -1,7 +1,10 @@
 """The resolved cell: the two-cell study's scikit-fem cell with a uniform volumetric source (D8, D9).
 
 Field equation in the roll (half cylinder, zero flux on the plane of symmetry):
-    rho_cp dT/dt = div(K grad T) + q(t),   K = k_along I + (k_across - k_along) e_r e_r^T
+    rho_cp dT/dt = div(K grad T) + q(t),   K = k_across e_r e_r^T + k_theta e_t e_t^T + k_along e_z e_z^T
+The two-cell study had k_theta = k_along. Every field here is axisymmetric, so k_theta cannot change the exact
+solution, and it is set to k_across (D13): with k_along, the coarse triangles near the axis, which are not aligned
+with the radius, let a twenty-fold circumferential conductivity carry heat across them, and V1 failed by 1.7 %.
 The can is a 0.25 mm steel shell carrying in-plane conduction k t and its heat capacity, on every outer surface
 (on the lateral surface only in the V1 equivalence run). Convection h (T_amb - T) acts on the surfaces named by the
 boundary condition; in (c) two strips connect the cap disc and the base annulus to busbars at the ambient. Capacity
@@ -72,7 +75,7 @@ class _AMGCG:
 
 
 class Cell3D:
-    def __init__(self, cell, bc, props=None, refine=1.0, solver="auto"):
+    def __init__(self, cell, bc, props=None, refine=1.0, solver="auto", k_theta="across"):
         self.cell, self.bc_name = cell, bc
         bcd = BCS[bc]
         self.bcd = bcd
@@ -91,6 +94,8 @@ class Cell3D:
                 "bottom_annulus": g["bottom_annulus"]}
         fb = {k: FacetBasis(m, e, facets=v) for k, v in surf.items()}
         kr, kz = cc["k_across"], cc["k_along"]
+        kth = kz if k_theta == "along" else kr
+        self.k_theta = k_theta
 
         @BilinearForm
         def conduction(u, v, w):
@@ -100,7 +105,9 @@ class Cell3D:
             gu, gv = u.grad, v.grad
             ur = ex * gu[0] + ey * gu[1]
             vr = ex * gv[0] + ey * gv[1]
-            return kz * (gu[0] * gv[0] + gu[1] * gv[1] + gu[2] * gv[2]) + (kr - kz) * ur * vr
+            ut = -ey * gu[0] + ex * gu[1]
+            vt = -ey * gv[0] + ex * gv[1]
+            return kz * gu[2] * gv[2] + kr * ur * vr + kth * ut * vt
 
         kt = cc["k_can_t"]
 
