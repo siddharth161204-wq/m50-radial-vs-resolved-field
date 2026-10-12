@@ -1,0 +1,42 @@
+{
+  "pybamm_version": "26.9.0.0",
+  "pair_thickness_m": 0.0001868,
+  "registered": {
+    "T_C": 25.0,
+    "rho": 2938.6852248394002,
+    "cp": 842.3972520912723,
+    "k_across": 1.225063080816923,
+    "k_along": 25.091576331499663,
+    "source": "O'Regan et al. 2022 (Electrochim. Acta 425, 140700) through PyBaMM 26.9.0.0 parameter set ORegan2022, effective roll values at 25 C (the set's reference temperature), computed as in the two-cell study (doi:10.5281/zenodo.23253738, inputs/oregan2022_properties.py)"
+  },
+  "table": [
+    {
+      "T_C": -5.0,
+      "rho": 2938.6852248394002,
+      "cp": 706.9631662631575,
+      "k_across": 1.1711084413327164,
+      "k_along": 24.846969125318367
+    },
+    {
+      "T_C": 0.0,
+      "rho": 2938.6852248394002,
+      "cp": 727.9801654658011,
+      "k_across": 1.1809084826811644,
+      "k_along": 24.900564564635964
+    },
+    {
+      "T_C": 25.0,
+      "rho": 2938.6852248394002,
+      "cp": 842.3972520912723,
+      "k_across": 1.225063080816923,
+      "k_along": 25.091576331499663
+    },
+    {
+      "T_C": 40.0,
+      "rho": 2938.6852248394002,
+      "cp": 912.721113385355,
+      "k_across": 1.2530611955982447,
+      "k_along": 25.144141958973336
+    }
+  ]
+}
