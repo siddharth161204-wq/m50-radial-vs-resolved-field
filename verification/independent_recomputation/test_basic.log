@@ -1,0 +1,9 @@
+analytic n_modes=5000: core=6.749841132 surf=2.486192918 dT=4.263648215 vmean=4.621568978 bal=-1.157e-11 (0.4s)
+analytic n_modes=10000: core=6.749841132 surf=2.486192918 dT=4.263648214 vmean=4.621568978 bal=-3.825e-12 (0.7s)
+analytic n_modes=20000: core=6.749841132 surf=2.486192918 dT=4.263648214 vmean=4.621568978 bal=-7.698e-12 (1.1s)
+analytic n_modes=40000: core=6.749841132 surf=2.486192918 dT=4.263648214 vmean=4.621568978 bal=2.460e-12 (2.7s)
+1D FV Nr=45: core=6.749834 surf=2.486200 dT=4.263633 units max|diff vs analytic|=3.57e-04 bal=-1.46e-14 schemebal=-1.1e-14
+1D FV Nr=90: core=6.749839 surf=2.486195 dT=4.263644 units max|diff vs analytic|=8.94e-05 bal=-1.28e-14 schemebal=-9.1e-15
+1D FV Nr=180: core=6.749840 surf=2.486193 dT=4.263647 units max|diff vs analytic|=2.25e-05 bal=-1.49e-14 schemebal=-1.1e-14
+1D FV Nr=360: core=6.749841 surf=2.486193 dT=4.263648 units max|diff vs analytic|=5.83e-06 bal=-2.56e-14 schemebal=-2.1e-14
+3D-reduces-to-1D max |T3D(r,z) - T1D(r)| = 3.6148861681795097e-13

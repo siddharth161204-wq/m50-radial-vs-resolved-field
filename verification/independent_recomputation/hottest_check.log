@@ -1,0 +1,2 @@
+a {'grid': '180x264', 'hottest_T_C': 1.5572393764041523, 'hottest_r_mm': 0.0, 'hottest_z_mm': 35.05, 'max_abs_T_minus_mirror_K': 7.762679388179095e-13}
+b {'grid': '180x264', 'hottest_T_C': 0.5676970517257853, 'hottest_r_mm': 0.0, 'hottest_z_mm': 35.05, 'max_abs_T_minus_mirror_K': 5.480060849549773e-13}

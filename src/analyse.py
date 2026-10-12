@@ -26,13 +26,13 @@ FIELDS = os.path.join(C.RESULTS, "fields")
 _cache = {}
 
 
-def one_d(heat, cell, props_kind, times):
-    key = (heat, cell, props_kind, tuple(sorted(times)))
+def one_d(heat, cell, props_kind, times, h=C.H_PAPER):
+    key = (heat, cell, props_kind, tuple(sorted(times)), h)
     if key not in _cache:
         allp = C.roll_properties()
         props = allp["registered"] if props_kind == "registered" else next(r for r in allp["table"] if r["T_C"] == -5.0)
         q, t_end, _ = R1.load_heat(heat)
-        m = R1.Radial1D(cell, props=props, can=True)
+        m = R1.Radial1D(cell, props=props, can=True, h=h)
         r = m.run(q, t_end, R1.amb_of(heat), snap_times=times)
         _cache[key] = (r, m)
     return _cache[key]
@@ -42,6 +42,8 @@ def load_runs():
     runs = {}
     for p in sorted(glob.glob(os.path.join(FIELDS, "*.json"))):
         d = json.load(open(p))
+        if d.get("k_theta", "across") != "across":
+            continue                      # the diagnostic runs with the two-cell tensor are reported by diagnostics()
         key = (d["cell"], d["bc"], d.get("refine", 1.0), d.get("props", "registered"), d["heat"])
         runs[key] = d
     return runs
@@ -82,12 +84,20 @@ def main():
                    "t_s": s3["t"], "dT_core_surface_3d_K": s3["dT_core_surface"],
                    "dT_axial_bottom_K": s3["dT_axial_bottom"], "dT_axial_top_K": s3["dT_axial_top"],
                    "dT_axial_K": s3["dT_axial"], "axial_over_radial": s3["dT_axial"] / s3["dT_core_surface"],
+                   "dT_axial_mean_of_ends_K": 0.5 * (s3["dT_axial_bottom"] + s3["dT_axial_top"]),
                    "hottest_T_C": s3["hottest"]["T"], "hottest_r_mm": s3["hottest"]["r_mm"],
                    "hottest_z_mm": s3["hottest"]["z_mm"], "T_roll_mean_3d_C": s3["T_roll_mean"],
                    "T_core_mid_3d_C": s3["T_core_mid"], "T_surface_mid_3d_C": s3["T_surface_mid"],
                    "dT_core_surface_1d_K": s1["dT_core_surface"], "T_mean_1d_C": s1["T_mean"],
                    "T_core_1d_C": s1["T_core"], "T_surface_1d_C": s1["T_surface"],
                    **{f"units_{k}": v for k, v in uc.items()}}
+            if bc == "d":
+                # the like-for-like radial model for (d): the paper's form at h = 25 on the lateral surface
+                r25, _m25 = one_d(heat, cell, props, times, h=C.H_AIR)
+                s25 = r25["snaps"][s3["t"]]
+                uc25 = unit_compare(s3, s25)
+                row.update({"dT_core_surface_1d_h25_K": s25["dT_core_surface"],
+                            **{f"units_vs_1d_h25_{k}": v for k, v in uc25.items()}})
             rows.append(row)
             if bc in ("a_eq", "a"):
                 v1[f"{cell}|{bc}|refine {refine:g}|{props}|{heat}|{when}"] = {
@@ -132,8 +142,11 @@ def main():
     os.makedirs(C.RESULTS, exist_ok=True)
     for name, data in (("results_3d.csv", rows), ("comparison_vs_a.csv", vs_a)):
         if data:
+            keys = []
+            for r in data:
+                keys += [k for k in r if k not in keys]
             with open(os.path.join(C.RESULTS, name), "w", newline="") as f:
-                w = csv.DictWriter(f, fieldnames=list(data[0].keys()))
+                w = csv.DictWriter(f, fieldnames=keys)
                 w.writeheader()
                 for r in data:
                     w.writerow(r)
@@ -144,9 +157,21 @@ def main():
             for i, (rm, t3, t1) in enumerate(zip(u["r_mid_mm"], u["units_3d"], u["units_1d"])):
                 w.writerow([i + 1, f"{rm:.4f}", f"{t1:.5f}", f"{t3:.5f}", f"{t1 - t3:.5f}"])
     v1_pass = {k: v["rings"]["rel_to_1d_dT"] <= 0.01 for k, v in v1.items()}
+    # D13 diagnostic: the equivalence run with the two-cell study's tensor (circumferential = along-layer value), on the
+    # registered mesh (superseded first run) and on the refined mesh
+    diag = {}
+    for p in sorted(glob.glob(os.path.join(FIELDS, "*ktheta-along*.json"))) + \
+            sorted(glob.glob(os.path.join(C.RESULTS, "fields_superseded", "*.json"))):
+        d = json.load(open(p))
+        r1, _m = one_d(d["heat"], d["cell"], d.get("props", "registered"), [d["end"]["t"]])
+        s1 = r1["snaps"][d["end"]["t"]]
+        diag[os.path.basename(p)] = {"refine": d.get("refine", 1.0), "dT_cs_3d_K": d["end"]["dT_core_surface"],
+                                     "dT_cs_1d_K": s1["dT_core_surface"],
+                                     "rel_diff": d["end"]["dT_core_surface"] / s1["dT_core_surface"] - 1,
+                                     "profile_rel": profile_compare(d["end"], s1, "rings")["rel_to_1d_dT"]}
     ver = {"V1": v1, "V1_pass_within_1_percent": v1_pass,
            "V2_energy_residual_rel": v2, "V2_max_abs": max(abs(x) for x in v2.values()) if v2 else None,
-           "V3": v3}
+           "V3": v3, "D13_diagnostic_two_cell_tensor": diag}
     with open(os.path.join(C.RESULTS, "verification.json"), "w") as f:
         json.dump(ver, f, indent=2)
     score(rows, vs_a)

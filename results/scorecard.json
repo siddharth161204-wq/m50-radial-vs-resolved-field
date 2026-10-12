@@ -1,0 +1,58 @@
+{
+  "P1": {
+    "value_K": 4.122351958960981,
+    "range": [
+      3,
+      10
+    ],
+    "central": 6,
+    "held": true
+  },
+  "P2": {
+    "change_rel": -0.16233784533549211,
+    "axial_over_radial_b": 0.3714131463511431,
+    "clause1_held": true,
+    "clause2_held": true,
+    "central": {
+      "change": 0.15,
+      "ratio": 0.5
+    },
+    "held": true
+  },
+  "P3": {
+    "mean_offset_K": 1.1870439634834766,
+    "min_offset_K": 0.47718937695559793,
+    "max_offset_K": 1.5862793598187455,
+    "spread_change_rel": -0.26598766596290435,
+    "spread_1d_K": 4.1688856,
+    "spread_3d_K": 3.060013449589638,
+    "clause1_held": true,
+    "clause2_held": true,
+    "clause3_held": false,
+    "every_offset_within_1_to_3K": false,
+    "central_offset_K": 1.5,
+    "held": false
+  },
+  "P4": {
+    "ratio_21700": 0.3714131463511431,
+    "ratio_4680": 0.3240911550245818,
+    "held": true,
+    "central": {
+      "4680": 0.3,
+      "21700": 0.5
+    }
+  },
+  "P5": {
+    "values": {
+      "minus5C": {
+        "dT_cs_K": 3.1800226769875373,
+        "dT_axial_K": 0.7862127200571081
+      },
+      "25C": {
+        "dT_cs_K": 2.618303351602137,
+        "dT_axial_K": 0.647299710623237
+      }
+    },
+    "held": false
+  }
+}

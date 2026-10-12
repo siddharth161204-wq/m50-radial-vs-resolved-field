@@ -1,0 +1,43 @@
+study rows present (cell, bc): [('21700', 'a'), ('21700', 'a_eq'), ('21700', 'b')]
+requested but missing in study file: [('21700', 'd'), ('4680', 'a'), ('4680', 'b')]
+21700 a     requested dT_core_surface_3d_K              study=4.122352 mine=4.116454 diff=+0.005898  (+0.143 % of my dTcs; within 0.5 %: True)
+21700 a     requested dT_axial_K                        study=0.316150 mine=0.312429 diff=+0.003721  (+0.090 % of my dTcs; within 0.5 %: True)
+21700 a     requested dT_axial_bottom_K                 study=0.308225 mine=0.312429 diff=-0.004204  (-0.102 % of my dTcs; within 0.5 %: True)
+21700 a     requested dT_axial_top_K                    study=0.316150 mine=0.312429 diff=+0.003721  (+0.090 % of my dTcs; within 0.5 %: True)
+21700 a     requested units_spread_3d_K                 study=3.885579 mine=3.880986 diff=+0.004593  (+0.112 % of my dTcs; within 0.5 %: True)
+21700 a     requested units_mean_offset_1d_minus_3d_K   study=0.186545 mine=0.184544 diff=+0.002001  (+0.049 % of my dTcs; within 0.5 %: True)
+21700 a     requested units_min_offset_K                study=0.004246 mine=0.002050 diff=+0.002196  (+0.053 % of my dTcs; within 0.5 %: True)
+21700 a     requested units_max_offset_K                study=0.290220 mine=0.289492 diff=+0.000728  (+0.018 % of my dTcs; within 0.5 %: True)
+21700 a     requested units_n_units_over_1K             study=0.000000 mine=0.000000 diff=+0.000000  match: True
+21700 a     requested dT_core_surface_1d_K              study=4.264119 mine=4.263648 diff=+0.000471  (+0.011 % of my dTcs; within 0.5 %: True)
+21700 a     requested units_spread_1d_K                 study=4.168886 mine=4.168428 diff=+0.000457  (+0.011 % of my dTcs; within 0.5 %: True)
+21700 a     extra     T_core_mid_3d_C                   study=1.563402 mine=1.557287 diff=+0.006115  (+0.149 % of my dTcs; within 0.5 %: True)
+21700 a     extra     T_surface_mid_3d_C                study=-2.558950 mine=-2.559167 diff=+0.000217  (+0.005 % of my dTcs; within 0.5 %: True)
+21700 a     extra     T_roll_mean_3d_C                  study=-0.512948 mine=-0.511585 diff=-0.001363  (-0.033 % of my dTcs; within 0.5 %: True)
+21700 a     extra     T_core_1d_C                       study=1.750493 mine=1.749841 diff=+0.000652  (+0.016 % of my dTcs; within 0.5 %: True)
+21700 a     extra     T_surface_1d_C                    study=-2.513626 mine=-2.513807 diff=+0.000181  (+0.004 % of my dTcs; within 0.5 %: True)
+21700 a     extra     T_mean_1d_C                       study=-0.378023 mine=-0.378431 diff=+0.000408  (+0.010 % of my dTcs; within 0.5 %: True)
+21700 a     extra     units_max_abs_diff_K              study=0.290220 mine=0.289492 diff=+0.000728  (+0.018 % of my dTcs; within 0.5 %: True)
+21700 a     extra     axial_over_radial                 study=0.076692 mine=0.075898 diff=+0.000794
+21700 a     extra     units_spread_change_rel           study=-0.067957 mine=-0.068957 diff=+0.001000
+{'cell': '21700', 'bc': 'a_eq', 'column': '(row present in study, case not in my task)', 'study': None, 'mine': None}
+21700 b     requested dT_core_surface_3d_K              study=3.453138 mine=3.448697 diff=+0.004441  (+0.129 % of my dTcs; within 0.5 %: True)
+21700 b     requested dT_axial_K                        study=1.282541 mine=1.277502 diff=+0.005038  (+0.146 % of my dTcs; within 0.5 %: True)
+21700 b     requested dT_axial_bottom_K                 study=1.273635 mine=1.277502 diff=-0.003868  (-0.112 % of my dTcs; within 0.5 %: True)
+21700 b     requested dT_axial_top_K                    study=1.282541 mine=1.277502 diff=+0.005038  (+0.146 % of my dTcs; within 0.5 %: True)
+21700 b     requested units_spread_3d_K                 study=3.060013 mine=3.057150 diff=+0.002864  (+0.083 % of my dTcs; within 0.5 %: True)
+21700 b     requested units_mean_offset_1d_minus_3d_K   study=1.187044 mine=1.185067 diff=+0.001977  (+0.057 % of my dTcs; within 0.5 %: True)
+21700 b     requested units_min_offset_K                study=0.477189 mine=0.475497 diff=+0.001692  (+0.049 % of my dTcs; within 0.5 %: True)
+21700 b     requested units_max_offset_K                study=1.586279 mine=1.586776 diff=-0.000496  (-0.014 % of my dTcs; within 0.5 %: True)
+21700 b     requested units_n_units_over_1K             study=31.000000 mine=31.000000 diff=+0.000000  match: True
+21700 b     requested dT_core_surface_1d_K              study=4.264119 mine=4.263648 diff=+0.000471  (+0.014 % of my dTcs; within 0.5 %: True)
+21700 b     requested units_spread_1d_K                 study=4.168886 mine=4.168428 diff=+0.000457  (+0.013 % of my dTcs; within 0.5 %: True)
+21700 b     extra     T_core_mid_3d_C                   study=0.572642 mine=0.567723 diff=+0.004919  (+0.143 % of my dTcs; within 0.5 %: True)
+21700 b     extra     T_surface_mid_3d_C                study=-2.880496 mine=-2.880974 diff=+0.000477  (+0.014 % of my dTcs; within 0.5 %: True)
+21700 b     extra     T_roll_mean_3d_C                  study=-1.369405 mine=-1.368170 diff=-0.001235  (-0.036 % of my dTcs; within 0.5 %: True)
+21700 b     extra     T_core_1d_C                       study=1.750493 mine=1.749841 diff=+0.000652  (+0.019 % of my dTcs; within 0.5 %: True)
+21700 b     extra     T_surface_1d_C                    study=-2.513626 mine=-2.513807 diff=+0.000181  (+0.005 % of my dTcs; within 0.5 %: True)
+21700 b     extra     T_mean_1d_C                       study=-0.378023 mine=-0.378431 diff=+0.000408  (+0.012 % of my dTcs; within 0.5 %: True)
+21700 b     extra     units_max_abs_diff_K              study=1.586279 mine=1.586776 diff=-0.000496  (-0.014 % of my dTcs; within 0.5 %: True)
+21700 b     extra     axial_over_radial                 study=0.371413 mine=0.370430 diff=+0.000983
+21700 b     extra     units_spread_change_rel           study=-0.265988 mine=-0.266594 diff=+0.000607

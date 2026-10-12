@@ -42,14 +42,16 @@ def time_grid(t_end, dt_target=1.0):
 
 
 class Radial1D:
-    def __init__(self, cell, props=None, can=True, sub=20, h=C.H_PAPER):
+    def __init__(self, cell, props=None, can=True, sub=20, h=C.H_PAPER, r_in=0.0):
+        """r_in > 0 gives the annulus outside a hollow core (zero flux at r_in), a secondary geometry only."""
         cc = C.cell_constants(cell, props)
         self.cc, self.cell = cc, cell
         self.R, self.n_units, self.sub = cc["R"], cc["n_units"], sub
         N = self.n_units * sub
         self.N = N
-        self.r = np.linspace(0.0, self.R, N + 1)
-        dr = self.R / N
+        self.r_in = r_in
+        self.r = np.linspace(r_in, self.R, N + 1)
+        dr = (self.R - r_in) / N
         a, b = self.r[:-1], self.r[1:]
         tp = 2 * math.pi
         # element integrals of phi_i r dr (exact) give the lumped volume weights per unit height
@@ -77,7 +79,7 @@ class Radial1D:
                 U[i, e + 1] += wb[e]
             U[i] /= U[i].sum()
         self.U = U
-        self.unit_edges = np.linspace(0.0, self.R, self.n_units + 1)
+        self.unit_edges = np.linspace(r_in, self.R, self.n_units + 1)
 
     def run(self, q_of_t, t_end, T_amb_C, dt_target=1.0, snap_times=()):
         n, dt = time_grid(t_end, dt_target)

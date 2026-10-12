@@ -1,0 +1,140 @@
+{
+  "fig5_calibration": {
+    "x_ticks_px": [
+      191,
+      386,
+      580,
+      774,
+      970
+    ],
+    "y_ticks_px": [
+      85,
+      172,
+      260,
+      347,
+      435,
+      524,
+      612
+    ],
+    "K_per_px": 0.022763986896827047,
+    "reading_error_K": 0.09105594758730819
+  },
+  "fig5": {
+    "3C 25 C": {
+      "heat": "Chen2020_p25C_3C",
+      "paper_x_range": [
+        0.1691688883443255,
+        0.9502558274147278
+      ],
+      "paper_dT_innermost_K": 13.13325789402717,
+      "ours_dT_innermost_unit_K": 7.210629900000001,
+      "ratio_paper_over_ours_on_grid_mean": 1.8587394906149555,
+      "ratio_paper_over_ours_at_0.2": 1.8919173318807787,
+      "ratio_paper_over_ours_on_grid_min": 1.0127230184288176,
+      "ratio_paper_over_ours_on_grid_max": 2.0051853357979925,
+      "max_abs_diff_K": 6.180103285837829,
+      "within_reading_error": false
+    },
+    "2C minus 5 C": {
+      "heat": "Chen2020_m5C_2C",
+      "paper_x_range": [
+        0.1691688883443255,
+        0.9666997629741046
+      ],
+      "paper_dT_innermost_K": 11.539778811249276,
+      "ours_dT_innermost_unit_K": 4.1688856,
+      "ratio_paper_over_ours_on_grid_mean": 2.7143602175734807,
+      "ratio_paper_over_ours_at_0.2": 2.874211778238726,
+      "ratio_paper_over_ours_on_grid_min": 1.1770864570036699,
+      "ratio_paper_over_ours_on_grid_max": 2.939825266382101,
+      "max_abs_diff_K": 7.495154137455622,
+      "within_reading_error": false
+    },
+    "2C 25 C": {
+      "heat": "Chen2020_p25C_2C",
+      "paper_x_range": [
+        0.1691688883443255,
+        0.954366811304572
+      ],
+      "paper_dT_innermost_K": 5.9398380346298225,
+      "ours_dT_innermost_unit_K": 3.5368148999999995,
+      "ratio_paper_over_ours_on_grid_mean": 1.7206783077603807,
+      "ratio_paper_over_ours_at_0.2": 1.746622811220321,
+      "ratio_paper_over_ours_on_grid_min": 0.6782241430185175,
+      "ratio_paper_over_ours_on_grid_max": 1.8672853933357567,
+      "max_abs_diff_K": 2.536231412042514,
+      "within_reading_error": false
+    },
+    "1.25C 25 C": {
+      "heat": "Chen2020_p25C_1.25C",
+      "paper_x_range": [
+        0.1650579044544813,
+        0.9677275089465657
+      ],
+      "paper_dT_innermost_K": 2.878081797006585,
+      "ours_dT_innermost_unit_K": 1.3308493000000006,
+      "ratio_paper_over_ours_on_grid_mean": 2.1920351856603304,
+      "ratio_paper_over_ours_at_0.2": 2.245249621859171,
+      "ratio_paper_over_ours_on_grid_min": 0.6740000075943733,
+      "ratio_paper_over_ours_on_grid_max": 2.3740898819954643,
+      "max_abs_diff_K": 1.5899153535581707,
+      "within_reading_error": false
+    }
+  },
+  "fig7a": {
+    "calibration": {
+      "x_ticks_px": [
+        241,
+        397,
+        552,
+        707,
+        861
+      ],
+      "y_ticks_px": [
+        137,
+        277,
+        416,
+        556
+      ],
+      "K_per_px": 0.07163309079340319,
+      "reading_error_K": 0.28653236317361275
+    },
+    "paper_x_range": [
+      0.0714865107853786,
+      0.9863206510518997
+    ],
+    "paper_dT_innermost_K": 37.528607054525295,
+    "ours_dT_innermost_unit_K": 18.9375827,
+    "ratio_paper_over_ours_on_grid_mean": 2.1767092715427925,
+    "ratio_paper_over_ours_at_0.2": 2.0365955630408017,
+    "max_abs_diff_K": 18.869104137938493
+  },
+  "source_pdf_sha256": "c75f54d772ee62b0c2cf7a24332f2f0f51bc0772c5c50494d3a788f4ce0a3c37",
+  "source_pdf_note": "Yang, Cui and Tartakovsky (2026), J. Electrochem. Soc. 173, 050520, publisher PDF; images extracted with pdfimages -f 5 -l 6 -j (jes-001.jpg is Fig. 5, jes-003.jpg is Fig. 7)",
+  "fig5_hollow_core_secondary": {
+    "1.25C 25 C": {
+      "r_in_mm": 1.7413608919947776,
+      "dT_innermost_unit_K": 1.2011819999999993,
+      "registered_dT_innermost_unit_K": 1.3308493000000006,
+      "paper_over_hollow_core_model": 2.3960413967297103
+    },
+    "2C 25 C": {
+      "r_in_mm": 1.7847317720326341,
+      "dT_innermost_unit_K": 3.179533499999998,
+      "registered_dT_innermost_unit_K": 3.5368148999999995,
+      "paper_over_hollow_core_model": 1.8681476495309222
+    },
+    "3C 25 C": {
+      "r_in_mm": 1.7847317720326341,
+      "dT_innermost_unit_K": 6.516382799999999,
+      "registered_dT_innermost_unit_K": 7.210629900000001,
+      "paper_over_hollow_core_model": 2.015421484144113
+    },
+    "2C minus 5 C": {
+      "r_in_mm": 1.7847317720326341,
+      "dT_innermost_unit_K": 3.7441912,
+      "registered_dT_innermost_unit_K": 4.1688856,
+      "paper_over_hollow_core_model": 3.0820484838619557
+    }
+  }
+}

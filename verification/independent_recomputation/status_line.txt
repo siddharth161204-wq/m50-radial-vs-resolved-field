@@ -1,0 +1,1 @@
+STATUS: done. Own numbers converged (grid error below 1e-4 K, time-step error below 1e-6 K, energy balance closed to 1e-12). Comparison: AGREEMENT on every row the study file holds ((a) and (b) 21700: all within 0.15 % of the core-to-surface difference, counts over 1 K match); (d) 21700 and both 4680 rows were absent from the study file.

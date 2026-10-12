@@ -1,0 +1,812 @@
+{
+  "V1": {
+    "21700|a|refine 1|registered|Chen2020_m5C_1.25C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.08116191393067762,
+        "rel_to_1d_dT": 0.04495575347322482,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.08216852756796778,
+        "rel_to_1d_dT": 0.045513318867252545,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 1.7453932615511443,
+      "dT_cs_1d_K": 1.8053732316824989
+    },
+    "21700|a|refine 1|registered|Chen2020_m5C_1.25C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.08116191393067762,
+        "rel_to_1d_dT": 0.04495575347322482,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.08216852756796778,
+        "rel_to_1d_dT": 0.045513318867252545,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 1.7453932615511443,
+      "dT_cs_1d_K": 1.8053732316824989
+    },
+    "21700|a|refine 1|registered|Chen2020_m5C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.1918078254643778,
+        "rel_to_1d_dT": 0.04498181916816242,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.19418604511991044,
+        "rel_to_1d_dT": 0.04553954743721684,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 4.122351958960981,
+      "dT_cs_1d_K": 4.264118904291381
+    },
+    "21700|a|refine 1|registered|Chen2020_m5C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.1918078254643778,
+        "rel_to_1d_dT": 0.04498181916816242,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.19418604511991044,
+        "rel_to_1d_dT": 0.04553954743721684,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 4.122351958960981,
+      "dT_cs_1d_K": 4.264118904291381
+    },
+    "21700|a|refine 1|registered|Chen2020_m5C_2C_mixing|end": {
+      "rings": {
+        "max_abs_diff_K": 0.2693973404453711,
+        "rel_to_1d_dT": 0.04353239847312672,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.2728347352096421,
+        "rel_to_1d_dT": 0.044087853246140805,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 5.989078739012439,
+      "dT_cs_1d_K": 6.188433210535703
+    },
+    "21700|a|refine 1|registered|Chen2020_m5C_2C_mixing|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.2693973404453711,
+        "rel_to_1d_dT": 0.04353239847312672,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.2728347352096421,
+        "rel_to_1d_dT": 0.044087853246140805,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 5.989078739012439,
+      "dT_cs_1d_K": 6.188433210535703
+    },
+    "21700|a|refine 1|registered|Chen2020_m5C_3C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.35980719424903107,
+        "rel_to_1d_dT": 0.043299881662320225,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.36437099246515636,
+        "rel_to_1d_dT": 0.04384909781432457,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 8.043386389100368,
+      "dT_cs_1d_K": 8.309657681169533
+    },
+    "21700|a|refine 1|registered|Chen2020_m5C_3C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.35980719424903107,
+        "rel_to_1d_dT": 0.043299881662320225,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.36437099246515636,
+        "rel_to_1d_dT": 0.04384909781432457,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 8.043386389100368,
+      "dT_cs_1d_K": 8.309657681169533
+    },
+    "21700|a|refine 1|registered|Chen2020_p25C_1.25C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.06079011604279572,
+        "rel_to_1d_dT": 0.044655166303433046,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.06154837551856218,
+        "rel_to_1d_dT": 0.04521216808588841,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 1.3163881862893874,
+      "dT_cs_1d_K": 1.3613232482379587
+    },
+    "21700|a|refine 1|registered|Chen2020_p25C_1.25C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.06079011604279572,
+        "rel_to_1d_dT": 0.044655166303433046,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.06154837551856218,
+        "rel_to_1d_dT": 0.04521216808588841,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 1.3163881862893874,
+      "dT_cs_1d_K": 1.3613232482379587
+    },
+    "21700|a|refine 1|registered|Chen2020_p25C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.16136765661970642,
+        "rel_to_1d_dT": 0.044602647633710434,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.16338143678483164,
+        "rel_to_1d_dT": 0.045159264300261605,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 3.4985992062744344,
+      "dT_cs_1d_K": 3.6178941202079145
+    },
+    "21700|a|refine 1|registered|Chen2020_p25C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.16136765661970642,
+        "rel_to_1d_dT": 0.044602647633710434,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.16338143678483164,
+        "rel_to_1d_dT": 0.045159264300261605,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 3.4985992062744344,
+      "dT_cs_1d_K": 3.6178941202079145
+    },
+    "21700|a|refine 1|registered|Chen2020_p25C_2C_mixing|end": {
+      "rings": {
+        "max_abs_diff_K": 0.24218757132992863,
+        "rel_to_1d_dT": 0.042904609369021414,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.24531054596105406,
+        "rel_to_1d_dT": 0.043457858265659746,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 5.465488475608126,
+      "dT_cs_1d_K": 5.64479143130939
+    },
+    "21700|a|refine 1|registered|Chen2020_p25C_2C_mixing|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.24218757132992863,
+        "rel_to_1d_dT": 0.042904609369021414,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.24531054596105406,
+        "rel_to_1d_dT": 0.043457858265659746,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 5.465488475608126,
+      "dT_cs_1d_K": 5.64479143130939
+    },
+    "21700|a|refine 1|registered|Chen2020_p25C_3C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.31519960343186426,
+        "rel_to_1d_dT": 0.042699222480372376,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.3192331364232217,
+        "rel_to_1d_dT": 0.043245634089729375,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 7.148480531876167,
+      "dT_cs_1d_K": 7.3818581492146045
+    },
+    "21700|a|refine 1|registered|Chen2020_p25C_3C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.31519960343186426,
+        "rel_to_1d_dT": 0.042699222480372376,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.3192331364232217,
+        "rel_to_1d_dT": 0.043245634089729375,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 7.148480531876167,
+      "dT_cs_1d_K": 7.3818581492146045
+    },
+    "21700|a|refine 1|registered|ORegan2022_m5C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.15677394702129233,
+        "rel_to_1d_dT": 0.030573621438677766,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.1595566967608657,
+        "rel_to_1d_dT": 0.03111630559451356,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 5.009776316326014,
+      "dT_cs_1d_K": 5.127751952307564
+    },
+    "21700|a|refine 1|registered|ORegan2022_m5C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.15677394702129233,
+        "rel_to_1d_dT": 0.030573621438677766,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.1595566967608657,
+        "rel_to_1d_dT": 0.03111630559451356,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 5.009776316326014,
+      "dT_cs_1d_K": 5.127751952307564
+    },
+    "21700|a|refine 1|registered|ORegan2022_p25C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.17504845834789506,
+        "rel_to_1d_dT": 0.04499295285710138,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.17722652703698571,
+        "rel_to_1d_dT": 0.045552784933160125,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 3.761185823962389,
+      "dT_cs_1d_K": 3.8905750174666878
+    },
+    "21700|a|refine 1|registered|ORegan2022_p25C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.17504845834789506,
+        "rel_to_1d_dT": 0.04499295285710138,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.17722652703698571,
+        "rel_to_1d_dT": 0.045552784933160125,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 3.761185823962389,
+      "dT_cs_1d_K": 3.8905750174666878
+    },
+    "21700|a|refine 1|cold|Chen2020_m5C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.21244438360791107,
+        "rel_to_1d_dT": 0.04749241549327619,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.2148985225766471,
+        "rel_to_1d_dT": 0.04804104373000361,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 4.3141429294302895,
+      "dT_cs_1d_K": 4.473227596477762
+    },
+    "21700|a|refine 1|cold|Chen2020_m5C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.21244438360791107,
+        "rel_to_1d_dT": 0.04749241549327619,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.2148985225766471,
+        "rel_to_1d_dT": 0.04804104373000361,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 4.3141429294302895,
+      "dT_cs_1d_K": 4.473227596477762
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_1.25C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.0026396631858269792,
+        "rel_to_1d_dT": 0.001462114946374259,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.0026396631858269792,
+        "rel_to_1d_dT": 0.001462114946374259,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 1.808003798374695,
+      "dT_cs_1d_K": 1.8053732316824989
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_1.25C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.0026396631858269792,
+        "rel_to_1d_dT": 0.001462114946374259,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.0026396631858269792,
+        "rel_to_1d_dT": 0.001462114946374259,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 1.808003798374695,
+      "dT_cs_1d_K": 1.8053732316824989
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.0062475903903915775,
+        "rel_to_1d_dT": 0.0014651538877361145,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.0062475903903915775,
+        "rel_to_1d_dT": 0.0014651538877361145,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 4.270347637296727,
+      "dT_cs_1d_K": 4.264118904291381
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.0062475903903915775,
+        "rel_to_1d_dT": 0.0014651538877361145,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.0062475903903915775,
+        "rel_to_1d_dT": 0.0014651538877361145,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 4.270347637296727,
+      "dT_cs_1d_K": 4.264118904291381
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_3C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.011617198776423976,
+        "rel_to_1d_dT": 0.0013980357822380148,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.011617198776423976,
+        "rel_to_1d_dT": 0.0013980357822380148,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 8.32096703016684,
+      "dT_cs_1d_K": 8.309657681169533
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_3C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.011617198776423976,
+        "rel_to_1d_dT": 0.0013980357822380148,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.011617198776423976,
+        "rel_to_1d_dT": 0.0013980357822380148,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 8.32096703016684,
+      "dT_cs_1d_K": 8.309657681169533
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_1.25C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.001975970730491383,
+        "rel_to_1d_dT": 0.0014515073719992655,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.001975970730491383,
+        "rel_to_1d_dT": 0.0014515073719992655,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 1.3632890128998731,
+      "dT_cs_1d_K": 1.3613232482379587
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_1.25C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.001975970730491383,
+        "rel_to_1d_dT": 0.0014515073719992655,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.001975970730491383,
+        "rel_to_1d_dT": 0.0014515073719992655,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 1.3632890128998731,
+      "dT_cs_1d_K": 1.3613232482379587
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.005246898343376216,
+        "rel_to_1d_dT": 0.00145026310031281,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.005246898343376216,
+        "rel_to_1d_dT": 0.00145026310031281,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 3.623110256843251,
+      "dT_cs_1d_K": 3.6178941202079145
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.005246898343376216,
+        "rel_to_1d_dT": 0.00145026310031281,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.005246898343376216,
+        "rel_to_1d_dT": 0.00145026310031281,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 3.623110256843251,
+      "dT_cs_1d_K": 3.6178941202079145
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_3C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.010147325873262503,
+        "rel_to_1d_dT": 0.0013746302987875934,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.010147325873262503,
+        "rel_to_1d_dT": 0.0013746302987875934,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 7.391649265148775,
+      "dT_cs_1d_K": 7.3818581492146045
+    },
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_3C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.010147325873262503,
+        "rel_to_1d_dT": 0.0013746302987875934,
+        "n_radii": 22
+      },
+      "fine": {
+        "max_abs_diff_K": 0.010147325873262503,
+        "rel_to_1d_dT": 0.0013746302987875934,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 7.391649265148775,
+      "dT_cs_1d_K": 7.3818581492146045
+    },
+    "21700|a|refine 2|registered|Chen2020_m5C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.1921241912770577,
+        "rel_to_1d_dT": 0.045056011708234776,
+        "n_radii": 43
+      },
+      "fine": {
+        "max_abs_diff_K": 0.19271501992255113,
+        "rel_to_1d_dT": 0.04519456990953137,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 4.1185152501162605,
+      "dT_cs_1d_K": 4.264118904291381
+    },
+    "21700|a|refine 2|registered|Chen2020_m5C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.1921241912770577,
+        "rel_to_1d_dT": 0.045056011708234776,
+        "n_radii": 43
+      },
+      "fine": {
+        "max_abs_diff_K": 0.19271501992255113,
+        "rel_to_1d_dT": 0.04519456990953137,
+        "n_radii": 211
+      },
+      "dT_cs_3d_K": 4.1185152501162605,
+      "dT_cs_1d_K": 4.264118904291381
+    },
+    "4680|a|refine 1|registered|Chen2020_m5C_1.25C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.47217184984526916,
+        "rel_to_1d_dT": 0.057339558553195794,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 0.473166363559022,
+        "rel_to_1d_dT": 0.05746033021152395,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 7.819202068738571,
+      "dT_cs_1d_K": 8.234661405828923
+    },
+    "4680|a|refine 1|registered|Chen2020_m5C_1.25C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.47217184984526916,
+        "rel_to_1d_dT": 0.057339558553195794,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 0.473166363559022,
+        "rel_to_1d_dT": 0.05746033021152395,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 7.819202068738571,
+      "dT_cs_1d_K": 8.234661405828923
+    },
+    "4680|a|refine 1|registered|Chen2020_m5C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 1.0679801132734177,
+        "rel_to_1d_dT": 0.055876280654370704,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 1.070295065355758,
+        "rel_to_1d_dT": 0.05599739799602026,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 18.17312434429294,
+      "dT_cs_1d_K": 19.113299968541824
+    },
+    "4680|a|refine 1|registered|Chen2020_m5C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 1.0679801132734177,
+        "rel_to_1d_dT": 0.055876280654370704,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 1.070295065355758,
+        "rel_to_1d_dT": 0.05599739799602026,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 18.17312434429294,
+      "dT_cs_1d_K": 19.113299968541824
+    },
+    "4680|a|refine 1|registered|Chen2020_m5C_3C|end": {
+      "rings": {
+        "max_abs_diff_K": 1.4000139174637596,
+        "rel_to_1d_dT": 0.043581755742839574,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 1.403978516142864,
+        "rel_to_1d_dT": 0.04370517178113448,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 30.882632008542007,
+      "dT_cs_1d_K": 32.12385305733765
+    },
+    "4680|a|refine 1|registered|Chen2020_m5C_3C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 1.4000139174637596,
+        "rel_to_1d_dT": 0.043581755742839574,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 1.403978516142864,
+        "rel_to_1d_dT": 0.04370517178113448,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 30.882632008542007,
+      "dT_cs_1d_K": 32.12385305733765
+    },
+    "4680|a|refine 1|registered|Chen2020_p25C_1.25C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.34702454850141606,
+        "rel_to_1d_dT": 0.056688524555169616,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 0.3477624613261554,
+        "rel_to_1d_dT": 0.056809067005164735,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 5.816220971835861,
+      "dT_cs_1d_K": 6.12160135096989
+    },
+    "4680|a|refine 1|registered|Chen2020_p25C_1.25C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.34702454850141606,
+        "rel_to_1d_dT": 0.056688524555169616,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 0.3477624613261554,
+        "rel_to_1d_dT": 0.056809067005164735,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 5.816220971835861,
+      "dT_cs_1d_K": 6.12160135096989
+    },
+    "4680|a|refine 1|registered|Chen2020_p25C_2C|end": {
+      "rings": {
+        "max_abs_diff_K": 0.8721295131190061,
+        "rel_to_1d_dT": 0.05488217862448078,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 0.8740502455272292,
+        "rel_to_1d_dT": 0.055003048263143665,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 15.123005779365982,
+      "dT_cs_1d_K": 15.890941922811777
+    },
+    "4680|a|refine 1|registered|Chen2020_p25C_2C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 0.8721295131190061,
+        "rel_to_1d_dT": 0.05488217862448078,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 0.8740502455272292,
+        "rel_to_1d_dT": 0.055003048263143665,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 15.123005779365982,
+      "dT_cs_1d_K": 15.890941922811777
+    },
+    "4680|a|refine 1|registered|Chen2020_p25C_3C|end": {
+      "rings": {
+        "max_abs_diff_K": 1.2027776231305367,
+        "rel_to_1d_dT": 0.04301895187515651,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 1.2062089825720221,
+        "rel_to_1d_dT": 0.043141679039214835,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 26.892938246947423,
+      "dT_cs_1d_K": 27.959249835306707
+    },
+    "4680|a|refine 1|registered|Chen2020_p25C_3C|max_dT": {
+      "rings": {
+        "max_abs_diff_K": 1.2027776231305367,
+        "rel_to_1d_dT": 0.04301895187515651,
+        "n_radii": 40
+      },
+      "fine": {
+        "max_abs_diff_K": 1.2062089825720221,
+        "rel_to_1d_dT": 0.043141679039214835,
+        "n_radii": 461
+      },
+      "dT_cs_3d_K": 26.892938246947423,
+      "dT_cs_1d_K": 27.959249835306707
+    }
+  },
+  "V1_pass_within_1_percent": {
+    "21700|a|refine 1|registered|Chen2020_m5C_1.25C|end": false,
+    "21700|a|refine 1|registered|Chen2020_m5C_1.25C|max_dT": false,
+    "21700|a|refine 1|registered|Chen2020_m5C_2C|end": false,
+    "21700|a|refine 1|registered|Chen2020_m5C_2C|max_dT": false,
+    "21700|a|refine 1|registered|Chen2020_m5C_2C_mixing|end": false,
+    "21700|a|refine 1|registered|Chen2020_m5C_2C_mixing|max_dT": false,
+    "21700|a|refine 1|registered|Chen2020_m5C_3C|end": false,
+    "21700|a|refine 1|registered|Chen2020_m5C_3C|max_dT": false,
+    "21700|a|refine 1|registered|Chen2020_p25C_1.25C|end": false,
+    "21700|a|refine 1|registered|Chen2020_p25C_1.25C|max_dT": false,
+    "21700|a|refine 1|registered|Chen2020_p25C_2C|end": false,
+    "21700|a|refine 1|registered|Chen2020_p25C_2C|max_dT": false,
+    "21700|a|refine 1|registered|Chen2020_p25C_2C_mixing|end": false,
+    "21700|a|refine 1|registered|Chen2020_p25C_2C_mixing|max_dT": false,
+    "21700|a|refine 1|registered|Chen2020_p25C_3C|end": false,
+    "21700|a|refine 1|registered|Chen2020_p25C_3C|max_dT": false,
+    "21700|a|refine 1|registered|ORegan2022_m5C_2C|end": false,
+    "21700|a|refine 1|registered|ORegan2022_m5C_2C|max_dT": false,
+    "21700|a|refine 1|registered|ORegan2022_p25C_2C|end": false,
+    "21700|a|refine 1|registered|ORegan2022_p25C_2C|max_dT": false,
+    "21700|a|refine 1|cold|Chen2020_m5C_2C|end": false,
+    "21700|a|refine 1|cold|Chen2020_m5C_2C|max_dT": false,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_1.25C|end": true,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_1.25C|max_dT": true,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_2C|end": true,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_2C|max_dT": true,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_3C|end": true,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_3C|max_dT": true,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_1.25C|end": true,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_1.25C|max_dT": true,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_2C|end": true,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_2C|max_dT": true,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_3C|end": true,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_3C|max_dT": true,
+    "21700|a|refine 2|registered|Chen2020_m5C_2C|end": false,
+    "21700|a|refine 2|registered|Chen2020_m5C_2C|max_dT": false,
+    "4680|a|refine 1|registered|Chen2020_m5C_1.25C|end": false,
+    "4680|a|refine 1|registered|Chen2020_m5C_1.25C|max_dT": false,
+    "4680|a|refine 1|registered|Chen2020_m5C_2C|end": false,
+    "4680|a|refine 1|registered|Chen2020_m5C_2C|max_dT": false,
+    "4680|a|refine 1|registered|Chen2020_m5C_3C|end": false,
+    "4680|a|refine 1|registered|Chen2020_m5C_3C|max_dT": false,
+    "4680|a|refine 1|registered|Chen2020_p25C_1.25C|end": false,
+    "4680|a|refine 1|registered|Chen2020_p25C_1.25C|max_dT": false,
+    "4680|a|refine 1|registered|Chen2020_p25C_2C|end": false,
+    "4680|a|refine 1|registered|Chen2020_p25C_2C|max_dT": false,
+    "4680|a|refine 1|registered|Chen2020_p25C_3C|end": false,
+    "4680|a|refine 1|registered|Chen2020_p25C_3C|max_dT": false
+  },
+  "V2_energy_residual_rel": {
+    "21700|a|refine 1|registered|Chen2020_m5C_1.25C": 6.189242404239098e-14,
+    "21700|a|refine 1|registered|Chen2020_m5C_2C": 2.3759852960673874e-15,
+    "21700|a|refine 1|registered|Chen2020_m5C_2C_mixing": 3.4475519342430898e-15,
+    "21700|a|refine 1|registered|Chen2020_m5C_3C": -2.48591073762215e-15,
+    "21700|a|refine 1|registered|Chen2020_p25C_1.25C": -4.1349533786784767e-13,
+    "21700|a|refine 1|registered|Chen2020_p25C_2C": -1.8119756900556257e-13,
+    "21700|a|refine 1|registered|Chen2020_p25C_2C_mixing": -1.931586690719323e-13,
+    "21700|a|refine 1|registered|Chen2020_p25C_3C": -1.4372241473687833e-13,
+    "21700|a|refine 1|registered|ORegan2022_m5C_2C": 1.303900155723122e-14,
+    "21700|a|refine 1|registered|ORegan2022_p25C_2C": -2.1789803860470727e-13,
+    "21700|a|refine 1|cold|Chen2020_m5C_2C": 2.655512977957668e-15,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_1.25C": 8.015261125986659e-14,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_2C": 4.332679069299354e-15,
+    "21700|a_eq|refine 1|registered|Chen2020_m5C_3C": -3.521706878298046e-15,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_1.25C": -4.563812840570493e-13,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_2C": -2.1347989451804786e-13,
+    "21700|a_eq|refine 1|registered|Chen2020_p25C_3C": -1.6101232929169076e-13,
+    "21700|a|refine 2|registered|Chen2020_m5C_2C": -2.7952768189028086e-15,
+    "21700|b|refine 1|registered|Chen2020_m5C_1.25C": 7.611614882231934e-14,
+    "21700|b|refine 1|registered|Chen2020_m5C_2C": 6.149609001586179e-15,
+    "21700|b|refine 1|registered|Chen2020_m5C_2C_mixing": 7.300698213691249e-15,
+    "21700|b|refine 1|registered|Chen2020_m5C_3C": 1.4501145969462543e-15,
+    "21700|b|refine 1|registered|Chen2020_p25C_1.25C": -3.3614031343311946e-13,
+    "21700|b|refine 1|registered|Chen2020_p25C_2C": -1.980329753212135e-13,
+    "21700|b|refine 1|registered|Chen2020_p25C_2C_mixing": -1.982047339383315e-13,
+    "21700|b|refine 1|registered|Chen2020_p25C_3C": -1.3579787056592263e-13,
+    "21700|b|refine 1|registered|ORegan2022_m5C_2C": 1.6008279139571002e-14,
+    "21700|b|refine 1|registered|ORegan2022_p25C_2C": -2.2694179636780794e-13,
+    "21700|b|refine 1|cold|Chen2020_m5C_2C": 6.4291366834764595e-15,
+    "21700|b|refine 2|registered|Chen2020_m5C_2C": -9.78346886615983e-16,
+    "21700|c|refine 1|registered|Chen2020_m5C_1.25C": 7.323296136692846e-14,
+    "21700|c|refine 1|registered|Chen2020_m5C_2C": 5.450789796860477e-15,
+    "21700|c|refine 1|registered|Chen2020_m5C_3C": 1.4501145969462543e-15,
+    "21700|c|refine 1|registered|Chen2020_p25C_1.25C": -3.4575959108303385e-13,
+    "21700|c|refine 1|registered|Chen2020_p25C_2C": -1.9872721888062177e-13,
+    "21700|c|refine 1|registered|Chen2020_p25C_3C": -1.3867952299172472e-13,
+    "21700|d|refine 1|registered|Chen2020_m5C_1.25C": -5.80481741018698e-14,
+    "21700|d|refine 1|registered|Chen2020_m5C_2C": -6.009845160641039e-14,
+    "21700|d|refine 1|registered|Chen2020_m5C_3C": -5.282560317447069e-14,
+    "21700|d|refine 1|registered|Chen2020_p25C_1.25C": -3.166345559763486e-13,
+    "21700|d|refine 1|registered|Chen2020_p25C_2C": -2.3656349286837334e-13,
+    "21700|d|refine 1|registered|Chen2020_p25C_3C": -1.3723869677882368e-13,
+    "4680|a|refine 1|registered|Chen2020_m5C_1.25C": 6.931508327124129e-14,
+    "4680|a|refine 1|registered|Chen2020_m5C_2C": 4.699990060346826e-14,
+    "4680|a|refine 1|registered|Chen2020_m5C_3C": 4.460919694833613e-14,
+    "4680|a|refine 1|registered|Chen2020_p25C_1.25C": -1.5935462484177998e-12,
+    "4680|a|refine 1|registered|Chen2020_p25C_2C": -3.837255932115587e-13,
+    "4680|a|refine 1|registered|Chen2020_p25C_3C": 2.1392648452596866e-13,
+    "4680|b|refine 1|registered|Chen2020_m5C_1.25C": -8.816765193192655e-14,
+    "4680|b|refine 1|registered|Chen2020_m5C_2C": -6.019285515882777e-14,
+    "4680|b|refine 1|registered|Chen2020_m5C_3C": 5.316438540418141e-14,
+    "4680|b|refine 1|registered|Chen2020_p25C_1.25C": 2.0199632240053004e-12,
+    "4680|b|refine 1|registered|Chen2020_p25C_2C": 2.302609546989974e-13,
+    "4680|b|refine 1|registered|Chen2020_p25C_3C": -2.1286393576176682e-13
+  },
+  "V2_max_abs": 2.0199632240053004e-12,
+  "V3": {
+    "21700|a|Chen2020_m5C_2C": {
+      "dT_cs_refined_K": 4.1185152501162605,
+      "dT_cs_base_K": 4.122351958960981,
+      "dT_cs_change_rel": -0.0009307087029238881,
+      "dT_axial_refined_K": 0.313407928764984,
+      "dT_axial_base_K": 0.3161504654631704,
+      "units_max_abs_change_K": 0.003661838654675456,
+      "pass": true
+    },
+    "21700|b|Chen2020_m5C_2C": {
+      "dT_cs_refined_K": 3.45035044819832,
+      "dT_cs_base_K": 3.4531382242287103,
+      "dT_cs_change_rel": -0.0008073166636741735,
+      "dT_axial_refined_K": 1.2789579584674278,
+      "dT_axial_base_K": 1.2825409326461843,
+      "units_max_abs_change_K": 0.003193822772220023,
+      "pass": true
+    }
+  },
+  "D13_diagnostic_two_cell_tensor": {
+    "21700_a_eq_ktheta-along_Chen2020_m5C_2C.json": {
+      "refine": 1.0,
+      "dT_cs_3d_K": 4.191751260571992,
+      "dT_cs_1d_K": 4.264118904291381,
+      "rel_diff": -0.01697130060012131,
+      "profile_rel": 0.016941314602509822
+    }
+  }
+}
