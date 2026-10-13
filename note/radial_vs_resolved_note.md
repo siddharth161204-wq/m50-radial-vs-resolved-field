@@ -1,6 +1,6 @@
 # The axial blind spot of a radial cell model: the temperature field a multi-unit model assumes, tested on the LG M50 and a 4680
 
-Siddharth Satte, Independent researcher, Pune, India, 12 October 2026. doi.org/10.5281/zenodo.23320970. Predictions commit b92f9a8, public at 11:12 UTC before any three-dimensional field was computed. [github.com/siddharth161204-wq/m50-radial-vs-resolved-field](https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field){.nobr}.
+Siddharth Satte, Independent researcher, Pune, India, 13 October 2026 (v1.0.1). doi.org/10.5281/zenodo.23320970. Predictions commit b92f9a8, public at 11:12 UTC on 12 October before any three-dimensional field was computed. [github.com/siddharth161204-wq/m50-radial-vs-resolved-field](https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field){.nobr}.
 
 <div class="headline">
 
@@ -22,14 +22,12 @@ Figure 1. 2C and minus 5 C, end of discharge (1706.7 s). Left: mid-height temper
 5. Boundary conditions: (a) side at h = 400, ends insulated; (b) side and ends at h = 400; (c) as (b) plus two nickel strips (6.2 mW/K each) to busbars at ambient; (d) as (b) at h = 25. The 4680 runs (a) and (b).
 6. Checks:
    - With the can on the side only, the resolved cell matches the radial model within 0.15 %. This holds after the circumferential conductivity was set to the radial value, because the along-layer value failed this test by 1.7 % on the coarse mesh near the axis.
-   - Energy closes to 2e-12.
-   - A mesh with every spacing halved changes the core-to-surface difference by 0.09 %.
-   - An independent axisymmetric solver agrees within 0.15 %.
+   - Energy closes to 2e-12; halving every mesh spacing changes the core-to-surface difference by 0.09 %; an independent axisymmetric solver agrees within 0.15 %.
 
 ## Limits
 
 1. The source is uniform where the paper's is unit-resolved and temperature-dependent. The heat is PyBaMM's default total, without the heat of mixing, which would add 36 to 54 % for this set. The axial-to-radial fractions are the same at every rate and ambient; the spread overstatement is 34 to 36 % in the M50 and 78 to 101 % in the 4680; the kelvin values scale with the heat.
-2. The property source differs from the paper's (its ref. 33, which was not read). The paper's unit differences are larger than this radial model's: 2.2 and 1.7 times at 1.25C and 2C at 25 C, where both discharges end near full, and 3.5 to 3.6 times at 2C and minus 5 C, where the paper's discharge ends at 1.34 to 1.50 A h against 4.74 A h here. Its heat is larger or its conductivity lower. The roll touches the can's end caps directly, so the end effects are upper bounds.
+2. The paper's properties come from its ref. 33, a pseudo-two-dimensional model with a one-dimensional thermal model of the same M50, fitted to 1C discharge data; its values were not available here. The paper's unit differences are larger than this radial model's: 2.2 and 1.7 times at 1.25C and 2C at 25 C, where both discharges end near full, and 3.5 to 3.6 times at 2C and minus 5 C, where the paper's discharge ends at 1.34 to 1.50 A h against 4.74 A h here. Its heat is larger or its conductivity lower. The roll touches the can's end caps directly, so the end effects are upper bounds.
 3. No electrochemical feedback is computed here. The offsets are temperature offsets, which the paper's surrogate would turn into current and energy differences, not energy errors.
 
 ## Prediction scorecard

@@ -2,7 +2,7 @@
 
 Author: Siddharth Satte, independent researcher, Pune, India (ORCID 0009-0001-3584-1008).
 
-Archived at https://doi.org/10.5281/zenodo.23320970 (version v1.0.0).
+Archived at https://doi.org/10.5281/zenodo.23320970 (version v1.0.1).
 
 ## Result
 
@@ -30,10 +30,11 @@ In the M50 the jelly roll conducts about twenty times better along its layers th
 
 The study follows the author's written brief: its question, inputs, design, checks, predictions and rules. "The brief" below means that document. Its predictions (`predictions.md`) were committed as b92f9a8de8db3af392edc67fa854c84248432dea and pushed to this public repository at 11:12:48 UTC on 12 October 2026. The first three-dimensional field of the study was written at 11:19 UTC. As the brief orders, the DFN heat runs and the one-dimensional model ran before the predictions commit, together with three-dimensional checks that compute no field of the study (`verification/v0_checks.json`).
 
-Three things came after the predictions, and DECISIONS.md records them:
+Four things came after the predictions, and DECISIONS.md records them:
 - **D13.** The first equivalence run (V1) failed by 1.7 %. On the two-cell study's mesh, a circumferential conductivity twenty times the radial one carries heat across the coarse triangles near the axis. Every field here is axisymmetric, so the circumferential conductivity cannot change the exact solution, and it was set to the radial value. V1 then passed within 0.15 %. The failed run is kept in `results/fields_superseded/`. With the original tensor, a mesh with every spacing halved cuts the error from 1.70 % to 0.51 %, which confirms it was discretisation error.
 - **D14.** A fix to the field sampler for points on the cylinder's polygonal edge. It changes no physics.
 - **D15.** A post-hoc re-solve at the paper's own end of discharge, with the heat split by surface.
+- **D16.** What the paper's property source says about its properties, from the parts of it that were available. No input, code or result changed.
 
 V4 also ran after the predictions, because the paper's figure images were found only then. V4 involves no three-dimensional field.
 
@@ -155,7 +156,7 @@ The share of heat each surface removes over the whole discharge is in `results/p
   - The ratio also varies along the radius, from 0.7 near the surface to 2.9 near the core.
   - The 4680 (Fig. 7a; both discharges near full) gives 37.5 K against this model's 18.9 K, 2.0 times.
 
-  They do not agree within the reading error. The paper's heat is larger, or its conductivity lower, than Chen2020 with O'Regan's properties. The figures also place the paper's innermost unit at 0.165 to 0.169 R, which is a hollow core of radius 1.74 to 1.79 mm. With that core, this radial model's differences would fall by a further 10 %.
+  They do not agree within the reading error. The paper's heat is larger, or its conductivity lower, than Chen2020 with O'Regan's properties. The available parts of its property source (D16) do not say which. The figures also place the paper's innermost unit at 0.165 to 0.169 R, which is a hollow core of radius 1.74 to 1.79 mm. With that core, this radial model's differences would fall by a further 10 %.
 - **Independent recomputation** (`verification/independent_recomputation/`). A separate axisymmetric solver, written from the physics alone without the study's code, reproduces every compared quantity within 0.15 % of the core-to-surface difference, for (a), (b) and (d) in the 21700 and (a) and (b) in the 4680. Its core-to-surface differences are 4.116, 3.449, 3.176, 18.166 and 10.611 K, against 4.122, 3.453, 3.180, 18.173 and 10.613 K here. The counts of units over 1 K match except in the 4680 under (a), 44 against 45, where one unit sits at 1.00 K. Its own grid error is at most 1.3e-4 K. Its refined-mesh prediction for (a), 4.1182 K, matches V3's 4.1185 K.
 - **Independent audit** of the text against the files, at commit ed0fdd8 (report in `verification/reviews/`). A second checker, who did not build the study, traced the numbers in this README, the note, DECISIONS.md, predictions.md and the release metadata to the results files, the paper and the sources. It found the tables and scorecard verdicts correct and raised 2 high, 5 medium and 26 low points, mostly on interpretation: V4 compared different states of discharge, the note was stale, four claims overstated the results, and the note gave the wrong direction for the conductivity. They are taken up in this README, the note and DECISIONS.md (D14, D15), and the post-hoc analysis of D15 replaces the auditor's own re-solves.
 
@@ -179,7 +180,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
 - **The circumferential conductivity** of the roll is the radial value, not the two-cell study's along-layer value (D13, after V1 failed). The conductivities that carry heat here are unchanged.
 - **The registered heat** is PyBaMM's default total heating, without the heat of mixing (D3). For this parameter set the heat of mixing would add 36 to 54 %.
 - **The end path.** The roll's end faces touch the can's end caps directly, as in the two-cell cell. The end path is therefore at its most conductive, and the end effects here are upper bounds for a cell with insulating discs or a headspace (D9).
-- **The paper's property source.** Reference 33 of the paper (Yang and Tartakovsky, J. Power Sources 664 (2026) 238948, doi:10.1016/j.jpowsour.2025.238948) holds the paper's thermal properties, and its full text could not be obtained. V4 measures only the combined effect of the paper's heat, properties and discharge duration on its unit differences, not the property difference alone.
+- **The paper's property source.** Reference 33 of the paper (Yang and Tartakovsky, J. Power Sources 664 (2026) 238948, doi:10.1016/j.jpowsour.2025.238948) holds the paper's thermal properties. Only its abstract, introduction and the opening lines of its sections were available (D16). They show that it models the same cell, the LG M50 21700, with a pseudo-two-dimensional electrochemical model coupled to a one-dimensional thermal model, parameterized by fitting to 1C discharge data, while this study takes its properties from O'Regan et al.'s measurements. Its property values are in the part that was not available, so the difference is stated in kind, not in size. V4 measures only the combined effect of the paper's heat, properties and discharge duration on its unit differences, not the property difference alone.
 - **V4's timing.** V4 ran after the predictions, because the paper's figure images were found only then.
 
 ## Inputs and sources
@@ -188,7 +189,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
    - Eq. 2 to Eq. 4 (pp. 2 and 3)
    - h = 400 W/(m^2 K), the ambient temperatures, 45 units in the 21700, and about 111 units in the 4680 of 46 mm by 80 mm (p. 3)
    - Fig. 4 (p. 5), Fig. 5 (p. 5) and Fig. 7 (p. 6) for V4
-2. **Its property source**, not read: Yang, X. and Tartakovsky, D. M. Estimation of battery core temperature from indirect observations and models with error. J. Power Sources 664, 238948 (2026). https://doi.org/10.1016/j.jpowsour.2025.238948 (the DOI comes from Crossref).
+2. **Its property source**, read in part (its abstract, introduction and section openings, from the publisher's page; D16): Yang, X. and Tartakovsky, D. M. Estimation of battery core temperature from indirect observations and models with error. J. Power Sources 664, 238948 (2026). https://doi.org/10.1016/j.jpowsour.2025.238948 (the DOI comes from Crossref).
 3. **Chen2020.** Chen, C.-H. et al. Development of Experimental Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. J. Electrochem. Soc. 167, 080534 (2020). https://doi.org/10.1149/1945-7111/ab9050. Used through PyBaMM's parameter set Chen2020.
 4. **Thermal properties.** O'Regan, K., Brosa Planella, F., Widanage, W. D. and Kendrick, E. Thermal-electrochemical parameters of a high energy lithium-ion cylindrical battery. Electrochim. Acta 425, 140700 (2022). https://doi.org/10.1016/j.electacta.2022.140700. Used through PyBaMM's parameter set ORegan2022, computed as in the two-cell study (`inputs/properties.py`, `inputs/properties.json`).
 5. **The resolved cell, the can and the strips.** Satte, S. (2026). Where and when a neighbour cell first reaches thermal-runaway onset temperatures: resolved against lumped, a pre-registered two-cell LG M50 pilot (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23253738. Its mesh generator, solver and property script are copied unchanged into `inputs/` as `twocell_*`. They are kept for provenance: the solver copy is not imported, because its own imports are not copied. The can's values (0.25 mm, 15 W/(m K), 9 g at 500 J/(kg K)) and the strip value (6.23 mW/K) are its D10 and D24, which give no primary source for the can's values.
@@ -196,7 +197,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
 
 ## Files
 
-- `DECISIONS.md`: every choice, D1 to D15.
+- `DECISIONS.md`: every choice, D1 to D16.
 - `predictions.md`: P1 to P5 with their scoring rules.
 - `inputs/`: the property computation and the two-cell study's files, copied unchanged.
 - `src/`:
@@ -241,6 +242,11 @@ python3 verification/v4_digitise.py
 ```
 
 V4 needs the paper's figure images in `verification/v4/`. They are extracted from the publisher's PDF with `pdfimages -f 5 -l 6 -j`. They are not redistributed here: the PDF's SHA-256 is recorded in `verification/v4.json`, and the paper is © 2026 The Electrochemical Society.
+
+## Versions
+
+- v1.0.0 (12 October 2026): the study as registered and run, with the corrections of the independent audit.
+- v1.0.1 (13 October 2026): adds what the paper's property source says about its properties (D16) to the note, this README and DECISIONS.md. No input, code or result changed.
 
 ## Tooling
 
