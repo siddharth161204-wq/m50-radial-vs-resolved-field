@@ -63,7 +63,7 @@
     "spread_overstatement": 0.36175656410119705
    },
    "ends_share_corrected": 0.18835048407782706,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.18646306097952908,
    "dT_axial_core_corrected_K": 0.5306587395602238,
    "dT_axial_core_resolved_K": 0.5394523380345926,
    "axial_ratio_corrected_over_resolved": 0.9836990261152508,
@@ -231,7 +231,7 @@
     "spread_overstatement": 0.3623749269987906
    },
    "ends_share_corrected": 0.18820620807206484,
-   "ends_share_resolved": 0.18636634311877381,
+   "ends_share_resolved": 0.18636634311877384,
    "dT_axial_core_corrected_K": 1.2527934674521621,
    "dT_axial_core_resolved_K": 1.2736349006505674,
    "axial_ratio_corrected_over_resolved": 0.983636257778615,
@@ -399,7 +399,7 @@
     "spread_overstatement": 0.34798024100541114
    },
    "ends_share_corrected": 0.18748927487078504,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.18588582845624937,
    "dT_axial_core_corrected_K": 2.4869572904957717,
    "dT_axial_core_resolved_K": 2.4970054605642775,
    "axial_ratio_corrected_over_resolved": 0.995975911856342,
@@ -567,7 +567,7 @@
     "spread_overstatement": 0.3592416533508209
    },
    "ends_share_corrected": 0.18834067777755498,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.18645647232445628,
    "dT_axial_core_corrected_K": 0.401121694874344,
    "dT_axial_core_resolved_K": 0.40734418862052735,
    "axial_ratio_corrected_over_resolved": 0.9847242358673243,
@@ -735,7 +735,7 @@
     "spread_overstatement": 0.3591862837753095
    },
    "ends_share_corrected": 0.18818687881663904,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.18635335735360184,
    "dT_axial_core_corrected_K": 1.0665095929348154,
    "dT_axial_core_resolved_K": 1.0823914187259298,
    "axial_ratio_corrected_over_resolved": 0.9853270956177677,
@@ -903,7 +903,7 @@
     "spread_overstatement": 0.34294269336359195
    },
    "ends_share_corrected": 0.187452274545432,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.1858609150694558,
    "dT_axial_core_corrected_K": 2.223237154132697,
    "dT_axial_core_resolved_K": 2.2231577391612376,
    "axial_ratio_corrected_over_resolved": 1.0000357216989422,
@@ -3267,7 +3267,7 @@
     "spread_overstatement": 0.22690104079608897
    },
    "ends_share_corrected": 0.1355801882937211,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.13520580452851538,
    "dT_axial_core_corrected_K": 0.25702934723685406,
    "dT_axial_core_resolved_K": 0.3494432100157816,
    "axial_ratio_corrected_over_resolved": 0.7355396810407221,
@@ -3435,7 +3435,7 @@
     "spread_overstatement": 0.2060486463752489
    },
    "ends_share_corrected": 0.1356416393217987,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.13525047380300484,
    "dT_axial_core_corrected_K": 0.5718777116996453,
    "dT_axial_core_resolved_K": 0.7788364147843687,
    "axial_ratio_corrected_over_resolved": 0.7342719226321451,
@@ -3603,7 +3603,7 @@
     "spread_overstatement": 0.1409943181311315
    },
    "ends_share_corrected": 0.13598721663353217,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.13550148106240634,
    "dT_axial_core_corrected_K": 0.7758342092892873,
    "dT_axial_core_resolved_K": 1.0812098098249905,
    "axial_ratio_corrected_over_resolved": 0.7175612006469562,
@@ -3771,7 +3771,7 @@
     "spread_overstatement": 0.22362883058845529
    },
    "ends_share_corrected": 0.13558216870471151,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.13520723809115082,
    "dT_axial_core_corrected_K": 0.18928878043451836,
    "dT_axial_core_resolved_K": 0.25766738630589714,
    "axial_ratio_corrected_over_resolved": 0.7346245217460265,
@@ -3939,7 +3939,7 @@
     "spread_overstatement": 0.20265777744846547
    },
    "ends_share_corrected": 0.13564539428688296,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.1352531917225781,
    "dT_axial_core_corrected_K": 0.4699412171979229,
    "dT_axial_core_resolved_K": 0.6412370518012267,
    "axial_ratio_corrected_over_resolved": 0.7328665988309067,
@@ -4107,7 +4107,7 @@
     "spread_overstatement": 0.13950133133564213
    },
    "ends_share_corrected": 0.13599573801161755,
-   "ends_share_resolved": null,
+   "ends_share_resolved": 0.1355076580029603,
    "dT_axial_core_corrected_K": 0.6742598041366198,
    "dT_axial_core_resolved_K": 0.9433579570428634,
    "axial_ratio_corrected_over_resolved": 0.7147443863729274,

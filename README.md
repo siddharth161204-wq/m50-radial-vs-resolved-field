@@ -45,13 +45,13 @@ Stage 2 follows the author's second brief. Its predictions (`predictions_stage2.
 
 | Quantity | 21700, case (b) | 4680, case (b) | 21700, case (d), h = 25 |
 |---|---|---|---|
-| Share of the heat through the ends, corrected against resolved | 18.8 against 18.6 % | 38.2 against 37.8 % | 13.6 % against RESOLVED_D |
+| Share of the heat through the ends, corrected against resolved | 18.8 against 18.6 % | 38.2 against 37.8 % | 13.6 against 13.5 % |
 | Mean absolute unit offset, radial model to corrected | 1.19 to 0.10 K | 7.96 to 0.21 K | 4.08 to 0.16 K |
 | Largest absolute unit offset, radial model to corrected | 1.59 to 0.16 K | 11.34 to 0.30 K | 4.29 to 0.24 K |
 | Spread overstatement, radial model to corrected | 36 to 5 % | 98 to 3 % | 21 to 7 % |
 | Axial difference at the core, reconstructed against resolved | 1.25 against 1.27 K | 3.49 against 3.43 K | 0.57 against 0.78 K |
 
-- Over the six rates and ambients, the corrected mean offset is 0.03 to 0.20 K in the 21700 and 0.07 to 0.37 K in the 4680 in case (b), and 0.05 to 0.33 K in case (d). The spread overstatement is 5.0 to 5.1 % and 3.2 to 3.4 % in case (b), and 7.0 to 7.1 % in case (d). The reconstructed axial difference is 0.98 to 1.00 and 1.02 to 1.03 times the resolved one in case (b), and 0.72 to 0.74 times in case (d). SHARES_SENTENCE
+- Over the six rates and ambients, the corrected mean offset is 0.03 to 0.20 K in the 21700 and 0.07 to 0.37 K in the 4680 in case (b), and 0.05 to 0.33 K in case (d). The spread overstatement is 5.0 to 5.1 % and 3.2 to 3.4 % in case (b), and 7.0 to 7.1 % in case (d). The reconstructed axial difference is 0.98 to 1.00 and 1.02 to 1.03 times the resolved one in case (b), and 0.72 to 0.74 times in case (d). In the 21700 the corrected share of heat through the ends lies within 0.19 percentage points of the resolved one at every heat in case (b) (resolved 18.6 to 18.7 %) and within 0.05 points in case (d) (resolved 13.5 %).
 - The correction leaves the core-to-surface difference 4.6 % (21700) and 6.0 % (4680) below the resolved one in case (b): 3.29 against 3.45 K, and 9.98 against 10.61 K.
 - B3, with ref. 33's properties (and O'Regan's along-layer conductivity, which ref. 33 does not give) at the paper's conditions: the correction lowers the innermost-minus-outermost unit difference by 29 to 31 % in the 21700 and by 41 % (ref. 33's heat) to 59 % (Chen2020's heat) in the 4680, for a cell whose ends are cooled as its side is.
 
