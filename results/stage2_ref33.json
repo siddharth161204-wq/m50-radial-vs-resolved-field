@@ -1,0 +1,208 @@
+{
+ "ref33": {
+  "lambda": 0.62,
+  "diffusivity": 1.8e-07,
+  "rho_c": 3444444.4444444445,
+  "rho_eq_B3": 3108.368525896414,
+  "k_z_used_for_correction": 25.091576331499663,
+  "table1_vs_ORegan2022": {
+   "Negative current collector thickness [m]": [
+    1.2e-05,
+    1.2e-05
+   ],
+   "Negative electrode thickness [m]": [
+    8.52e-05,
+    8.52e-05
+   ],
+   "Positive electrode thickness [m]": [
+    7.56e-05,
+    7.56e-05
+   ],
+   "Separator thickness [m]": [
+    1.2e-05,
+    1.2e-05
+   ],
+   "Positive current collector thickness [m]": [
+    1.6e-05,
+    1.6e-05
+   ],
+   "Negative particle radius [m]": [
+    5.86e-06,
+    5.86e-06
+   ],
+   "Positive particle radius [m]": [
+    5.22e-06,
+    5.22e-06
+   ],
+   "Negative current collector density [kg.m-3]": [
+    8933.0,
+    8933.0
+   ],
+   "Positive current collector density [kg.m-3]": [
+    2702.0,
+    2702.0
+   ],
+   "Negative electrode density [kg.m-3]": [
+    2060.0,
+    2060.0
+   ],
+   "Positive electrode density [kg.m-3]": [
+    3699.0,
+    3699.0
+   ],
+   "Separator density [kg.m-3]": [
+    1548.0,
+    1548.0
+   ],
+   "Negative electrode porosity": [
+    0.25,
+    0.25
+   ],
+   "Positive electrode porosity": [
+    0.335,
+    0.335
+   ],
+   "Maximum concentration in negative electrode [mol.m-3]": [
+    29583.0,
+    29583.0
+   ],
+   "Maximum concentration in positive electrode [mol.m-3]": [
+    51765.0,
+    51765.0
+   ],
+   "Initial concentration in negative electrode [mol.m-3]": [
+    28866.0,
+    28866.0
+   ],
+   "Initial concentration in positive electrode [mol.m-3]": [
+    13975.0,
+    13975.0
+   ],
+   "Initial concentration in electrolyte [mol.m-3]": [
+    1000.0,
+    1000.0
+   ],
+   "Negative electrode conductivity [S.m-1]": [
+    215.0,
+    215.0
+   ]
+  },
+  "table1_all_equal": true
+ },
+ "runs": {
+  "Ref33_m5C_2C": {
+   "duration_s": 545.2852203322192,
+   "capacity_Ah": 1.5146811675895255,
+   "heat_J": 2665.5565853253274,
+   "heat_mean_W": 4.888371233867877,
+   "T_lumped_end_C": -1.8038858640100557,
+   "t_at_2p6V_s": 545.0,
+   "wall_s": 5.399342775344849
+  },
+  "Ref33_p25C_1.25C": {
+   "duration_s": 2666.222732754271,
+   "capacity_Ah": 4.628858911031731,
+   "heat_J": 3108.4333655073287,
+   "heat_mean_W": 1.1658565982956135,
+   "T_lumped_end_C": 26.209187325549067,
+   "t_at_2p6V_s": 2666.0,
+   "wall_s": 1.858381986618042
+  },
+  "Ref33_p25C_2C": {
+   "duration_s": 1543.301156257984,
+   "capacity_Ah": 4.2869476562722015,
+   "heat_J": 4123.979500461739,
+   "heat_mean_W": 2.672180658803549,
+   "T_lumped_end_C": 27.448803246956118,
+   "t_at_2p6V_s": 1543.301156257984,
+   "wall_s": 1.7601442337036133
+  }
+ },
+ "heat_window": {
+  "482.4": {
+   "ref33_J": 2287.0681961148,
+   "chen2020_J": 1662.9479000718002,
+   "ratio": 1.3753095908873947
+  },
+  "540": {
+   "ref33_J": 2628.995028345,
+   "chen2020_J": 1871.3567478,
+   "ratio": 1.4048604208875153
+  }
+ },
+ "conditions": {
+  "1.25C 25 C": {
+   "end": {
+    "spread_oregan_chen_K": 1.330849333513001,
+    "spread_ref33props_chen_K": 2.5567784901678365,
+    "spread_ref33props_ref33heat_K": 3.4983699635867573,
+    "factor_oregan": 2.162590253105063,
+    "factor_ref33props": 1.1256672441802562,
+    "property_ratio": 1.9211629940248676,
+    "heat_ratio": 1.368272604388623,
+    "remainder": 0.8226922329437644,
+    "corrected_spread_ref33props_chen_K": 1.7558569073633592,
+    "corrected_spread_ref33props_ref33heat_K": 2.4753253396413584,
+    "ref33_discharge_end_s": 2666.22273
+   }
+  },
+  "2C 25 C": {
+   "end": {
+    "spread_oregan_chen_K": 3.5368148753426,
+    "spread_ref33props_chen_K": 6.742287304200417,
+    "spread_ref33props_ref33heat_K": 7.002709004166569,
+    "factor_oregan": 1.6794314217688449,
+    "factor_ref33props": 0.8809826349181721,
+    "property_ratio": 1.906316146543382,
+    "heat_ratio": 1.0386251264914075,
+    "remainder": 0.8482200290052971,
+    "corrected_spread_ref33props_chen_K": 4.654833006709701,
+    "corrected_spread_ref33props_ref33heat_K": 4.962528244130862,
+    "ref33_discharge_end_s": 1543.30116
+   }
+  },
+  "2C minus 5 C": {
+   "482.4": {
+    "spread_oregan_chen_K": 3.224654069719255,
+    "spread_ref33props_chen_K": 6.038987662005189,
+    "spread_ref33props_ref33heat_K": 8.660922534171473,
+    "factor_oregan": 3.5786098482972943,
+    "factor_ref33props": 1.910879680025311,
+    "property_ratio": 1.8727551952668695,
+    "heat_ratio": 1.4341679465024266,
+    "remainder": 1.3323960312217713,
+    "corrected_spread_ref33props_chen_K": 4.244433098470852,
+    "corrected_spread_ref33props_ref33heat_K": 6.158109537596129,
+    "ref33_discharge_end_s": 545.28522
+   },
+   "540.0": {
+    "spread_oregan_chen_K": 3.255088660296134,
+    "spread_ref33props_chen_K": 6.181535700788006,
+    "spread_ref33props_ref33heat_K": 9.222513588105203,
+    "factor_oregan": 3.54515038315406,
+    "factor_ref33props": 1.8668142302855608,
+    "property_ratio": 1.899037582658543,
+    "heat_ratio": 1.4919453732071049,
+    "remainder": 1.2512617846541079,
+    "corrected_spread_ref33props_chen_K": 4.30689446906916,
+    "corrected_spread_ref33props_ref33heat_K": 6.542597641653401,
+    "ref33_discharge_end_s": 545.28522
+   }
+  },
+  "4680 2C minus 5 C": {
+   "end": {
+    "spread_oregan_chen_K": 18.937582729382317,
+    "spread_ref33props_chen_K": 32.807267063389865,
+    "spread_ref33props_ref33heat_K": 23.306669720202624,
+    "factor_oregan": 1.981699966189368,
+    "factor_ref33props": 1.1439114078601216,
+    "property_ratio": 1.7323893726145023,
+    "heat_ratio": 0.710411802213507,
+    "remainder": 1.6102089017889523,
+    "corrected_spread_ref33props_chen_K": 13.48526841070348,
+    "corrected_spread_ref33props_ref33heat_K": 13.69669683490806,
+    "ref33_discharge_end_s": 545.28522
+   }
+  }
+ }
+}

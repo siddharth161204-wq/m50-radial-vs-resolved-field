@@ -2,7 +2,7 @@
 
 Author: Siddharth Satte, independent researcher, Pune, India (ORCID 0009-0001-3584-1008).
 
-Archived at https://doi.org/10.5281/zenodo.23320970 (version v1.0.1).
+Archived at https://doi.org/10.5281/zenodo.23320970 (version v1.1.0).
 
 ## Result
 
@@ -19,6 +19,64 @@ These are temperature offsets, not energy errors. The paper's surrogate would tu
 The kelvin values belong to this study's heat (PyBaMM's Doyle-Fuller-Newman model, Chen2020 parameter set) and properties (O'Regan et al. 2022). They are not the paper's: the paper's own unit differences are larger (check V4). At 2C and minus 5 C the paper's discharge stops near 1.34 to 1.50 A h (its Fig. 4d), about 482 to 540 s, where its Fig. 5 shows 11.54 K from the innermost to the outermost unit. This study's radial model gives 3.22 to 3.26 K at those times, and its Chen2020 discharge runs on to 4.74 A h. At 1.25C and 2C at 25 C both discharges end near 4.6 to 5.0 A h, and there the paper's differences are 2.2 and 1.7 times this model's. The paper's heat is therefore larger, or its conductivity lower. What carries over is the axial-to-radial fraction.
 
 Prediction scorecard: P1 held, P2 held, P3 failed, P4 held, P5 failed (details below).
+
+## Stage 2 (v1.1.0): which of conductivity or heat makes the gap, and a one-term end correction
+
+Stage 2 follows the author's second brief. Its predictions (`predictions_stage2.md`) were committed as 0cb04c3c3c88d8be015b4284bfb4fb142a447b47 and pushed at 06:37:48 UTC on 21 October 2026, after the values of the paper's ref. 33 were recorded (`inputs/ref33_values.md`, which the brief allows) and before any Stage 2 computation. DECISIONS.md D17 and D18 record its design. Stage 1's code and results are unchanged; Stage 2 adds new files only.
+
+**What ref. 33 gives** (Yang and Tartakovsky, J. Power Sources 664 (2026) 238948). Its thermal model is the radial model Stage 1 assumed (D2; its Eqs. B.1 to B.4). Its thermal values are fitted, with four electrochemical values, to one 1C discharge of the same LG M50 (its Section 4.1 and Table 1): 0.62 W/(m K) across the layers and a diffusivity of 1.80e-7 m2/s, so rho c = 3.44e6 J/(m3 K), against O'Regan's 1.2251 W/(m K) and 2.48e6 J/(m3 K). Its fitted h, 29.56 W/(m2 K), belongs to its own experiment and is not used. Its untuned values are O'Regan's, which PyBaMM's ORegan2022 set holds (checked value by value).
+
+**Part A, the split** (`results/stage2_ref33.csv`, `results/stage2_ref33.json`). The factor is the paper's innermost-unit difference (V4) over this radial model's innermost-minus-outermost unit difference.
+
+| Condition | Factor, O'Regan's properties (Stage 1) | Property ratio | Factor, ref. 33's properties | Heat ratio | Remainder, ref. 33's properties and heat |
+|---|---|---|---|---|---|
+| 1.25C, 25 C, end of discharge | 2.16 | 1.92 | 1.13 | 1.37 | 0.82 |
+| 2C, 25 C, end of discharge | 1.68 | 1.91 | 0.88 | 1.04 | 0.85 |
+| 2C, minus 5 C, 482.4 s | 3.58 | 1.87 | 1.91 | 1.43 | 1.33 |
+| 2C, minus 5 C, 540.0 s | 3.55 | 1.90 | 1.87 | 1.49 | 1.25 |
+| 4680, 2C, minus 5 C, end of discharge | 1.98 | 1.73 | 1.14 | 0.71 | 1.61 |
+
+- Ref. 33's properties raise this model's unit differences by a factor of 1.7 to 1.9 at every condition. At 25 C that closes the gap; with ref. 33's heat as well, this model's unit differences exceed the paper's by 15 to 18 %.
+- Ref. 33's set, run in PyBaMM (D17), ends the 2C, minus 5 C discharge at 545 s and 1.51 A h, against the paper's 1.34 to 1.50 A h (its Fig. 4d). Its heat over the paper's window is 1.38 (to 482.4 s) and 1.40 (to 540.0 s) times Chen2020's. At 25 C it ends at 4.63 A h (1.25C) and 4.29 A h (2C).
+- At 2C and minus 5 C, the properties supply a factor of 1.9, the heat a further 1.43 to 1.49, and 1.25 to 1.33 remains.
+- The 4680 row is indicative only. Its heat is the 21700's history (D6), which with ref. 33's set stops at 545 s, while Stage 1's 4680 comparison is at 1706.7 s, so its heat ratio compares different states of discharge.
+
+**Part B, the end correction** (`results/stage2_correction.csv`, `results/stage2_correction.json`). D18 derives the sink beta (T - T_amb) with beta = 2 h_e / L and 1/h_e = 1/h + L/(6 k_z): 9620 W/(m3 K) in the 21700 and 8247 W/(m3 K) in the 4680 at h = 400, and 705 W/(m3 K) in the 21700 at h = 25. Nothing is fitted. At 2C and minus 5 C, end of discharge:
+
+| Quantity | 21700, case (b) | 4680, case (b) | 21700, case (d), h = 25 |
+|---|---|---|---|
+| Share of the heat through the ends, corrected against resolved | 18.8 against 18.6 % | 38.2 against 37.8 % | 13.6 % against RESOLVED_D |
+| Mean absolute unit offset, radial model to corrected | 1.19 to 0.10 K | 7.96 to 0.21 K | 4.08 to 0.16 K |
+| Largest absolute unit offset, radial model to corrected | 1.59 to 0.16 K | 11.34 to 0.30 K | 4.29 to 0.24 K |
+| Spread overstatement, radial model to corrected | 36 to 5 % | 98 to 3 % | 21 to 7 % |
+| Axial difference at the core, reconstructed against resolved | 1.25 against 1.27 K | 3.49 against 3.43 K | 0.57 against 0.78 K |
+
+- Over the six rates and ambients, the corrected mean offset is 0.03 to 0.20 K in the 21700 and 0.07 to 0.37 K in the 4680 in case (b), and 0.05 to 0.33 K in case (d). The spread overstatement is 5.0 to 5.1 % and 3.2 to 3.4 % in case (b), and 7.0 to 7.1 % in case (d). The reconstructed axial difference is 0.98 to 1.00 and 1.02 to 1.03 times the resolved one in case (b), and 0.72 to 0.74 times in case (d). SHARES_SENTENCE
+- The correction leaves the core-to-surface difference 4.6 % (21700) and 6.0 % (4680) below the resolved one in case (b): 3.29 against 3.45 K, and 9.98 against 10.61 K.
+- B3, with ref. 33's properties (and O'Regan's along-layer conductivity, which ref. 33 does not give) at the paper's conditions: the correction lowers the innermost-minus-outermost unit difference by 29 to 31 % in the 21700 and by 41 % (ref. 33's heat) to 59 % (Chen2020's heat) in the 4680, for a cell whose ends are cooled as its side is.
+
+**Checks.**
+- V1: with beta = 0 the corrected model reproduces Stage 1's radial results exactly (difference 0.0 K).
+- V2: energy closes to 2.3e-11 of the heat generated.
+- V3: the code's steady solution matches the modified Bessel solution within 4.2e-6 K (21700) and 1.8e-6 K (4680), with steady end shares of 18.85 and 38.58 %.
+- V4: the resolved shares come from the heat removed through each surface: `src/stage2_split.py` for the 21700 in cases (b) and (d) at every heat, and D15 for the 4680 at 2C and minus 5 C. The 4680's other five heats were not re-solved, for their computing time. The re-solves reproduce the registered end-of-discharge fields exactly.
+
+**Stage 2 scorecard** (rules in `predictions_stage2.md`; `results/stage2_scorecard.json`).
+
+| | Result | Computed |
+|---|---|---|
+| P1 | Held | ref. 33's conductivity is 1.98 times lower |
+| P2 | Held | 1.91 and 1.87 with ref. 33's properties alone |
+| P3 | Held | the ratio of the minus 5 C to the 25 C factor moves by +1.8 % and +0.4 % |
+| P4 | Failed | ref. 33's heat is 1.38 and 1.40 times Chen2020's over the window, below the predicted 1.5 to 4 |
+| P5 | Held | 0.18 and 0.46 percentage points |
+| P6 | Held | 0.10 and 0.21 K |
+| P7 | Held | 5.1 and 3.3 % |
+| P8 | Held | 0.98 and 1.02 times the resolved |
+| P9 | Held | 0.16 K |
+| P10 | Held | 27 % low |
+
+P2's reason, "the heat, not the conductivity, carries the low-temperature gap", does not hold as stated: at minus 5 C the properties supply a factor of 1.9 and the heat 1.4 to 1.5.
 
 ## The question
 
@@ -197,7 +255,8 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
 
 ## Files
 
-- `DECISIONS.md`: every choice, D1 to D16.
+- `DECISIONS.md`: every choice, D1 to D18.
+- `predictions_stage2.md`, `inputs/ref33_values.md`: Stage 2's predictions and the values of the paper's ref. 33.
 - `predictions.md`: P1 to P5 with their scoring rules.
 - `inputs/`: the property computation and the two-cell study's files, copied unchanged.
 - `src/`:
@@ -208,6 +267,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `run3d.py`: the sweep
   - `analyse.py`: comparisons, checks, scorecard
   - `posthoc_matched_time.py`: D15
+  - `stage2_correction.py`, `stage2_ref33.py`, `stage2_split.py`, `stage2_report.py`: Stage 2
   - `make_figure.py`
 - `results/`:
   - `heat/`, `heat_summary.*`: the heat inputs
@@ -239,6 +299,10 @@ python3 src/posthoc_matched_time.py
 python3 src/make_figure.py
 python3 verification/cutoff_3c.py
 python3 verification/v4_digitise.py
+python3 src/stage2_split.py
+python3 src/stage2_correction.py
+python3 src/stage2_ref33.py
+python3 src/stage2_report.py
 ```
 
 V4 needs the paper's figure images in `verification/v4/`. They are extracted from the publisher's PDF with `pdfimages -f 5 -l 6 -j`. They are not redistributed here: the PDF's SHA-256 is recorded in `verification/v4.json`, and the paper is © 2026 The Electrochemical Society.
@@ -247,6 +311,7 @@ V4 needs the paper's figure images in `verification/v4/`. They are extracted fro
 
 - v1.0.0 (12 October 2026): the study as registered and run, with the corrections of the independent audit.
 - v1.0.1 (13 October 2026): adds what the paper's property source says about its properties (D16) to the note, this README and DECISIONS.md. No input, code or result changed.
+- v1.1.0 (21 October 2026): Stage 2 (D17, D18, predictions_stage2.md): the factor to the paper split into properties, heat and remainder with ref. 33's values, and a one-term end correction for the radial model. Stage 1's code, results and text are unchanged.
 
 ## Tooling
 

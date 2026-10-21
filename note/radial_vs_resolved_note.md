@@ -1,6 +1,6 @@
 # The axial blind spot of a radial cell model: the temperature field a multi-unit model assumes, tested on the LG M50 and a 4680
 
-Siddharth Satte, Independent researcher, Pune, India, 13 October 2026 (v1.0.1). doi.org/10.5281/zenodo.23320970. Predictions commit b92f9a8, public at 11:12 UTC on 12 October before any three-dimensional field was computed. [github.com/siddharth161204-wq/m50-radial-vs-resolved-field](https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field){.nobr}.
+Siddharth Satte, Independent researcher, Pune, India, 21 October 2026 (v1.1.0). doi.org/10.5281/zenodo.23320970. Predictions commit b92f9a8, public at 11:12 UTC on 12 October before any three-dimensional field was computed. [github.com/siddharth161204-wq/m50-radial-vs-resolved-field](https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field){.nobr}.
 
 <div class="headline">
 
@@ -43,3 +43,16 @@ Figure 1. 2C and minus 5 C, end of discharge (1706.7 s). Left: mid-height temper
 ## What it means for the paper's numbers
 
 Under the condition the paper's radial model implies, insulated ends, the resolved field supports it. If a cell's ends exchange heat as its side does, the unit temperatures that drive the paper's current redistribution are too warm, and their spread too wide by about a third in the M50 and by up to a factor of two in the 4680, so its 3.45 % and 11.32 % energy overestimates and its difference of more than 30 C across the 4680 would be expected to shrink, by an amount this study does not compute.
+
+## Stage 2 (v1.1.0): the gap to the paper, and an end correction
+
+Predictions commit 0cb04c3, public at 06:37 UTC on 21 October 2026 before any Stage 2 computation; nine of ten held.
+
+1. The paper's ref. 33 fits its thermal values to one 1C discharge of the same M50: 0.62 W/(m K) across the layers and 3.44 MJ/(m^3^ K), against O'Regan's 1.23 and 2.48. They raise this model's unit differences in the M50 by a factor of 1.9 at every condition, taking the factor to the paper from 1.7 to 2.2 to 0.88 to 1.13 at 25 C, and from 3.5 to 3.6 to 1.87 to 1.91 at 2C and minus 5 C.
+2. Ref. 33's electrochemical set in PyBaMM ends the 2C, minus 5 C discharge at 1.51 A h, where the paper's ends, with 1.38 to 1.40 times Chen2020's heat. With its properties and heat the remaining factor is 0.82 to 0.85 at 25 C and 1.25 to 1.33 at minus 5 C.
+3. A derived, unfitted sink β (T minus T~amb~), with β = 2 h~e~/L and 1/h~e~ = 1/h + L/(6 k~z~), takes the case (b) unit offset from 1.19 to 0.10 K (M50) and from 7.96 to 0.21 K (4680), and the spread overstatement from 36 and 98 % to 5 and 3 %. It matches the resolved end share within 0.5 points and the axial difference at the core within 2 %.
+
+![](../results/stage2_figure.png)
+
+Figure 2. Left: the paper's unit difference over this model's, with each set of inputs (2C, minus 5 C at the paper's end of discharge, 482 s; the 4680 with the 21700's heat history). Right: case (b) at 2C and minus 5 C, end of discharge: resolved unit temperatures, the radial model, and the radial model with the end correction.
+

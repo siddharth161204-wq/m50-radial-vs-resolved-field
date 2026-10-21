@@ -1,0 +1,46 @@
+{
+  "21700_b_Chen2020_m5C_1.25C": {
+    "heat_lost_by_surface_J": {
+      "lateral": 3770.138391468816,
+      "top": 431.99518214704096,
+      "bottom": 432.12236565127006,
+      "strips": 0.0
+    },
+    "ends_share": 0.18646306097952908,
+    "energy_residual_rel": 7.611614882231934e-14,
+    "check_units_max_abs_diff_vs_registered_K": 0.0
+  },
+  "21700_b_Chen2020_m5C_2C": {
+    "heat_lost_by_surface_J": {
+      "lateral": 5107.425469207912,
+      "top": 584.8556066663062,
+      "bottom": 585.022506656281,
+      "strips": 0.0
+    },
+    "ends_share": 0.18636634311877384,
+    "energy_residual_rel": 6.289372842531319e-15,
+    "check_units_max_abs_diff_vs_registered_K": 0.0
+  },
+  "21700_b_Chen2020_m5C_3C": {
+    "heat_lost_by_surface_J": {
+      "lateral": 3199.1874424764524,
+      "top": 365.1894818758266,
+      "bottom": 365.27760605596313,
+      "strips": 0.0
+    },
+    "ends_share": 0.18588582845624937,
+    "energy_residual_rel": 1.4501145969462543e-15,
+    "check_units_max_abs_diff_vs_registered_K": 0.0
+  },
+  "21700_b_Chen2020_p25C_1.25C": {
+    "heat_lost_by_surface_J": {
+      "lateral": 2709.136537452049,
+      "top": 310.40861699570286,
+      "bottom": 310.49982199326666,
+      "strips": 0.0
+    },
+    "ends_share": 0.18645647232445628,
+    "energy_residual_rel": -3.3614031343311946e-13,
+    "check_units_max_abs_diff_vs_registered_K": 0.0
+  }
+}
