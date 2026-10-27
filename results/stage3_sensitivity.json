@@ -1,0 +1,82 @@
+[
+ {
+  "cell": "21700",
+  "cond": "m5C_2C",
+  "bc": "b",
+  "method": "estimator",
+  "sigma_eps": 12377.70179082967,
+  "dt_obs": 20.0,
+  "sigma_T": 0.05,
+  "mae_K": 0.8103772336974169,
+  "end_error_K": 1.0500064641248141,
+  "learned_mean_second_half_W_m3": -2312.4595328266073,
+  "sink_mean_second_half_W_m3": -38092.834163401
+ },
+ {
+  "cell": "21700",
+  "cond": "m5C_2C",
+  "bc": "b",
+  "method": "estimator",
+  "sigma_eps": 12377.70179082967,
+  "dt_obs": 20.0,
+  "sigma_T": 0.2,
+  "mae_K": 0.8934709428651771,
+  "end_error_K": 1.1656700136747196,
+  "learned_mean_second_half_W_m3": -163.9820810949639,
+  "sink_mean_second_half_W_m3": -38827.81197258593
+ },
+ {
+  "cell": "21700",
+  "cond": "m5C_2C",
+  "bc": "b",
+  "method": "estimator",
+  "sigma_eps": 12377.70179082967,
+  "dt_obs": 10.0,
+  "sigma_T": 0.1,
+  "mae_K": 0.8744834394049158,
+  "end_error_K": 1.1401313835778821,
+  "learned_mean_second_half_W_m3": -390.3082634360489,
+  "sink_mean_second_half_W_m3": -38731.03156826782
+ },
+ {
+  "cell": "21700",
+  "cond": "m5C_2C",
+  "bc": "b",
+  "method": "estimator",
+  "sigma_eps": 12377.70179082967,
+  "dt_obs": 40.0,
+  "sigma_T": 0.1,
+  "mae_K": 0.8723256666208399,
+  "end_error_K": 1.1477508455732364,
+  "learned_mean_second_half_W_m3": -1113.2741251068724,
+  "sink_mean_second_half_W_m3": -38582.11446381339
+ },
+ {
+  "cell": "21700",
+  "cond": "m5C_2C",
+  "bc": "b",
+  "method": "forecast",
+  "sigma_eps": 0.0,
+  "dt_obs": 20.0,
+  "sigma_T": 0.1,
+  "mae_K": 3.705318166298525,
+  "end_error_K": 5.081366490339354,
+  "learned_mean_second_half_W_m3": null,
+  "sink_mean_second_half_W_m3": null,
+  "props": "ref. 33"
+ },
+ {
+  "cell": "21700",
+  "cond": "m5C_2C",
+  "bc": "b",
+  "method": "estimator",
+  "sigma_eps": 12377.70179082967,
+  "dt_obs": 20.0,
+  "sigma_T": 0.1,
+  "mae_K": 3.677355540626068,
+  "end_error_K": 5.034052380308739,
+  "learned_mean_second_half_W_m3": -426.5319345273229,
+  "sink_mean_second_half_W_m3": -55126.88617301155,
+  "props": "ref. 33"
+ }
+]

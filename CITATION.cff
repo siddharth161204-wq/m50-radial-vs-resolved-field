@@ -7,9 +7,9 @@ authors:
     given-names: Siddharth
     affiliation: Independent Researcher
     orcid: https://orcid.org/0009-0001-3584-1008
-version: v1.1.0
-doi: 10.5281/zenodo.23320970
-date-released: 2026-10-21
+version: v1.2.0
+doi: 10.5281/zenodo.23320969
+date-released: 2026-10-27
 repository-code: https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field
 license:
   - MIT
@@ -24,6 +24,9 @@ keywords:
   - 4680
   - pre-registration
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23320969
+    description: All versions on Zenodo (resolves to the latest)
   - type: doi
     value: 10.5281/zenodo.23320970
     description: The archived version v1.1.0 on Zenodo

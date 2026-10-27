@@ -1,0 +1,45 @@
+{
+ "source": "Yang and Tartakovsky, J. Power Sources 664 (2026) 238948",
+ "given": {
+  "N_ens": [
+   3000,
+   "Section 4.2, p. 4"
+  ],
+  "sigma_T_C": [
+   0.1,
+   "Section 2, p. 2"
+  ],
+  "sigma_V_V": [
+   0.001,
+   "Section 2, p. 2"
+  ],
+  "observations": [
+   "terminal voltage and surface temperature T^(N+2)",
+   "Eq. 8, p. 3"
+  ],
+  "error_model": [
+   "eps_k = b_k + omega_k, omega ~ N(0, sigma_eps^2), next prior mean zero",
+   "Section 3 and Algorithm 1, p. 3"
+  ],
+  "core_temperature_accuracy": [
+   "shown only in Figs. 3 and 5 (0.3C and 0.7C); no number in the text",
+   "pp. 4 and 5"
+  ]
+ },
+ "not_given": [
+  "sigma_eps (initial and per step)",
+  "time step",
+  "observation interval",
+  "learning window"
+ ],
+ "used_here": {
+  "sigma_ref_W_m3": 12377.70179082967,
+  "bracket": [
+   0.1,
+   1,
+   10
+  ],
+  "dt_obs_s": 20.0,
+  "seed": 20261027
+ }
+}
