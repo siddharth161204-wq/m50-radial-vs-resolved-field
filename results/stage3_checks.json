@@ -1,0 +1,15 @@
+{
+ "V2_max_abs_diff_K": 5.551115123125783e-15,
+ "V1_mean_abs_error_K": 0.003778875731433656,
+ "V1_end_error_K": -0.006452880789823645,
+ "V3_identical": true,
+ "V4_same_seed_identical": true,
+ "V4_sigma0_max_abs_diff_from_forecast_K": 8.881784197001252e-16,
+ "settings": {
+  "N_ens": 3000,
+  "sigma_T_K": 0.1,
+  "seed": 20261027,
+  "dt_obs_s": 20.0,
+  "sigma_ref_W_m3": 12377.70179082967
+ }
+}
