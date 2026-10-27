@@ -1,0 +1,23 @@
+== Task 1: P5 and P7 from the series ==
+D18 beta (21700, h = 400): h_e = 337.20, beta = 9620.5 W/(m3 K)
+  p25C_1.25C  1x   sigT=0.1  learned -173.641  sink -11992.1  ratio 0.01448  (n2=72 of 143)  mae 0.284163  end 0.363905 core_est identical to stored run: True
+  p25C_1.25C  10x  sigT=0.1  learned -3959.57  sink -11023  ratio 0.35921  (n2=72 of 143)  mae 0.148515  end 0.264278 core_est identical to stored run: True
+  p25C_2C     1x   sigT=0.1  learned -516.238  sink -31441.3  ratio 0.01642  (n2=43 of 86)  mae 0.693411  end 0.958655 core_est identical to stored run: True
+  p25C_2C     10x  sigT=0.1  learned -11939.9  sink -28514.9  ratio 0.41873  (n2=43 of 86)  mae 0.360560  end 0.493420 core_est identical to stored run: True
+  m5C_2C      1x   sigT=0.1  learned -651.501  sink -38655.8  ratio 0.01685  (n2=43 of 85)  mae 0.873704  end 1.137349 core_est identical to stored run: True
+  m5C_2C      10x  sigT=0.1  learned -15249.1  sink -35016.4  ratio 0.43548  (n2=43 of 85)  mae 0.460182  end 0.481256 core_est identical to stored run: True
+  m5C_2C      1x   sigT=0.2  learned -163.982  sink -38827.8  ratio 0.00422  (n2=43 of 85)  mae 0.893471  end 1.165670
+  P5 1x: ratios ['0.0145', '0.0164', '0.0169'] -> failed
+  P5 10x: ratios ['0.3592', '0.4187', '0.4355'] -> failed
+  P7: mae 0.1 K (runs file series) 0.873704, mae 0.2 K (series) 0.893471, increase 0.019767 -> held
+
+== Task 2: relabel against b7af681 ==
+  fields changed (field, bc, method): count -> {('sink_mean_second_half_W_m3', 'a', 'estimator'): 9, ('level', 'a', 'estimator'): 6, ('level', 'b', 'corrected'): 8}
+  levels now: [('corrected', '0.1x'), ('corrected', '10x'), ('corrected', '1x'), ('estimator', '0.1x'), ('estimator', '10x'), ('estimator', '1x'), ('forecast', 'none')]
+  bc a estimator sinks: [0.0]
+  CSV rows 49, header ['cell', 'condition', 'ends', 'method', 'sigma_eps_level', 'mean_abs_error_K', 'end_error_K', 'learned_error_mean_second_half_W_m3', 'end_sink_mean_second_half_W_m3', 'note']
+  notes used: ['', 'end sink 0: beta = 0 with the ends insulated (D21)', 'no separate run: with the ends insulated beta = 0, so this is the estimator (D20)']
+  CSV changes vs b7af681 (field, ends, method): count -> {('end_sink_mean_second_half_W_m3', 'insulated', 'corrected'): 9, ('end_sink_mean_second_half_W_m3', 'insulated', 'estimator'): 9} ; rows old/new 49 49
+  scorecard byte-identical to b7af681: True
+
+== DISCREPANCIES (0) ==

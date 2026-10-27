@@ -1,0 +1,12 @@
+('21700', 'p25C_1.25C', 'a') archive n=286 run n=286 max|dt|= 0.0 max|dcore|= 0.0 archive end t=2851.9600 T_core_mid=27.097526, field 'end' T_core_mid=27.097526 bc a props registered heat Chen2020_p25C_1.25C Tamb 25.0
+('21700', 'p25C_1.25C', 'b') archive n=286 run n=286 max|dt|= 0.0 max|dcore|= 0.0 archive end t=2851.9600 T_core_mid=26.784295, field 'end' T_core_mid=26.784295 bc b props registered heat Chen2020_p25C_1.25C Tamb 25.0
+('21700', 'p25C_2C', 'a') archive n=173 run n=173 max|dt|= 0.0 max|dcore|= 0.0 archive end t=1723.4778 T_core_mid=30.576482, field 'end' T_core_mid=30.576482 bc a props registered heat Chen2020_p25C_2C Tamb 25.0
+('21700', 'p25C_2C', 'b') archive n=173 run n=173 max|dt|= 0.0 max|dcore|= 0.0 archive end t=1723.4778 T_core_mid=29.743835, field 'end' T_core_mid=29.743835 bc b props registered heat Chen2020_p25C_2C Tamb 25.0
+('21700', 'm5C_2C', 'a') archive n=171 run n=171 max|dt|= 0.0 max|dcore|= 0.0 archive end t=1706.7446 T_core_mid=1.563402, field 'end' T_core_mid=1.563402 bc a props registered heat Chen2020_m5C_2C Tamb -5.0
+('21700', 'm5C_2C', 'b') archive n=171 run n=171 max|dt|= 0.0 max|dcore|= 0.0 archive end t=1706.7446 T_core_mid=0.572642, field 'end' T_core_mid=0.572642 bc b props registered heat Chen2020_m5C_2C Tamb -5.0
+('4680', 'm5C_2C', 'b') archive n=171 run n=171 max|dt|= 0.0 max|dcore|= 0.0 archive end t=1706.7446 T_core_mid=9.099652, field 'end' T_core_mid=9.099652 bc b props registered heat Chen2020_m5C_2C Tamb -5.0
+series columns: ['t_s', 'T_core_mid', 'T_surface_mid', 'dT_core_surface', 'dT_axial_bottom', 'dT_axial_top', 'T_max', 'T_mean']
+21700 p25C_1.25C radial1d end t=2851.9600 T_core=27.156812532818 | fc(a) end=27.156812532818 diff=0.00e+00 | fc(b) end=27.156812532818 diff=0.00e+00 | a==b series: True
+21700 p25C_2C radial1d end t=1723.4778 T_core=30.733856525020 | fc(a) end=30.733856525020 diff=0.00e+00 | fc(b) end=30.733856525020 diff=0.00e+00 | a==b series: True
+21700 m5C_2C radial1d end t=1706.7446 T_core=1.750492739751 | fc(a) end=1.750492739751 diff=0.00e+00 | fc(b) end=1.750492739751 diff=0.00e+00 | a==b series: True
+4680 m5C_2C radial1d end t=1706.7446 T_core=19.305768968294 | fc(b) end=19.305768968294 diff=0.00e+00

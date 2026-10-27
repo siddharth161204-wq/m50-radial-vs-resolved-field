@@ -1,0 +1,61 @@
+== Task 1: recompute mae_K, end_error_K from series ==
+runs: 40  max |mae diff| = 0.000e+00, max |end diff| = 0.000e+00
+runs whose 'level' label differs from sigma_eps-derived level: 0
+cases: [('21700', 'm5C_2C', 'a'), ('21700', 'm5C_2C', 'b'), ('21700', 'p25C_1.25C', 'a'), ('21700', 'p25C_1.25C', 'b'), ('21700', 'p25C_2C', 'a'), ('21700', 'p25C_2C', 'b'), ('4680', 'm5C_2C', 'b')]
+  ('21700', 'm5C_2C', 'a') n=171 t0=9.9985 t_end=1706.7446  true_end=1.5634
+  ('21700', 'm5C_2C', 'b') n=171 t0=9.9985 t_end=1706.7446  true_end=0.5726
+  ('21700', 'p25C_1.25C', 'a') n=286 t0=9.9999 t_end=2851.9600  true_end=27.0975
+  ('21700', 'p25C_1.25C', 'b') n=286 t0=9.9999 t_end=2851.9600  true_end=26.7843
+  ('21700', 'p25C_2C', 'a') n=173 t0=9.9970 t_end=1723.4778  true_end=30.5765
+  ('21700', 'p25C_2C', 'b') n=173 t0=9.9970 t_end=1723.4778  true_end=29.7438
+  ('4680', 'm5C_2C', 'b') n=171 t0=9.9985 t_end=1706.7446  true_end=9.0997
+
+== Task 2: scoring ==
+1x {'P1': True, 'P2': True, 'P3': False, 'P4': True, 'P5': False, 'P6': True, 'P7': True}
+0.1x {'P1': True, 'P2': True, 'P3': False, 'P4': True, 'P5': False, 'P6': True}
+10x {'P1': True, 'P2': True, 'P3': True, 'P4': True, 'P5': False, 'P6': True}
+P1 forecast max|err| (a): ['0.0593@t=2852', '0.1574@t=1723', '0.1871@t=1707']  end: ['0.0593', '0.1574', '0.1871']
+P1 est mae (a): ['0.0450', '0.1099', '0.1388']
+P2 forecast |end|: 1.1779
+P3 est |end|: 1.1373 ratio 0.9656
+P4 pairs: [('0.0399', '0.2842'), ('0.0996', '0.6934'), ('0.1254', '0.8737'), ('0.2361', '6.6223')]
+P5 ratios: ['0.0145', '0.0164', '0.0169']
+P6: 10.2061 9.7405
+P7: {'mae_noise_0.1_K': 0.8737040903837526, 'mae_noise_0.2_K': 0.8934709428651771, 'increase_K': 0.019766852481424513, 'held': True}
+0.1x P1 est mae ['0.0466', '0.1138', '0.1434'] P3 ratio 0.9996 P5 ['0.0002', '0.0001', '0.0002'] P6 est end 10.2009
+10x P1 est mae ['0.0647', '0.0747', '0.0829'] P3 ratio 0.4086 P5 ['0.3592', '0.4187', '0.4355'] P6 est end 5.9257
+
+== Task 3: stage3_errors.csv ==
+rows: 49 header: ['cell', 'condition', 'ends', 'method', 'sigma_eps_level', 'mean_abs_error_K', 'end_error_K', 'learned_error_mean_second_half_W_m3', 'end_sink_mean_second_half_W_m3', 'note']
+CSV rows with no run behind them: [('21700', 'm5C_2C', 'a', 'corrected', '0.1x'), ('21700', 'm5C_2C', 'a', 'corrected', '10x'), ('21700', 'm5C_2C', 'a', 'corrected', '1x'), ('21700', 'p25C_1.25C', 'a', 'corrected', '0.1x'), ('21700', 'p25C_1.25C', 'a', 'corrected', '10x'), ('21700', 'p25C_1.25C', 'a', 'corrected', '1x'), ('21700', 'p25C_2C', 'a', 'corrected', '0.1x'), ('21700', 'p25C_2C', 'a', 'corrected', '10x'), ('21700', 'p25C_2C', 'a', 'corrected', '1x')]
+
+== Task 4: stage3_checks.json ==
+{
+ "V2_max_abs_diff_K": 5.551115123125783e-15,
+ "V1_mean_abs_error_K": 0.003778875731433656,
+ "V1_end_error_K": -0.006452880789823645,
+ "V3_identical": true,
+ "V4_same_seed_identical": true,
+ "V4_sigma0_max_abs_diff_from_forecast_K": 8.881784197001252e-16,
+ "settings": {
+  "N_ens": 3000,
+  "sigma_T_K": 0.1,
+  "seed": 20261027,
+  "dt_obs_s": 20.0,
+  "sigma_ref_W_m3": 12377.70179082967
+ }
+}
+V1 mae < 0.1 K: True  |end| < 0.1 K: True
+V2 max diff: 5.551115123125783e-15  bit-exact: False
+V3: True
+V4 same seed: True  sigma0 diff: 8.881784197001252e-16
+
+== sensitivity ==
+  estimator O'Regan sigma_eps=1x dt=20 sigT=0.05 mae=0.81038 end=1.05001
+  estimator O'Regan sigma_eps=1x dt=20 sigT=0.2 mae=0.89347 end=1.16567
+  estimator O'Regan sigma_eps=1x dt=10 sigT=0.1 mae=0.87448 end=1.14013
+  estimator O'Regan sigma_eps=1x dt=40 sigT=0.1 mae=0.87233 end=1.14775
+  forecast ref. 33 sigma_eps=none dt=20 sigT=0.1 mae=3.70532 end=5.08137
+  estimator ref. 33 sigma_eps=1x dt=20 sigT=0.1 mae=3.67736 end=5.03405
+
+== DISCREPANCIES (0) ==

@@ -1,0 +1,40 @@
+{
+ "label": "one",
+ "blas_threads": [
+  [
+   "openblas",
+   1
+  ],
+  [
+   "openblas",
+   1
+  ]
+ ],
+ "seconds": 103.3,
+ "n": 171,
+ "n_differ": 0,
+ "max_abs_diff_K": 0.0,
+ "t_same": true,
+ "true_same": true,
+ "bit_identical": true,
+ "mae_K": [
+  0.8737040903837526,
+  0.8737040903837526,
+  0.0
+ ],
+ "end_error_K": [
+  1.1373488536473042,
+  1.1373488536473042,
+  0.0
+ ],
+ "learned_mean_second_half_W_m3": [
+  -651.5009159387909,
+  -651.5009159387909,
+  0.0
+ ],
+ "sink_mean_second_half_W_m3": [
+  -38655.759830646355,
+  -38655.759830646355,
+  0.0
+ ]
+}
