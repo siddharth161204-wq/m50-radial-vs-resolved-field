@@ -2,7 +2,7 @@
 
 Author: Siddharth Satte, independent researcher, Pune, India (ORCID 0009-0001-3584-1008).
 
-Archived at https://doi.org/10.5281/zenodo.23320969 (all versions; this is version v1.2.0, and v1.1.0 is https://doi.org/10.5281/zenodo.23320970).
+Archived at https://doi.org/10.5281/zenodo.23320969 (all versions). This is version v1.2.0, https://doi.org/10.5281/zenodo.23689145; v1.1.0 is https://doi.org/10.5281/zenodo.23320970.
 
 ## Result
 
@@ -80,7 +80,7 @@ P2's reason, "the heat, not the conductivity, carries the low-temperature gap", 
 
 ## Stage 3 (v1.2.0): ref. 33's core-temperature estimator against the resolved cell
 
-Stage 3 follows the author's third brief. Its predictions (`predictions_stage3.md`) were committed as 70606633fa0f2669080ba6a0ba420fcea017f025 and pushed at 09:36:31 UTC on 27 October 2026, after the estimator was coded and checked and before any test run. DECISIONS.md D19 records the estimator as ref. 33 states it and D20 the implementation, with the author's choices of 27 October. Stage 1 and 2 code and results are unchanged.
+Stage 3 follows the author's third brief. Its predictions (`predictions_stage3.md`) were committed as 70606633fa0f2669080ba6a0ba420fcea017f025 and pushed at 09:36:31 UTC on 27 October 2026, after the estimator was coded and checked and before any test run. DECISIONS.md D19 records the estimator as ref. 33 states it, D20 the implementation, with the author's choices of 27 October, and D21 what the independent read changed. Stage 1 and 2 code and results are unchanged.
 
 **The estimator.** Ref. 33 estimates core temperature with an ensemble Kalman filter whose model error, a heat source per layer, is learned from the readings (its Section 3, Eqs. 4 to 9 and Algorithm 1). It gives 3000 members and a surface-temperature noise of 0.1 C, but no value for the model error's noise, the time step or the reading interval, and its core-temperature accuracy only in figures (`results/stage3_paper_numbers.json`). Here the forecast is Stage 1's radial model with the heat and properties of the resolved cell, so its only error is what the radial model leaves out. The reading is the resolved cell's mid-length surface temperature every 20 s with 0.1 K noise; the terminal voltage is not used, since neither model here has electrochemistry. The error's noise is bracketed at 0.1, 1 and 10 times 1.238e4 W/m3, the source that moves a unit by 0.1 K in one interval, and the middle level is registered. Truth is Stage 1's resolved field, itself a model.
 
@@ -96,12 +96,12 @@ Stage 3 follows the author's third brief. Its predictions (`predictions_stage3.m
 | 21700, 2C, minus 5 C, ends cooled | 0.901, 1.178 | 0.874, 1.137 | 0.125, 0.154 |
 | 4680, 2C, minus 5 C, ends cooled | 6.89, 10.21 | 6.62, 9.74 | 0.236, 0.314 |
 
-- With the ends cooled, the estimator follows the surface reading but leaves the core close to where the forecast put it: it removes 2 to 5 % of the end-of-discharge miss at the registered level. At ten times that level it removes 59 % in the M50 at 2C and minus 5 C (0.48 K left) and 42 % in the 4680 (5.93 K left); at a tenth, none.
-- The learned error, the posterior heat source averaged over the cell and over the second half of the discharge, is 1.4 to 1.7 % of the end sink of D18 on the same history in the three cooled M50 cases (for example -652 against -38 656 W/m3 at 2C and minus 5 C), 36 to 44 % at ten times the level, and zero at a tenth.
-- On Stage 2's end-corrected forecast the same estimator has mean errors of 0.04 to 0.13 K in the M50 and 0.14 to 0.24 K in the 4680 across the bracket (0.24 K at the registered level).
-- Sensitivity (2C, minus 5 C, cooled ends, M50; `results/stage3_sensitivity.json`): noise of 0.05, 0.1 and 0.2 K gives mean errors of 0.81, 0.87 and 0.89 K; readings every 10, 20 and 40 s give 0.875, 0.874 and 0.872 K. With ref. 33's fitted properties in the forecast, the forecast misses by 3.71 K on average and the estimator by 3.68 K.
+- With the ends cooled, the estimator leaves the core close to where the forecast put it: it removes 2 to 5 % of the end-of-discharge miss at the registered level. At ten times that level it removes 59 % in the M50 at 2C and minus 5 C (0.48 K left) and 42 % in the 4680 (5.93 K left); at a tenth, under 0.1 %.
+- The learned error, the posterior heat source averaged over the cell and over the second half of the discharge, is 1.4 to 1.7 % of the end sink of D18 on the same history in the three cooled M50 cases (for example -652 against -38 656 W/m3 at 2C and minus 5 C), 36 to 44 % at ten times the level, and under 0.02 % at a tenth.
+- On Stage 2's end-corrected forecast the same estimator has mean errors of 0.04 to 0.13 K in the cooled M50 cases and 0.14 to 0.24 K in the 4680 across the bracket (0.24 K at the registered level).
+- Sensitivity (2C, minus 5 C, cooled ends, M50; `results/stage3_sensitivity.json`): noise of 0.05, 0.1 and 0.2 K gives mean errors of 0.81, 0.87 and 0.89 K; readings every 10, 20 and 40 s give 0.874, 0.874 and 0.872 K. With ref. 33's fitted properties in the forecast, the forecast misses by 3.71 K on average and the estimator by 3.68 K.
 
-**Checks** (`results/stage3_checks.json`). V1: with a truth made by the radial model itself, the estimator recovers the core to 0.004 K on average (end 0.006 K); the paper gives no number to compare. V2: the forecast alone equals Stage 1's radial model to 6e-15 K. V3: the archived truth read by two routines is identical. V4: the same seed gives identical output, and with no model-error noise the estimator equals the forecast to 9e-16 K.
+**Checks** (`results/stage3_checks.json`). V1: with a truth made by the radial model itself, the estimator recovers the core to 0.004 K on average (end 0.006 K); the paper gives no number to compare. V2: the forecast alone equals Stage 1's radial model to 6e-15 K. V3: the archived truth read by two routines is identical. V4: the same seed gives identical output, and with no model-error noise the estimator equals the forecast to 9e-16 K. An independent read, before the note was written, recomputed every error, the scorecard at all three levels and every row of the table from the stored histories, and P5 and P7 from the series kept for them (`results/stage3_series.json`; the seven repeated runs reproduce the stored values bit for bit), and found no registered value or verdict wrong. It found two mislabelled fields in the stored runs, corrected under D21, and checked every number in this section, the note and the archive description against the files.
 
 **Stage 3 scorecard** (rules in `predictions_stage3.md`; `results/stage3_scorecard.json`).
 
@@ -292,7 +292,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
 
 ## Files
 
-- `DECISIONS.md`: every choice, D1 to D20.
+- `DECISIONS.md`: every choice, D1 to D21.
 - `predictions_stage2.md`, `inputs/ref33_values.md`: Stage 2's predictions and the values of the paper's ref. 33.
 - `predictions_stage3.md`: Stage 3's predictions.
 - `predictions.md`: P1 to P5 with their scoring rules.
@@ -306,7 +306,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `analyse.py`: comparisons, checks, scorecard
   - `posthoc_matched_time.py`: D15
   - `stage2_correction.py`, `stage2_ref33.py`, `stage2_split.py`, `stage2_report.py`: Stage 2
-  - `stage3_enkf.py`, `stage3_report.py`: Stage 3
+  - `stage3_enkf.py`, `stage3_report.py`, `stage3_relabel.py`: Stage 3
   - `make_figure.py`
 - `results/`:
   - `heat/`, `heat_summary.*`: the heat inputs
@@ -316,6 +316,8 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `scorecard.json`, `verification.json`
   - `posthoc_matched_time.json`
   - `figure.png`, `figure.pdf`
+  - `stage2_*`: Stage 2's tables, scorecard and figure
+  - `stage3_*`: Stage 3's runs with every core history, the series behind P5 and P7, the errors table, scorecard, checks, sensitivity, the paper's numbers and the figure
 - `verification/`: V0 to V4, the one-dimensional convergence check, the 3C cut-off check, the independent recomputation, and the audit report (`reviews/`).
 - `note/`: the one-page note (`radial_vs_resolved_note.pdf`), its source and the script that renders it.
 - `CITATION.cff`, `.zenodo.json`: citation and archive metadata.
@@ -343,9 +345,13 @@ python3 src/stage2_correction.py
 python3 src/stage2_ref33.py
 python3 src/stage2_report.py
 python3 src/stage3_enkf.py checks
-python3 src/stage3_enkf.py run
+STAGE3_CELL=21700 python3 src/stage3_enkf.py run
+STAGE3_CELL=4680 python3 src/stage3_enkf.py run
+python3 src/stage3_enkf.py series
 python3 src/stage3_report.py
 ```
+
+With one BLAS thread (`OMP_NUM_THREADS=1`), the seven Stage 3 runs repeated under D21 reproduced the stored values bit for bit; with two, a repeat of one run differed by at most 2.2e-16 K in its core history and no reported number changed.
 
 V4 needs the paper's figure images in `verification/v4/`. They are extracted from the publisher's PDF with `pdfimages -f 5 -l 6 -j`. They are not redistributed here: the PDF's SHA-256 is recorded in `verification/v4.json`, and the paper is © 2026 The Electrochemical Society.
 
@@ -354,7 +360,7 @@ V4 needs the paper's figure images in `verification/v4/`. They are extracted fro
 - v1.0.0 (12 October 2026): the study as registered and run, with the corrections of the independent audit.
 - v1.0.1 (13 October 2026): adds what the paper's property source says about its properties (D16) to the note, this README and DECISIONS.md. No input, code or result changed.
 - v1.1.0 (21 October 2026): Stage 2 (D17, D18, predictions_stage2.md): the factor to the paper split into properties, heat and remainder with ref. 33's values, and a one-term end correction for the radial model. Stage 1's code, results and text are unchanged.
-- v1.2.0 (27 October 2026): Stage 3 (D19, D20, predictions_stage3.md): ref. 33's core-temperature estimator against the resolved cell. Stage 1 and 2 code and results are unchanged.
+- v1.2.0 (27 October 2026): Stage 3 (D19 to D21, predictions_stage3.md): ref. 33's core-temperature estimator against the resolved cell. Stage 1 and 2 code and results are unchanged.
 
 ## Tooling
 

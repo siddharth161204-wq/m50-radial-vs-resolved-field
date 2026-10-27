@@ -29,8 +29,8 @@
 id="the-axial-blind-spot-of-a-radial-cell-model-the-temperature-field-a-multi-unit-model-assumes-tested-on-the-lg-m50-and-a-4680">The
 axial blind spot of a radial cell model: the temperature field a
 multi-unit model assumes, tested on the LG M50 and a 4680</h1>
-<p>Siddharth Satte, Independent researcher, Pune, India, 21 October 2026
-(v1.1.0). doi.org/10.5281/zenodo.23320970. Predictions commit b92f9a8,
+<p>Siddharth Satte, Independent researcher, Pune, India, 27 October 2026
+(v1.2.0). doi.org/10.5281/zenodo.23320969. Predictions commit b92f9a8,
 public at 11:12 UTC on 12 October before any three-dimensional field was
 computed. <a
 href="https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field"
@@ -206,5 +206,51 @@ each set of inputs (2C, minus 5 C at the paper’s end of discharge, 482
 s; the 4680 with the 21700’s heat history). Right: case (b) at 2C and
 minus 5 C, end of discharge: resolved unit temperatures, the radial
 model, and the radial model with the end correction.</p>
+<h2
+id="stage-3-v1.2.0-a-core-temperature-estimator-on-the-radial-model">Stage
+3 (v1.2.0): a core-temperature estimator on the radial model</h2>
+<p>Predictions commit 7060663, public at 09:36 UTC on 27 October 2026
+before any Stage 3 test run; five of seven held. The two that failed:
+that the estimator halves the end-of-discharge miss, and that its
+learned error comes within 30 % of the end correction’s sink.</p>
+<ol type="1">
+<li>Ref. 33 (Yang and Tartakovsky, J. Power Sources 664 (2026) 238948)
+estimates the core temperature with an ensemble Kalman filter that
+assimilates the surface temperature and the terminal voltage and learns
+the forecast’s error, in the thermal equation a heat source per layer.
+Here the forecast is the radial model with the resolved cell’s heat and
+properties, so its only error is the axial one, and the reading is the
+resolved mid-length surface temperature every 20 s, with the paper’s 0.1
+K noise and 3000 members; the voltage has no counterpart here. The
+error’s noise, which ref. 33 does not give, is bracketed at 0.1, 1 and
+10 times the source that moves a unit by 0.1 K in one interval, the
+middle level registered. Truth is Stage 1’s resolved field, itself a
+model.</li>
+<li>With the ends insulated the estimator stays within 0.14 K of the
+resolved core on average. With them cooled at 2C and minus 5 C it leaves
+1.14 of the forecast’s 1.18 K end-of-discharge miss in the M50 and 9.7
+of 10.2 K in the 4680; at ten times the level, 0.48 and 5.9 K. Doubling
+the reading’s noise adds 0.02 K to its mean error in that M50 case.</li>
+<li>In the cooled M50 cases its learned error, averaged over the cell
+and the second half of the discharge, is 1.4 to 1.7 % of the end
+correction’s sink on the same history, and 36 to 44 % at ten times the
+level. On the end-corrected forecast, at the registered level, the same
+estimator’s mean error in those cases is 0.04 to 0.13 K, against 0.28 to
+0.87 K without it, and 0.24 K against 6.6 K in the 4680.</li>
+<li>For the estimator: where the radial model holds, it keeps that
+accuracy. Where the ends exchange heat, how much of the axial miss it
+removes depends on the error’s noise level, which ref. 33 leaves open:
+at 2C and minus 5 C, almost none of the end-of-discharge miss at a tenth
+of the registered level, 3 % (M50) and 5 % (4680) at it, and 59 % and 42
+% at ten times it. With the one-term end correction in its forecast, its
+end-of-discharge error at the registered level is 0.05 to 0.15 K in the
+cooled M50 cases and 0.31 K in the 4680.</li>
+</ol>
+<p><img src="../results/stage3_figure.png" /></p>
+<p>Figure 3. Left: core temperature above ambient at mid-length, M50, 2C
+and minus 5 C, ends cooled, registered level: the resolved cell, the
+radial forecast, the estimator, and the estimator on the end-corrected
+forecast. Right: end-of-discharge core error, estimate minus resolved,
+for each case and method at the registered level.</p>
 </body>
 </html>

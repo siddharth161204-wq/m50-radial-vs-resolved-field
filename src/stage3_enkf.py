@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Stage 3: the ensemble Kalman filter of ref. 33 (D19) on Stage 1's radial model (D20), against the resolved cell.
 python3 src/stage3_enkf.py checks   -> V1 to V4, results/stage3_checks.json (before the predictions)
-python3 src/stage3_enkf.py run      -> Part B: results/stage3_errors.csv, stage3_runs.json, stage3_sensitivity.json"""
+python3 src/stage3_enkf.py run      -> Part B: results/stage3_runs_{cell}.json, stage3_sensitivity.json (tables: stage3_report.py)
+python3 src/stage3_enkf.py series   -> D21: the P5 and P7 runs again with their per-reading series, results/stage3_series.json"""
 import csv
 import json
 import os
@@ -38,9 +39,10 @@ def truth_check(cell, cond, bc):
     return tuple(np.array([r[j] for r in rows]) for j in range(3))
 
 
-def enkf(model, heat, Ta, t_obs, y_obs, t_rec, sig_eps, sig_T=SIG_T, n_ens=N_ENS, seed=SEED, assimilate=True):
+def enkf(model, heat, Ta, t_obs, y_obs, t_rec, sig_eps, sig_T=SIG_T, n_ens=N_ENS, seed=SEED, assimilate=True, beta_sink=None):
     """Stochastic EnKF with the per-interval error of D19/D20. Returns the ensemble-mean mid-length core at t_rec,
-    the learned error per reading (volume-mean posterior source, W/m3) and the end sink on the same history."""
+    the learned error per reading (volume-mean posterior source, W/m3) and the end sink on the same history.
+    beta_sink: the end sink's beta for that diagnostic (default D18's at h = 400; 0 with the ends insulated, D21)."""
     q, t_end, _ = R1.load_heat(heat)
     n, dt = R1.time_grid(t_end, 1.0)
     N1 = model.N + 1
@@ -72,7 +74,7 @@ def enkf(model, heat, Ta, t_obs, y_obs, t_rec, sig_eps, sig_T=SIG_T, n_ens=N_ENS
             eps = eps + np.outer((eps - eps.mean(1, keepdims=True)) @ dh / (n_ens - 1) / var, innov)
             Tm = T.mean(1)
             learned.append((k * dt, float(w_u @ eps.mean(1) / w_u.sum())))
-            b_sink = model_beta(model)
+            b_sink = model_beta(model) if beta_sink is None else beta_sink
             sink.append((k * dt, float(-b_sink * (model.w_vol @ Tm / model.w_vol.sum() - Ta))))
             eps = draw()
             S = G @ eps
@@ -126,7 +128,7 @@ def checks():
     print(json.dumps(out, indent=1))
 
 
-def one(cell, cond, bc, method, sig_eps, dt_obs=DT_OBS, sig_T=SIG_T, props=None):
+def one(cell, cond, bc, method, sig_eps, dt_obs=DT_OBS, sig_T=SIG_T, props=None, keep=False):
     t, core_true, surf = truth(cell, cond, bc)
     heat, Ta = f"Chen2020_{cond}", (-5.0 if cond.startswith("m5C") else 25.0)
     step = int(round(dt_obs / (t[1] - t[0])))
@@ -137,16 +139,21 @@ def one(cell, cond, bc, method, sig_eps, dt_obs=DT_OBS, sig_T=SIG_T, props=None)
     else:
         m = plain(cell, props)
     est, learned, sink = enkf(m, heat, Ta, t[sel], y, t, sig_eps if method != "forecast" else 0.0, sig_T=sig_T,
-                              n_ens=N_ENS if method != "forecast" else 1, assimilate=method != "forecast")
+                              n_ens=N_ENS if method != "forecast" else 1, assimilate=method != "forecast",
+                              beta_sink=0.0 if bc == "a" else None)
     err = est - core_true
     half = t[-1] / 2
     lm = [v for tt, v in learned if tt >= half]
     sm = [v for tt, v in sink if tt >= half]
-    return {"cell": cell, "cond": cond, "bc": bc, "method": method, "sigma_eps": sig_eps, "dt_obs": dt_obs, "sigma_T": sig_T,
-            "mae_K": float(np.mean(np.abs(err))), "end_error_K": float(err[-1]),
-            "learned_mean_second_half_W_m3": float(np.mean(lm)) if lm else None,
-            "sink_mean_second_half_W_m3": float(np.mean(sm)) if sm else None,
-            "t": t.tolist(), "core_true": core_true.tolist(), "core_est": est.tolist()}
+    r = {"cell": cell, "cond": cond, "bc": bc, "method": method, "sigma_eps": sig_eps, "dt_obs": dt_obs, "sigma_T": sig_T,
+         "mae_K": float(np.mean(np.abs(err))), "end_error_K": float(err[-1]),
+         "learned_mean_second_half_W_m3": float(np.mean(lm)) if lm else None,
+         "sink_mean_second_half_W_m3": float(np.mean(sm)) if sm else None,
+         "t": t.tolist(), "core_true": core_true.tolist(), "core_est": est.tolist()}
+    if keep:
+        r.update(learned_series=learned, sink_series=sink, Ta=Ta,
+                 beta_sink=0.0 if bc == "a" else model_beta(m))
+    return r
 
 
 def run():
@@ -156,9 +163,8 @@ def run():
     for cell, cond, bc in CASES:
         if only and cell != only:
             continue
-        out.append(one(cell, cond, bc, "forecast", 0.0))
+        out.append(dict(one(cell, cond, bc, "forecast", 0.0), level="none"))
         for name, s in lv.items():
-            out[-1]["level"] = "none"
             out.append(dict(one(cell, cond, bc, "estimator", s), level=name))
             if bc == "b":
                 out.append(dict(one(cell, cond, bc, "corrected", s), level=name))
@@ -177,5 +183,22 @@ def run():
     json.dump(out, open(os.path.join(C.RESULTS, f"stage3_runs{tag}.json"), "w"))
 
 
+def series():
+    """D21: the runs behind P5 (cooled-ends M50, registered and ten times) and P7 (0.2 K noise) again, keeping the
+    learned error and end sink per reading, so their second-half means can be recomputed independently."""
+    jobs = [("21700", c, "b", "estimator", s, n, {}) for c in ("p25C_1.25C", "p25C_2C", "m5C_2C")
+            for n, s in (("1x", SIG_REF), ("10x", 10 * SIG_REF))]
+    jobs.append(("21700", "m5C_2C", "b", "estimator", SIG_REF, "1x", {"sig_T": 0.2}))
+    part = os.environ.get("STAGE3_PART")
+    out = []
+    for i, (cell, cond, bc, meth, s, n, kw) in enumerate(jobs):
+        if part is not None and i % 2 != int(part):
+            continue
+        out.append(dict(one(cell, cond, bc, meth, s, keep=True, **kw), level=n))
+        print(cell, cond, bc, n, kw, round(out[-1]["mae_K"], 6), flush=True)
+    tag = f"_part{part}" if part is not None else ""
+    json.dump(out, open(os.path.join(C.RESULTS, f"stage3_series{tag}.json"), "w"))
+
+
 if __name__ == "__main__":
-    checks() if sys.argv[1] == "checks" else run()
+    {"checks": checks, "run": run, "series": series}[sys.argv[1]]()

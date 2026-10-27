@@ -23,10 +23,15 @@ keywords:
   - finite element method
   - 4680
   - pre-registration
+  - ensemble Kalman filter
+  - core temperature estimation
 identifiers:
   - type: doi
     value: 10.5281/zenodo.23320969
     description: All versions on Zenodo (resolves to the latest)
+  - type: doi
+    value: 10.5281/zenodo.23689145
+    description: The archived version v1.2.0 on Zenodo
   - type: doi
     value: 10.5281/zenodo.23320970
     description: The archived version v1.1.0 on Zenodo

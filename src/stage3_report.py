@@ -30,18 +30,19 @@ def main():
         r["level"] = level(r)
     # case (a): the end-corrected estimator is the estimator itself (beta = 0, D20)
     for r in [x for x in runs if x["bc"] == "a" and x["method"] == "estimator"]:
-        runs.append(dict(r, method="corrected", note="identical to the estimator: beta = 0 with insulated ends"))
+        runs.append(dict(r, method="corrected", note="no separate run: with the ends insulated beta = 0, so this is the estimator (D20)"))
     get = lambda cell, cond, bc, meth, lv: next(x for x in runs if (x["cell"], x["cond"], x["bc"], x["method"], x["level"]) ==
                                                (cell, cond, bc, meth, "none" if meth == "forecast" else lv))
     with open(os.path.join(R, "stage3_errors.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["cell", "condition", "ends", "method", "sigma_eps_level", "mean_abs_error_K", "end_error_K",
-                    "learned_error_mean_second_half_W_m3", "end_sink_mean_second_half_W_m3"])
+                    "learned_error_mean_second_half_W_m3", "end_sink_mean_second_half_W_m3", "note"])
         for r in sorted(runs, key=lambda x: (x["cell"], x["cond"], x["bc"], x["method"], x["level"])):
             w.writerow([r["cell"], r["cond"], "insulated" if r["bc"] == "a" else "cooled", r["method"], r["level"],
                         f"{r['mae_K']:.5f}", f"{r['end_error_K']:.5f}",
                         "" if r["learned_mean_second_half_W_m3"] is None else f"{r['learned_mean_second_half_W_m3']:.6g}",
-                        "" if r["sink_mean_second_half_W_m3"] is None else f"{r['sink_mean_second_half_W_m3']:.6g}"])
+                        "" if r["sink_mean_second_half_W_m3"] is None else f"{r['sink_mean_second_half_W_m3']:.6g}",
+                        r.get("note", "end sink 0: beta = 0 with the ends insulated (D21)" if r["bc"] == "a" and r["method"] != "forecast" else "")])
     sens = json.load(open(os.path.join(R, "stage3_sensitivity.json")))
     conds = ("p25C_1.25C", "p25C_2C", "m5C_2C")
     sc = {}
@@ -88,7 +89,7 @@ def main():
     ax[0].set_xlabel("time (s)")
     ax[0].set_ylabel("core T above ambient (K)")
     ax[0].set_title("Core, M50, 2C, minus 5 C, ends cooled", loc="left")
-    ax[0].legend(frameon=False, loc="upper left")
+    ax[0].legend(frameon=False, loc="lower right")
     cases = [("21700", "p25C_1.25C", "a", "1.25C\n25 C\ninsul."), ("21700", "p25C_1.25C", "b", "1.25C\n25 C\ncooled"),
              ("21700", "p25C_2C", "a", "2C\n25 C\ninsul."), ("21700", "p25C_2C", "b", "2C\n25 C\ncooled"),
              ("21700", "m5C_2C", "a", "2C\n-5 C\ninsul."), ("21700", "m5C_2C", "b", "2C\n-5 C\ncooled"),
