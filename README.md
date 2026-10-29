@@ -128,7 +128,7 @@ Stage 4 follows the author's fourth brief. Its predictions (`predictions_stage4.
 - It starts from 100 % state of charge on the rated 2.5 to 4.2 V window. PyBaMM's ORegan2022 places 100 % at 4.4 V, so it is set to 4.2 V, as the lever study did.
 - It is tabulated every 0.5 K from minus 10 to 35 C, for ORegan2022 (main) and Chen2020 (bracket), with 50 % state of charge as a further bracket.
 - Values at minus 5, 0 and 25 C: ORegan2022 48.75, 43.49 and 23.57 mOhm, with d ln R/dT of -0.0223, -0.0234 and -0.0237 per K. Chen2020 52.24, 49.57 and 37.33 mOhm, with -0.0104, -0.0106 and -0.0121 per K.
-- O'Regan et al. measured the kinetics from 15 to 45 C and solid diffusion from 5 to 45 C (ChemRxiv preprint, Table 2). The minus 5 C cases therefore use ORegan2022's Arrhenius fits below their data. Chen2020's activation energies come from impedance at 25 to 60 C.
+- O'Regan et al. measured the kinetics from 15 to 45 C and solid diffusion from 5 to 45 C (ChemRxiv preprint, Table 2). The minus 5 C cases therefore use ORegan2022's Arrhenius fits below their data. Chen2020's activation energies come from impedance at room temperature to 60 C.
 
 **The share.** At a common voltage each unit's current density is proportional to 1/R at its temperature. A unit's share is that current density over the cell's mean (D24). The units are equal-thickness annuli, so their electrode areas grow with radius: the outermost 21700 unit has 89 times the innermost's. Means are therefore area-weighted, and the brief's unweighted formula is kept as a bracket. The share is instantaneous: units that draw more current deplete faster, a redistribution the multi-unit model carries and this proxy does not.
 
@@ -142,26 +142,26 @@ Stage 4 follows the author's fourth brief. Its predictions (`predictions_stage4.
 | M50, 2C, minus 5 C, ends insulated | 7.04 %, 45.00 mOhm | +7.3 %, -0.24 % | +0.28, -0.23 pp | as the radial field |
 | 4680, 2C, minus 5 C, ends cooled | 16.94 %, 42.01 mOhm | +95.1 %, -9.64 % | +9.30, -6.80 pp | +3.3 %, -0.27 % |
 
-- **The spread error follows the temperature-spread error.** In the M50 the share-spread error is within 1.1 points of the overstatement of the units' time-averaged temperature spread (35.2 to 35.9 %). In the 4680 the resistance's curvature raises 88 % to 95 %.
-- **The set changes the size of the shares, not the error.** Under Chen2020, whose resistance is less than half as sensitive to temperature, the errors are 36 % (M50) and 93 % (4680). The shares themselves are about half as large: the M50's resolved spread is 2.5 % against 5.5 %.
+- **The spread error follows the temperature-spread error.** In the three cooled M50 cases the share-spread error is within 1.1 points of the overstatement of the units' time-averaged temperature spread (35.2 to 35.9 %), and with the ends insulated it is 7.3 % against 7.2 %. In the 4680 it is 95 % against a temperature-spread overstatement of 88 %.
+- **The set changes the size of the shares, not the error.** Under Chen2020, whose resistance is less than half as sensitive to temperature at minus 5 C and full charge, the errors are 36 % (M50) and 93 % (4680), within 2 % of ORegan2022's. The share spread is about half as large: the M50's resolved spread is 2.5 % against 5.5 %.
 - **The cell's resistance moves much less.** The radial field underestimates the unit-mean resistance by 0.6 to 1.7 % in the cooled M50 cases and by 9.6 % in the 4680. The area-weighted time-averaged units are 0.76 K too warm in the main case and 4.33 K too warm in the 4680.
 - **Across cases.** From 25 C to minus 5 C at 2C, the resistance error grows from 1.38 to 1.73 % and the spread error stays between 34 and 36 %. From 1.25C to 2C at 25 C, the resistance error grows from 0.58 to 1.38 %. From the M50 to the 4680, the spread error grows 2.6 times and the resistance error 5.6 times.
 - **The end correction** removes 85 to 97 % of every error in the four cooled cases: 85 to 97 % of the spread error and 92 to 97 % of the resistance error.
 - **With the ends insulated** the spread error is 7.3 %, the radial field's 7.2 % wider time-averaged temperature spread.
-- **Brackets.** 50 % state of charge, end-of-discharge temperatures and unweighted means give the same verdicts. Across them, the main case's spread error is 35.9 to 37.6 % and its resistance error -1.73 to -2.26 %.
+- **Brackets.** 50 % state of charge, end-of-discharge temperatures and unweighted means give the same verdicts. Across them, the main case's spread error is 35.9 to 37.6 % and its resistance error -1.88 to -2.26 %.
 
 **Checks.** V1 (`results/stage4_unit_temps.json`): the end values equal the archive, as above. The unit-mean offsets and spread overstatements computed from them equal Stage 2's stored values bit for bit, and Stage 1's insulated-ends table.
 - V2 (`results/stage4_checks_v2.json`): separate code gives R within 0.0001 % at minus 5, 0 and 25 C for both sets. It applies the current as a current function, takes the voltage before the pulse from the electrode potentials, and uses a solver tolerance 100 times tighter.
 - V3 (`results/stage4_checks_v3.json`): the main case's shares, recomputed with explicit loops, agree within 5e-7.
 - V4: both states of charge, both readings and both weightings are in `results/stage4_errors.csv` for every case.
-- Independent read (`verification/stage4_independent_read/`, D26): before the note was written, a separate agent recomputed:
+- Independent read (`verification/stage4_independent_read/`, D26). The note's Stage 4 section was drafted while the read ran and added to the note only after it had found nothing wrong; a later text pass corrected the wording of the README, the note and the archive text. A separate agent recomputed:
   - every reading, re-solving the one-dimensional models itself;
   - every row of the errors and units tables;
   - the scorecard at every bracket;
   - seven R(T) points, by PyBaMM routes of its own.
   It found nothing wrong.
 
-**Stage 4 scorecard** (rules in `predictions_stage4.md`; `results/stage4_scorecard.json`). Every verdict is the same at every bracket.
+**Stage 4 scorecard** (rules in `predictions_stage4.md`; `results/stage4_scorecard.json`). Every verdict is the same at every bracket (P6 has no verdict under Chen2020, by its own rule).
 
 | | Result | Computed (registered; range across the brackets) |
 |---|---|---|
