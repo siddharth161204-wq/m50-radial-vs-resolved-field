@@ -7,9 +7,9 @@ authors:
     given-names: Siddharth
     affiliation: Independent Researcher
     orcid: https://orcid.org/0009-0001-3584-1008
-version: v1.2.0
+version: v1.3.0
 doi: 10.5281/zenodo.23320969
-date-released: 2026-10-27
+date-released: 2026-10-29
 repository-code: https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field
 license:
   - MIT
@@ -25,10 +25,14 @@ keywords:
   - pre-registration
   - ensemble Kalman filter
   - core temperature estimation
+  - current distribution
 identifiers:
   - type: doi
     value: 10.5281/zenodo.23320969
     description: All versions on Zenodo (resolves to the latest)
+  - type: doi
+    value: 10.5281/zenodo.23753700
+    description: The archived version v1.3.0 on Zenodo
   - type: doi
     value: 10.5281/zenodo.23689145
     description: The archived version v1.2.0 on Zenodo

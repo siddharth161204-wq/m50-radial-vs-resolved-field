@@ -1,6 +1,6 @@
 # The axial blind spot of a radial cell model: the temperature field a multi-unit model assumes, tested on the LG M50 and a 4680
 
-Siddharth Satte, Independent researcher, Pune, India, 27 October 2026 (v1.2.0). doi.org/10.5281/zenodo.23320969. Predictions commit b92f9a8, public at 11:12 UTC on 12 October before any three-dimensional field was computed. [github.com/siddharth161204-wq/m50-radial-vs-resolved-field](https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field){.nobr}.
+Siddharth Satte, Independent researcher, Pune, India, 29 October 2026 (v1.3.0). doi.org/10.5281/zenodo.23320969. Predictions commit b92f9a8, public at 11:12 UTC on 12 October before any three-dimensional field was computed. [github.com/siddharth161204-wq/m50-radial-vs-resolved-field](https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field){.nobr}.
 
 <div class="headline">
 
@@ -68,3 +68,18 @@ Predictions commit 7060663, public at 09:36 UTC on 27 October 2026 before any St
 ![](../results/stage3_figure.png)
 
 Figure 3. Left: core temperature above ambient at mid-length, M50, 2C and minus 5 C, ends cooled, registered level: the resolved cell, the radial forecast, the estimator, and the estimator on the end-corrected forecast. Right: end-of-discharge core error, estimate minus resolved, for each case and method at the registered level.
+
+<div style="page-break-before: always"></div>
+
+## Stage 4 (v1.3.0): the current each unit draws
+
+Predictions commit 895bd65, public at 04:06 UTC on 29 October 2026 before any Stage 4 computation; three of seven held. The four that failed: a resistance error above 4 % at 2C and minus 5 C (it is 1.7 %), a 4680 spread error three times the M50's (2.6 times), spread errors halved under Chen2020 (they are unchanged), and errors below 1 % with the ends insulated (the spread error is 7 %).
+
+1. Each unit's resistance is the cell's 10 s, 1C pulse resistance at the unit's time-averaged temperature, from PyBaMM's isothermal DFN with O'Regan's set at 100 % state of charge. At a common voltage, a unit's share of the current is 1/R over the cell's area-weighted mean; the units are equal-thickness annuli, so their electrode areas grow with radius. The share is instantaneous: the redistribution over time that the multi-unit model carries is not modelled. Minus 5 C lies below the range in which O'Regan et al. measured the kinetics (15 to 45 C) and solid diffusion (5 to 45 C), so those cases extrapolate the set.
+2. With the ends cooled at 2C and minus 5 C, the radial field overstates the unit-to-unit spread of the current by 36 % in the M50 (7.6 against 5.5 % of the mean current density) and by 95 % in the 4680 (33.0 against 16.9 %), and it underestimates the cell's resistance by 1.7 and 9.6 %. The spread error follows the spread of the units' time-averaged temperatures (35 and 88 % too wide). It is the same under Chen2020 (36 and 93 %), whose resistance is less than half as sensitive to temperature; with the ends insulated it is 7 %.
+3. The end correction leaves spread errors of 5 % (M50) and 3 % (4680) and resistance errors of 0.1 and 0.3 %. In the four cooled cases it removes 85 to 97 % of every error.
+4. For the multi-unit model: the axial blind spot reaches the current each unit draws at the size of the thermal error. Under either parameter set, the unit-to-unit difference is about a third too large in the M50 and almost twice the true one in the 4680, while the cell's resistance moves by under 2 % in the M50. The one-term end correction brings both within about 5 %.
+
+![](../results/stage4_figure.png)
+
+Figure 4. Left: each unit's current density as a percentage of the cell mean against its mid-radius. The case is the M50 at 2C and minus 5 C with the ends cooled, at the units' time-averaged temperatures, with ORegan2022 at 100 % state of charge, under the resolved cell, the radial model and the end-corrected radial model. Right: the share-spread error of the radial and end-corrected fields against the resolved cell, for each case under both parameter sets.

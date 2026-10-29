@@ -203,3 +203,7 @@ D25. Stage 4 predictions and checks.
 - V3: the main case's shares and spread recomputed by a separate routine with explicit loops from the R(T) table.
 - V4: both state-of-charge brackets and both temperature readings recorded for every case; the registered numbers are the main choices.
 - Then an independent read of every registered number and verdict, before the note is written.
+
+D26. After the Stage 4 runs, prompted by the independent read (verification/stage4_independent_read), which found no registered number, verdict or definition wrong. Nothing is changed.
+- In every case, field and reading the hottest unit is unit 1 (the innermost) and the coldest is unit N (the outermost). The shares of the hottest and coldest units that D24 lists are therefore the innermost and outermost shares in results/stage4_errors.csv.
+- The case (a) check in results/stage4_unit_temps.json compares the offset and the spread with Stage 1's three-decimal table. The full-precision values in results/results_3d.csv also match.

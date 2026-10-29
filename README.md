@@ -2,7 +2,7 @@
 
 Author: Siddharth Satte, independent researcher, Pune, India (ORCID 0009-0001-3584-1008).
 
-Archived at https://doi.org/10.5281/zenodo.23320969 (all versions). This is version v1.2.0, https://doi.org/10.5281/zenodo.23689145; v1.1.0 is https://doi.org/10.5281/zenodo.23320970.
+Archived at https://doi.org/10.5281/zenodo.23320969 (all versions). This is version v1.3.0, https://doi.org/10.5281/zenodo.23753700; v1.2.0 is https://doi.org/10.5281/zenodo.23689145 and v1.1.0 https://doi.org/10.5281/zenodo.23320970.
 
 ## Result
 
@@ -114,6 +114,64 @@ Stage 3 follows the author's third brief. Its predictions (`predictions_stage3.m
 | P5 | Failed | learned error 1.4 to 1.7 % of the end sink (36 to 44 % at ten times the level) |
 | P6 | Held | forecast end miss 10.2 K; the estimator leaves 9.7 K (5.9 K at ten times the level) |
 | P7 | Held | doubling the noise raises the mean error by 0.02 K |
+
+## Stage 4 (v1.3.0): the current each unit draws
+
+Stage 4 follows the author's fourth brief. Its predictions (`predictions_stage4.md`) were committed as 895bd6510128f550a3cff626cdba7c1cad74fc29 and pushed at 04:06:15 UTC on 29 October 2026, before any Stage 4 computation. DECISIONS.md D22 to D25 record the procedure and the author's three choices of 29 October: the re-solve for unit histories, area weights, and P6's expectation. Stage 1 to 3 code and results are unchanged.
+
+**The question.** The multi-unit model gives each unit its own temperature so that each unit draws its own current. Stage 4 carries the radial field's thermal error to that current. Each unit is put at the temperature that the radial, resolved and end-corrected fields give it. The question is what share of the current it then draws in parallel with the others.
+
+**Unit temperatures.** The archive holds every unit's temperature at the end of discharge only. The three thermal models were therefore run again for the five cases with Stage 1 and 2 code unchanged, saving every unit every 10 s (`src/stage4_units.py`). The end values equal the archive exactly; the 4680's resolved run, which uses a conjugate-gradient solver, agrees to 4e-15 K. The registered reading is each unit's time average over the discharge; the end of discharge is a bracket.
+
+**Resistance against temperature** (`src/stage4_RT.py`, `results/stage4_RT.csv`):
+- R(T) is the whole cell's resistance from a 1C (5 A) pulse of 10 s after a 600 s rest, in PyBaMM's isothermal Doyle-Fuller-Newman model.
+- It starts from 100 % state of charge on the rated 2.5 to 4.2 V window. PyBaMM's ORegan2022 places 100 % at 4.4 V, so it is set to 4.2 V, as the lever study did.
+- It is tabulated every 0.5 K from minus 10 to 35 C, for ORegan2022 (main) and Chen2020 (bracket), with 50 % state of charge as a further bracket.
+- Values at minus 5, 0 and 25 C: ORegan2022 48.75, 43.49 and 23.57 mOhm, with d ln R/dT of -0.0223, -0.0234 and -0.0237 per K. Chen2020 52.24, 49.57 and 37.33 mOhm, with -0.0104, -0.0106 and -0.0121 per K.
+- O'Regan et al. measured the kinetics from 15 to 45 C and solid diffusion from 5 to 45 C (ChemRxiv preprint, Table 2). The minus 5 C cases therefore use ORegan2022's Arrhenius fits below their data. Chen2020's activation energies come from impedance at 25 to 60 C.
+
+**The share.** At a common voltage each unit's current density is proportional to 1/R at its temperature. A unit's share is that current density over the cell's mean (D24). The units are equal-thickness annuli, so their electrode areas grow with radius: the outermost 21700 unit has 89 times the innermost's. Means are therefore area-weighted, and the brief's unweighted formula is kept as a bracket. The share is instantaneous: units that draw more current deplete faster, a redistribution the multi-unit model carries and this proxy does not.
+
+**Results at the registered choices** (ORegan2022, 100 % state of charge, time-averaged temperatures, area weights; `results/stage4_errors.csv`). Spread is the largest unit share minus the smallest, in % of the mean current density; pp is percentage points of it.
+
+| Case | Resolved: spread, unit-mean R | Radial: spread error, R error | Radial: innermost, outermost share error | End-corrected: spread error, R error |
+|---|---|---|---|---|
+| M50, 2C, minus 5 C, ends cooled | 5.54 %, 45.69 mOhm | +36.4 %, -1.73 % | +1.11, -0.91 pp | +5.2 %, -0.13 % |
+| M50, 2C, 25 C, ends cooled | 4.45 %, 22.34 mOhm | +34.3 %, -1.38 % | +0.83, -0.70 pp | +5.0 %, -0.11 % |
+| M50, 1.25C, 25 C, ends cooled | 1.81 %, 23.07 mOhm | +35.6 %, -0.58 % | +0.35, -0.30 pp | +5.1 %, -0.04 % |
+| M50, 2C, minus 5 C, ends insulated | 7.04 %, 45.00 mOhm | +7.3 %, -0.24 % | +0.28, -0.23 pp | as the radial field |
+| 4680, 2C, minus 5 C, ends cooled | 16.94 %, 42.01 mOhm | +95.1 %, -9.64 % | +9.30, -6.80 pp | +3.3 %, -0.27 % |
+
+- **The spread error follows the temperature-spread error.** In the M50 the share-spread error is within 1.1 points of the overstatement of the units' time-averaged temperature spread (35.2 to 35.9 %). In the 4680 the resistance's curvature raises 88 % to 95 %.
+- **The set changes the size of the shares, not the error.** Under Chen2020, whose resistance is less than half as sensitive to temperature, the errors are 36 % (M50) and 93 % (4680). The shares themselves are about half as large: the M50's resolved spread is 2.5 % against 5.5 %.
+- **The cell's resistance moves much less.** The radial field underestimates the unit-mean resistance by 0.6 to 1.7 % in the cooled M50 cases and by 9.6 % in the 4680. The area-weighted time-averaged units are 0.76 K too warm in the main case and 4.33 K too warm in the 4680.
+- **Across cases.** From 25 C to minus 5 C at 2C, the resistance error grows from 1.38 to 1.73 % and the spread error stays between 34 and 36 %. From 1.25C to 2C at 25 C, the resistance error grows from 0.58 to 1.38 %. From the M50 to the 4680, the spread error grows 2.6 times and the resistance error 5.6 times.
+- **The end correction** removes 85 to 97 % of every error in the four cooled cases: 85 to 97 % of the spread error and 92 to 97 % of the resistance error.
+- **With the ends insulated** the spread error is 7.3 %, the radial field's 7.2 % wider time-averaged temperature spread.
+- **Brackets.** 50 % state of charge, end-of-discharge temperatures and unweighted means give the same verdicts. Across them, the main case's spread error is 35.9 to 37.6 % and its resistance error -1.73 to -2.26 %.
+
+**Checks.** V1 (`results/stage4_unit_temps.json`): the end values equal the archive, as above. The unit-mean offsets and spread overstatements computed from them equal Stage 2's stored values bit for bit, and Stage 1's insulated-ends table.
+- V2 (`results/stage4_checks_v2.json`): separate code gives R within 0.0001 % at minus 5, 0 and 25 C for both sets. It applies the current as a current function, takes the voltage before the pulse from the electrode potentials, and uses a solver tolerance 100 times tighter.
+- V3 (`results/stage4_checks_v3.json`): the main case's shares, recomputed with explicit loops, agree within 5e-7.
+- V4: both states of charge, both readings and both weightings are in `results/stage4_errors.csv` for every case.
+- Independent read (`verification/stage4_independent_read/`, D26): before the note was written, a separate agent recomputed:
+  - every reading, re-solving the one-dimensional models itself;
+  - every row of the errors and units tables;
+  - the scorecard at every bracket;
+  - seven R(T) points, by PyBaMM routes of its own.
+  It found nothing wrong.
+
+**Stage 4 scorecard** (rules in `predictions_stage4.md`; `results/stage4_scorecard.json`). Every verdict is the same at every bracket.
+
+| | Result | Computed (registered; range across the brackets) |
+|---|---|---|
+| P1 | Held | radial spread error +36.4 % (35.8 to 37.6 %) |
+| P2 | Held | end-corrected spread error +5.2 % (5.1 to 5.2 %) |
+| P3 | Failed | radial resistance error -1.73 % (-0.80 to -2.26 %; needs below -4 %) |
+| P4 | Held | -1.38 % at 2C and 25 C (-0.74 to -1.87 %) |
+| P5 | Failed | 4680 +95.1 % against the M50's +36.4 %: 2.61 times (2.50 to 2.80; needs 3) |
+| P6 | Failed | Chen2020 over ORegan2022 for the five quantities: 0.99, 0.99, 0.46, 0.54, 0.98 (each needs below 0.5); expectation registered as unlikely |
+| P7 | Failed | ends insulated: spread error +7.3 % (needs below 1 %); resistance -0.24 %, innermost +0.28 and outermost -0.23 pp |
 
 ## The question
 
@@ -292,9 +350,10 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
 
 ## Files
 
-- `DECISIONS.md`: every choice, D1 to D21.
+- `DECISIONS.md`: every choice, D1 to D26.
 - `predictions_stage2.md`, `inputs/ref33_values.md`: Stage 2's predictions and the values of the paper's ref. 33.
 - `predictions_stage3.md`: Stage 3's predictions.
+- `predictions_stage4.md`: Stage 4's predictions.
 - `predictions.md`: P1 to P5 with their scoring rules.
 - `inputs/`: the property computation and the two-cell study's files, copied unchanged.
 - `src/`:
@@ -307,6 +366,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `posthoc_matched_time.py`: D15
   - `stage2_correction.py`, `stage2_ref33.py`, `stage2_split.py`, `stage2_report.py`: Stage 2
   - `stage3_enkf.py`, `stage3_report.py`, `stage3_relabel.py`: Stage 3
+  - `stage4_units.py`, `stage4_RT.py`, `stage4_report.py`, `stage4_v2.py`, `stage4_v3.py`: Stage 4
   - `make_figure.py`
 - `results/`:
   - `heat/`, `heat_summary.*`: the heat inputs
@@ -318,7 +378,8 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `figure.png`, `figure.pdf`
   - `stage2_*`: Stage 2's tables, scorecard and figure
   - `stage3_*`: Stage 3's runs with every core history, the series behind P5 and P7, the errors table, scorecard, checks, sensitivity, the paper's numbers and the figure
-- `verification/`: V0 to V4, the one-dimensional convergence check, the 3C cut-off check, the independent recomputation, the audit report (`reviews/`), and Stage 3's independent read (`stage3_independent_read/`: its scripts, outputs and what each pass found).
+  - `stage4_*`: Stage 4's unit histories (`stage4_hist_*`), the unit-temperature readings with V1, the R(T) table, the per-unit table, the errors table, the scorecard, the checks, the paper's numbers and the figure
+- `verification/`: V0 to V4, the one-dimensional convergence check, the 3C cut-off check, the independent recomputation, the audit report (`reviews/`), and the independent reads of Stage 3 and Stage 4 (`stage3_independent_read/`, `stage4_independent_read/`: their scripts, outputs and findings).
 - `note/`: the one-page note (`radial_vs_resolved_note.pdf`), its source and the script that renders it.
 - `CITATION.cff`, `.zenodo.json`: citation and archive metadata.
 
@@ -349,6 +410,14 @@ STAGE3_CELL=21700 python3 src/stage3_enkf.py run
 STAGE3_CELL=4680 python3 src/stage3_enkf.py run
 python3 src/stage3_enkf.py series
 python3 src/stage3_report.py
+python3 src/stage4_units.py --fields 1d
+python3 src/stage4_units.py --fields 3d --cell 21700
+python3 src/stage4_units.py --fields 3d --cell 4680
+python3 src/stage4_units.py --collect
+python3 src/stage4_RT.py
+python3 src/stage4_report.py
+python3 src/stage4_v2.py
+python3 src/stage4_v3.py
 ```
 
 With one BLAS thread (`OMP_NUM_THREADS=1`), the seven Stage 3 runs repeated under D21 reproduced the stored values bit for bit; with two, a repeat of one run differed by at most 2.2e-16 K in its core history and no reported number changed.
@@ -361,6 +430,7 @@ V4 needs the paper's figure images in `verification/v4/`. They are extracted fro
 - v1.0.1 (13 October 2026): adds what the paper's property source says about its properties (D16) to the note, this README and DECISIONS.md. No input, code or result changed.
 - v1.1.0 (21 October 2026): Stage 2 (D17, D18, predictions_stage2.md): the factor to the paper split into properties, heat and remainder with ref. 33's values, and a one-term end correction for the radial model. Stage 1's code, results and text are unchanged.
 - v1.2.0 (27 October 2026): Stage 3 (D19 to D21, predictions_stage3.md): ref. 33's core-temperature estimator against the resolved cell. Stage 1 and 2 code and results are unchanged.
+- v1.3.0 (29 October 2026): Stage 4 (D22 to D26, predictions_stage4.md): the radial field's thermal error carried to the current each unit draws. Stage 1 to 3 code and results are unchanged.
 
 ## Tooling
 
