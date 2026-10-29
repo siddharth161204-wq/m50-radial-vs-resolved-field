@@ -1,0 +1,44 @@
+{
+ "hand": {
+  "radial": {
+   "R_mean_mOhm": 44.896115979266774,
+   "spread": 0.07558099477536162,
+   "inner": 1.0391506707009697,
+   "outer": 0.963569675925608
+  },
+  "corrected": {
+   "R_mean_mOhm": 45.626772827721695,
+   "spread": 0.05827247832028226,
+   "inner": 1.029582386965407,
+   "outer": 0.9713099086451248
+  },
+  "resolved": {
+   "R_mean_mOhm": 45.687310937120294,
+   "spread": 0.05541684190373852,
+   "inner": 1.0280795705624601,
+   "outer": 0.9726627286587216
+  }
+ },
+ "check": {
+  "radial_max_abs_share_diff": 4.99026677425185e-07,
+  "corrected_max_abs_share_diff": 4.860793012539943e-07,
+  "resolved_max_abs_share_diff": 4.957259351900944e-07,
+  "radial_spread_rel": {
+   "hand": 0.36386326212253506,
+   "stored": 0.363863
+  },
+  "radial_R_mean_rel": {
+   "hand": -0.01731760836050178,
+   "stored": -0.0173176
+  },
+  "corrected_spread_rel": {
+   "hand": 0.05153011825365472,
+   "stored": 0.0515301
+  },
+  "corrected_R_mean_rel": {
+   "hand": -0.0013250530214378164,
+   "stored": -0.00132505
+  },
+  "agree": true
+ }
+}

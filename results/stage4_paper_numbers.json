@@ -1,0 +1,380 @@
+{
+ "procedure": {
+  "pybamm": "26.9.0.0",
+  "model": "DFN, default options (isothermal at the ambient temperature)",
+  "solver": "IDAKLUSolver(rtol=1e-6, atol=1e-8)",
+  "window_V": [
+   2.5,
+   4.2
+  ],
+  "pulse": "rest 600 s, then 5 A for 10 s",
+  "grid_C": [
+   -10.0,
+   35.0,
+   0.5
+  ],
+  "sensitivity": {
+   "ORegan2022|soc=1": {
+    "-5": {
+     "dlnR_dT_per_K": -0.022317274496005624,
+     "R_mOhm": 48.75383915999999
+    },
+    "0": {
+     "dlnR_dT_per_K": -0.02337257048360941,
+     "R_mOhm": 43.49022755999999
+    },
+    "25": {
+     "dlnR_dT_per_K": -0.02370472436196769,
+     "R_mOhm": 23.571015170000006
+    }
+   },
+   "ORegan2022|soc=0.5": {
+    "-5": {
+     "dlnR_dT_per_K": -0.024214966919054337,
+     "R_mOhm": 44.07482407
+    },
+    "0": {
+     "dlnR_dT_per_K": -0.025519460682683626,
+     "R_mOhm": 38.920887549999996
+    },
+    "25": {
+     "dlnR_dT_per_K": -0.02633211188443285,
+     "R_mOhm": 19.799472870000002
+    }
+   },
+   "Chen2020|soc=1": {
+    "-5": {
+     "dlnR_dT_per_K": -0.010369205362126266,
+     "R_mOhm": 52.24065666999999
+    },
+    "0": {
+     "dlnR_dT_per_K": -0.01060887516154363,
+     "R_mOhm": 49.57204274
+    },
+    "25": {
+     "dlnR_dT_per_K": -0.012146732376255187,
+     "R_mOhm": 37.32680375999999
+    }
+   },
+   "Chen2020|soc=0.5": {
+    "-5": {
+     "dlnR_dT_per_K": -0.012597016012369178,
+     "R_mOhm": 43.5748907
+    },
+    "0": {
+     "dlnR_dT_per_K": -0.013021890155070714,
+     "R_mOhm": 40.87222822000001
+    },
+    "25": {
+     "dlnR_dT_per_K": -0.015201778764601936,
+     "R_mOhm": 28.66960704
+    }
+   }
+  }
+ },
+ "sets": {
+  "ORegan2022": {
+   "source": "O'Regan et al. 2022, Electrochim. Acta 425, 140700; read in the ChemRxiv preprint of 17 January 2022, doi:10.26434/chemrxiv-2022-d2q4n, with its supplementary information",
+   "measured_ranges_C": {
+    "exchange-current density and activation energy (impedance)": [
+     15,
+     45
+    ],
+    "particle diffusivity and activation energy (GITT)": [
+     5,
+     45
+    ],
+    "electronic conductivity": [
+     15,
+     35
+    ],
+    "entropic term": [
+     -5,
+     25
+    ],
+    "thermal diffusivity": [
+     -5,
+     55
+    ]
+   },
+   "where": "preprint Table 2, p. 5; GITT p. 6; impedance p. 7; 0 C outside the measured range, p. 31",
+   "electrolyte": "Landesfeind and Gasteiger 2019, minus 10 to 50 C (abstract)",
+   "minus_5C": "below the measured range of the kinetics (15 C) and of solid diffusion (5 C): an extrapolation of the set"
+  },
+  "Chen2020": {
+   "source": "Chen et al. 2020, J. Electrochem. Soc. 167, 080534 (Warwick repository copy)",
+   "temperature_dependence": "Arrhenius exchange-current densities only, 35.0 and 17.8 kJ/mol, from impedance at room temperature and at 30, 40, 50 and 60 C",
+   "minus_5C": "an extrapolation of the set"
+  }
+ },
+ "registered": {
+  "set": "ORegan2022",
+  "soc": 1.0,
+  "reading": "time_average",
+  "weighting": "area"
+ },
+ "C3_registered": {
+  "21700_b_m5C_2C": {
+   "radial": {
+    "R_mean_rel": -0.01731760836050178,
+    "spread_rel": 0.3638632621224993,
+    "inner_pp": 1.1071100138507983,
+    "outer_pp": -0.9093052733113449
+   },
+   "corrected": {
+    "R_mean_rel": -0.0013250530214370393,
+    "spread_rel": 0.05153011825364606,
+    "inner_pp": 0.1502816402946472,
+    "outer_pp": -0.13528200135968227
+   },
+   "removed_by_correction": {
+    "R_mean_rel": 0.9234852184058373,
+    "spread_rel": 0.8583805412146891,
+    "inner_pp": 0.8642577174675432,
+    "outer_pp": 0.851224879773284
+   }
+  },
+  "21700_b_p25C_2C": {
+   "radial": {
+    "R_mean_rel": -0.013767100445564395,
+    "spread_rel": 0.34330437558960214,
+    "inner_pp": 0.8252654222691724,
+    "outer_pp": -0.7029946214944016
+   },
+   "corrected": {
+    "R_mean_rel": -0.001056457016708534,
+    "spread_rel": 0.05031624666621304,
+    "inner_pp": 0.11590653240582949,
+    "outer_pp": -0.10808219246859485
+   },
+   "removed_by_correction": {
+    "R_mean_rel": 0.9232621988278649,
+    "spread_rel": 0.8534354635597106,
+    "inner_pp": 0.8595524187998453,
+    "outer_pp": 0.846254595463565
+   }
+  },
+  "21700_b_p25C_1.25C": {
+   "radial": {
+    "R_mean_rel": -0.005763946763576611,
+    "spread_rel": 0.3561107901275633,
+    "inner_pp": 0.34602474598512956,
+    "outer_pp": -0.2978103060036097
+   },
+   "corrected": {
+    "R_mean_rel": -0.0004360076652971667,
+    "spread_rel": 0.05099204353335618,
+    "inner_pp": 0.047630290387878915,
+    "outer_pp": -0.04456142609324809
+   },
+   "removed_by_correction": {
+    "R_mean_rel": 0.9243560561571499,
+    "spread_rel": 0.856808485036103,
+    "inner_pp": 0.8623500459417263,
+    "outer_pp": 0.8503697649311439
+   }
+  },
+  "21700_a_m5C_2C": {
+   "radial": {
+    "R_mean_rel": -0.002379288440075955,
+    "spread_rel": 0.0732102002672228,
+    "inner_pp": 0.28408572985163527,
+    "outer_pp": -0.2314982407929156
+   },
+   "corrected": {
+    "R_mean_rel": -0.002379288440075955,
+    "spread_rel": 0.0732102002672228,
+    "inner_pp": 0.28408572985163527,
+    "outer_pp": -0.2314982407929156
+   },
+   "removed_by_correction": {
+    "R_mean_rel": 0.0,
+    "spread_rel": 0.0,
+    "inner_pp": 0.0,
+    "outer_pp": 0.0
+   }
+  },
+  "4680_b_m5C_2C": {
+   "radial": {
+    "R_mean_rel": -0.09640038077035673,
+    "spread_rel": 0.9505511703257368,
+    "inner_pp": 9.30037666172623,
+    "outer_pp": -6.801320894321705
+   },
+   "corrected": {
+    "R_mean_rel": -0.002656480053464305,
+    "spread_rel": 0.03283494037520085,
+    "inner_pp": 0.2574648545999203,
+    "outer_pp": -0.29873695304308834
+   },
+   "removed_by_correction": {
+    "R_mean_rel": 0.9724432618187212,
+    "spread_rel": 0.9654569460327433,
+    "inner_pp": 0.9723167282396783,
+    "outer_pp": 0.956076627219207
+   }
+  }
+ },
+ "unit_temperature_summary": {
+  "21700_b_m5C_2C": {
+   "radial": {
+    "time_average": {
+     "mean_area_weighted_C": -1.3630702015923102,
+     "spread_K": 3.2693061392208564
+    },
+    "end": {
+     "mean_area_weighted_C": -0.37802285911111105,
+     "spread_K": 4.1688856
+    }
+   },
+   "corrected": {
+    "time_average": {
+     "mean_area_weighted_C": -2.0671203691476925,
+     "spread_K": 2.539415235852374
+    },
+    "end": {
+     "mean_area_weighted_C": -1.2954034276049384,
+     "spread_K": 3.2169226999999996
+    }
+   },
+   "resolved": {
+    "time_average": {
+     "mean_area_weighted_C": -2.12531057685183,
+     "spread_K": 2.4165271658758067
+    },
+    "end": {
+     "mean_area_weighted_C": -1.3699165413333332,
+     "spread_K": 3.0600135
+    }
+   }
+  },
+  "21700_b_p25C_2C": {
+   "radial": {
+    "time_average": {
+     "mean_area_weighted_C": 27.89227080234889,
+     "spread_K": 2.598954994083517
+    },
+    "end": {
+     "mean_area_weighted_C": 28.930061700543213,
+     "spread_K": 3.5368148999999995
+    }
+   },
+   "corrected": {
+    "time_average": {
+     "mean_area_weighted_C": 27.33350616747598,
+     "spread_K": 2.0197304982598574
+    },
+    "end": {
+     "mean_area_weighted_C": 28.157141097580247,
+     "spread_K": 2.735112700000002
+    }
+   },
+   "resolved": {
+    "time_average": {
+     "mean_area_weighted_C": 27.28725978378253,
+     "spread_K": 1.9220553058004626
+    },
+    "end": {
+     "mean_area_weighted_C": 28.093989491654323,
+     "spread_K": 2.602156100000002
+    }
+   }
+  },
+  "21700_b_p25C_1.25C": {
+   "radial": {
+    "time_average": {
+     "mean_area_weighted_C": 26.160461126879625,
+     "spread_K": 1.0459275334852656
+    },
+    "end": {
+     "mean_area_weighted_C": 26.47786708874074,
+     "spread_K": 1.3308493000000006
+    }
+   },
+   "corrected": {
+    "time_average": {
+     "mean_area_weighted_C": 25.93208406709658,
+     "spread_K": 0.8090161348527296
+    },
+    "end": {
+     "mean_area_weighted_C": 26.186998506320986,
+     "spread_K": 1.0291403999999993
+    }
+   },
+   "resolved": {
+    "time_average": {
+     "mean_area_weighted_C": 25.91342519783504,
+     "spread_K": 0.7696630636044901
+    },
+    "end": {
+     "mean_area_weighted_C": 26.163255270271605,
+     "spread_K": 0.9791115999999995
+    }
+   }
+  },
+  "21700_a_m5C_2C": {
+   "radial": {
+    "time_average": {
+     "mean_area_weighted_C": -1.3630702015923102,
+     "spread_K": 3.2693061392208564
+    },
+    "end": {
+     "mean_area_weighted_C": -0.37802285911111105,
+     "spread_K": 4.1688856
+    }
+   },
+   "corrected": {
+    "time_average": {
+     "mean_area_weighted_C": -1.3630702015923102,
+     "spread_K": 3.2693061392208564
+    },
+    "end": {
+     "mean_area_weighted_C": -0.37802285911111105,
+     "spread_K": 4.1688856
+    }
+   },
+   "resolved": {
+    "time_average": {
+     "mean_area_weighted_C": -1.4671752580747972,
+     "spread_K": 3.0500441208260116
+    },
+    "end": {
+     "mean_area_weighted_C": -0.5135933420740739,
+     "spread_K": 3.885579
+    }
+   }
+  },
+  "4680_b_m5C_2C": {
+   "radial": {
+    "time_average": {
+     "mean_area_weighted_C": 5.830094833960982,
+     "spread_K": 13.59005175374927
+    },
+    "end": {
+     "mean_area_weighted_C": 9.81407361094067,
+     "spread_K": 18.9375827
+    }
+   },
+   "corrected": {
+    "time_average": {
+     "mean_area_weighted_C": 1.6189008734839412,
+     "spread_K": 7.44800605333919
+    },
+    "end": {
+     "mean_area_weighted_C": 3.6442787428536647,
+     "spread_K": 9.866715300000001
+    }
+   },
+   "resolved": {
+    "time_average": {
+     "mean_area_weighted_C": 1.504014973001302,
+     "spread_K": 7.2138846154657275
+    },
+    "end": {
+     "mean_area_weighted_C": 3.4897835436247067,
+     "spread_K": 9.5487269
+    }
+   }
+  }
+ }
+}
