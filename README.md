@@ -154,7 +154,7 @@ Stage 4 follows the author's fourth brief. Its predictions (`predictions_stage4.
 - V2 (`results/stage4_checks_v2.json`): separate code gives R within 0.0001 % at minus 5, 0 and 25 C for both sets. It applies the current as a current function, takes the voltage before the pulse from the electrode potentials, and uses a solver tolerance 100 times tighter.
 - V3 (`results/stage4_checks_v3.json`): the main case's shares, recomputed with explicit loops, agree within 5e-7.
 - V4: both states of charge, both readings and both weightings are in `results/stage4_errors.csv` for every case.
-- Independent read (`verification/stage4_independent_read/`, D26). The note's Stage 4 section was drafted while the read ran and added to the note only after it had found nothing wrong; a later text pass corrected the wording of the README, the note and the archive text. A separate agent recomputed:
+- Independent read (`verification/stage4_independent_read/`, D26). The note's Stage 4 section was drafted while the read ran and added to the note only after it had found nothing wrong; a later text pass corrected one number and several statements in the README, the note, the archive text and the read's own record. A separate agent recomputed:
   - every reading, re-solving the one-dimensional models itself;
   - every row of the errors and units tables;
   - the scorecard at every bracket;
