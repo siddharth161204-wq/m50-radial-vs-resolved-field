@@ -207,3 +207,146 @@ D25. Stage 4 predictions and checks.
 D26. After the Stage 4 runs, prompted by the independent read (verification/stage4_independent_read), which found no registered number, verdict or definition wrong. Nothing is changed.
 - In every case, field and reading the hottest unit is unit 1 (the innermost) and the coldest is unit N (the outermost). The shares of the hottest and coldest units that D24 lists are therefore the innermost and outermost shares in results/stage4_errors.csv.
 - The case (a) check in results/stage4_unit_temps.json compares the offset and the spread with Stage 1's three-decimal table. The full-precision values in results/results_3d.csv also match.
+
+## Stage 5 (after v1.3.0): the multi-unit model with a resolved thermal field
+
+D27. Part A0, recorded before the predictions: what the paper and the cell's specification say, the linearity of the thermal models, and two facts found in single-cell runs.
+- The paper (Yang, Cui and Tartakovsky, J. Electrochem. Soc. 173 (2026) 050520; page numbers of its eight pages):
+  - p. 3: "At 3C (Fig. 4b), the single-unit model overestimates the total discharge energy by approximately 3.45%, while it overpredicts by 11.32% at –5°C." p. 4 places the second number at 2C ("the capacity loss (3.45%) is smaller than at 2C under –5°C (11.32%)") and calls both a capacity loss. For the 4680 at 2C and minus 5 C, p. 4 says the single-unit model overestimates the discharge energy "by about 11.45% (Fig. 7b)", with unit currents "varying from approximately 1.25C to 2.75C (Fig. 8)".
+  - p. 1, on the direct approach: "coupling the P2D models for multiple units through such an optimization at each time step would render this approach impractical for real-time control and other applications". On coupling a thermal model: "Doing so would further exacerbate the computational cost."
+  - p. 1, abstract: single-unit approximations "fail to capture the battery performance, especially at high charge/discharge rates and/or low temperatures". Introduction: low temperatures (below 0 C) slow the kinetics and transport and "can induce lithium plating". p. 6, conclusion: "stronger current localization and uneven utilization intensify local electrochemical stress and accelerate potential degradation". Every simulation the paper shows (Figs. 3 to 8) is a discharge.
+  - The single-unit model (p. 3) "assumes that all units behave identically under an averaged temperature": "the P2D equations are solved under the volume-averaged temperature", T_ave = (2 / R_b^2) times the integral of T r_b dr_b from 0 to R_b. Both models "are coupled with the one-dimensional thermal model". The units' areas (Eq. 5c, p. 3): A_n / A_m = r_b(n) / r_b(m), summing to the battery's electrode area. The currents satisfy Eq. 5a (the area-weighted sum of the unit current densities is the applied current) and Eq. 5b (every unit at the battery voltage). Here a unit's area is its annulus's cross-section (D24), which is proportional to its mean radius, as Eq. 5c has it.
+  - The figures. Fig. 4 (p. 5): lithiation curves of the M50 at 1.25C, 2C and 3C at minus 5 C and 25 C, with the multi-unit model at T_ave drawn dashed. The text places 1.25C and 25 C in panel (a), 3C in (b), the higher rates in (b) and (c), and minus 5 C in (d), which p. 4 gives as 2C. Fig. 5 (p. 5): each unit's temperature less the outermost unit's at the end of the 1.25C, 2C and 3C discharges at 25 C and minus 5 C. Fig. 6 (p. 5): the M50's unit current densities at 2C and minus 5 C. Fig. 7 (p. 6): the 4680 at 2C and minus 5 C, its unit temperature differences at the end of discharge (a) and its lithiation curves (b). Fig. 8 (p. 6): the 4680's unit current densities at 2C and minus 5 C, where the core's current rises and later falls below the outer units' (p. 5). The coefficient is h = 400 W/(m^2 K) (p. 3). The paper's training data run to 2.6 V (p. 2); the cut-off of Figs. 4 and 7 is not stated.
+- The specification: LG Chem, Lithium Ion INR21700 M50T 18.2Wh, document LRB-PS-CY18.2Wh-M50T, revision 0, 2018-07-16, 13 pages, read on 16 November 2026 in the copy hosted by Robu.in (aws.robu.in/wp-content/uploads/2021/11/DATASHEET-LGM50T.pdf).
+  - Standard charge (section 2.4 on p. 4; section 4.1.1 on p. 6): constant current 0.3C (1,455 mA), constant voltage 4.2 V, end current 50 mA.
+  - Maximum continuous charge current (section 4.2.3, p. 7): 0.3C (1,455 mA) from 0 to 25 C; 0.7C (3,395 mA) from 25 to 45 C.
+  - Operating temperature (section 5.1, p. 9): charge from 0 to 45 C; discharge from minus 20 to 55 C. Maximum charge voltage 4.20 V and minimum discharge voltage 2.50 V (sections 2.5, 2.7 and 2.9, p. 4).
+  - The specification's 1C is 4,850 mA, since its 0.3C is 1,455 mA. This study's 1C is the parameter sets' nominal 5 A h, which is 1.031 times larger.
+- Which cell. The paper names the LG Chem INR21700 M50 (p. 3). Chen et al. 2020 (the Warwick repository copy) calls its cell "LG M50 21700 (LGM50)", and O'Regan et al. 2022 (the ChemRxiv preprint) calls it "a 5 Ah M50 21700 cylindrical cell manufactured by LG Chem". Neither names the M50T. The brief's statement that Chen et al. 2020 identifies the cell as the M50T is therefore not borne out by its text. The M50T is named by the paper's ref. 34, Kirkaldy et al., ACS Appl. Energy Mater. 5 (2022) 13367 (the abstract of its ChemRxiv record: "a commercial cylindrical cell with a Si-Gr electrode (LG M50T)"). The paper validated its parametrisation against that study's discharge data at 0.1C and 0.5C (p. 3, footnote b). The charging limits used here are the M50T's. Whether the M50's own document states the same limits was not checked.
+- Linearity (A0.3), read from the code.
+  - src/radial1d.py, src/cell3d.py (ends insulated and ends cooled) and src/stage2_correction.py assemble constant matrices. These hold D4's constant density, specific heat and two conductivities, the can's constant shell conductance and capacity, a constant h and, in the corrected model, a constant end sink beta. Every exchange term is taken relative to a fixed ambient, and the source enters linearly.
+  - There is no radiation, no temperature-dependent property and no other term in T. Each model advances by backward Euler with one matrix per time step.
+  - The temperature rise is therefore linear in the heat history, and the kernels below are exact up to the linear solver's tolerance. Stage 1's conjugate-gradient solves of the 4680 are linear to their relative residual of 1e-12.
+- Two facts found in single-cell runs during the cost test. No coupled solve and no kernel was used.
+  1. Under ORegan2022 the discharges end long before the registered heat does.
+     - In the main case, a DFN held at Stage 4's area-weighted mean temperature of the resolved field reaches 2.5 V at 147.2 s (0.409 A h). The registered Chen2020 heat lasts 1,706.7 s. With its own heat in PyBaMM's lumped thermal model (D3's settings), the cut-off comes at 155.5 s.
+     - At 25 C it comes at 775.0 s at 2C and 2,258.1 s at 1.25C (both at Stage 4's mean temperatures), and at about 275 s at 3C (lumped).
+     - Chen2020 ends within 1 s of its heat's duration in each of these cases.
+  2. With D23's 2.5 to 4.2 V window, PyBaMM places 100 % state of charge at a negative-electrode stoichiometry of 0.9842 in ORegan2022 and 0.9106 in Chen2020. Both sets use Chen et al.'s graphite potential, which is flat at 0.092 V above 0.9.
+     - In a constant-current charge of one cell held at the ambient temperature, the particle surface next to the separator reaches the stoichiometric limit before 4.2 V at both of the specification's limits. The margin of D32 is then minus 192 mV (1,455 mA at 0 C) and minus 235 mV (3,395 mA at 25 C).
+     - PyBaMM 26.9 adds to each open-circuit potential a barrier of 1 mV at a stoichiometry 0.001 from its limit and 1,000 mV at the limit (pybamm/parameters/lithium_ion_parameters.py, U_asymptotes). These margins are that barrier, not an overpotential.
+     - Between 0.05C and 2C of the specification's C, the margin lies between plus 33 and plus 84 mV below some rate and between minus 192 and minus 272 mV above it. The change happens between 0.2C and 0.3C at 0 C, between 0.3C and 0.5C at 10 C, and between 0.5C and 0.7C at 25 C.
+     - Chen2020 gives minus 0.9 and plus 1.9 mV at the two limits, and its margin changes sign smoothly near 0.30C (0 C), 0.45C (10 C) and 0.72C (25 C).
+  - The author chose on 16 November, after reading these facts, to keep ORegan2022 registered and Chen2020 as the bracket, as the brief has it. Every reading is reported under both sets.
+
+D28. A0.4, the cost test, and what it fixes.
+- Timings on this machine (two cores, 7 GB of memory):
+  - Resolved step responses for nine groups' loads:
+    - 21700: SuperLU factorises in 7.1 s, then takes 0.23 s per step (25 ms per load).
+    - 4680: Stage 1's conjugate gradients take 1.0 s per load and step (27 iterations). SuperLU on the same matrix factorises in 122 s and then takes 1.6 s per step for nine loads (0.18 s per load), with a peak memory of 5.5 GB.
+  - The coupled solve of D30 with 15 groups and the temperature inputs changed at every step:
+    - a 2C, 25 C discharge in 1 s steps: 769 steps in 110 s (ORegan2022);
+    - a 2C, minus 5 C discharge: 1,709 steps in 104 s (Chen2020);
+    - a 1,455 mA charge from 0 % at 0 C in 10 s steps: 152 s (ORegan2022) and 75 s (Chen2020).
+  - One DFN alone takes 4 to 13 ms per step.
+  - The full case set below comes to about 15 hours of computing, which this machine can run, so no reduced set is proposed.
+- Groups: G = 15 in both cells. The 21700's 45 units form 15 groups of 3. The 4680's 111 units form groups whose edges are the integers nearest 111 k / 15, that is, groups of 7 or 8 units. The brief's minimum is 9 groups. 15 was chosen with V4 in view.
+  - Stage 4's proxy evaluated at group level from its stored time-averaged temperatures (main case, resolved field) gives a share spread of 5.020 % with 9 groups, 5.279 % with 15, 5.402 % with 18, 5.535 % with 30 and 5.542 % with 45, the unit level.
+  - Doubling 9 groups therefore changes the spread by 7.6 %, more than V4 allows. Doubling 15 changes it by 4.8 %.
+  - The radial field's relative spread error and the area-weighted standard deviation of the shares change by less than 1 % between 9 and 45 groups.
+- Time steps:
+  - Each discharge case runs on the time grid of its registered heat (t_end / ceil(t_end / 1 s), the grid of Stages 1 to 4), so that its one-way temperatures are Stage 4's at every step.
+  - Charges run in steps of 10 s, and every kernel is computed again on that grid.
+  - V3 halves both.
+- Linear solvers: Stage 1's SuperLU for the 21700 and for the one-dimensional models. For the 4680's resolved cell, SuperLU on Stage 1's matrices, where Stage 1 used conjugate gradients to a relative residual of 1e-12. It is the same discrete system, solved directly, and P1 measures the difference.
+
+D29. Part A, the groups and the kernels (src/stage5_kernels.py).
+- Group g holds its units' electrode area: W_g = sum of w_i over its units (D24), and the W_g sum to 1. A group's temperature is the area-weighted mean of its units' temperatures, the units as Stage 1 defines them: the exact annulus average in the one-dimensional models (D7), and Stage 1's sampled annulus average in the resolved cell (D10).
+- A group's heat is uniform over its annulus and over the full height. A real roll's heat varies along the height, with the tabs; that variation is left out here and stated as a limit.
+  - In the one-dimensional models the load of group j is the exact annulus integral of the basis functions, which is the unnormalised rows of Stage 1's unit operator.
+  - In the resolved cell it is the exact integral of the basis functions over the part of each prism of the mesh inside the annulus. Integrated over the height of a prism, the six basis functions of its vertex-order split are quadratics in the triangle's barycentric coordinates. They are integrated exactly over each sub-triangle wholly inside one group (a three-point rule exact for quadratics). The triangles cut by a group's boundary are subdivided adaptively to 12 levels, and at the last level each quadrature point counts towards the group it lies in.
+  - The group loads sum to Stage 1's uniform load to round-off, and each is scaled as Stage 1's source is (the exact volume over the mesh volume). Each group's mesh volume is reported against its exact annulus.
+- The step response S_ij(k) is the rise of unit i's temperature at step k when group j is heated at 1 W/m^3 from step 1 on, starting from the ambient. It is computed with the same matrices, the same backward Euler steps and the same time step as the model's own runs. The group responses are S_gj(k), the area-weighted means over group g's units. The response to uniform heat is the sum over j.
+- Each response is stepped until max |S(k) - S_inf| <= 1e-8 max |S_inf|, where S_inf is the model's exact discrete steady state, and at least to the longest archived discharge on that grid. Past that step it is held at S_inf, and the truncation is reported.
+- The convolution: T_i(k) = T_amb + sum over m from 1 to k and over j of S_ij(k - m + 1) (q_j(m) - q_j(m - 1)), with q_j(0) = 0. Here q_j(m) is group j's heat per unit volume (W/m^3) at the end of step m. It is the same sum the backward Euler steps make, so it reproduces each solver step by step.
+- Kernels are computed for the radial model, for the resolved cell with the ends insulated and with them cooled, and for the end-corrected model (beta of D18 with the ends cooled; with the ends insulated beta = 0, so it is the radial model).
+  - Grids: the 21700's four registered discharge grids (2C at minus 5 C, 2C and 1.25C at 25 C, 3C at 25 C), with the ends insulated on the first only. The 4680's grid for 2C at minus 5 C. The 10 s charge grid for both cells. The grids V3 and V4 need.
+  - The kernels are stored in results/stage5_kernels in single precision, as group responses, the units' uniform-heat response and, for the main case's grid, every unit's response to every group. The computations use double precision.
+
+D30. Part B, the coupled solve (src/stage5_coupled.py).
+- Each group is PyBaMM 26.9.0.0's Doyle-Fuller-Newman model with D23's default isothermal options, plus "calculate heat source for isothermal models": "true", which adds the heat without changing the electrochemistry.
+  - "Ambient temperature [K]" and "Initial temperature [K]" are the group's temperature, an input updated at every step.
+  - The model uses PyBaMM's default mesh (20 points in each electrode, in the separator and in each particle radius) and the IDAKLU solver with rtol 1e-6 and atol 1e-8.
+  - Both sets run on the 2.5 to 4.2 V window of D23. The initial concentrations are the stoichiometries PyBaMM gives for 100 % (discharge) or 0 % (charge) state of charge. As D23 notes, these are placed at the reference temperature. They are written into the parameter set, so that the temperature can be an input.
+- Each group's model is the full cell run at that group's current density: its current I_g is what the whole electrode area would carry at that density. The cell's current is I_app = sum of W_g I_g, and group g's share is I_g / I_app. The 4680 uses the same model at the same current per unit area, with its own weights and kernels.
+- All groups share one terminal voltage. The G currents and the voltage V are unknowns of one differential-algebraic system, alongside every group's own states. Its equations are the groups' models, V_g = V for each group, and the sum of W_g I_g = I_app.
+  - IDAKLU's Newton iteration solves these at every internal step. That is the root search for the voltage, done at every step of the solver rather than once per thermal step.
+  - The system is built from G copies of PyBaMM's model with every state variable renamed.
+  - V5 checks it against the literal route, in which separate models are stepped and the voltage is found by a root search at each step.
+- Stepping: the system advances one thermal step at a time. Each group's temperature is held over the step at its value at the step's start, the latest the convolution gives, and the heat at the step's end enters the convolution for the next temperature. This operator splitting puts the temperature one step behind the electrochemistry. V3 tests it.
+- Heat, two ways:
+  - Two-way (registered): q_g = group g's "Total heating [W]" divided by the 21700's volume (Stage 1's normalisation, D6, for both cells).
+  - One-way (the link to Stage 4): the registered Chen2020 heat q(t) of Stages 1 to 4 in every group, on the archive's grid, so that the group temperatures are Stage 4's at every step.
+  - The rule the brief fixes for one-way heat: past the archive's end, the temperatures are held at their last values. The number of runs and the seconds for which it acts are reported.
+- The single-unit model (B3) is one such DFN at T_ave(k) = sum of w_i T_i(k) = sum of W_g T_g(k), the area-weighted mean of the units, which is the paper's volume-averaged temperature. It sees the same thermal model and the same heat rule. Under one-way heat that is the field of the registered heat. Under two-way heat it is the field its own heat makes when applied uniformly. It is run once under each kernel.
+- A discharge ends when the common voltage reaches 2.5 V, and a charge when it reaches 4.2 V (solver events).
+- Sets: ORegan2022 is registered and Chen2020 is the bracket (D27).
+
+D31. Part C, the discharge readings.
+- Cases: Stage 4's five (D22) and the M50 at 3C and 25 C with the ends cooled, the condition of the paper's 3.45 %. Each runs under the radial, resolved and end-corrected kernels, with two-way heat (registered) and one-way heat, and under both sets.
+- C1, the penalty: the single-unit model's discharge energy to 2.5 V over the coupled model's, less one. Each energy is the integral of V I_app by the trapezoidal rule over the step outputs through the cut-off. The same is done for capacity, I_app t_cut / 3600.
+- C2, the shares:
+  - s_g(t) = I_g / I_app at every step output.
+  - The spread at each output is the largest share minus the smallest; its time average is by the trapezoidal rule over [0, t_cut], starting at t = 0 where every share is 1.
+  - The area-weighted standard deviation of the shares, the time-averaged innermost and outermost shares, and the innermost group's share over time are reported beside it.
+  - The reversal time is the first time at which the innermost share, having risen above 1, falls below 1, interpolated linearly between outputs. A run without one is reported as having none.
+- C3: Stage 4's proxy (its share spread, 5.54 % in the main case, and its spread errors) beside the coupled time-averaged spreads under one-way heat, and the coupled spread errors.
+  - Because the coupled discharge can end long before the archive's (D27), the proxy is also evaluated like for like: Stage 4's R(T) procedure (D23 and D24, ORegan2022 at 100 %) at the temperatures time-averaged over the coupled run's own window [0, t_cut], both at the unit level and at the group level.
+- C4: the radial and end-corrected kernels' errors against the resolved kernel:
+  - in the penalty, relative and in percentage points;
+  - in the time-averaged spread, relative;
+  - in the time-averaged innermost and outermost shares, in percentage points;
+  - in the reversal time, in seconds.
+- Ranges: minus 5 C lies outside both sets' measured ranges (D23). Every minus 5 C number is an extrapolation of the set, not of the thermal model, and is reported as such.
+
+D32. Part D, the charge readings.
+- Cases: a constant-current charge from 0 % state of charge at rest, with every group at the ambient, to a common voltage of 4.2 V, with the ends cooled, in the M50 and the 4680.
+  - Rates are in the specification's C (1C = 4.85 A in the M50; the 4680 at the same current per unit area).
+  - The specification's two limits: 0.3C (1,455 mA) at 0 C and 0.7C (3,395 mA) at 25 C.
+  - Brackets outside the specification's charging limits: 0.7C at 0 C, and 1C (4,850 mA) and 2C (9,700 mA) at 25 C.
+  - No case runs below 0 C. 0 C lies below ORegan2022's measured ranges for the kinetics (15 C) and solid diffusion (5 C) (D23), and every 0 C and 10 C number says so.
+- D1, the margin: the smallest value of phi_s,n minus phi_e, the negative electrode's solid potential less the electrolyte's. The minimum is taken over the charge (every step output and the cut-off), over the negative electrode's 20 nodes and its separator-interface value (PyBaMM's "Negative electrode surface potential difference [V]" and "... at separator interface [V]"), and over the groups.
+  - The group that holds it, the time and the place are recorded.
+  - It is the model's own variable, and no plating reaction is added. A negative margin means lithium deposition is thermodynamically possible there; it is not an amount of plated lithium.
+  - Under ORegan2022 a margin of minus 0.1 V or less reflects the barrier at the stoichiometric limit (D27).
+- D2: the margin for the single-unit model and for the coupled model under each kernel, with two-way heat, under both sets.
+- D3, the plating-limited rate: at ambients of 0, 10 and 25 C, in both cells, for the single-unit model and the coupled model under each kernel, with two-way heat, under both sets.
+  - A trial passes if the margin stays at or above zero until 4.2 V. A trial stops as soon as the margin falls below zero, which fails it.
+  - Single-unit model: trials at 0.05C, 0.10C, 0.15C and so on upward until the first failure. Coupled model: the scan starts at the single-unit model's rate under the same kernel less 0.10C, rounded down to 0.01C (at least 0.05C); if that start fails, it steps down by 0.05C until a trial passes. In both, the scan then steps up by 0.05C to the first failure.
+  - That 0.05C bracket is halved three times, to 0.00625C. The reading is the largest passing rate, with the smallest failing rate beside it.
+  - For P9's four rates (0 C, resolved kernel, single-unit and coupled, both cells, ORegan2022), the halving continues to 0.001C, and P9 is scored on those values.
+  - Below the first failure the margin is taken to rise with falling rate. This was seen in the single-cell scans of D27 and is not tested for each coupled model.
+  - The rates describe this parameter set, an energy cell, and the 4680 inherits it as the paper assumes. They do not describe a fast-charging cell.
+
+D33. Checks, fixed before the predictions:
+- V1:
+  - P1's comparison.
+  - Reciprocity: with each group's mean taken with its own load as the weight, the group volume times S_ij(k) equals the transpose at every step within 1e-9 of the largest value.
+  - The difference between that mean and the sampled group mean of D29.
+- V2: every group's temperature set to the single-unit model's T_ave in the main case (one-way heat, resolved kernel, ORegan2022). The coupled solve matches the single-unit model within 1 mV in voltage at every step and within 0.1 % in capacity.
+- V3:
+  - In every coupled run, |sum of W_g I_g - I_app| below 1e-6 I_app at every step output.
+  - The time step halved, with every kernel recomputed on the halved grid, in the main case and in one charge case (the M50 at 1,455 mA and 0 C). Each registered reading changes by less than 1 %.
+- V4: G doubled to 30 (groups of 1 or 2 units in the M50) in the same two cases. Each registered reading changes by less than 5 %.
+  - The registered readings for V3 and V4 are:
+    - in the main case, the energy and capacity penalties under each kernel with two-way heat, the time-averaged spread under each kernel with both heat rules, and the reversal time where there is one;
+    - in the charge case, the margin under each kernel and the charge capacity at 4.2 V.
+- V5, the second route, in the main case (two-way heat, resolved kernel, ORegan2022):
+  - G separate DFNs in PyBaMM's voltage mode, each with its voltage linear in time over each step.
+  - The step's end voltage is found by a secant search on the current balance at the end of the step, to 1e-8 of I_app. Every group model is stepped from its state at the start of the step for each trial voltage.
+  - The temperature and heat rules are the same.
+  - Every group's share at every step agrees with the stepwise route within 0.5 % of its value.
+- V6: for the coupled M50 at 1,455 mA and 0 C (resolved kernel, ORegan2022), phi_s,n and phi_e at the negative electrode's nodes are stored for every group and step. Separate code, using no PyBaMM variable, recomputes the margin from them: the node minimum, and the interface value by linear extrapolation from the two nodes next to the separator.
+- Then an independent read of every registered number and verdict by a separate agent that did not see the runs being made.
+
+D34. The predictions are the brief's P1 to P9, in predictions_stage5.md with their expectations and scoring rules. They are committed and pushed after Part A0 (D27 and D28) and before any kernel is computed or any coupled solve is run. Stage 1 to 4 code and results are not edited; Stage 5 adds new files only.
