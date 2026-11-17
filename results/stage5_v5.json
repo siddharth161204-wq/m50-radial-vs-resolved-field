@@ -1,0 +1,19 @@
+{
+ "case": "21700_b_m5C_2C",
+ "set": "ORegan2022",
+ "kernel": "resolved",
+ "G": 15,
+ "steps_compared": 171,
+ "dt": 0.9998503807850029,
+ "max_rel_share_difference": 0.0003674257625722044,
+ "step_of_max": 165,
+ "group_of_max": 15,
+ "max_abs_voltage_difference_V": 0.006537299137077124,
+ "max_current_balance_residual": 9.914535148425329e-09,
+ "secant_iterations_max": 6,
+ "secant_iterations_mean": 4.12280701754386,
+ "route2_last_full_step_t_s": 169.97456473345048,
+ "route1_cutoff_t_s": 170.426917454836,
+ "within_0.5_percent": true,
+ "wall_s": 227.16691517829895
+}
