@@ -501,14 +501,27 @@ CASE_TICK = {"21700_b_m5C_2C": "M50\n2C, -5 C\ncooled", "21700_b_p25C_2C": "M50\
              "4680_b_m5C_2C": "4680\n2C, -5 C\ncooled", "21700_b_p25C_3C": "M50\n3C, 25 C\ncooled"}
 
 
+PAPER_PENALTY = {"21700_b_p25C_3C": 3.45, "21700_b_m5C_2C": 11.32, "4680_b_m5C_2C": 11.45}   # % (D27; context)
+
+
+def posthoc_rates():
+    """The post hoc single-cell rates with 80 points per particle radius under ORegan2022 (D35), if present."""
+    p = os.path.join(R, "stage5_posthoc_mesh.json")
+    if not os.path.exists(p):
+        return None
+    r = json.load(open(p))["results"].get("ORegan2022", {}).get("80", {}).get("plating_limited_rate_at_ambient")
+    return None if not r else [(float(T), v["rate_spec_C"]) for T, v in r.items() if v.get("rate_spec_C")]
+
+
 def figure(rows_d, rows_s, rows_l):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    from matplotlib.lines import Line2D
     plt.rcParams.update({"font.size": 7, "axes.titlesize": 7.5, "legend.fontsize": 6.0, "xtick.labelsize": 6.5,
                          "ytick.labelsize": 6.5, "axes.spines.top": False, "axes.spines.right": False,
                          "axes.linewidth": 0.6})
-    fig, ax = plt.subplots(2, 2, figsize=(7.4, 5.6))
+    fig, ax = plt.subplots(2, 2, figsize=(7.4, 6.0))
     # (a) the kernels: uniform-heat step response of the innermost and outermost groups, main grid
     a = ax[0, 0]
     for label in ("resolved", "radial"):
@@ -522,18 +535,19 @@ def figure(rows_d, rows_s, rows_l):
     a.set_ylabel("temperature rise (K per 100 kW/m$^3$)")
     a.set_title("(a) Kernel, M50, ends cooled: rise under uniform heat", loc="left")
     a.legend(frameon=False, loc="lower right")
-    # (b) the shares over time in the main case, one-way heat (the proxy's heat), with the proxy marked for the
-    # resolved kernel at group level: over the coupled run's own window and over the heat's full duration (Stage 4)
+    # (b) the shares over time in the main case, one-way heat (the proxy's heat), under Chen2020, which settles at the
+    # registered mesh (D35); the proxy's group-level shares (Stage 4's procedure, temperatures averaged over the run)
     b = ax[0, 1]
+    pset_b = "Chen2020"
     for label in LABELS:
-        n = RN.run_name("C", "21700_b_m5C_2C", label, "ORegan2022", "one-way", False, S5.G_REG)
+        n = RN.run_name("C", "21700_b_m5C_2C", label, pset_b, "one-way", False, S5.G_REG)
         if not exists(n):
             continue
         r = SC.load_run(n)
         sh = r["I"] / r["meta"]["I_app_A"]
         b.plot(r["t"], 100 * sh[:, 0], color=COL[label], lw=1.3, label=NAME[label])
         b.plot(r["t"], 100 * sh[:, -1], color=COL[label], lw=1.1, ls="--")
-    n = RN.run_name("C", "21700_b_m5C_2C", "resolved", "ORegan2022", "one-way", False, S5.G_REG)
+    n = RN.run_name("C", "21700_b_m5C_2C", "resolved", pset_b, "one-way", False, S5.G_REG)
     if exists(n):
         r = SC.load_run(n)
         k = kernel_for("21700_b_m5C_2C", "resolved")
@@ -541,72 +555,84 @@ def figure(rows_d, rows_s, rows_l):
         Tu = np.vstack([np.full(k.N, -5.0), -5.0 + S5.conv_series(k.S_unit_uniform[:, :, None],
                                                                   k.S_inf_unit_uniform[:, None], q)])
         Tg = Tu @ S5.unit_to_group_matrix(k.N, k.G).T
-        Rof = rt_table("ORegan2022")
-        t_full = S5.grid("m5C_2C")[2]
-        for tc, ls, lab in ((float(r["t"][-1]), "-.", f"proxy, mean over the run's {float(r['t'][-1]):.0f} s"),
-                            (t_full, ":", f"proxy, mean over the heat's {t_full:,.0f} s (Stage 4)")):
-            _, sp_ = proxy_spread(window_average(Tg, k.dt, tc, -5.0), k.W, Rof)
-            for j, v in enumerate((sp_[0], sp_[-1])):
-                b.plot([r["t"][-1] * 0.9, r["t"][-1] * 1.02], [100 * v] * 2, color="#0b0b0b", lw=0.8, ls=ls,
-                       label=lab if j == 0 else None)
+        _, sp_ = proxy_spread(window_average(Tg, k.dt, float(r["t"][-1]), -5.0), k.W, rt_table(pset_b))
+        tl = float(r["t"][-1])
+        for j, v in enumerate((sp_[0], sp_[-1])):
+            b.plot([0.0, tl], [100 * v] * 2, color="#0b0b0b", lw=0.8, ls=":",
+                   label="proxy (Stage 4), resolved cell" if j == 0 else None)
     b.axhline(100, color="#0b0b0b", lw=0.5)
     lo_, hi_ = b.get_ylim()
-    b.set_ylim(min(lo_, 100 - 1.5 * (100 - lo_)), hi_ + 0.5)
+    b.set_ylim(lo_ - 1.6 * (hi_ - lo_) / 3.0, hi_ + 0.1 * (hi_ - lo_))
     b.text(0.02, 0.97, "innermost group (solid)", transform=b.transAxes, fontsize=5.6, va="top")
-    b.text(0.02, 0.40, "outermost group (dashed)", transform=b.transAxes, fontsize=5.6, va="top")
+    b.text(0.02, 0.385, "outermost group (dashed)", transform=b.transAxes, fontsize=5.6, va="top")
     b.set_xlabel("time (s)")
     b.set_ylabel("group current density, % of the cell mean")
-    b.set_title("(b) Shares, M50, 2C, -5 C, one-way heat, ORegan2022", loc="left")
-    b.legend(frameon=False, loc="lower left", ncol=1, fontsize=5.2)
-    # (c) the penalty by case and kernel, two-way heat
+    b.set_title("(b) Shares, M50, 2C, -5 C, one-way heat, Chen2020", loc="left")
+    b.legend(frameon=False, loc="lower left", ncol=1, fontsize=5.4)
+    # (c) the size of the penalty by case, kernel and set, two-way heat, on a log scale: filled where the single-unit
+    # model gives more energy (the paper's direction), open where it gives less; the paper's values as ticks
     c = ax[1, 0]
     cases = list(RN.DISCHARGE_CASES)
     x = np.arange(len(cases))
     for i, label in enumerate(LABELS):
-        for pset, alpha in (("ORegan2022", 1.0),):
-            vals = []
-            for cs in cases:
+        for pset, mk, dx in (("ORegan2022", "o", -0.12), ("Chen2020", "D", 0.12)):
+            for j, cs in enumerate(cases):
                 r = find(rows_d, case=cs, set=pset, heat="two-way", kernel=label)
-                vals.append(100 * r["penalty_energy"] if r else np.nan)
-            c.bar(x + (i - 1) * 0.26, vals, 0.24, color=COL[label], label=f"{NAME[label]}, ORegan2022")
-        vals = []
-        for cs in cases:
-            r = find(rows_d, case=cs, set="Chen2020", heat="two-way", kernel=label)
-            vals.append(100 * r["penalty_energy"] if r else np.nan)
-        c.plot(x + (i - 1) * 0.26, vals, ls="none", marker="D", ms=3.2, mfc="white", mec=COL[label], mew=0.9,
-               label=f"{NAME[label]}, Chen2020")
-    c.axhline(0, color="#0b0b0b", lw=0.6)
+                if not r or r.get("identical_to_radial"):
+                    continue
+                v = 100 * r["penalty_energy"]
+                c.plot(x[j] + dx + (i - 1) * 0.07, max(abs(v), 1e-4), ls="none", marker=mk, ms=3.6, mec=COL[label],
+                       mew=0.9, mfc=COL[label] if v > 0 else "white")
+    for j, cs in enumerate(cases):
+        if cs in PAPER_PENALTY:
+            c.plot([x[j] - 0.3, x[j] + 0.3], [PAPER_PENALTY[cs]] * 2, color="#0b0b0b", lw=1.2)
+    c.set_yscale("log")
+    c.set_ylim(5e-5, 200)
     c.set_xticks(x, [CASE_TICK[k] for k in cases])
-    c.set_ylabel("single-unit energy over coupled, less one (%)")
+    c.set_ylabel("|single-unit energy over coupled, less one| (%)")
     c.set_title("(c) Multi-unit penalty, two-way heat", loc="left")
-    c.legend(frameon=False, loc="best", ncol=2)
-    # (d) the plating-limited rate against ambient, both cells
+    hc = [Line2D([], [], color=COL[lb], marker="o", ls="none", ms=3.6, label=NAME[lb]) for lb in LABELS]
+    hc += [Line2D([], [], color="#52514e", marker="o", ls="none", ms=3.6, mfc="white", label="ORegan2022 (registered)"),
+           Line2D([], [], color="#52514e", marker="D", ls="none", ms=3.4, mfc="white", label="Chen2020"),
+           Line2D([], [], color="#52514e", marker="o", ls="none", ms=3.6, label="filled: single-unit gives more"),
+           Line2D([], [], color="#0b0b0b", lw=1.2, label="the paper's values")]
+    c.legend(handles=hc, frameon=False, loc="center", bbox_to_anchor=(0.47, 0.60), ncol=2, fontsize=5.2)
+    # (d) the plating-limited rate against ambient, both cells and sets
     d = ax[1, 1]
-    for cell, mk in (("21700", "o"), ("4680", "s")):
-        for label in LABELS:
-            for model, ls in (("coupled", "-"), ("single", ":")):
-                pts = []
-                for Ta in (0.0, 10.0, 25.0):
-                    r = find(rows_l, cell=cell, set="ORegan2022", T_amb_C=Ta, kernel=label, model=model)
-                    if r and r["rate_spec_C"] is not None:
-                        pts.append((Ta, r["rate_spec_C"]))
-                if pts:
-                    xs, ys = zip(*pts)
-                    d.plot(xs, ys, color=COL[label], ls=ls, marker=mk, ms=3.0,
-                           mfc=COL[label] if model == "coupled" else "white", lw=1.0)
+    for pset, ls_c in (("Chen2020", "-"), ("ORegan2022", "--")):
+        for cell, mk in (("21700", "o"), ("4680", "s")):
+            for label in LABELS:
+                for model in ("coupled", "single"):
+                    pts = []
+                    for Ta in (0.0, 10.0, 25.0):
+                        r = find(rows_l, cell=cell, set=pset, T_amb_C=Ta, kernel=label, model=model)
+                        if r and r["rate_spec_C"] is not None:
+                            pts.append((Ta, r["fine_rate_spec_C"] or r["rate_spec_C"]))
+                    if pts:
+                        xs, ys = zip(*pts)
+                        d.plot(xs, ys, color=COL[label], ls=ls_c, marker=mk, ms=3.0 if model == "coupled" else 3.4,
+                               mfc=COL[label] if model == "coupled" else "white", lw=1.1 if model == "coupled" else 0.6)
+    ph = posthoc_rates()
+    if ph:
+        xs, ys = zip(*sorted(ph))
+        d.plot(xs, ys, color="#0b0b0b", ls="none", marker="^", ms=4.0, mfc="white", mew=0.9)
     d.step([0, 25, 45], [0.3, 0.7, 0.7], where="post", color="#0b0b0b", lw=0.8)
-    d.annotate("specification's maximum\ncontinuous charge", (12.5, 0.305), fontsize=5.5, va="bottom")
+    d.annotate("specification's maximum continuous charge", (5.0, 0.29), fontsize=5.5, va="top")
     d.set_xlim(-1, 27)
+    d.set_ylim(0.2, 1.3)
     d.set_xlabel("ambient temperature (C)")
     d.set_ylabel("plating-limited rate (specification's C, 4.85 A)")
-    d.set_title("(d) Plating-limited rate, ORegan2022", loc="left")
-    from matplotlib.lines import Line2D
+    d.set_title("(d) Plating-limited rate, two-way heat", loc="left")
     hd = [Line2D([], [], color=COL[lb], lw=1.2, label=NAME[lb]) for lb in LABELS]
-    hd += [Line2D([], [], color="#52514e", marker="o", ls="none", ms=3.5, label="M50"),
-           Line2D([], [], color="#52514e", marker="s", ls="none", ms=3.5, label="4680"),
-           Line2D([], [], color="#52514e", marker="o", ls="-", lw=1.0, ms=3.0, label="coupled (filled, solid)"),
-           Line2D([], [], color="#52514e", marker="o", mfc="white", ls=":", lw=1.0, ms=3.0, label="single-unit (open, dotted)")]
-    d.legend(handles=hd, frameon=False, loc="upper left", ncol=2, fontsize=5.4)
+    hd += [Line2D([], [], color="#52514e", ls="-", lw=1.0, label="Chen2020"),
+           Line2D([], [], color="#52514e", ls="--", lw=1.0, label="ORegan2022 (registered, 20 points)"),
+           Line2D([], [], color="#52514e", ls="-", marker="o", lw=1.1, ms=3.0, label="coupled (filled)"),
+           Line2D([], [], color="#52514e", ls="-", marker="o", mfc="white", lw=0.6, ms=3.4, label="single-unit (open)"),
+           Line2D([], [], color="#52514e", marker="o", ls="none", ms=3.0, label="M50"),
+           Line2D([], [], color="#52514e", marker="s", ls="none", ms=3.0, label="4680"),
+           Line2D([], [], color="#0b0b0b", marker="^", ls="none", ms=4.0, mfc="white",
+                  label="ORegan2022, 80 points, one cell\nat the ambient (post hoc)")]
+    d.legend(handles=hd, frameon=False, loc="upper left", ncol=2, fontsize=5.0)
     for a_ in ax.ravel():
         a_.grid(True, color="#e6e5e1", lw=0.5)
         a_.set_axisbelow(True)
