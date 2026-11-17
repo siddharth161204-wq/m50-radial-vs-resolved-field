@@ -124,7 +124,31 @@ def charge(cell, pset, cases=tuple(CHARGE_CASES), models=("radial", "resolved", 
 # ----------------------------------------------------------------------------------------------------------------
 # D3: the plating-limited rate
 # ----------------------------------------------------------------------------------------------------------------
+def _cache_path(cell, pset, Ta, kern, single):
+    """Optional store of finished trials (environment variable STAGE5_TRIAL_CACHE, a directory), so that a search
+    stopped by the machine resumes where it stopped. A stored trial is the same computation's own result."""
+    d = os.environ.get("STAGE5_TRIAL_CACHE")
+    if not d:
+        return None
+    os.makedirs(d, exist_ok=True)
+    k = os.path.basename(kern.path).replace(".npz", "")
+    return os.path.join(d, f"{cell}_{pset}_{Ta:g}C_{k}_{'single' if single else 'coupled'}.json")
+
+
 def trial(cell, pset, Ta, rate, kern, single):
+    cp = _cache_path(cell, pset, Ta, kern, single)
+    rkey = f"{round(rate, 6):.6f}"
+    if cp and rkey in _load(cp):
+        res = dict(_load(cp)[rkey])
+        res["from_cache"] = True
+        return res
+    res = _trial(cell, pset, Ta, rate, kern, single)
+    if cp:
+        _merge_save(cp, rkey, res)
+    return res
+
+
+def _trial(cell, pset, Ta, rate, kern, single):
     W = np.array([1.0]) if single else kern.W
     b = built_for(pset, 0.0, W, single)
     out = SC.run("charge", cell, pset, Ta, charge_current(rate), kern, heat="two-way", single=single, built=b,
@@ -195,12 +219,17 @@ def _load(path):
 
 
 def _merge_save(path, key, value):
-    """Merge one key into the search file (other processes may write other keys of it)."""
-    cur = _load(path)
-    cur[key] = value
-    tmp = path + f".tmp{os.getpid()}"
-    json.dump(cur, open(tmp, "w"), indent=1)
-    os.replace(tmp, path)
+    """Merge one key into the search file (other processes may write other keys of it), under a lock."""
+    import fcntl
+    with open(path + ".lock", "w") as lk:
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        cur = _load(path)
+        cur[key] = value
+        tmp = path + f".tmp{os.getpid()}"
+        with open(tmp, "w") as f:
+            json.dump(cur, f, indent=1)
+        os.replace(tmp, path)
+        fcntl.flock(lk, fcntl.LOCK_UN)
 
 
 def limit(cell, pset, Ta, models=("radial", "resolved", "corrected"), fine_resolved=False, G=S5.G_REG,

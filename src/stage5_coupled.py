@@ -142,13 +142,29 @@ class Stepper:
         self.f_scalar = casadi.Function("fs", [t, y] + [ps[k] for k in self.inputs],
                                         [casadi.vertcat(cs(douts["V"]), *[cs(douts[("I", g)]) for g in range(G)],
                                                         *[cs(douts[("Total heating [W]", g)]) for g in range(G)])])
-        self.f_margin = casadi.Function("fm", [t, y] + [ps[k] for k in self.inputs],
-                                        [casadi.vertcat(*[cs(douts[("Negative electrode surface potential difference [V]", g)]) for g in range(G)],
-                                                        *[cs(douts[("Negative electrode surface potential difference at separator interface [V]", g)]) for g in range(G)])])
-        self.f_pot = casadi.Function("fp", [t, y] + [ps[k] for k in self.inputs],
-                                     [casadi.vertcat(*[cs(douts[("Negative electrode potential [V]", g)]) for g in range(G)],
-                                                     *[cs(douts[("Negative electrolyte potential [V]", g)]) for g in range(G)])])
+        self._sym = (t, y, ps, cs, douts)
+        self._f_margin = self._f_pot = None       # built when first needed (memory)
         self.sol = None
+
+    @property
+    def f_margin(self):
+        if self._f_margin is None:
+            t, y, ps, cs, douts = self._sym
+            G = self.G
+            self._f_margin = casadi.Function("fm", [t, y] + [ps[k] for k in self.inputs],
+                                             [casadi.vertcat(*[cs(douts[("Negative electrode surface potential difference [V]", g)]) for g in range(G)],
+                                                             *[cs(douts[("Negative electrode surface potential difference at separator interface [V]", g)]) for g in range(G)])])
+        return self._f_margin
+
+    @property
+    def f_pot(self):
+        if self._f_pot is None:
+            t, y, ps, cs, douts = self._sym
+            G = self.G
+            self._f_pot = casadi.Function("fp", [t, y] + [ps[k] for k in self.inputs],
+                                          [casadi.vertcat(*[cs(douts[("Negative electrode potential [V]", g)]) for g in range(G)],
+                                                          *[cs(douts[("Negative electrolyte potential [V]", g)]) for g in range(G)])])
+        return self._f_pot
 
     def step(self, dt, inputs):
         self.sol = self.solver.step(self.sol, self.model, dt, inputs=inputs, save=False)
@@ -297,7 +313,11 @@ def save_run(out, name):
             arrs[k] = v.astype(np.int16)
         else:
             arrs[k] = v.astype(np.float32)
-    np.savez_compressed(os.path.join(S5.RUNDIR, name + ".npz"), meta=json.dumps(out["meta"]), **arrs)
+    path = os.path.join(S5.RUNDIR, name + ".npz")
+    tmp = path + f".tmp{os.getpid()}"
+    with open(tmp, "wb") as f:                        # written whole, then renamed, so a stopped job leaves no part file
+        np.savez_compressed(f, meta=json.dumps(out["meta"]), **arrs)
+    os.replace(tmp, path)
 
 
 def load_run(name):

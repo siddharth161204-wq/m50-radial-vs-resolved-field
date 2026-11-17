@@ -407,6 +407,66 @@ def paper_numbers(rows_d, rows_s, rows_c, rows_l):
     return out
 
 
+def summary_md(rows_d, rows_s, rows_c, rows_l, sc):
+    """Markdown tables of the registered readings, for the README (every number from the files above)."""
+    pc = lambda v: "" if v is None else f"{100 * v:+.2f}"
+    L = []
+    L.append("| Case | Kernel | Penalty, energy, ORegan2022 (%) | Chen2020 (%) | One-way heat, ORegan2022 (%) | "
+             "Coupled cut-off, ORegan2022 (s) | Share spread, ORegan2022 (%) | Spread vs resolved |")
+    L.append("|---|---|---|---|---|---|---|---|")
+    for case in RN.DISCHARGE_CASES:
+        for label in LABELS:
+            a = find(rows_d, case=case, set="ORegan2022", heat="two-way", kernel=label)
+            b = find(rows_d, case=case, set="Chen2020", heat="two-way", kernel=label)
+            c = find(rows_d, case=case, set="ORegan2022", heat="one-way", kernel=label)
+            sh = find(rows_s, case=case, set="ORegan2022", heat="two-way", kernel=label)
+            if not a:
+                continue
+            err = sh.get("spread_rel_error") if sh else None
+            L.append(f"| {CASE_TICK[case].replace(chr(10), ', ')} | {NAME[label]} | {pc(a['penalty_energy'])} | "
+                     f"{pc(b['penalty_energy']) if b else ''} | {pc(c['penalty_energy']) if c else ''} | "
+                     f"{a['t_cut_coupled_s']:.0f} | {100 * sh['spread_tavg']:.2f} | "
+                     f"{'' if err is None or label == 'resolved' else f'{100 * err:+.1f} %'} |")
+    L.append("")
+    L.append("| Case | Kernel | Coupled spread, one-way (%) | Proxy, Stage 4 (%) | Proxy over the run's window, units (%) | groups (%) |")
+    L.append("|---|---|---|---|---|---|")
+    for case in RN.DISCHARGE_CASES:
+        for label in LABELS:
+            sh = find(rows_s, case=case, set="ORegan2022", heat="one-way", kernel=label)
+            if not sh or "proxy_window_group_spread" not in sh:
+                continue
+            p4 = sh.get("proxy_stage4_spread")
+            L.append(f"| {CASE_TICK[case].replace(chr(10), ', ')} | {NAME[label]} | {100 * sh['spread_tavg']:.2f} | "
+                     f"{'' if p4 is None else f'{100 * p4:.2f}'} | {100 * sh['proxy_window_unit_spread']:.2f} | "
+                     f"{100 * sh['proxy_window_group_spread']:.2f} |")
+    L.append("")
+    L.append("| Cell | Charge | Kernel | Margin, coupled (mV) | group | Margin, single-unit (mV) | Chen2020 coupled (mV) |")
+    L.append("|---|---|---|---|---|---|---|")
+    for cell in ("21700", "4680"):
+        for case in RN.CHARGE_CASES:
+            for label in LABELS:
+                a = find(rows_c, cell=cell, case=case, set="ORegan2022", kernel=label, model="coupled")
+                b = find(rows_c, cell=cell, case=case, set="ORegan2022", kernel=label, model="single")
+                c = find(rows_c, cell=cell, case=case, set="Chen2020", kernel=label, model="coupled")
+                if not a:
+                    continue
+                chen = "" if not c else f"{1e3 * c['margin_V']:+.2f}"
+                L.append(f"| {'M50' if cell == '21700' else '4680'} | {case.replace('_', ' at ')} | {NAME[label]} | "
+                         f"{1e3 * a['margin_V']:+.2f} | {a['group']} | {1e3 * b['margin_V']:+.2f} | {chen} |")
+    L.append("")
+    L.append("| Cell | Ambient (C) | Kernel | Single-unit, ORegan2022 (C) | Coupled, ORegan2022 (C) | Single-unit, Chen2020 (C) | Coupled, Chen2020 (C) |")
+    L.append("|---|---|---|---|---|---|---|")
+    for cell in ("21700", "4680"):
+        for Ta in (0.0, 10.0, 25.0):
+            for label in LABELS:
+                v = [find(rows_l, cell=cell, set=ps, T_amb_C=Ta, kernel=label, model=m)
+                     for ps in ("ORegan2022", "Chen2020") for m in ("single", "coupled")]
+                f = lambda r: "" if not r or r["rate_spec_C"] is None else f"{r['rate_spec_C']:.4g}"
+                L.append(f"| {'M50' if cell == '21700' else '4680'} | {Ta:g} | {NAME[label]} | {f(v[0])} | {f(v[1])} | "
+                         f"{f(v[2])} | {f(v[3])} |")
+    return "\n".join(L) + "\n"
+
+
 # ---------------------------------------------------------------------------------------------------------------
 # the figure
 # ---------------------------------------------------------------------------------------------------------------
@@ -438,7 +498,8 @@ def figure(rows_d, rows_s, rows_l):
     a.set_ylabel("temperature rise (K per 100 kW/m$^3$)")
     a.set_title("(a) Kernel: response to uniform heat, M50", loc="left")
     a.legend(frameon=False, loc="lower right")
-    # (b) the shares over time in the main case, one-way heat (the proxy's heat), with the proxy marked
+    # (b) the shares over time in the main case, one-way heat (the proxy's heat), with the proxy marked for the
+    # resolved kernel at group level: over the coupled run's own window and over the heat's full duration (Stage 4)
     b = ax[0, 1]
     for label in LABELS:
         n = RN.run_name("C", "21700_b_m5C_2C", label, "ORegan2022", "one-way", False, S5.G_REG)
@@ -446,20 +507,29 @@ def figure(rows_d, rows_s, rows_l):
             continue
         r = SC.load_run(n)
         sh = r["I"] / r["meta"]["I_app_A"]
-        b.plot(r["t"], 100 * sh[:, 0], color=COL[label], lw=1.3, label=f"{NAME[label]}, innermost")
-        b.plot(r["t"], 100 * sh[:, -1], color=COL[label], lw=1.1, ls="--", label=f"{NAME[label]}, outermost")
-        row = find(rows_s, case="21700_b_m5C_2C", set="ORegan2022", heat="one-way", kernel=label)
-    p4 = stage4_proxy("21700_b_m5C_2C", "radial", "ORegan2022")
-    if p4:
-        for v, lab in ((p4["inner_resolved"], "proxy, unit 1"), (p4["outer_resolved"], "proxy, unit 45")):
-            b.axhline(100 * v, color=COL["resolved"], lw=0.6, ls=":")
-            b.annotate(f"Stage 4 proxy, {lab.split(', ')[1]}", (2, 100 * v), fontsize=5.5, color="#3d3d3a",
-                       va="bottom")
+        b.plot(r["t"], 100 * sh[:, 0], color=COL[label], lw=1.3, label=f"{NAME[label]}, innermost group")
+        b.plot(r["t"], 100 * sh[:, -1], color=COL[label], lw=1.1, ls="--", label=f"{NAME[label]}, outermost group")
+    n = RN.run_name("C", "21700_b_m5C_2C", "resolved", "ORegan2022", "one-way", False, S5.G_REG)
+    if exists(n):
+        r = SC.load_run(n)
+        k = kernel_for("21700_b_m5C_2C", "resolved")
+        q = S5.registered_heat_on_grid("m5C_2C")
+        Tu = np.vstack([np.full(k.N, -5.0), -5.0 + S5.conv_series(k.S_unit_uniform[:, :, None],
+                                                                  k.S_inf_unit_uniform[:, None], q)])
+        Tg = Tu @ S5.unit_to_group_matrix(k.N, k.G).T
+        Rof = rt_table("ORegan2022")
+        t_full = S5.grid("m5C_2C")[2]
+        for tc, ls, lab in ((float(r["t"][-1]), "-.", f"proxy, mean over the run's {float(r['t'][-1]):.0f} s"),
+                            (t_full, ":", f"proxy, mean over the heat's {t_full:,.0f} s (Stage 4)")):
+            _, sp_ = proxy_spread(window_average(Tg, k.dt, tc, -5.0), k.W, Rof)
+            for j, v in enumerate((sp_[0], sp_[-1])):
+                b.plot([r["t"][-1] * 0.9, r["t"][-1] * 1.02], [100 * v] * 2, color="#0b0b0b", lw=0.8, ls=ls,
+                       label=lab if j == 0 else None)
     b.axhline(100, color="#0b0b0b", lw=0.5)
     b.set_xlabel("time (s)")
     b.set_ylabel("group current density, % of the cell mean")
     b.set_title("(b) Shares, M50, 2C, -5 C, one-way heat, ORegan2022", loc="left")
-    b.legend(frameon=False, loc="center right", ncol=1)
+    b.legend(frameon=False, loc="upper left", ncol=1, fontsize=5.2)
     # (c) the penalty by case and kernel, two-way heat
     c = ax[1, 0]
     cases = list(RN.DISCHARGE_CASES)
@@ -528,6 +598,8 @@ def main():
     json.dump(paper_numbers(rows_d, rows_s, rows_c, rows_l), open(os.path.join(R, "stage5_paper_numbers.json"), "w"),
               indent=1)
     figure(rows_d, rows_s, rows_l)
+    with open(os.path.join(R, "stage5_summary.md"), "w") as f:
+        f.write(summary_md(rows_d, rows_s, rows_c, rows_l, sc))
     print(json.dumps(sc, indent=1))
 
 

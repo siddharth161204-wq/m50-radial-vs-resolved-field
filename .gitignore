@@ -3,3 +3,6 @@ __pycache__/
 .upload_tmp/
 verification/v4/*.jpg
 results/stage5_kernels/checkpoints/
+results/stage5_runs/*.lock
+results/stage5_runs/*.tmp*
+results/stage5_kernels/*.tmp*

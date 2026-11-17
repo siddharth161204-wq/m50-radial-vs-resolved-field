@@ -301,7 +301,10 @@ def compute(model_name, bc, cell, gridname, G=S5.G_REG, keep_units=False, verbos
     meta["resumed_from_checkpoint"] = bool(resume)
     out["meta"] = json.dumps(meta)
     path = S5.kernel_path(model_name, bc, cell, gridname, G)
-    np.savez_compressed(path, **out)
+    tmp = path + f".tmp{os.getpid()}"
+    with open(tmp, "wb") as f:                        # written whole, then renamed, so a stopped job leaves no part file
+        np.savez_compressed(f, **out)
+    os.replace(tmp, path)
     with open(path.replace(".npz", ".json"), "w") as f:
         json.dump(meta, f, indent=1)
     if os.path.exists(ck):
