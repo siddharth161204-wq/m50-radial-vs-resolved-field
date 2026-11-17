@@ -679,5 +679,107 @@
   "start": 0.43,
   "wall_s": 591.7130451202393,
   "kernel": "radial_lat_21700_charge10_G15.npz"
+ },
+ "resolved|coupled": {
+  "rate": 0.53625,
+  "fail_above": 0.5425,
+  "width": 0.006249999999999978,
+  "trials": [
+   {
+    "rate": 0.43,
+    "passed": true,
+    "status": "event: Maximum voltage",
+    "min_margin_V": 0.044876652542495885,
+    "group": 15,
+    "t_min_s": 7820.0,
+    "at_interface": true,
+    "t_end_s": 7847.884494279693,
+    "charge_Ah": 4.546323086894527,
+    "steps": 785,
+    "wall_s": 122.0199499130249
+   },
+   {
+    "rate": 0.48,
+    "passed": true,
+    "status": "event: Maximum voltage",
+    "min_margin_V": 0.04056845524793067,
+    "group": 15,
+    "t_min_s": 6945.003582914329,
+    "at_interface": true,
+    "t_end_s": 6945.003582914329,
+    "charge_Ah": 4.491102316951266,
+    "steps": 695,
+    "wall_s": 112.51036095619202
+   },
+   {
+    "rate": 0.53,
+    "passed": true,
+    "status": "event: Maximum voltage",
+    "min_margin_V": 0.034247437235698355,
+    "group": 15,
+    "t_min_s": 6207.642026976121,
+    "at_interface": true,
+    "t_end_s": 6207.642026976121,
+    "charge_Ah": 4.432428841761699,
+    "steps": 621,
+    "wall_s": 100.32459044456482
+   },
+   {
+    "rate": 0.58,
+    "passed": false,
+    "status": "negative margin",
+    "min_margin_V": -0.00030369664207689794,
+    "group": 15,
+    "t_min_s": 3980.0,
+    "at_interface": true,
+    "t_end_s": 3980.0,
+    "charge_Ah": 3.1099277777777776,
+    "steps": 398,
+    "wall_s": 57.33483600616455
+   },
+   {
+    "rate": 0.555,
+    "passed": false,
+    "status": "event: Maximum voltage",
+    "min_margin_V": -0.18642852873502413,
+    "group": 15,
+    "t_min_s": 4275.717245810684,
+    "at_interface": true,
+    "t_end_s": 4275.717245810684,
+    "charge_Ah": 3.196989415669697,
+    "steps": 428,
+    "wall_s": 58.29403614997864
+   },
+   {
+    "rate": 0.5425,
+    "passed": false,
+    "status": "negative margin",
+    "min_margin_V": -0.13512716562081378,
+    "group": 9,
+    "t_min_s": 4560.0,
+    "at_interface": true,
+    "t_end_s": 4560.0,
+    "charge_Ah": 3.3327583333333335,
+    "steps": 456,
+    "wall_s": 60.952791690826416
+   },
+   {
+    "rate": 0.53625,
+    "passed": true,
+    "status": "event: Maximum voltage",
+    "min_margin_V": 0.034189152823511704,
+    "group": 14,
+    "t_min_s": 6100.0,
+    "at_interface": true,
+    "t_end_s": 6139.985530780035,
+    "charge_Ah": 4.435819755075514,
+    "steps": 614,
+    "wall_s": 88.51997661590576
+   }
+  ],
+  "fine": false,
+  "start": 0.43,
+  "wall_s": 610.4557521343231,
+  "kernel": "resolved_b_21700_charge10_G15.npz"
  }
 }
