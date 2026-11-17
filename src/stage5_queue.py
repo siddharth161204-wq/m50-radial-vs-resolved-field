@@ -13,6 +13,28 @@ import stage5_common as S5  # noqa: E402
 import stage5_runs as RN  # noqa: E402
 
 
+def _release_after_runs():
+    """Return freed memory to the system after every run (garbage collection and malloc_trim); results unchanged."""
+    import ctypes
+    import gc
+    import stage5_coupled as SC
+    try:
+        libc = ctypes.CDLL("libc.so.6")
+    except OSError:
+        return
+    run = SC.run
+
+    def run_and_release(*a, **k):
+        out = run(*a, **k)
+        gc.collect()
+        libc.malloc_trim(0)
+        return out
+    SC.run = run_and_release
+
+
+_release_after_runs()
+
+
 def need(cell, ends, grids, G=S5.G_REG):
     out = []
     for label, (mdl, bc) in RN.models_for(ends).items():
