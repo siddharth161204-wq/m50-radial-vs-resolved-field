@@ -204,6 +204,9 @@ if __name__ == "__main__":
     ap.add_argument("queue")
     ap.add_argument("--claims", help="a directory of claims shared by the processes working through the same jobs")
     ap.add_argument("--reverse", action="store_true")
+    ap.add_argument("--one", action="store_true",
+                    help="run the next job that can be claimed and exit (exit code 3 when none is left), so that each "
+                         "job runs in a fresh process and holds only the models it needs")
     a = ap.parse_args()
     jobs = list(QUEUES[a.queue])
     if a.reverse:
@@ -217,6 +220,10 @@ if __name__ == "__main__":
             do(job)
             with open(p, "a") as f:
                 f.write("done\n")
+            if a.one:
+                sys.exit(0)
         else:
             do(job)
     print(f"=== {time.strftime('%H:%M:%S', time.gmtime())} queue {a.queue} done", flush=True)
+    if a.one:
+        sys.exit(3)
