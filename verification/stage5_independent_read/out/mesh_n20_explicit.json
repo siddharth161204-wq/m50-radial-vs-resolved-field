@@ -25,7 +25,7 @@
   "raw_vs_pybamm_interface_max_abs_V": 2.220446049250313e-16,
   "margin_min_on_10s_grid_only_V": -0.03353532815285448,
   "termination": "event: Maximum voltage [V]",
-  "wall_s": 8.594777345657349,
+  "wall_s": 8.700882196426392,
   "points": {
    "x_n": 20,
    "x_s": 20,
@@ -53,7 +53,7 @@
   "capacity_Ah": 2.7176844366204067,
   "energy_Wh": 8.954605963535403,
   "termination": "event: Minimum voltage [V]",
-  "wall_s": 10.172834873199463,
+  "wall_s": 10.175544500350952,
   "n_outputs": 16480
  },
  "stored": {
@@ -75,6 +75,6 @@
   "charge_t_end_s": 0.0,
   "discharge_t_cut_s": 0.0
  },
- "peak_memory": "268984 kB",
+ "peak_memory": "268740 kB",
  "initial_state": "stoichiometries written into the set (D30's way)"
 }

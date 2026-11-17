@@ -378,6 +378,19 @@
    ],
    "reversal_s": 1356.0040804903167
   },
+  "21700_a_m5C_2C|Chen2020|one-way|resolved": {
+   "penalty_energy": 2.2088749367599192e-05,
+   "penalty_capacity": 2.332319657116777e-05,
+   "Q_coupled_Ah": 4.7444658107737565,
+   "Q_single_Ah": 4.744576466882487,
+   "t_cut_coupled_s": 1708.0076918785521,
+   "spread_tavg": 0.00903935224403306,
+   "group_rate_range_C": [
+    1.9676815200897597,
+    2.0279985817472324
+   ],
+   "reversal_s": 1355.8722907178017
+  },
   "21700_a_m5C_2C|Chen2020|one-way|corrected": {
    "penalty_energy": 2.5520077327589874e-05,
    "penalty_capacity": 2.694140163317371e-05,
@@ -546,6 +559,84 @@
     2.072369142212918
    ],
    "reversal_s": 1364.7582565794316
+  },
+  "21700_b_p25C_3C|Chen2020|two-way|radial": {
+   "penalty_energy": -7.500411614780322e-05,
+   "penalty_capacity": -0.00010848739996960344,
+   "Q_coupled_Ah": 2.327543280342403,
+   "Q_single_Ah": 2.327290771223602,
+   "t_cut_coupled_s": 558.6103872821767,
+   "spread_tavg": 0.006851683350583481,
+   "group_rate_range_C": [
+    2.9127150768846053,
+    3.0610741041424445
+   ],
+   "reversal_s": 479.58664101854373
+  },
+  "21700_b_p25C_3C|Chen2020|two-way|resolved": {
+   "penalty_energy": -4.348604469384121e-05,
+   "penalty_capacity": -6.090768170718963e-05,
+   "Q_coupled_Ah": 2.326886953135594,
+   "Q_single_Ah": 2.326745227845684,
+   "t_cut_coupled_s": 558.4528687525425,
+   "spread_tavg": 0.005210744635488648,
+   "group_rate_range_C": [
+    2.9262998721297686,
+    3.0595055462683645
+   ],
+   "reversal_s": 478.54466172172766
+  },
+  "21700_b_p25C_3C|Chen2020|two-way|corrected": {
+   "penalty_energy": -4.856635124828035e-05,
+   "penalty_capacity": -6.809691118547789e-05,
+   "Q_coupled_Ah": 2.3269402587311223,
+   "Q_single_Ah": 2.3267818012869896,
+   "t_cut_coupled_s": 558.4656620954694,
+   "spread_tavg": 0.005470399214227357,
+   "group_rate_range_C": [
+    2.9232934133900446,
+    3.0615309027904383
+   ],
+   "reversal_s": 478.56297603605606
+  },
+  "21700_b_p25C_3C|Chen2020|one-way|radial": {
+   "penalty_energy": -8.218106914248402e-05,
+   "penalty_capacity": -0.0001138488543508398,
+   "Q_coupled_Ah": 2.3276026589548615,
+   "Q_single_Ah": 2.3273376640587555,
+   "t_cut_coupled_s": 558.6246381491668,
+   "spread_tavg": 0.0069582022482379095,
+   "group_rate_range_C": [
+    2.9121932263476085,
+    3.060535460247743
+   ],
+   "reversal_s": 479.90821505936225
+  },
+  "21700_b_p25C_3C|Chen2020|one-way|resolved": {
+   "penalty_energy": -4.724903461850172e-05,
+   "penalty_capacity": -6.335911506805125e-05,
+   "Q_coupled_Ah": 2.3269081909040192,
+   "Q_single_Ah": 2.326760760060199,
+   "t_cut_coupled_s": 558.4579658169646,
+   "spread_tavg": 0.005259971216843958,
+   "group_rate_range_C": [
+    2.925610422649448,
+    3.0600636834237824
+   ],
+   "reversal_s": 478.7351981689652
+  },
+  "21700_b_p25C_3C|Chen2020|one-way|corrected": {
+   "penalty_energy": -5.249700781595479e-05,
+   "penalty_capacity": -7.059084547167416e-05,
+   "Q_coupled_Ah": 2.3269637292386927,
+   "Q_single_Ah": 2.326799466901664,
+   "t_cut_coupled_s": 558.4712950172863,
+   "spread_tavg": 0.005525412354211604,
+   "group_rate_range_C": [
+    2.922530509125752,
+    3.061949027945799
+   ],
+   "reversal_s": 478.7643121173118
   }
  },
  "plating_limited_rate_spec_C": {
@@ -562,6 +653,7 @@
   "21700|Chen2020|0C|radial|single": 0.2875,
   "21700|Chen2020|0C|resolved|single": 0.2875,
   "21700|Chen2020|0C|corrected|single": 0.2875,
+  "21700|Chen2020|0C|radial|coupled": 0.28625,
   "21700|Chen2020|10C|radial|single": 0.43125,
   "21700|Chen2020|10C|resolved|single": 0.43125,
   "21700|Chen2020|10C|corrected|single": 0.43125,
@@ -581,12 +673,16 @@
   "4680|Chen2020|0C|radial|single": 0.29375,
   "4680|Chen2020|0C|resolved|single": 0.2875,
   "4680|Chen2020|0C|corrected|single": 0.2875,
+  "4680|Chen2020|0C|radial|coupled": 0.29,
+  "4680|Chen2020|0C|resolved|coupled": 0.28625,
+  "4680|Chen2020|0C|corrected|coupled": 0.28625,
   "4680|Chen2020|10C|radial|single": 0.44375,
   "4680|Chen2020|10C|resolved|single": 0.4375,
   "4680|Chen2020|10C|corrected|single": 0.4375,
   "4680|Chen2020|25C|radial|single": 0.7375,
   "4680|Chen2020|25C|resolved|single": 0.71875,
-  "4680|Chen2020|25C|corrected|single": 0.71875
+  "4680|Chen2020|25C|corrected|single": 0.71875,
+  "4680|Chen2020|25C|radial|coupled": 0.7175
  },
  "specification_limits_spec_C": {
   "0 to 25 C": 0.3,
@@ -623,6 +719,36 @@
   "21700|2C_25C|ORegan2022|resolved|single": -0.22934909164905548,
   "21700|2C_25C|ORegan2022|corrected|coupled": -0.26395416259765625,
   "21700|2C_25C|ORegan2022|corrected|single": -0.22944314777851105,
+  "21700|0.3C_0C|Chen2020|radial|coupled": -0.0013090081047266722,
+  "21700|0.3C_0C|Chen2020|radial|single": -0.0012487138155847788,
+  "21700|0.3C_0C|Chen2020|resolved|coupled": -0.0013507746625691652,
+  "21700|0.3C_0C|Chen2020|resolved|single": -0.0013058745535090566,
+  "21700|0.3C_0C|Chen2020|corrected|coupled": -0.001348817371763289,
+  "21700|0.3C_0C|Chen2020|corrected|single": -0.00130160350818187,
+  "21700|0.7C_25C|Chen2020|radial|coupled": 0.000921036524232477,
+  "21700|0.7C_25C|Chen2020|radial|single": 0.0011212690733373165,
+  "21700|0.7C_25C|Chen2020|resolved|coupled": 0.0008329583797603846,
+  "21700|0.7C_25C|Chen2020|resolved|single": 0.0009821851272135973,
+  "21700|0.7C_25C|Chen2020|corrected|coupled": 0.0008356854086741805,
+  "21700|0.7C_25C|Chen2020|corrected|single": 0.0009925843914970756,
+  "21700|0.7C_0C|Chen2020|radial|coupled": -0.0419592559337616,
+  "21700|0.7C_0C|Chen2020|radial|single": -0.041541509330272675,
+  "21700|0.7C_0C|Chen2020|resolved|coupled": -0.04206821322441101,
+  "21700|0.7C_0C|Chen2020|resolved|single": -0.041758060455322266,
+  "21700|0.7C_0C|Chen2020|corrected|coupled": -0.0420679971575737,
+  "21700|0.7C_0C|Chen2020|corrected|single": -0.04174194484949112,
+  "21700|1C_25C|Chen2020|radial|coupled": -0.014595374464988708,
+  "21700|1C_25C|Chen2020|radial|single": -0.01410860288888216,
+  "21700|1C_25C|Chen2020|resolved|coupled": -0.014736352488398552,
+  "21700|1C_25C|Chen2020|resolved|single": -0.014373799785971642,
+  "21700|1C_25C|Chen2020|corrected|coupled": -0.014735179021954536,
+  "21700|1C_25C|Chen2020|corrected|single": -0.014354001730680466,
+  "21700|2C_25C|Chen2020|radial|coupled": -0.07493876665830612,
+  "21700|2C_25C|Chen2020|radial|single": -0.07358422875404358,
+  "21700|2C_25C|Chen2020|resolved|coupled": -0.07541758567094803,
+  "21700|2C_25C|Chen2020|resolved|single": -0.07440962642431259,
+  "21700|2C_25C|Chen2020|corrected|coupled": -0.07540775090456009,
+  "21700|2C_25C|Chen2020|corrected|single": -0.07434794306755066,
   "4680|0.3C_0C|ORegan2022|radial|coupled": -0.19139261543750763,
   "4680|0.3C_0C|ORegan2022|radial|single": -0.18939365446567535,
   "4680|0.3C_0C|ORegan2022|resolved|coupled": -0.19231213629245758,

@@ -76,31 +76,57 @@
  "brackets_Chen2020": {
   "P2": {
    "radial_over_resolved_minus_1": 0.35717316371803554,
-   "held": true
+   "condition_met": true
   },
   "P3": {
    "coupled_spread": 0.007150399452540671,
    "proxy": 0.0253836,
    "ratio_minus_1": -0.7183063295773384,
-   "held": false
+   "condition_met": false
   },
   "P4": {
    "penalty_radial": 3.2971754632571404e-05,
    "penalty_resolved": 1.8356628663340757e-05,
-   "held": true
+   "condition_met": true
   },
   "P5": {
    "penalty_radial": 0.00046677846727716243,
    "penalty_resolved": 0.00014347985840101884,
    "ratio": 3.253268246003844,
-   "held": true
+   "condition_met": true
   },
   "P6": {
    "spread_per_group_heat_K": 2.3953592003867796,
    "spread_uniform_heat_K": 2.4018350382082723,
    "ratio_minus_1": -0.002696204243203826,
-   "held": true,
-   "steps": 1707
+   "steps": 1707,
+   "condition_met": true
+  },
+  "P7": {
+   "radial_minus_resolved_mV": [
+    0.04176655784249306,
+    0.08807814447209239
+   ],
+   "condition_met": true
+  },
+  "P8": {
+   "group_holding_minimum": {
+    "21700|0.3C_0C|radial": 15,
+    "21700|0.3C_0C|resolved": 15,
+    "21700|0.3C_0C|corrected": 15,
+    "21700|0.7C_25C|radial": 15,
+    "21700|0.7C_25C|resolved": 15,
+    "21700|0.7C_25C|corrected": 15,
+    "4680|0.3C_0C|radial": 15,
+    "4680|0.3C_0C|resolved": 15,
+    "4680|0.3C_0C|corrected": 15,
+    "4680|0.7C_25C|radial": 15,
+    "4680|0.7C_25C|resolved": 15,
+    "4680|0.7C_25C|corrected": 15
+   },
+   "outermost": 15,
+   "condition_met": true
   }
- }
+ },
+ "note": "Verdicts are under the registered choices (ORegan2022, PyBaMM's default mesh of 20 points along each particle's radius). After the predictions it was found that this mesh does not resolve ORegan2022's solid diffusion, so every ORegan2022 reading belongs to that mesh; Chen2020 settles at it (DECISIONS.md D35, results/stage5_posthoc_mesh.json). The Chen2020 brackets carry no verdict of their own: condition_met records whether the rule's condition holds under Chen2020."
 }

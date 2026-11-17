@@ -733,5 +733,94 @@
   "start": 0.05,
   "wall_s": 113.95952606201172,
   "kernel": "corrected_b_4680_charge10_G15.npz"
+ },
+ "radial|coupled": {
+  "rate": 0.7175,
+  "fail_above": 0.72375,
+  "width": 0.006249999999999978,
+  "trials": [
+   {
+    "rate": 0.63,
+    "passed": true,
+    "status": "event: Maximum voltage",
+    "min_margin_V": 0.0069744735222140725,
+    "group": 15,
+    "t_min_s": 4858.575847445273,
+    "at_interface": true,
+    "t_end_s": 4858.575847445273,
+    "charge_Ah": 4.123716250519176,
+    "steps": 486,
+    "wall_s": 41.645251750946045
+   },
+   {
+    "rate": 0.68,
+    "passed": true,
+    "status": "event: Maximum voltage",
+    "min_margin_V": 0.003188397332204517,
+    "group": 15,
+    "t_min_s": 4380.7655090757235,
+    "at_interface": true,
+    "t_end_s": 4380.7655090757235,
+    "charge_Ah": 4.013267958036593,
+    "steps": 439,
+    "wall_s": 41.70720601081848
+   },
+   {
+    "rate": 0.73,
+    "passed": false,
+    "status": "negative margin",
+    "min_margin_V": -0.00010082427977870434,
+    "group": 15,
+    "t_min_s": 3970.0,
+    "at_interface": true,
+    "t_end_s": 3970.0,
+    "charge_Ah": 3.9043847222222223,
+    "steps": 397,
+    "wall_s": 40.91608381271362
+   },
+   {
+    "rate": 0.705,
+    "passed": true,
+    "status": "event: Maximum voltage",
+    "min_margin_V": 0.0013164355971953287,
+    "group": 15,
+    "t_min_s": 4177.448746383165,
+    "at_interface": true,
+    "t_end_s": 4177.448746383165,
+    "charge_Ah": 3.967706007241843,
+    "steps": 418,
+    "wall_s": 45.19482922554016
+   },
+   {
+    "rate": 0.7175,
+    "passed": true,
+    "status": "event: Maximum voltage",
+    "min_margin_V": 0.0004068752916630285,
+    "group": 15,
+    "t_min_s": 4082.845936389502,
+    "at_interface": true,
+    "t_end_s": 4082.845936389502,
+    "charge_Ah": 3.946609306359283,
+    "steps": 409,
+    "wall_s": 44.036975383758545
+   },
+   {
+    "rate": 0.72375,
+    "passed": false,
+    "status": "event: Maximum voltage",
+    "min_margin_V": -3.988404662617776e-05,
+    "group": 15,
+    "t_min_s": 4037.130147908595,
+    "at_interface": true,
+    "t_end_s": 4037.130147908595,
+    "charge_Ah": 3.936412161406084,
+    "steps": 404,
+    "wall_s": 40.26116394996643
+   }
+  ],
+  "fine": false,
+  "start": 0.63,
+  "wall_s": 261.44063353538513,
+  "kernel": "radial_lat_4680_charge10_G15.npz"
  }
 }
