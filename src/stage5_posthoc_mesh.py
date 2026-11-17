@@ -93,9 +93,13 @@ def main():
     out = {"what": "post hoc (D35): one DFN at the ambient temperature against the particle mesh; not a registered reading",
            "pybamm": pybamm.__version__, "registered_points_per_particle_radius": 20, "results": {}}
     path = os.path.join(C.RESULTS, "stage5_posthoc_mesh.json")
+    if os.path.exists(path):
+        out["results"] = json.load(open(path)).get("results", {})     # resume: keep the meshes already done
     for pset in ("ORegan2022", "Chen2020"):
         res = out["results"].setdefault(pset, {})
         for n in (20, 40, 80, 160, 320):
+            if str(n) in res:
+                continue
             t0 = time.time()
             r = {}
             r["discharge_2C_m5C"] = discharge(pset, -5.0, n)
