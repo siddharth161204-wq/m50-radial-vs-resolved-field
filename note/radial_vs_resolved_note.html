@@ -29,10 +29,10 @@
 id="the-axial-blind-spot-of-a-radial-cell-model-the-temperature-field-a-multi-unit-model-assumes-tested-on-the-lg-m50-and-a-4680">The
 axial blind spot of a radial cell model: the temperature field a
 multi-unit model assumes, tested on the LG M50 and a 4680</h1>
-<p>Siddharth Satte, Independent researcher, Pune, India, 29 October 2026
-(v1.3.0). doi.org/10.5281/zenodo.23320969. Predictions commit b92f9a8,
-public at 11:12 UTC on 12 October before any three-dimensional field was
-computed. <a
+<p>Siddharth Satte, Independent researcher, Pune, India, 17 November
+2026 (v1.4.0). doi.org/10.5281/zenodo.23320969. Predictions commit
+b92f9a8, public at 11:12 UTC on 12 October before any three-dimensional
+field was computed. <a
 href="https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field"
 class="nobr">github.com/siddharth161204-wq/m50-radial-vs-resolved-field</a>.</p>
 <div class="headline">
@@ -301,5 +301,76 @@ ORegan2022 at 100 % state of charge, under the resolved cell, the radial
 model and the end-corrected radial model. Right: the share-spread error
 of the radial and end-corrected fields against the resolved cell, for
 each case under both parameter sets.</p>
+<div style="page-break-before: always">
+
+</div>
+<h2
+id="stage-5-v1.4.0-the-multi-unit-model-with-a-resolved-thermal-field">Stage
+5 (v1.4.0): the multi-unit model with a resolved thermal field</h2>
+<p>Predictions commit e436c25, public at 12:08 UTC on 16 November 2026
+before any kernel was computed or coupled solve run; five of nine held.
+Under the registered set, ORegan2022, P3 failed (the coupled spread is
+34 % below the proxy’s, not within 20 %), as did P4 and P5 (the radial
+kernel’s penalty is negative: minus 1.0 % in the M50 and minus 54 % in
+the 4680) and P9 (the 4680’s single-unit and coupled plating-limited
+rates differ by 0.2 %, not over 5 %).</p>
+<ol type="1">
+<li>The thermal models are linear in the heat, so each unit’s
+temperature is a convolution of the heat history with step responses
+computed once for 15 groups of units; they reproduce Stage 4’s unit
+temperatures within 1e-6 K. Fifteen PyBaMM Doyle-Fuller-Newman models
+share one terminal voltage, each at its own temperature and heating the
+cell with its own heat; the single-unit model is one at the
+area-weighted mean temperature, as the paper defines it. Halving the
+time step moves the radial and end-corrected penalties by up to 1.3 % of
+their values, and doubling the groups moves the spreads by up to 5.4 %,
+just past the checks’ limits of 1 and 5 %. After the predictions,
+PyBaMM’s default 20 points per particle radius were found not to resolve
+ORegan2022’s graphite diffusivity, which varies 500-fold with
+lithiation: one cell’s 2C, 25 C discharge ends at 978 s with 20 points
+and 1,468 s with 160, and its plating margins at the charge limits are
+artefacts of that mesh. Chen2020 settles at 20 points; its readings
+follow.</li>
+<li>The single-unit model’s discharge-energy penalty is at most 0.05 %
+in every case under every thermal model, against the paper’s 3.45 to
+11.45 % with its own parameters. The radial field makes the coupled
+spread of the shares 31 to 36 % too wide in the cooled M50 cases and 84
+% in the 4680, close to Stage 4’s proxy (36 and 93 %), and the end
+correction leaves 3 to 5 %; the spread itself is a fifth to a third of
+the proxy’s, because units that draw more current deplete faster. Under
+ORegan2022 the discharges end early, and whether one gets past that end
+can turn on a fraction of a kelvin: in the 4680 the radial field’s warm
+core keeps the coupled discharge going to 843 s, against the single-unit
+model’s 363 s.</li>
+<li>On charge at the specification’s limits (0.3C at 0 C, 0.7C at 25 C)
+the plating margin is minus 1.3 and plus 0.8 to 0.9 mV in the M50, held
+by the outermost group in every case, and the thermal model moves it by
+at most 0.1 mV (0.5 mV in the 4680). The plating-limited rates, 0.29C,
+0.43C and 0.71C at 0, 10 and 25 C in the M50, are the same under every
+kernel and for the single-unit and coupled models within the searches’
+0.006C; at 0 and 25 C they lie at the specification’s limits.</li>
+<li>For the multi-unit model: solved directly, with the resolved field
+and each unit’s own heat, the thermal model still sets how unevenly the
+units share the current (the radial model makes the spread a third wider
+in the M50 and 84 % wider in the 4680), but under the parameter set that
+settles at PyBaMM’s default particle mesh this barely reaches the
+discharge energy: the single-unit model is within 0.05 % of the
+multi-unit model in every case, and on charge at the cell’s specified
+limits the thermal model moves the margin to plating by under 0.5 mV.
+Under ORegan2022 the same readings need a finer particle mesh than
+PyBaMM’s default.</li>
+</ol>
+<p><img src="../results/stage5_figure.png" /></p>
+<p>Figure 5. (a) The kernel: the rise of the M50’s innermost and
+outermost groups under uniform heat, the resolved cell with the ends
+cooled against the radial model. (b) The shares of the innermost and
+outermost groups in the main discharge (M50, 2C, minus 5 C, ends cooled,
+one-way heat, Chen2020) under the three kernels, with the proxy’s values
+dotted. (c) The penalty in each discharge case under the three kernels
+and both sets, on a log scale, filled where the single-unit model gives
+more energy; the paper’s values as bars. (d) The plating-limited rate
+against the ambient, single-unit and coupled, both cells and sets, with
+ORegan2022’s post hoc rates at 80 points and the specification’s
+limits.</p>
 </body>
 </html>

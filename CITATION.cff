@@ -7,9 +7,9 @@ authors:
     given-names: Siddharth
     affiliation: Independent Researcher
     orcid: https://orcid.org/0009-0001-3584-1008
-version: v1.3.0
+version: v1.4.0
 doi: 10.5281/zenodo.23320969
-date-released: 2026-10-29
+date-released: 2026-11-17
 repository-code: https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field
 license:
   - MIT
@@ -26,6 +26,8 @@ keywords:
   - ensemble Kalman filter
   - core temperature estimation
   - current distribution
+  - lithium plating
+  - Doyle-Fuller-Newman model
 identifiers:
   - type: doi
     value: 10.5281/zenodo.23320969

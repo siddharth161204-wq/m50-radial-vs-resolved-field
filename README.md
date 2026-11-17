@@ -2,7 +2,7 @@
 
 Author: Siddharth Satte, independent researcher, Pune, India (ORCID 0009-0001-3584-1008).
 
-Archived at https://doi.org/10.5281/zenodo.23320969 (all versions). This is version v1.3.0, https://doi.org/10.5281/zenodo.23753700; v1.2.0 is https://doi.org/10.5281/zenodo.23689145 and v1.1.0 https://doi.org/10.5281/zenodo.23320970.
+Archived at https://doi.org/10.5281/zenodo.23320969 (all versions). This is version v1.4.0, whose own DOI is added when it is archived; v1.3.0 is https://doi.org/10.5281/zenodo.23753700, v1.2.0 https://doi.org/10.5281/zenodo.23689145 and v1.1.0 https://doi.org/10.5281/zenodo.23320970.
 
 ## Result
 
@@ -172,6 +172,130 @@ Stage 4 follows the author's fourth brief. Its predictions (`predictions_stage4.
 | P5 | Failed | 4680 +95.1 % against the M50's +36.4 %: 2.61 times (2.50 to 2.80; needs 3) |
 | P6 | Failed | Chen2020 over ORegan2022 for the five quantities: 0.99, 0.99, 0.46, 0.54, 0.98 (each needs below 0.5); expectation registered as unlikely |
 | P7 | Failed | ends insulated: spread error +7.3 % (needs below 1 %); resistance -0.24 %, innermost +0.28 and outermost -0.23 pp |
+
+## Stage 5 (v1.4.0): the multi-unit model with a resolved thermal field
+
+Stage 5 follows the author's fifth brief. Its predictions (`predictions_stage5.md`) were committed as e436c25317dfcbcbdc0950d36b0412833269d4c8 and pushed at 12:08:45 UTC on 16 November 2026, after Part A0 and before any kernel was computed or any coupled solve was run. DECISIONS.md D27 to D34 record the procedure. D27 records two facts found in single-cell runs before the predictions, and the author's choice, after reading them, to keep ORegan2022 registered. D35 records what was found after the predictions. Stage 1 to 4 code and results are unchanged.
+
+**The question.** Stage 4 carried the radial field's error to the current each unit draws through a proxy: a resistance at each unit's time-averaged temperature. Stage 5 solves the multi-unit model itself. The units are Doyle-Fuller-Newman models at one terminal voltage, each at its own temperature, each heating the cell with its own heat. With it, Stage 5 reads three things under each thermal model: the paper's headline, the single-unit model's discharge-energy penalty; how well Stage 4's proxy did; and, on charge, the plating margin and the largest rate that keeps it.
+
+**What it found.** Five of the nine predictions held (scorecard below). Checks V3 and V4 failed on some of their readings (below). After the predictions, PyBaMM's default particle mesh was found not to resolve the registered parameter set, ORegan2022 (below, and D35). Every ORegan2022 reading belongs to that mesh and is reported as registered. Chen2020, the bracket, settles at that mesh in every quantity checked, and under it:
+- The single-unit model's discharge-energy penalty is at most 0.05 % in every case under every thermal model, and the thermal model changes it by at most 0.03 percentage points. The paper's 3.45 to 11.45 % come from its own parameters and properties and are set beside these as context only.
+- The thermal model still sets how unevenly the units share the current. The radial field makes the coupled spread of the shares 31 to 36 % too wide in the cooled M50 cases and 84 % too wide in the 4680, close to Stage 4's proxy (36 and 93 %), and the end correction leaves 3 to 5 %. The spread itself is a fifth to a third of the proxy's in Stage 4's five cases, because units that draw more current deplete faster. Before the end of every discharge the innermost group's share falls below the mean.
+- On charge at the specification's two limits the plating margin lies within 3 mV of zero: minus 1.3 mV at 0.3C and 0 C, and plus 0.8 to 0.9 mV at 0.7C and 25 C, in the coupled M50. The outermost group holds it in every case, and the thermal model moves it by at most 0.1 mV in the M50 and 0.5 mV in the 4680. The M50's plating-limited rates are 0.29C, 0.43C and 0.71C at 0, 10 and 25 C. Every kernel gives them, for the single-unit and the coupled model alike, within the search's 0.00625C. The specification allows 0.3C up to 25 C and 0.7C from 25 C.
+
+Under ORegan2022 with the registered mesh the discharges end early: 170 s into the main case, against 1,707 s under Chen2020. Whether a discharge gets past that early end can turn on a fraction of a kelvin. In the 4680 under the radial kernel the warmer core keeps the coupled discharge going to 843 s while the single-unit model stops at 363 s, a penalty of minus 54 %. In the M50 at 3C and 25 C the end-corrected field's innermost group is 0.2 K warmer than the resolved field's at 270 s, and its coupled discharge goes on to 604 s while the single-unit model stops at 278 s, a penalty of minus 49 %; under the resolved kernel both stop near 280 s. Elsewhere the penalty lies between minus 1.0 and plus 0.6 % in the M50. Under the resolved field the 4680's discharge ends at 333 s with a penalty of plus 0.38 %, and its groups then draw between 1.5C and 3.0C; the paper's 4680 units draw 1.25C to 2.75C (its Fig. 8).
+
+**The kernels** (`src/stage5_kernels.py`, `results/stage5_kernels/`). The three thermal models are linear in the heat: constant properties, a fixed ambient and no radiation (D27). A unit's temperature under any heat history is therefore the convolution of the history's increments with a step response computed once.
+- The 45 units of the M50 are gathered into 15 groups of 3, and the 111 of the 4680 into 15 groups of 7 or 8 (D28).
+- Each group is heated in turn at 1 W/m^3 over its annulus and the full height, and every unit's response is recorded on each model's own solver steps.
+- In the resolved cell the group's heat is the exact integral of the basis functions over the part of the mesh inside the annulus.
+- The convolution reproduces each solver step by step: the kernels give Stage 4's unit temperatures in its five cases within 9.5e-7 K at every archived time (P1).
+- A group's heat is uniform over its annulus and the full height. A real roll's heat varies along the height, with the tabs, and that is left out (D29).
+
+**The coupled solve** (`src/stage5_coupled.py`). Fifteen copies of PyBaMM's DFN share one terminal voltage. Each copy is PyBaMM 26.9.0.0 with D23's isothermal options plus the heat, at its group's temperature. The area-weighted sum of their currents is the applied current.
+- The voltage and the currents are unknowns of one differential-algebraic system, which IDAKLU's Newton iteration solves at every internal step.
+- The system advances one thermal step at a time. Each group's temperature is held over the step, and its heat at the step's end enters the convolution.
+- Under two-way heat (registered) each group's heat is its own. Under one-way heat every group takes the registered Chen2020 heat of Stages 1 to 4, which gives Stage 4's temperatures.
+- The single-unit model is one DFN at the area-weighted mean temperature of the same thermal model, under the same heat rule, as the paper defines it (p. 3).
+
+**Found after the predictions: the registered set needs a finer particle mesh** (D35, `src/stage5_posthoc_mesh.py`, `results/stage5_posthoc_mesh.json`; post hoc, not scored). D30 registered PyBaMM's default mesh, 20 points along each particle's radius. Under ORegan2022, one cell's DFN held at the ambient on the same window is far from settled at that mesh:
+
+| Points per particle radius | 20 (registered) | 40 | 80 | 160 | 320 |
+|---|---|---|---|---|---|
+| 2C discharge at 25 C: cut-off | 978 s | 1,282 s | 1,456 s | 1,468 s | |
+| 2C discharge at minus 5 C: cut-off | 126 s | 121 s | 141 s | 186 s | 247 s |
+| 0.3C charge at 0 C: smallest margin | -193.6 mV (stops at 3.14 A h) | +19.1 mV | +19.7 mV | +19.6 mV | |
+| 0.7C charge at 25 C: smallest margin | -237.3 mV (stops at 2.84 A h) | +27.4 mV | +28.6 mV | +28.6 mV | |
+| Plating-limited rate at 0, 10, 25 C (cell at the ambient) | 0.280C, 0.369C, 0.536C | 0.405C, 0.618C, 1.024C | 0.430C, 0.670C, 1.228C | | |
+
+- The cause is ORegan2022's graphite diffusivity, a fit that varies about 500-fold with stoichiometry. Twenty points along the radius do not resolve the steep concentration profiles it produces.
+- Chen2020, whose diffusivity is constant, settles at 20 points in every row: discharges within 0.21 s, margins within 0.011 mV, rates within 0.001C.
+- Every ORegan2022 reading below therefore belongs to the 20-point mesh. The second fact of D27, the negative surface reaching its limit at both of the specification's charge limits, belongs to that mesh: with 40 points or more the margin stays positive to 4.2 V at both limits. The minus 5 C discharges under ORegan2022 have not settled at any mesh tried. What ORegan2022 gives in the coupled model with a finer mesh was not computed.
+- Stage 4's pulse resistances move by 3.0 to 5.3 % with the mesh, and their temperature sensitivity, which sets the shares, by 0.2 % (ORegan2022) and 4 % (Chen2020).
+
+**Discharge** (`results/stage5_discharge.csv`, `results/stage5_shares.csv`, `results/stage5_summary.md`). Two-way heat. The penalty is the single-unit model's energy to 2.5 V over the coupled model's, less one; positive means the single-unit model gives more, as in the paper. The spread is the largest group share minus the smallest, time-averaged over the coupled discharge, in % of the cell's mean current density; its error is the radial or end-corrected kernel's against the resolved kernel's.
+
+Under Chen2020 (settled at the registered mesh):
+
+| Case | Penalty: radial, resolved, end-corrected | Resolved: spread | Spread error: radial, end-corrected | Innermost share below the mean from |
+|---|---|---|---|---|
+| M50, 2C, minus 5 C, ends cooled | +0.0033, +0.0018, +0.0020 % | 0.71 % | +35.0 %, +5.2 % | 1,353 s (of 1,707 s) |
+| M50, 2C, 25 C, ends cooled | +0.0018, +0.0010, +0.0011 % | 0.48 % | +34.5 %, +5.1 % | 1,361 s (of 1,724 s) |
+| M50, 1.25C, 25 C, ends cooled | +0.0002, +0.0001, +0.0001 % | 0.29 % | +35.9 %, +5.2 % | 2,219 s (of 2,852 s) |
+| M50, 2C, minus 5 C, ends insulated | +0.0033, +0.0029 % | 0.89 % | +7.3 % | 1,354 s (of 1,708 s) |
+| 4680, 2C, minus 5 C, ends cooled | +0.0467, +0.0143, +0.0153 % | 2.03 % | +83.9 %, +3.2 % | 1,359 s (of 1,710 s) |
+| M50, 3C, 25 C, ends cooled | -0.0075, -0.0043, -0.0049 % | 0.52 % | +31.5 %, +5.0 % | 479 s (of 558 s) |
+
+Under ORegan2022 (registered; the 20-point mesh):
+
+| Case | Penalty: radial, resolved, end-corrected | Coupled cut-off: radial, resolved | Resolved: spread | Spread error: radial, end-corrected |
+|---|---|---|---|---|
+| M50, 2C, minus 5 C, ends cooled | -1.00, -0.36, -0.39 % | 189, 170 s | 6.08 % | +37.9 %, +5.5 % |
+| M50, 2C, 25 C, ends cooled | +0.62, -0.25, -0.43 % | 1,055, 783 s | 6.01 % | +94.1 %, +4.6 % |
+| M50, 1.25C, 25 C, ends cooled | +0.05, -0.05, -0.03 % | 2,290, 2,276 s | 2.42 % | +35.5 %, +2.4 % |
+| M50, 2C, minus 5 C, ends insulated | -1.00, -0.83 % | 189, 185 s | 7.72 % | +8.6 % |
+| 4680, 2C, minus 5 C, ends cooled | -53.53, +0.38, +0.44 % | 843, 333 s | 21.90 % | +141.6 %, +0.6 % |
+| M50, 3C, 25 C, ends cooled | -0.68, -0.73, -48.92 % | 615, 280 s | 9.26 % | +97.6 %, +77.0 % |
+
+With the ends insulated the end-corrected model is the radial model (D29).
+- **The penalty is small under both sets.** Under Chen2020 it is below 0.005 % in every M50 case and below 0.05 % in the 4680. The radial kernel gives the largest penalty in size in every case, but the thermal model moves the penalty by at most 0.03 percentage points. The paper's 3.45 % (3C, 25 C), 11.32 % (2C, minus 5 C) and 11.45 % (the 4680) come from its own parameters and thermal properties, whose unit differences Stage 2 found 1.7 to 3.6 times this model's.
+- **The shares carry Stage 4's thermal error.** Under Chen2020 the radial kernel's spread error is 31.5 to 35.9 % in the cooled M50 cases, 7.3 % with the ends insulated and 83.9 % in the 4680; Stage 4's proxy gave 36, 7 and 93 % under that set. The end correction leaves 3.2 to 5.2 %. Under one-way heat, the condition of P2, the radial kernel's spread is 25.9 % above the resolved kernel's under ORegan2022 and 35.7 % under Chen2020.
+- **The redistribution the proxy leaves out.** The innermost group's share first rises above the mean and the outermost's falls below it; as the units that draw more current deplete faster, both cross back. Under one-way heat, the proxy's own heat, the coupled spread under Chen2020 is 20 to 31 % of Stage 4's proxy in its five cases (main case: 0.72 % against 2.54 %), and 21 to 32 % of the proxy evaluated at group level over the same window; at 3C, which Stage 4 did not run, it is 11 % of the latter. Under ORegan2022, whose discharges end in a fraction of the archive's time, the coupled spread under the resolved kernel is 1.27 to 1.68 times the group-level proxy over the coupled run's own window (main case: 3.63 % against 2.86 %), and 0.66 times Stage 4's registered 5.54 % (P3).
+- **The 4680 under ORegan2022 and the radial kernel.** With two-way heat the radial field puts the 4680's core far above the resolved field's, and under ORegan2022's temperature sensitivity the inner groups then draw ever more current: the innermost group's temperature, from minus 5 C, reaches 21 C after 331 s and 28 C after 600 s, while the outermost stays below 4 C, and the group currents span 0.98C to 4.54C. The coupled discharge runs to 843 s, while the single-unit model at the mean temperature stops at 363 s.
+- **Per-group heat.** In the main case under the resolved kernel, giving each group its own heat changes the time-averaged spread of the unit temperatures by plus 2.8 % (ORegan2022) and minus 0.3 % (Chen2020) against the same total heat spread uniformly (P6).
+- **Ranges.** Minus 5 C lies outside both sets' measured ranges (D23), so every minus 5 C number extrapolates the set.
+
+**Charge** (`results/stage5_charge.csv`, `results/stage5_limit.csv`). Constant current from 0 % to 4.2 V with the ends cooled and two-way heat. The margin is the smallest value of the negative electrode's solid potential less the electrolyte's, over the charge, the electrode's thickness and the groups (D32). It is a thermodynamic indicator, not an amount of plated lithium. 0 C lies below ORegan2022's measured ranges for the kinetics (15 C) and solid diffusion (5 C), and 10 C below the first. The rates describe this parameter set, an energy cell, which the 4680 inherits as the paper assumes; they do not describe a fast-charging cell.
+
+At the specification's limits (coupled model; the single-unit model under the resolved kernel in brackets), mV:
+
+| Cell, charge | Chen2020: radial, resolved, end-corrected | ORegan2022 (20 points): radial, resolved, end-corrected |
+|---|---|---|
+| M50, 0.3C at 0 C | -1.31, -1.35, -1.35 (-1.31) | -192.83, -192.99, -192.98 (-192.73) |
+| M50, 0.7C at 25 C | +0.92, +0.83, +0.84 (+0.98) | -236.50, -236.66, -236.66 (-236.41) |
+| 4680, 0.3C at 0 C | -0.92, -1.17, -1.16 (-1.02) | -191.39, -192.31, -192.30 (-191.42) |
+| 4680, 0.7C at 25 C | +1.69, +1.19, +1.19 (+1.67) | -235.22, -236.02, -236.01 (-235.21) |
+
+The plating-limited rate, the largest rate whose margin stays at or above zero to 4.2 V, in the specification's C (4.85 A in the M50; the 4680 at the same current per unit area). Each search brackets the rate to 0.00625C; P9's four rates are refined to 0.001C (marked *):
+
+| Cell, ambient | Chen2020: single-unit, radial / resolved / end-corrected | Chen2020: coupled | ORegan2022 (20 points): single-unit | ORegan2022: coupled |
+|---|---|---|---|---|
+| M50, 0 C | 0.2875 / 0.2875 / 0.2875 | 0.28625 / 0.28625 / 0.28625 | 0.28125 / 0.28125* / 0.28125 | 0.28 / 0.28156* / 0.28 |
+| M50, 10 C | 0.43125 / 0.43125 / 0.43125 | 0.43 / 0.43 / 0.43 | 0.36875 / 0.36875 / 0.36875 | 0.36625 / 0.36625 / 0.36625 |
+| M50, 25 C | 0.7125 / 0.7125 / 0.7125 | 0.71 / 0.71 / 0.71 | 0.5375 / 0.5375 / 0.5375 | 0.53625 / 0.53625 / 0.53625 |
+| 4680, 0 C | 0.29375 / 0.2875 / 0.2875 | 0.29 / 0.28625 / 0.28625 | 0.28125 / 0.28281* / 0.28125 | 0.28 / 0.28234* / 0.28 |
+| 4680, 10 C | 0.44375 / 0.4375 / 0.4375 | 0.43375 / 0.43 / 0.43 | 0.375 / 0.36875 / 0.36875 | 0.37 / 0.3725 / 0.3725 |
+| 4680, 25 C | 0.7375 / 0.71875 / 0.71875 | 0.7175 / 0.71 / 0.71 | 0.54375 / 0.5375 / 0.5375 | 0.54625 / 0.53625 / 0.53625 |
+
+- **The outermost group holds the margin** in every charge case under Chen2020, including the brackets outside the specification (0.7C at 0 C: minus 42 mV; 1C at 25 C: minus 14 to 15 mV; 2C at 25 C: minus 71 to 75 mV), and in every registered case under ORegan2022 (P8). Under ORegan2022 the innermost group holds it at 0.7C and 0 C and at 2C and 25 C in both cells, and at 1C and 25 C in the 4680 under the radial kernel, at minus 253 to minus 297 mV.
+- **The thermal model barely moves the margin.** Under Chen2020 the radial kernel's margin lies 0.04 to 0.09 mV above the resolved kernel's in the M50 and 0.25 to 0.50 mV above it in the 4680; the end correction is within 0.01 mV of the resolved. The coupled model's margin lies 0.04 to 0.20 mV below the single-unit model's in the M50 and up to 0.9 mV below it in the 4680.
+- **The rates.** Under Chen2020 the M50's rates are the same under every kernel, and the single-unit and coupled brackets overlap at every ambient. In the 4680 the coupled model's rate lies 0.0075 to 0.02C below the single-unit model's at 10 and 25 C, where the brackets do not overlap, and the radial kernel raises the single-unit rate at 25 C from 0.719C to 0.738C. Under Chen2020 the specification's two limits lie at this model's plating-limited rates: 0.3C against 0.29C at 0 C, and 0.7C against 0.71C at 25 C.
+- **Under ORegan2022 the rates belong to the mesh.** At 20 points they are set by the barrier at the stoichiometric limit (D27); one cell at the ambient gives 0.41C, 0.62C and 1.02C with 40 points and 0.43C, 0.67C and 1.23C with 80, so they have not settled. The single-unit and coupled brackets overlap in every case. At 0 C, P9's refined rates are 0.28125C (single-unit) and 0.28156C (coupled) in the M50, and 0.28281C and 0.28234C in the 4680: equal within 0.001C in both cells, so the 4680's difference is not above 5 % and P9 failed. Under ORegan2022 the smallest margin of a passing charge is not always monotonic in the rate, but in all 72 searches pass and fail are (D35).
+
+**Checks** (`results/stage5_checks.json`, `results/stage5_v5.json`, `results/stage5_p1.json`).
+- V1: P1's comparison, worst 9.5e-7 K over every case, unit and archived time. Reciprocity (each group's mean taken with its own load as the weight): within 2.6e-14 of the largest value in all 34 kernels. The load-weighted group mean and the sampled group mean of D29 differ by up to 0.22 %. Every kernel reaches its discrete steady state within 1e-8.
+- V2: with every group at the single-unit model's temperature, the coupled solve matches the single-unit model within 7.5e-7 V at every step and 1.3e-7 in capacity. Held.
+- V3: the current balance closes within 5.7e-10 of the applied current in every stored coupled run (the searches' trials store their margins only). Halving the time step, with every kernel recomputed on the halved grid, changes the charge case's margins by under 0.002 % and the main case's spreads by under 0.8 %. It changes the main case's penalties under the radial and end-corrected kernels by 1.1 to 1.3 % of their values (at most 0.013 percentage points), above the 1 % limit; the energies and capacities behind them change by at most 0.15 %. V3 therefore failed on four of its 18 readings.
+- V4: with 30 groups (1 or 2 units each in the M50), the main case's penalties change by 0.7 % of their values, and the charge case's margins by under 0.02 % and its charge by under 1e-7. Five of the six time-averaged spreads grow by 5.1 to 5.4 % and the sixth by 4.8 %, against the 5 % limit, much as D28 found for the group-level proxy (4.8 %): smaller groups resolve more extreme units. The radial kernel's spread error moves from 37.9 to 37.4 % (two-way heat) and from 25.9 to 25.6 % (one-way), and the end correction's stays at 5.4 to 5.5 % and 4.7 %. V4 therefore failed on five of its 18 readings.
+- V5: the second route, separate DFNs in voltage mode with a secant search on the current balance at each step, agrees with the coupled solve within 0.037 % in every share at every step (limit 0.5 %). The voltages differ by up to 6.5 mV at the last full step.
+- V6: the margin recomputed from the stored potentials by separate code agrees within 7e-9 V and finds the same group.
+
+**Independent read** (`verification/stage5_independent_read/`). A separate agent that did not see the runs being made read the files in two passes, with scripts that import nothing from `src/`. It recomputed every row of the four tables (4,614 values) and replayed every search's trials under D32's rules. It scored the scorecard and its brackets, and recomputed V1 to V6, including the failures of V3 and V4. It also re-solved the one-dimensional kernels with its own finite elements, and re-ran single DFNs with PyBaMM for the single-unit runs, P9's rates and the mesh check. Every registered number and verdict reproduced. It found five statements in D35 that did not follow from the files: a cut-off time, a charge, a temperature sensitivity, the stoichiometry of a diffusivity, and the example of a non-monotonic margin. They were corrected before the release, as were three figures it held only to one significant figure.
+
+**Stage 5 scorecard** (rules in `predictions_stage5.md`; `results/stage5_scorecard.json`). Verdicts are under ORegan2022 at the registered mesh. The Chen2020 column records whether each rule's condition holds under that set, without a verdict of its own.
+
+| | Result | Computed (ORegan2022, registered) | Chen2020 |
+|---|---|---|---|
+| P1 | Held | worst 9.5e-7 K (needs below 0.01 K) | |
+| P2 | Held | radial spread 25.9 % above the resolved (needs 25 to 45 %) | 35.7 %, met |
+| P3 | Failed | 3.63 % against the proxy's 5.54 %: 34.5 % below (needs within 20 %) | 0.72 against 2.54 %: 71.8 % below, not met |
+| P4 | Failed | radial -1.00 %, resolved -0.36 % (the radial penalty must be positive) | +0.0033 and +0.0018 %, met |
+| P5 | Failed | radial -53.5 %, resolved +0.38 % (the radial penalty must be positive) | +0.047 and +0.014 %: 3.3 times, met |
+| P6 | Held | +2.8 % (needs within 10 %) | -0.3 %, met |
+| P7 | Held | +0.16 and +0.16 mV (needs below 2 mV) | +0.04 and +0.09 mV, met |
+| P8 | Held | the outermost group in all 12 cases | all 12, met |
+| P9 | Failed | M50 -0.11 %, 4680 +0.17 % (the 4680 needs above 5 %) | +0.44 % in both, at 0.00625C; not met |
 
 ## The question
 
@@ -350,10 +474,11 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
 
 ## Files
 
-- `DECISIONS.md`: every choice, D1 to D26.
+- `DECISIONS.md`: every choice, D1 to D35.
 - `predictions_stage2.md`, `inputs/ref33_values.md`: Stage 2's predictions and the values of the paper's ref. 33.
 - `predictions_stage3.md`: Stage 3's predictions.
 - `predictions_stage4.md`: Stage 4's predictions.
+- `predictions_stage5.md`: Stage 5's predictions.
 - `predictions.md`: P1 to P5 with their scoring rules.
 - `inputs/`: the property computation and the two-cell study's files, copied unchanged.
 - `src/`:
@@ -367,6 +492,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `stage2_correction.py`, `stage2_ref33.py`, `stage2_split.py`, `stage2_report.py`: Stage 2
   - `stage3_enkf.py`, `stage3_report.py`, `stage3_relabel.py`: Stage 3
   - `stage4_units.py`, `stage4_RT.py`, `stage4_report.py`, `stage4_v2.py`, `stage4_v3.py`: Stage 4
+  - `stage5_common.py` (groups, kernels, convolution), `stage5_kernels.py` (Part A), `stage5_coupled.py` (Part B), `stage5_runs.py` (the runs of Parts C and D), `stage5_queue.py` (the job lists the runs were made from), `stage5_v5.py`, `stage5_checks.py`, `stage5_report.py`, `stage5_posthoc_mesh.py` (D35): Stage 5
   - `make_figure.py`
 - `results/`:
   - `heat/`, `heat_summary.*`: the heat inputs
@@ -379,7 +505,9 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `stage2_*`: Stage 2's tables, scorecard and figure
   - `stage3_*`: Stage 3's runs with every core history, the series behind P5 and P7, the errors table, scorecard, checks, sensitivity, the paper's numbers and the figure
   - `stage4_*`: Stage 4's unit histories (`stage4_hist_*`), the unit-temperature readings with V1, the R(T) table, the per-unit table, the errors table, the scorecard, the checks, the paper's numbers and the figure
-- `verification/`: V0 to V4, the one-dimensional convergence check, the 3C cut-off check, the independent recomputation, the audit report (`reviews/`), and the independent reads of Stage 3 and Stage 4 (`stage3_independent_read/`, `stage4_independent_read/`: their scripts, outputs and findings).
+  - `stage5_*`: Stage 5's kernels (`stage5_kernels/`), every run and search with the runs' logs (`stage5_runs/`, `stage5_runs/logs/`), the discharge, shares, charge and limit tables, the summary tables, P1's and V5's records, the checks, the scorecard, the paper's numbers, the post hoc mesh check and the figure
+- `verification/`: V0 to V4, the one-dimensional convergence check, the 3C cut-off check, the independent recomputation, the audit report (`reviews/`), and the independent reads of Stages 3, 4 and 5 (`stage3_independent_read/`, `stage4_independent_read/`, `stage5_independent_read/`: their scripts, outputs and findings).
+- `tests/test_stage5.py`: tests of Stage 5's machinery: the groups, the convolution against direct stepping, the cut-triangle integrals, the search rule of D32 and the coupled solve at one temperature.
 - `note/`: the one-page note (`radial_vs_resolved_note.pdf`), its source and the script that renders it.
 - `CITATION.cff`, `.zenodo.json`: citation and archive metadata.
 
@@ -418,7 +546,21 @@ python3 src/stage4_RT.py
 python3 src/stage4_report.py
 python3 src/stage4_v2.py
 python3 src/stage4_v3.py
+python3 src/stage5_kernels.py --all1d
+python3 src/stage5_kernels.py --model resolved --bc b --cell 21700 --grid m5C_2C --units
+for g in p25C_2C p25C_1.25C p25C_3C charge10 m5C_2C_half charge10_half; do python3 src/stage5_kernels.py --model resolved --bc b --cell 21700 --grid $g; done
+for g in m5C_2C charge10; do python3 src/stage5_kernels.py --model resolved --bc b --cell 21700 --grid $g --G 30; done
+python3 src/stage5_kernels.py --model resolved --bc a --cell 21700 --grid m5C_2C
+for g in m5C_2C charge10; do python3 src/stage5_kernels.py --model resolved --bc b --cell 4680 --grid $g; done
+for q in seg_21700_ORegan2022 seg_4680_ORegan2022 seg_21700_Chen2020 seg_4680_Chen2020 checks_d15 checks_c15 checks_d30 checks_c30; do while python3 src/stage5_queue.py $q --claims claims --one; do :; done; done
+python3 src/stage5_v5.py
+python3 src/stage5_posthoc_mesh.py
+python3 src/stage5_report.py
+python3 src/stage5_checks.py report
+python3 tests/test_stage5.py
 ```
+
+`src/stage5_queue.py` runs one job per call, in a fresh process, and exits with code 3 when its queue has none left. The queues `seg_<cell>_<set>` hold every run of Parts C and D, one job per kernel, and `checks_d15`, `checks_c15`, `checks_d30` and `checks_c30` hold the runs of V2 to V4. Several processes can share a queue through the claims directory. Each run can also be made directly with `src/stage5_runs.py`. A coupled process with 15 groups needs about 2 GB of memory, one with 30 groups about twice that, and the 4680's resolved kernels about 5.5 GB.
 
 With one BLAS thread (`OMP_NUM_THREADS=1`), the seven Stage 3 runs repeated under D21 reproduced the stored values bit for bit; with two, a repeat of one run differed by at most 2.2e-16 K in its core history and no reported number changed.
 
@@ -431,6 +573,7 @@ V4 needs the paper's figure images in `verification/v4/`. They are extracted fro
 - v1.1.0 (21 October 2026): Stage 2 (D17, D18, predictions_stage2.md): the factor to the paper split into properties, heat and remainder with ref. 33's values, and a one-term end correction for the radial model. Stage 1's code, results and text are unchanged.
 - v1.2.0 (27 October 2026): Stage 3 (D19 to D21, predictions_stage3.md): ref. 33's core-temperature estimator against the resolved cell. Stage 1 and 2 code and results are unchanged.
 - v1.3.0 (29 October 2026): Stage 4 (D22 to D26, predictions_stage4.md): the radial field's thermal error carried to the current each unit draws. Stage 1 to 3 code and results are unchanged.
+- v1.4.0 (17 November 2026): Stage 5 (D27 to D35, predictions_stage5.md): the multi-unit model solved directly under the three thermal models through convolution kernels; the paper's discharge penalty, Stage 4's proxy against the coupled solve, and the plating margin and plating-limited rate on charge. Stage 1 to 4 code and results are unchanged.
 
 ## Tooling
 
