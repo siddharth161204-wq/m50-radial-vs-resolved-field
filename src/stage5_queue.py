@@ -26,6 +26,10 @@ def wait_for(paths):
 
 
 QUEUES = {
+    "singles": [("limit_single", cell, pset, T, models)
+                for pset in ("ORegan2022", "Chen2020")
+                for cell, models in (("21700", ("radial", "resolved", "corrected")), ("4680", ("radial", "resolved", "corrected")))
+                for T in (0.0, 25.0, 10.0)],
     "registered_21700": [
         ("discharge", "21700_b_m5C_2C", "ORegan2022"),
         ("charge", "21700", "ORegan2022"),
@@ -78,6 +82,10 @@ def do(job):
         wait_for(need(cell, "b", ["charge10"]))
         pot = ("0.3C_0C", "resolved", False) if (cell == "21700" and pset == "ORegan2022") else None
         RN.charge(cell, pset, store_potentials_for=pot)
+    elif kind == "limit_single":
+        cell, pset, T, models = job[1], job[2], job[3], job[4]
+        wait_for(need(cell, "b", ["charge10"]))
+        RN.limit(cell, pset, T, models=models, fine_resolved=(T == 0.0 and pset == "ORegan2022"), which=("single",))
     elif kind == "limit":
         cell, pset, T = job[1], job[2], job[3]
         wait_for(need(cell, "b", ["charge10"]))

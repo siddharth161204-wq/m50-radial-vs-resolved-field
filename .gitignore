@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 .upload_tmp/
 verification/v4/*.jpg
+results/stage5_kernels/checkpoints/

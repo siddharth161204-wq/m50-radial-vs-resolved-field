@@ -190,10 +190,23 @@ def search(cell, pset, Ta, kern, single, start, fine=False, log=None):
     return out
 
 
+def _load(path):
+    return json.load(open(path)) if os.path.exists(path) else {}
+
+
+def _merge_save(path, key, value):
+    """Merge one key into the search file (other processes may write other keys of it)."""
+    cur = _load(path)
+    cur[key] = value
+    tmp = path + f".tmp{os.getpid()}"
+    json.dump(cur, open(tmp, "w"), indent=1)
+    os.replace(tmp, path)
+
+
 def limit(cell, pset, Ta, models=("radial", "resolved", "corrected"), fine_resolved=False, G=S5.G_REG,
           which=("single", "coupled")):
     path = os.path.join(S5.RUNDIR, f"limit_{cell}_{pset}_{Ta:g}C.json")
-    res = json.load(open(path)) if os.path.exists(path) else {}
+    os.makedirs(S5.RUNDIR, exist_ok=True)
     mfor = models_for("b")
     log = lambda s: print(s, flush=True)
     for label in models:
@@ -204,22 +217,23 @@ def limit(cell, pset, Ta, models=("radial", "resolved", "corrected"), fine_resol
                 continue
             key = f"{label}|{'single' if single else 'coupled'}"
             fine = fine_resolved and label == "resolved"
+            res = _load(path)
             if key in res and (not fine or res[key].get("fine")):
                 continue
             if single:
                 start = 0.05
             else:
-                s_rate = res[f"{label}|single"]["rate"]
+                while f"{label}|single" not in _load(path):
+                    time.sleep(60)                     # the single-unit search may run in another process
+                s_rate = _load(path)[f"{label}|single"]["rate"]
                 start = max(0.05, math.floor((s_rate - 0.10) * 100 + 1e-9) / 100) if s_rate else 0.05
             log(f"  {cell} {pset} {Ta:g} C {key}: start {start:.2f}C")
             t0 = time.time()
             out = search(cell, pset, Ta, kern, single, start, fine=fine, log=log)
             out.update({"fine": fine, "start": start, "wall_s": time.time() - t0, "kernel": os.path.basename(kern.path)})
-            res[key] = out
-            json.dump(res, open(path, "w"), indent=1)
+            _merge_save(path, key, out)
             log(f"  -> {key}: {out['rate']}C (fails at {out.get('fail_above')}C), {len(out['trials'])} trials, "
                 f"{out['wall_s']:.0f} s")
-    return res
 
 
 if __name__ == "__main__":

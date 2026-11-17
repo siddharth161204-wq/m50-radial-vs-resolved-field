@@ -23,6 +23,7 @@ import gc
 import json
 import math
 import os
+import resource
 import sys
 import time
 
@@ -37,6 +38,8 @@ import stage5_common as S5  # noqa: E402
 
 TOL_CONV = 1e-8
 MAX_STEPS = 60000
+CKPT_DIR = os.path.join(S5.KDIR, "checkpoints")      # not part of the results (.gitignore)
+CKPT_EVERY = 200
 QUAD = np.array([1 / 4, 1 / 12, 1 / 6, 1 / 6, 1 / 12, 1 / 4])   # A0 A1 B0 B1 C0 C1 over a whole prism, per area x height
 
 
@@ -204,25 +207,45 @@ def compute(model_name, bc, cell, gridname, G=S5.G_REG, keep_units=False, verbos
     Vb = b.sum(axis=0)
     K, Cap, D, U = mm["K"], mm["Cap"], mm["D"], mm["U"]
     A_ug = S5.unit_to_group_matrix(N, G)
-    t_build = time.time() - t0
-    # exact discrete steady state: (K + D) theta = L
-    t1 = time.time()
-    lu = solver_for(K + sp.diags(D))
-    th_inf = lu.solve(L)
-    del lu
+    kind = mm["kind"]
+    n_units_model = N
+    del mm, m                                   # free the mesh and its bases before the factorisations (memory)
     gc.collect()
-    S_inf_unit = U @ th_inf                                  # (N, G)
-    S_inf_group = A_ug @ S_inf_unit
-    S_inf_lc = (b.T @ th_inf) / Vb[:, None]
+    rss = lambda: resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1e6
+    if verbose:
+        print(f"  built in {time.time() - t0:.0f} s, peak memory so far {rss():.2f} GB", flush=True)
+    t_build = time.time() - t0
+    # a checkpoint lets a long kernel resume after its process is stopped: the same matrices give the same
+    # factors, so the resumed steps are the steps an uninterrupted run would make
+    ck = os.path.join(CKPT_DIR, os.path.basename(S5.kernel_path(model_name, bc, cell, gridname, G)))
+    resume = os.path.exists(ck)
+    t1 = time.time()
+    if resume:
+        z = np.load(ck)
+        S_inf_unit, S_inf_group, S_inf_lc = z["S_inf_unit"], z["S_inf_group"], z["S_inf_lc"]
+        th = z["th"]
+        S_unit, S_lc = list(z["S_unit"]), list(z["S_lc"])
+        k = int(z["k"])
+        if verbose:
+            print(f"  resuming from step {k}", flush=True)
+    else:
+        # exact discrete steady state: (K + D) theta = L
+        lu = solver_for(K + sp.diags(D))
+        th_inf = lu.solve(L)
+        del lu
+        gc.collect()
+        S_inf_unit = U @ th_inf                                  # (N, G)
+        S_inf_group = A_ug @ S_inf_unit
+        S_inf_lc = (b.T @ th_inf) / Vb[:, None]
+        th = np.zeros_like(L)
+        S_unit, S_lc = [], []
+        k = 0
     t_steady = time.time() - t1
     t2 = time.time()
     lu = solver_for(K + sp.diags(Cap / dt + D))
     t_fact = time.time() - t2
     cdt = (Cap / dt)[:, None]
-    th = np.zeros_like(L)
-    S_unit, S_lc = [], []
     scale_inf = np.abs(S_inf_unit).max()
-    k = 0
     conv = None
     t3 = time.time()
     while k < MAX_STEPS:
@@ -238,6 +261,12 @@ def compute(model_name, bc, cell, gridname, G=S5.G_REG, keep_units=False, verbos
         if k >= n_arch and rel <= TOL_CONV:
             conv = rel
             break
+        if kind == "3d" and k % CKPT_EVERY == 0:
+            os.makedirs(CKPT_DIR, exist_ok=True)
+            tmp = ck + ".tmp.npz"
+            np.savez(tmp, k=k, th=th, S_unit=np.array(S_unit), S_lc=np.array(S_lc), S_inf_unit=S_inf_unit,
+                     S_inf_group=S_inf_group, S_inf_lc=S_inf_lc)
+            os.replace(tmp, ck)
     if conv is None:
         raise RuntimeError("kernel did not converge")
     t_loop = time.time() - t3
@@ -260,6 +289,7 @@ def compute(model_name, bc, cell, gridname, G=S5.G_REG, keep_units=False, verbos
             "load_weighted_vs_sampled_group_mean_max_rel": lc_vs_sampled,
             "solver": "SuperLU (MMD_AT_PLUS_A, symmetric mode), as src/cell3d.py's direct solver",
             "timing_s": {"build": t_build, "steady": t_steady, "factorise": t_fact, "loop": t_loop},
+            "peak_memory_GB": rss(),
             "n_nodes": int(K.shape[0]), "units": "K per (W/m3)", "storage": "float32 responses, float64 steady states"}
     os.makedirs(S5.KDIR, exist_ok=True)
     out = {"meta": json.dumps(meta), "S_group": S_group.astype(np.float32), "S_inf_group": S_inf_group,
@@ -268,10 +298,14 @@ def compute(model_name, bc, cell, gridname, G=S5.G_REG, keep_units=False, verbos
     if keep_units:
         out["S_unit"] = S_unit.astype(np.float32)
         out["S_inf_unit"] = S_inf_unit
+    meta["resumed_from_checkpoint"] = bool(resume)
+    out["meta"] = json.dumps(meta)
     path = S5.kernel_path(model_name, bc, cell, gridname, G)
     np.savez_compressed(path, **out)
     with open(path.replace(".npz", ".json"), "w") as f:
         json.dump(meta, f, indent=1)
+    if os.path.exists(ck):
+        os.remove(ck)
     if verbose:
         print(f"{os.path.basename(path)}: {k} steps (archive {n_arch}), distance {conv:.1e}, reciprocity {recip:.1e} "
               f"(sampled {recip_sampled:.1e}), loads partition {linfo.get('partition_max_rel', 0):.1e}, "
