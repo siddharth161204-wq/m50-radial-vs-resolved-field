@@ -1,0 +1,126 @@
+{
+ "V2": null,
+ "V3": {
+  "current_balance": {
+   "coupled_runs_checked": 106,
+   "max_rel_residual": 5.730940166870369e-10,
+   "run_of_max": "D_4680_0.7C_25C_radial_ORegan2022_two-way_coupled_G15.npz",
+   "held_1e-6": true
+  },
+  "halved_step_discharge": {
+   "readings": {},
+   "missing": [
+    "penalty_energy|radial",
+    "penalty_capacity|radial",
+    "spread_tavg|radial|two-way",
+    "spread_tavg|radial|one-way",
+    "penalty_energy|resolved",
+    "penalty_capacity|resolved",
+    "spread_tavg|resolved|two-way",
+    "spread_tavg|resolved|one-way",
+    "penalty_energy|corrected",
+    "penalty_capacity|corrected",
+    "spread_tavg|corrected|two-way",
+    "spread_tavg|corrected|one-way"
+   ],
+   "all_within": false,
+   "limit": 0.01
+  },
+  "halved_step_charge": {
+   "readings": {},
+   "missing": [
+    "margin_V|radial",
+    "charge_Ah|radial",
+    "margin_V|resolved",
+    "charge_Ah|resolved",
+    "margin_V|corrected",
+    "charge_Ah|corrected"
+   ],
+   "all_within": false,
+   "limit": 0.01
+  },
+  "coupling_rule": {
+   "discharge": {},
+   "charge": {}
+  }
+ },
+ "V4": {
+  "doubled_groups_discharge": {
+   "readings": {},
+   "missing": [
+    "penalty_energy|radial",
+    "penalty_capacity|radial",
+    "spread_tavg|radial|two-way",
+    "spread_tavg|radial|one-way",
+    "penalty_energy|resolved",
+    "penalty_capacity|resolved",
+    "spread_tavg|resolved|two-way",
+    "spread_tavg|resolved|one-way",
+    "penalty_energy|corrected",
+    "penalty_capacity|corrected",
+    "spread_tavg|corrected|two-way",
+    "spread_tavg|corrected|one-way"
+   ],
+   "all_within": false,
+   "limit": 0.05
+  },
+  "doubled_groups_charge": {
+   "readings": {},
+   "missing": [
+    "margin_V|radial",
+    "charge_Ah|radial",
+    "margin_V|resolved",
+    "charge_Ah|resolved",
+    "margin_V|corrected",
+    "charge_Ah|corrected"
+   ],
+   "all_within": false,
+   "limit": 0.05
+  },
+  "coupling_rule": {
+   "discharge": {},
+   "charge": {}
+  },
+  "single_unit_G30_vs_G15": {}
+ },
+ "registered_readings": {
+  "discharge": {
+   "penalty_energy|radial": -0.010014375745221682,
+   "penalty_capacity|radial": -0.011957025006809952,
+   "spread_tavg|radial|two-way": 0.08384682510924832,
+   "spread_tavg|radial|one-way": 0.045735288889921656,
+   "penalty_energy|resolved": -0.0036325559509039484,
+   "penalty_capacity|resolved": -0.004232502262273008,
+   "spread_tavg|resolved|two-way": 0.06078060674576022,
+   "spread_tavg|resolved|one-way": 0.03631557315251888,
+   "penalty_energy|corrected": -0.0039054213503624258,
+   "penalty_capacity|corrected": -0.004522179561177397,
+   "spread_tavg|corrected|two-way": 0.06411612549913899,
+   "spread_tavg|corrected|one-way": 0.03803586464427633
+  },
+  "charge": {
+   "margin_V|radial": -0.19282600283622742,
+   "charge_Ah|radial": 3.152389538992106,
+   "margin_V|resolved": -0.1929894983768463,
+   "charge_Ah|resolved": 3.1506412389371925,
+   "margin_V|corrected": -0.1929839849472046,
+   "charge_Ah|corrected": 3.150771902376004
+  }
+ },
+ "context_predictions_under_checks": {
+  "registered": {
+   "P2_radial_over_resolved_minus_1": 0.25938502189795165,
+   "P2_condition": true,
+   "P3_ratio_minus_1": -0.3446829634241082,
+   "P4_penalties": [
+    -0.010014375745221682,
+    -0.0036325559509039484
+   ],
+   "P4_condition": false,
+   "P7_0.3C_0C_radial_minus_resolved_mV": 0.16349554061889648
+  },
+  "halved_step": {},
+  "doubled_groups": {}
+ },
+ "vs_stored_checks": "results/stage5_checks.json not present yet"
+}

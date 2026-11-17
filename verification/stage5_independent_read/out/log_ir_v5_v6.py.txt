@@ -1,0 +1,56 @@
+{
+ "V5": {
+  "steps_compared": 171,
+  "max_rel_share_difference": 0.0003674257625722044,
+  "step_of_max": 165,
+  "group_of_max": 15,
+  "within_0.5_percent": true,
+  "max_abs_voltage_difference_V": 0.006537299137077124,
+  "step_of_max_voltage_difference": 170,
+  "t_of_max_voltage_difference_s": 169.97456473345085,
+  "voltage_difference_profile_V": {
+   "1s": 3.247488317503766e-05,
+   "10s": 5.079066443869351e-06,
+   "50s": 0.00030529955965263866,
+   "100s": 0.0009553638382828744,
+   "150s": 0.0027562499099529347,
+   "166s": 0.00516301186760737,
+   "169s": 0.006023513552517734,
+   "170s": 0.006537299137077124
+  },
+  "route2_balance_from_I_max_rel": 9.914534970789646e-09,
+  "route2_stored_resid_max": 9.914535148425329e-09,
+  "secant_tolerance_met_1e-8": true,
+  "route2_last_t_s": 169.97456473345048,
+  "route1_cut_s": 170.426917454836,
+  "route2_ends_before_route1_cut": true,
+  "stored": {
+   "steps_compared": 171,
+   "max_rel_share_difference": 0.0003674257625722044,
+   "step_of_max": 165,
+   "group_of_max": 15,
+   "max_abs_voltage_difference_V": 0.006537299137077124,
+   "max_current_balance_residual": 9.914535148425329e-09,
+   "within_0.5_percent": true
+  }
+ },
+ "V6": {
+  "outputs": 781,
+  "groups": 15,
+  "nodes": 20,
+  "margin_recomputed_V": -0.19298950550125937,
+  "group_recomputed": 15,
+  "t_recomputed_s": 7795.401003555941,
+  "at_interface_recomputed": true,
+  "margin_stored_arrays_V": -0.1929894983768463,
+  "group_stored_arrays": 15,
+  "abs_difference_V": 7.124413059500512e-09,
+  "node_min_max_abs_difference_V": 5.590231921814848e-08,
+  "interface_max_abs_difference_V": 7.63798198022414e-08,
+  "node_argmin_matches_fraction": 1.0,
+  "interface_minus_last_node_max_abs_V": 0.0019273714035534795,
+  "interface_minus_first_node_max_abs_V": 0.04379927921405624,
+  "within_1e-6_V": true
+ },
+ "peak_memory": "110528 kB"
+}

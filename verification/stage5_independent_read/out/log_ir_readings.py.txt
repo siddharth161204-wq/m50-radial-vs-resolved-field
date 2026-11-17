@@ -1,0 +1,38 @@
+discharge done 2 s
+charge done 2 s
+limits done 2 s
+{
+ "discharge_rows": 48,
+ "charge_rows": 120,
+ "limit_rows": 42,
+ "mismatches": 60,
+ "worst_T_rule_K": 3.9287910240659585e-06,
+ "V3": {
+  "coupled_runs_checked": 106,
+  "max_rel_residual": 5.730940166870369e-10,
+  "run_of_max": "D_4680_0.7C_25C_radial_ORegan2022_two-way_coupled_G15.npz",
+  "held_1e-6": true
+ },
+ "limits_all_consistent": true,
+ "scorecard_verdicts_match": {
+  "ORegan2022|P1": true,
+  "ORegan2022|P2": true,
+  "ORegan2022|P3": true,
+  "ORegan2022|P4": true,
+  "ORegan2022|P5": true,
+  "ORegan2022|P6": true,
+  "ORegan2022|P7": true,
+  "ORegan2022|P8": true,
+  "ORegan2022|P9": true,
+  "Chen2020|P2": true,
+  "Chen2020|P3": true,
+  "Chen2020|P4": true,
+  "Chen2020|P5": true,
+  "Chen2020|P6": true,
+  "Chen2020|P7": null,
+  "Chen2020|P8": null
+ },
+ "wall_s": 2.8623881340026855,
+ "peak": "211084 kB"
+}
+mismatch categories: {"stored blank (a run it depends on is newer than the CSV)": 12, "row only in my recomputation (run file newer than the CSV)": 48}

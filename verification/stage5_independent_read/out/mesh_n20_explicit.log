@@ -1,0 +1,81 @@
+charge done {"I_A": 1.455, "margin_min_V": -0.19363257159891628, "t_min_s": 7779.944516435014, "t_end_s": 7779.944516435014, "t_first_negative_s": 7653.22858630127, "V_end": 4.2000000000000135, "charge_Ah": 3.1443942420591515, "n_outputs": 13504, "margin_min_from_raw_potentials_V": -0.19363257159891625, "raw_vs_pybamm_node_margin_max_abs_V": 0.0, "raw_vs_pybamm_interface_max_abs_V": 2.220446049250313e-16, "margin_min_on_10s_grid_only_V": -0.03353532815285448, "termination": "event: Maximum voltage [V]", "wall_s": 8.594777345657349, "points": {"x_n": 20, "x_s": 20, "x_p": 20, "r_n": 20, "r_p": 20, "r_n_prim": 20, "r_p_prim": 20, "r_n_sec": 20, "r_p_sec": 20, "y": 10, "z": 10, "R_n": 30, "R_p": 30, "R_n_prim": 30, "R_p_prim": 30, "R_n_sec": 30, "R_p_sec": 30}}
+{
+ "points_per_particle_radius": 20,
+ "pybamm": "26.9.0.0",
+ "initial_stoichiometries_x_n_y_p": {
+  "0": [
+   0.02956238686388328,
+   0.9572705997333886
+  ],
+  "1": [
+   0.9841951106298638,
+   0.2638452248927604
+  ]
+ },
+ "charge_1455mA_0C": {
+  "I_A": 1.455,
+  "margin_min_V": -0.19363257159891628,
+  "t_min_s": 7779.944516435014,
+  "t_end_s": 7779.944516435014,
+  "t_first_negative_s": 7653.22858630127,
+  "V_end": 4.2000000000000135,
+  "charge_Ah": 3.1443942420591515,
+  "n_outputs": 13504,
+  "margin_min_from_raw_potentials_V": -0.19363257159891625,
+  "raw_vs_pybamm_node_margin_max_abs_V": 0.0,
+  "raw_vs_pybamm_interface_max_abs_V": 2.220446049250313e-16,
+  "margin_min_on_10s_grid_only_V": -0.03353532815285448,
+  "termination": "event: Maximum voltage [V]",
+  "wall_s": 8.594777345657349,
+  "points": {
+   "x_n": 20,
+   "x_s": 20,
+   "x_p": 20,
+   "r_n": 20,
+   "r_p": 20,
+   "r_n_prim": 20,
+   "r_p_prim": 20,
+   "r_n_sec": 20,
+   "r_p_sec": 20,
+   "y": 10,
+   "z": 10,
+   "R_n": 30,
+   "R_p": 30,
+   "R_n_prim": 30,
+   "R_p_prim": 30,
+   "R_n_sec": 30,
+   "R_p_sec": 30
+  }
+ },
+ "discharge_2C_25C": {
+  "I_A": 10.0,
+  "t_cut_s": 978.3663971833464,
+  "V_end": 2.4999999999998037,
+  "capacity_Ah": 2.7176844366204067,
+  "energy_Wh": 8.954605963535403,
+  "termination": "event: Minimum voltage [V]",
+  "wall_s": 10.172834873199463,
+  "n_outputs": 16480
+ },
+ "stored": {
+  "charge_1455mA_0C": {
+   "margin_min_V": -0.19363257159891628,
+   "t_min_s": 7779.944516435014,
+   "t_first_negative_s": 7653.22858630127,
+   "t_end_s": 7779.944516435014,
+   "charge_Ah": 3.1443942420591515
+  },
+  "discharge_2C_25C": {
+   "t_cut_s": 978.3663971833464,
+   "capacity_Ah": 2.7176844366204067,
+   "energy_Wh": 8.954605963535403
+  }
+ },
+ "diff": {
+  "margin_min_V": 0.0,
+  "charge_t_end_s": 0.0,
+  "discharge_t_cut_s": 0.0
+ },
+ "peak_memory": "268984 kB",
+ "initial_state": "stoichiometries written into the set (D30's way)"
+}

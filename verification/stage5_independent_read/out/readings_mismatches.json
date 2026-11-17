@@ -1,0 +1,482 @@
+[
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|radial",
+  "column": "penalty_energy_minus_resolved_pp",
+  "mine": 0.0003431327959990682,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|radial",
+  "column": "penalty_energy_rel_error",
+  "mine": 0.15534279025429631,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|radial",
+  "column": "spread_rel_error",
+  "mine": 0.07356478482827433,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|radial",
+  "column": "inner_error_pp",
+  "mine": 0.019188057958019478,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|radial",
+  "column": "outer_error_pp",
+  "mine": -0.016042398063109697,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|radial",
+  "column": "reversal_error_s",
+  "mine": 0.13178977251504875,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|resolved",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|resolved",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|corrected",
+  "column": "penalty_energy_minus_resolved_pp",
+  "mine": 0.0003431327959990682,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|corrected",
+  "column": "penalty_energy_rel_error",
+  "mine": 0.15534279025429631,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|corrected",
+  "column": "spread_rel_error",
+  "mine": 0.07356478482827433,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|corrected",
+  "column": "inner_error_pp",
+  "mine": 0.019188057958019478,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|corrected",
+  "column": "outer_error_pp",
+  "mine": -0.016042398063109697,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_a_m5C_2C|Chen2020|one-way|corrected",
+  "column": "reversal_error_s",
+  "mine": 0.13178977251504875,
+  "stored": "",
+  "category": "stored blank (a run it depends on is newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_b_p25C_3C|Chen2020|two-way|radial",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_b_p25C_3C|Chen2020|two-way|radial",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_b_p25C_3C|Chen2020|two-way|resolved",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_b_p25C_3C|Chen2020|two-way|resolved",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_b_p25C_3C|Chen2020|two-way|corrected",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_b_p25C_3C|Chen2020|two-way|corrected",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_b_p25C_3C|Chen2020|one-way|radial",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_b_p25C_3C|Chen2020|one-way|radial",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_b_p25C_3C|Chen2020|one-way|resolved",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_b_p25C_3C|Chen2020|one-way|resolved",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_discharge.csv",
+  "key": "21700_b_p25C_3C|Chen2020|one-way|corrected",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_shares.csv",
+  "key": "21700_b_p25C_3C|Chen2020|one-way|corrected",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.3C_0C|Chen2020|radial|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.3C_0C|Chen2020|radial|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.3C_0C|Chen2020|resolved|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.3C_0C|Chen2020|resolved|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.3C_0C|Chen2020|corrected|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.3C_0C|Chen2020|corrected|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_25C|Chen2020|radial|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_25C|Chen2020|radial|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_25C|Chen2020|resolved|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_25C|Chen2020|resolved|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_25C|Chen2020|corrected|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_25C|Chen2020|corrected|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_0C|Chen2020|radial|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_0C|Chen2020|radial|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_0C|Chen2020|resolved|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_0C|Chen2020|resolved|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_0C|Chen2020|corrected|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|0.7C_0C|Chen2020|corrected|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|1C_25C|Chen2020|radial|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|1C_25C|Chen2020|radial|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|1C_25C|Chen2020|resolved|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|1C_25C|Chen2020|resolved|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|1C_25C|Chen2020|corrected|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|1C_25C|Chen2020|corrected|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|2C_25C|Chen2020|radial|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|2C_25C|Chen2020|radial|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|2C_25C|Chen2020|resolved|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|2C_25C|Chen2020|resolved|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|2C_25C|Chen2020|corrected|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_charge.csv",
+  "key": "21700|2C_25C|Chen2020|corrected|single",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_limit.csv",
+  "key": "21700|Chen2020|0|radial|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_limit.csv",
+  "key": "4680|Chen2020|0|radial|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_limit.csv",
+  "key": "4680|Chen2020|0|resolved|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ },
+ {
+  "table": "stage5_limit.csv",
+  "key": "4680|Chen2020|0|corrected|coupled",
+  "column": "(row)",
+  "mine": "present",
+  "stored": "missing",
+  "category": "row only in my recomputation (run file newer than the CSV)"
+ }
+]

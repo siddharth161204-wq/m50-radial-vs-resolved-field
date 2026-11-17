@@ -1,0 +1,37 @@
+{
+ "run": "C_21700_b_m5C_2C_resolved_ORegan2022_two-way_single_G15",
+ "kernel": "resolved_b_21700_m5C_2C_G15.npz",
+ "status_mine": "event: Minimum voltage [V]",
+ "status_stored": "event: Minimum voltage [V]",
+ "outputs_mine": 171,
+ "outputs_stored": 171,
+ "t_end_mine_s": 169.70558514117567,
+ "t_end_stored_s": 169.7055851411562,
+ "max_abs_dV_V": 3.789413227650584e-12,
+ "max_rel_dq": 5.886917398001401e-08,
+ "max_abs_dT_K": 2.365727125308581e-07,
+ "energy_mine_Wh": 1.5627128510439485,
+ "energy_stored_Wh": 1.5627128510437929,
+ "wall_s": 3.107938528060913
+}
+{
+ "run": "D_21700_0.3C_0C_resolved_ORegan2022_two-way_single_G15",
+ "kernel": "resolved_b_21700_charge10_G15.npz",
+ "status_mine": "event: Maximum voltage [V]",
+ "status_stored": "event: Maximum voltage [V]",
+ "outputs_mine": 781,
+ "outputs_stored": 781,
+ "t_end_mine_s": 7795.397428763949,
+ "t_end_stored_s": 7795.3974287639685,
+ "max_abs_dV_V": 7.105427357601002e-14,
+ "max_rel_dq": 5.63099643580145e-08,
+ "max_abs_dT_K": 7.4374899849960485e-09,
+ "energy_mine_Wh": 11.558297704574525,
+ "energy_stored_Wh": 11.558297704574551,
+ "wall_s": 11.687170028686523,
+ "margin_min_mine_V": -0.1927340194263099,
+ "margin_min_stored_V": -0.1927340179681778,
+ "t_margin_min_mine_s": 7795.397428763949,
+ "t_margin_min_stored_s": 7795.3974287639685,
+ "max_abs_d_margin_V": 2.9793157274582427e-08
+}

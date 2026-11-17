@@ -1,0 +1,78 @@
+P1 done 0 s 9.497845816497374e-07
+kernel checks done 2 s
+{
+ "P1_max_abs_K": 9.497845816497374e-07,
+ "P1_held": true,
+ "reciprocity_f32_worst": 1.0081681116819254e-07,
+ "reciprocity_within_f32": true,
+ "reciprocity_steady_worst": 5.666573304055942e-15,
+ "fe": {
+  "radial|21700|m5C_2C": {
+   "kernel": "radial_lat_21700_m5C_2C_G15.npz",
+   "steps": 1707,
+   "beta": 0.0,
+   "S_unit_max_rel_diff": 3.820032991499594e-08,
+   "S_inf_unit_max_rel_diff": 1.833321525163948e-12,
+   "what": "every unit's response to every one of the 15 groups",
+   "S_unit_uniform_max_rel_diff": 5.0674975148130165e-08,
+   "S_group_max_rel_diff": 3.819981704603476e-08,
+   "S_inf_group_max_rel_diff": 1.8318984703435227e-12
+  },
+  "corrected|21700|m5C_2C": {
+   "kernel": "corrected_b_21700_m5C_2C_G15.npz",
+   "steps": 1707,
+   "beta": 9620.449098848032,
+   "S_unit_max_rel_diff": 4.685357637574432e-08,
+   "S_inf_unit_max_rel_diff": 6.245147038258973e-13,
+   "what": "every unit's response to every one of the 15 groups",
+   "S_unit_uniform_max_rel_diff": 3.227574580941409e-08,
+   "S_group_max_rel_diff": 4.710465816606183e-08,
+   "S_inf_group_max_rel_diff": 6.268171469652256e-13
+  },
+  "radial|4680|m5C_2C": {
+   "kernel": "radial_lat_4680_m5C_2C_G15.npz",
+   "steps": 4470,
+   "beta": 0.0,
+   "S_unit_max_rel_diff": 3.482454231082551e-08,
+   "S_inf_unit_max_rel_diff": 3.0364277256222296e-11,
+   "what": "every unit's response to every one of the 15 groups",
+   "S_unit_uniform_max_rel_diff": 5.322588162476727e-08,
+   "S_group_max_rel_diff": 3.4824892182907316e-08,
+   "S_inf_group_max_rel_diff": 2.2558510770201575e-11
+  },
+  "corrected|4680|m5C_2C": {
+   "kernel": "corrected_b_4680_m5C_2C_G15.npz",
+   "steps": 2480,
+   "beta": 8247.050396505225,
+   "S_unit_max_rel_diff": 5.781591845462658e-08,
+   "S_inf_unit_max_rel_diff": 2.435544872615584e-12,
+   "what": "every unit's response to every one of the 15 groups",
+   "S_unit_uniform_max_rel_diff": 5.043117956361877e-08,
+   "S_group_max_rel_diff": 5.915657022611396e-08,
+   "S_inf_group_max_rel_diff": 2.4831604540229173e-12
+  },
+  "radial|21700|charge10": {
+   "kernel": "radial_lat_21700_charge10_G15.npz",
+   "steps": 134,
+   "beta": 0.0,
+   "S_unit_uniform_max_rel_diff": 5.0647360608727254e-08,
+   "S_group_max_rel_diff": 3.819596569043952e-08,
+   "S_inf_group_max_rel_diff": 1.8318984703435227e-12
+  },
+  "corrected|21700|charge10": {
+   "kernel": "corrected_b_21700_charge10_G15.npz",
+   "steps": 108,
+   "beta": 9620.449098848032,
+   "S_unit_uniform_max_rel_diff": 3.226371312868771e-08,
+   "S_group_max_rel_diff": 4.710185561401722e-08,
+   "S_inf_group_max_rel_diff": 6.268171469652256e-13
+  },
+  "context_finer_mesh_consistent_capacity_21700_radial": {
+   "uniform_response_max_rel_diff": 4.5438121735652844e-07,
+   "end_of_discharge_unit_rise_max_abs_diff_K": 2.6132029953274127e-06,
+   "note": "80 elements per unit and the consistent capacity against the registered 20 and lumped; a size of the spatial discretisation error, not a check of the registered kernel"
+  }
+ },
+ "wall_s": 18.64622187614441,
+ "peak": "418040 kB"
+}

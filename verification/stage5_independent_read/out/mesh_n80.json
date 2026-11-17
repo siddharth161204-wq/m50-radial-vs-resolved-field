@@ -1,0 +1,80 @@
+{
+ "points_per_particle_radius": 80,
+ "pybamm": "26.9.0.0",
+ "initial_stoichiometries_x_n_y_p": {
+  "0": [
+   0.02956238686388328,
+   0.9572705997333886
+  ],
+  "1": [
+   0.9841951106298638,
+   0.2638452248927604
+  ]
+ },
+ "charge_1455mA_0C": {
+  "I_A": 1.455,
+  "margin_min_V": 0.019693936432707688,
+  "t_min_s": 10639.571030288089,
+  "t_end_s": 10644.17145060777,
+  "t_first_negative_s": null,
+  "V_end": 4.200000000000003,
+  "charge_Ah": 4.30201929462064,
+  "n_outputs": 30726,
+  "margin_min_from_raw_potentials_V": 0.019693936432707674,
+  "raw_vs_pybamm_node_margin_max_abs_V": 0.0,
+  "raw_vs_pybamm_interface_max_abs_V": 2.220446049250313e-16,
+  "margin_min_on_10s_grid_only_V": 0.01969454990190214,
+  "termination": "event: Maximum voltage [V]",
+  "wall_s": 49.489073753356934,
+  "points": {
+   "x_n": 20,
+   "x_s": 20,
+   "x_p": 20,
+   "r_n": 80,
+   "r_p": 80,
+   "r_n_prim": 20,
+   "r_p_prim": 20,
+   "r_n_sec": 20,
+   "r_p_sec": 20,
+   "y": 10,
+   "z": 10,
+   "R_n": 30,
+   "R_p": 30,
+   "R_n_prim": 30,
+   "R_p_prim": 30,
+   "R_n_sec": 30,
+   "R_p_sec": 30
+  }
+ },
+ "discharge_2C_25C": {
+  "I_A": 10.0,
+  "t_cut_s": 1456.4119546559687,
+  "V_end": 2.499999999999904,
+  "capacity_Ah": 4.045588762933246,
+  "energy_Wh": 13.446365255390976,
+  "termination": "event: Minimum voltage [V]",
+  "wall_s": 41.832465171813965,
+  "n_outputs": 24546
+ },
+ "stored": {
+  "charge_1455mA_0C": {
+   "margin_min_V": 0.019693936432707688,
+   "t_min_s": 10639.571030288089,
+   "t_first_negative_s": null,
+   "t_end_s": 10644.17145060777,
+   "charge_Ah": 4.30201929462064
+  },
+  "discharge_2C_25C": {
+   "t_cut_s": 1456.4119546559687,
+   "capacity_Ah": 4.045588762933246,
+   "energy_Wh": 13.446365255390976
+  }
+ },
+ "diff": {
+  "margin_min_V": 0.0,
+  "charge_t_end_s": 0.0,
+  "discharge_t_cut_s": 0.0
+ },
+ "peak_memory": "316484 kB",
+ "initial_state": "initial_soc passed to the solve (the stored script's way)"
+}
