@@ -19,7 +19,7 @@ Discharge, two-way heat. Penalty: the single-unit model's energy to 2.5 V over t
 | 4680, 2C, -5 C, cooled | end-corrected | +0.44 | 334 | 22.02 | +0.6 % | +0.015 | 1710 | 2.10 | +3.2 % | 1359 |
 | M50, 3C, 25 C, cooled | radial model | -0.68 | 615 | 18.30 | +97.6 % | -0.008 | 559 | 0.69 | +31.5 % | 480 |
 | M50, 3C, 25 C, cooled | resolved cell | -0.73 | 280 | 9.26 |  | -0.004 | 558 | 0.52 |  | 479 |
-| M50, 3C, 25 C, cooled | end-corrected |  |  |  |  | -0.005 | 558 | 0.55 | +5.0 % | 479 |
+| M50, 3C, 25 C, cooled | end-corrected | -48.92 | 604 | 16.39 | +77.0 % | -0.005 | 558 | 0.55 | +5.0 % | 479 |
 
 Stage 4's proxy (C3), one-way heat: the coupled time-averaged spread beside Stage 4's proxy and the proxy over the coupled run's own window (units; groups).
 
@@ -42,7 +42,7 @@ Stage 4's proxy (C3), one-way heat: the coupled time-averaged spread beside Stag
 | 4680, 2C, -5 C, cooled | end-corrected | 6.61 | 17.50 | 5.53; 5.01 | 2.17 | 7.93 | 7.94; 7.44 |
 | M50, 3C, 25 C, cooled | radial model | 18.40 |  | 11.83; 11.29 | 0.70 |  | 6.42; 6.13 |
 | M50, 3C, 25 C, cooled | resolved cell | 10.06 |  | 7.00; 6.65 | 0.53 |  | 4.84; 4.60 |
-| M50, 3C, 25 C, cooled | end-corrected |  |  |  | 0.55 |  | 5.08; 4.84 |
+| M50, 3C, 25 C, cooled | end-corrected | 16.68 |  | 9.45; 9.00 | 0.55 |  | 5.08; 4.84 |
 
 Charge, two-way heat: the smallest margin (mV) and the group that holds it (1 innermost, 15 outermost).
 
@@ -83,21 +83,21 @@ Plating-limited rate (specification's C, 4.85 A in the M50), two-way heat: the l
 
 | Cell | Ambient (C) | Kernel | ORegan2022: single-unit | coupled | Chen2020: single-unit | coupled |
 |---|---|---|---|---|---|---|
-| M50 | 0 | radial model | 0.2812 |  | 0.2875 | 0.2863 |
+| M50 | 0 | radial model | 0.2812 | 0.2800 | 0.2875 | 0.2863 |
 | M50 | 0 | resolved cell | 0.2812 | 0.2816 | 0.2875 | 0.2863 |
-| M50 | 0 | end-corrected | 0.2812 |  | 0.2875 | 0.2863 |
-| M50 | 10 | radial model | 0.3688 |  | 0.4313 | 0.4300 |
-| M50 | 10 | resolved cell | 0.3688 |  | 0.4313 | 0.4300 |
-| M50 | 10 | end-corrected | 0.3688 |  | 0.4313 | 0.4300 |
-| M50 | 25 | radial model | 0.5375 |  | 0.7125 | 0.7100 |
-| M50 | 25 | resolved cell | 0.5375 |  | 0.7125 | 0.7100 |
-| M50 | 25 | end-corrected | 0.5375 |  | 0.7125 | 0.7100 |
+| M50 | 0 | end-corrected | 0.2812 | 0.2800 | 0.2875 | 0.2863 |
+| M50 | 10 | radial model | 0.3688 | 0.3663 | 0.4313 | 0.4300 |
+| M50 | 10 | resolved cell | 0.3688 | 0.3663 | 0.4313 | 0.4300 |
+| M50 | 10 | end-corrected | 0.3688 | 0.3663 | 0.4313 | 0.4300 |
+| M50 | 25 | radial model | 0.5375 | 0.5363 | 0.7125 | 0.7100 |
+| M50 | 25 | resolved cell | 0.5375 | 0.5363 | 0.7125 | 0.7100 |
+| M50 | 25 | end-corrected | 0.5375 | 0.5363 | 0.7125 | 0.7100 |
 | 4680 | 0 | radial model | 0.2812 | 0.2800 | 0.2938 | 0.2900 |
 | 4680 | 0 | resolved cell | 0.2828 | 0.2823 | 0.2875 | 0.2863 |
 | 4680 | 0 | end-corrected | 0.2812 | 0.2800 | 0.2875 | 0.2863 |
 | 4680 | 10 | radial model | 0.3750 | 0.3700 | 0.4437 | 0.4338 |
-| 4680 | 10 | resolved cell | 0.3688 |  | 0.4375 | 0.4300 |
-| 4680 | 10 | end-corrected | 0.3688 |  | 0.4375 | 0.4300 |
+| 4680 | 10 | resolved cell | 0.3688 | 0.3725 | 0.4375 | 0.4300 |
+| 4680 | 10 | end-corrected | 0.3688 | 0.3725 | 0.4375 | 0.4300 |
 | 4680 | 25 | radial model | 0.5437 | 0.5463 | 0.7375 | 0.7175 |
 | 4680 | 25 | resolved cell | 0.5375 | 0.5363 | 0.7188 | 0.7100 |
 | 4680 | 25 | end-corrected | 0.5375 | 0.5363 | 0.7188 | 0.7100 |

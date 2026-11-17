@@ -820,6 +820,19 @@
    ],
    "reversal_s": 162.4919396336157
   },
+  "21700_b_p25C_3C|ORegan2022|two-way|corrected": {
+   "penalty_energy": -0.4892248785172557,
+   "penalty_capacity": -0.5401753444303701,
+   "Q_coupled_Ah": 2.5174024471208782,
+   "Q_single_Ah": 1.1575637131775012,
+   "t_cut_coupled_s": 604.1765873090109,
+   "spread_tavg": 0.16389233359867544,
+   "group_rate_range_C": [
+    2.069153471297952,
+    4.077913592715859
+   ],
+   "reversal_s": 186.3369072581699
+  },
   "21700_b_p25C_3C|ORegan2022|one-way|radial": {
    "penalty_energy": -0.012857529253925137,
    "penalty_capacity": -0.016387227316097097,
@@ -845,6 +858,19 @@
     4.095853280542878
    ],
    "reversal_s": 185.8563042816589
+  },
+  "21700_b_p25C_3C|ORegan2022|one-way|corrected": {
+   "penalty_energy": -0.48808238711678376,
+   "penalty_capacity": -0.5401313760904767,
+   "Q_coupled_Ah": 2.5221473749967775,
+   "Q_single_Ah": 1.1598564426367846,
+   "t_cut_coupled_s": 605.3153699992266,
+   "spread_tavg": 0.16681574808918256,
+   "group_rate_range_C": [
+    2.0821000961544236,
+    4.027547275541641
+   ],
+   "reversal_s": 185.74725219964805
   },
   "21700_b_p25C_3C|Chen2020|two-way|radial": {
    "penalty_energy": -7.500411614780322e-05,
@@ -930,12 +956,20 @@
   "21700|ORegan2022|0C|resolved|single": 0.28125,
   "21700|ORegan2022|0C|corrected|single": 0.28125,
   "21700|ORegan2022|0C|resolved|coupled": 0.28,
+  "21700|ORegan2022|0C|radial|coupled": 0.28,
+  "21700|ORegan2022|0C|corrected|coupled": 0.28,
   "21700|ORegan2022|10C|radial|single": 0.36875,
   "21700|ORegan2022|10C|resolved|single": 0.36875,
   "21700|ORegan2022|10C|corrected|single": 0.36875,
+  "21700|ORegan2022|10C|corrected|coupled": 0.36625,
+  "21700|ORegan2022|10C|resolved|coupled": 0.36625,
+  "21700|ORegan2022|10C|radial|coupled": 0.36625,
   "21700|ORegan2022|25C|radial|single": 0.5375,
   "21700|ORegan2022|25C|resolved|single": 0.5375,
   "21700|ORegan2022|25C|corrected|single": 0.5375,
+  "21700|ORegan2022|25C|radial|coupled": 0.53625,
+  "21700|ORegan2022|25C|resolved|coupled": 0.53625,
+  "21700|ORegan2022|25C|corrected|coupled": 0.53625,
   "21700|Chen2020|0C|radial|single": 0.2875,
   "21700|Chen2020|0C|resolved|single": 0.2875,
   "21700|Chen2020|0C|corrected|single": 0.2875,
@@ -964,6 +998,8 @@
   "4680|ORegan2022|10C|resolved|single": 0.36875,
   "4680|ORegan2022|10C|corrected|single": 0.36875,
   "4680|ORegan2022|10C|radial|coupled": 0.37,
+  "4680|ORegan2022|10C|resolved|coupled": 0.3725,
+  "4680|ORegan2022|10C|corrected|coupled": 0.3725,
   "4680|ORegan2022|25C|radial|single": 0.54375,
   "4680|ORegan2022|25C|resolved|single": 0.5375,
   "4680|ORegan2022|25C|corrected|single": 0.5375,
