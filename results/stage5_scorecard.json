@@ -1,0 +1,106 @@
+{
+ "registered": {
+  "P1": {
+   "max_abs_K": 9.497845780970238e-07,
+   "held": true
+  },
+  "P2": {
+   "radial_over_resolved_minus_1": 0.25938502189795165,
+   "held": true
+  },
+  "P3": {
+   "coupled_spread": 0.03631557315251888,
+   "proxy": 0.0554168,
+   "ratio_minus_1": -0.3446829634241082,
+   "held": false
+  },
+  "P4": {
+   "penalty_radial": -0.010014375745221682,
+   "penalty_resolved": -0.0036325559509039484,
+   "held": false
+  },
+  "P5": {
+   "penalty_radial": -0.535319695718284,
+   "penalty_resolved": 0.003844135164397189,
+   "ratio": -139.25621051938978,
+   "held": false
+  },
+  "P6": {
+   "spread_per_group_heat_K": 2.1240389066979883,
+   "spread_uniform_heat_K": 2.065394656064045,
+   "ratio_minus_1": 0.02839372633300985,
+   "held": true,
+   "steps": 170
+  },
+  "P7": {
+   "radial_minus_resolved_mV": [
+    0.16349554061889648,
+    0.16291439533233643
+   ],
+   "held": true
+  },
+  "P8": {
+   "group_holding_minimum": {
+    "21700|0.3C_0C|radial": 15,
+    "21700|0.3C_0C|resolved": 15,
+    "21700|0.3C_0C|corrected": 15,
+    "21700|0.7C_25C|radial": 15,
+    "21700|0.7C_25C|resolved": 15,
+    "21700|0.7C_25C|corrected": 15,
+    "4680|0.3C_0C|radial": 15,
+    "4680|0.3C_0C|resolved": 15,
+    "4680|0.3C_0C|corrected": 15,
+    "4680|0.7C_25C|radial": 15,
+    "4680|0.7C_25C|resolved": 15,
+    "4680|0.7C_25C|corrected": 15
+   },
+   "outermost": 15,
+   "held": true
+  },
+  "P9": {
+   "21700": {
+    "single": 0.28125,
+    "coupled": 0.2815625,
+    "e": -0.0011098779134295356,
+    "resolution": "0.001C"
+   },
+   "4680": {
+    "single": 0.2828125,
+    "coupled": 0.28234375,
+    "e": 0.0016602102933038765,
+    "resolution": "0.001C"
+   },
+   "held": false
+  }
+ },
+ "brackets_Chen2020": {
+  "P2": {
+   "radial_over_resolved_minus_1": 0.35717316371803554,
+   "held": true
+  },
+  "P3": {
+   "coupled_spread": 0.007150399452540671,
+   "proxy": 0.0253836,
+   "ratio_minus_1": -0.7183063295773384,
+   "held": false
+  },
+  "P4": {
+   "penalty_radial": 3.2971754632571404e-05,
+   "penalty_resolved": 1.8356628663340757e-05,
+   "held": true
+  },
+  "P5": {
+   "penalty_radial": 0.00046677846727716243,
+   "penalty_resolved": 0.00014347985840101884,
+   "ratio": 3.253268246003844,
+   "held": true
+  },
+  "P6": {
+   "spread_per_group_heat_K": 2.3953592003867796,
+   "spread_uniform_heat_K": 2.4018350382082723,
+   "ratio_minus_1": -0.002696204243203826,
+   "held": true,
+   "steps": 1707
+  }
+ }
+}

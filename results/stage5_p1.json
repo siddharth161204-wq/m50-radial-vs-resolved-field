@@ -1,0 +1,111 @@
+{
+ "cases": {
+  "21700_b_m5C_2C|radial": {
+   "max_abs_K": 3.013685050401449e-07,
+   "n_times": 171,
+   "n_units": 45,
+   "kernel": "radial_lat_21700_m5C_2C_G15.npz",
+   "kernel_steps": 1707
+  },
+  "21700_b_m5C_2C|resolved": {
+   "max_abs_K": 1.783243942510282e-07,
+   "n_times": 171,
+   "n_units": 45,
+   "kernel": "resolved_b_21700_m5C_2C_G15.npz",
+   "kernel_steps": 1707
+  },
+  "21700_b_m5C_2C|corrected": {
+   "max_abs_K": 1.714440174271914e-07,
+   "n_times": 171,
+   "n_units": 45,
+   "kernel": "corrected_b_21700_m5C_2C_G15.npz",
+   "kernel_steps": 1707
+  },
+  "21700_b_p25C_2C|radial": {
+   "max_abs_K": 2.4597433068151986e-07,
+   "n_times": 173,
+   "n_units": 45,
+   "kernel": "radial_lat_21700_p25C_2C_G15.npz",
+   "kernel_steps": 1724
+  },
+  "21700_b_p25C_2C|resolved": {
+   "max_abs_K": 1.4704876605264872e-07,
+   "n_times": 173,
+   "n_units": 45,
+   "kernel": "resolved_b_21700_p25C_2C_G15.npz",
+   "kernel_steps": 1724
+  },
+  "21700_b_p25C_2C|corrected": {
+   "max_abs_K": 1.4366576195357084e-07,
+   "n_times": 173,
+   "n_units": 45,
+   "kernel": "corrected_b_21700_p25C_2C_G15.npz",
+   "kernel_steps": 1724
+  },
+  "21700_b_p25C_1.25C|radial": {
+   "max_abs_K": 1.3293086098542517e-07,
+   "n_times": 286,
+   "n_units": 45,
+   "kernel": "radial_lat_21700_p25C_1.25C_G15.npz",
+   "kernel_steps": 2852
+  },
+  "21700_b_p25C_1.25C|resolved": {
+   "max_abs_K": 9.18464877486258e-08,
+   "n_times": 286,
+   "n_units": 45,
+   "kernel": "resolved_b_21700_p25C_1.25C_G15.npz",
+   "kernel_steps": 2852
+  },
+  "21700_b_p25C_1.25C|corrected": {
+   "max_abs_K": 8.81557689069723e-08,
+   "n_times": 286,
+   "n_units": 45,
+   "kernel": "corrected_b_21700_p25C_1.25C_G15.npz",
+   "kernel_steps": 2852
+  },
+  "21700_a_m5C_2C|radial": {
+   "max_abs_K": 3.013685050401449e-07,
+   "n_times": 171,
+   "n_units": 45,
+   "kernel": "radial_lat_21700_m5C_2C_G15.npz",
+   "kernel_steps": 1707
+  },
+  "21700_a_m5C_2C|resolved": {
+   "max_abs_K": 3.1542349043789386e-07,
+   "n_times": 171,
+   "n_units": 45,
+   "kernel": "resolved_a_21700_m5C_2C_G15.npz",
+   "kernel_steps": 1707
+  },
+  "21700_a_m5C_2C|corrected": {
+   "max_abs_K": 3.013685050401449e-07,
+   "n_times": 171,
+   "n_units": 45,
+   "kernel": "radial_lat_21700_m5C_2C_G15.npz",
+   "kernel_steps": 1707
+  },
+  "4680_b_m5C_2C|radial": {
+   "max_abs_K": 9.497845780970238e-07,
+   "n_times": 171,
+   "n_units": 111,
+   "kernel": "radial_lat_4680_m5C_2C_G15.npz",
+   "kernel_steps": 4470
+  },
+  "4680_b_m5C_2C|resolved": {
+   "max_abs_K": 4.913524414007497e-07,
+   "n_times": 171,
+   "n_units": 111,
+   "kernel": "resolved_b_4680_m5C_2C_G15.npz",
+   "kernel_steps": 2455
+  },
+  "4680_b_m5C_2C|corrected": {
+   "max_abs_K": 4.908809954073945e-07,
+   "n_times": 171,
+   "n_units": 111,
+   "kernel": "corrected_b_4680_m5C_2C_G15.npz",
+   "kernel_steps": 2480
+  }
+ },
+ "max_abs_K": 9.497845780970238e-07,
+ "held": true
+}

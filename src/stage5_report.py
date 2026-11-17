@@ -364,7 +364,17 @@ def scorecard(rows_d, rows_s, rows_c, rows_l, P1):
                            "resolution": "0.001C" if s_["fine_rate_spec_C"] else "0.00625C"}
         if len(e) == 2:
             out["P9"] = {**e, "held": bool(e["21700"]["e"] < 0.05 and e["4680"]["e"] > 0.05)}
+        if pset != "ORegan2022":
+            # a bracket has no verdict of its own (predictions_stage5.md): record whether the rule's condition is met
+            for v in out.values():
+                if "held" in v:
+                    v["condition_met"] = v.pop("held")
         sc[key] = out
+    sc["note"] = ("Verdicts are under the registered choices (ORegan2022, PyBaMM's default mesh of 20 points along each "
+                  "particle's radius). After the predictions it was found that this mesh does not resolve ORegan2022's "
+                  "solid diffusion, so every ORegan2022 reading belongs to that mesh; Chen2020 settles at it (DECISIONS.md "
+                  "D35, results/stage5_posthoc_mesh.json). The Chen2020 brackets carry no verdict of their own: "
+                  "condition_met records whether the rule's condition holds under Chen2020.")
     return sc
 
 
