@@ -587,16 +587,20 @@ def figure(rows_d, rows_s, rows_l):
         if cs in PAPER_PENALTY:
             c.plot([x[j] - 0.3, x[j] + 0.3], [PAPER_PENALTY[cs]] * 2, color="#0b0b0b", lw=1.2)
     c.set_yscale("log")
-    c.set_ylim(5e-5, 200)
+    c.set_ylim(5e-5, 5e3)                              # the top two decades hold the legend, above every value
     c.set_xticks(x, [CASE_TICK[k] for k in cases])
     c.set_ylabel("|single-unit energy over coupled, less one| (%)")
     c.set_title("(c) Multi-unit penalty, two-way heat", loc="left")
-    hc = [Line2D([], [], color=COL[lb], marker="o", ls="none", ms=3.6, label=NAME[lb]) for lb in LABELS]
-    hc += [Line2D([], [], color="#52514e", marker="o", ls="none", ms=3.6, mfc="white", label="ORegan2022 (registered)"),
-           Line2D([], [], color="#52514e", marker="D", ls="none", ms=3.4, mfc="white", label="Chen2020"),
+    hc1 = [Line2D([], [], color=COL[lb], marker="o", ls="none", ms=3.6, label=NAME[lb]) for lb in LABELS]
+    hc2 = [Line2D([], [], color="#52514e", marker="o", ls="none", ms=3.6, mfc="white", label="ORegan2022 (registered)"),
            Line2D([], [], color="#52514e", marker="o", ls="none", ms=3.6, label="filled: single-unit gives more"),
+           Line2D([], [], color="#52514e", marker="D", ls="none", ms=3.4, mfc="white", label="Chen2020"),
            Line2D([], [], color="#0b0b0b", lw=1.2, label="the paper's values")]
-    c.legend(handles=hc, frameon=False, loc="center", bbox_to_anchor=(0.47, 0.60), ncol=2, fontsize=5.2)
+    lg = c.legend(handles=hc1, frameon=False, loc="upper left", bbox_to_anchor=(0.0, 1.0), ncol=3, fontsize=5.2,
+                  handletextpad=0.2, columnspacing=1.0)
+    c.add_artist(lg)
+    c.legend(handles=hc2, frameon=False, loc="upper left", bbox_to_anchor=(0.0, 0.925), ncol=2, fontsize=5.2,
+             handletextpad=0.2, columnspacing=1.0)
     # (d) the plating-limited rate against ambient, both cells and sets
     d = ax[1, 1]
     for pset, ls_c in (("Chen2020", "-"), ("ORegan2022", "--")):

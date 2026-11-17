@@ -126,6 +126,21 @@
    },
    "outermost": 15,
    "condition_met": true
+  },
+  "P9": {
+   "21700": {
+    "single": 0.2875,
+    "coupled": 0.28625,
+    "e": 0.004366812227074135,
+    "resolution": "0.00625C"
+   },
+   "4680": {
+    "single": 0.2875,
+    "coupled": 0.28625,
+    "e": 0.004366812227074135,
+    "resolution": "0.00625C"
+   },
+   "condition_met": false
   }
  },
  "note": "Verdicts are under the registered choices (ORegan2022, PyBaMM's default mesh of 20 points along each particle's radius). After the predictions it was found that this mesh does not resolve ORegan2022's solid diffusion, so every ORegan2022 reading belongs to that mesh; Chen2020 settles at it (DECISIONS.md D35, results/stage5_posthoc_mesh.json). The Chen2020 brackets carry no verdict of their own: condition_met records whether the rule's condition holds under Chen2020."

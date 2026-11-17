@@ -170,6 +170,84 @@
    ],
    "reversal_s": 1354.8837466318319
   },
+  "21700_b_p25C_2C|ORegan2022|two-way|radial": {
+   "penalty_energy": 0.006204072085356893,
+   "penalty_capacity": 0.008890752285078962,
+   "Q_coupled_Ah": 2.929326523922242,
+   "Q_single_Ah": 2.9553704404085464,
+   "t_cut_coupled_s": 1054.5575486120072,
+   "spread_tavg": 0.11657468177747904,
+   "group_rate_range_C": [
+    1.4882364143152802,
+    2.7579747047080327
+   ],
+   "reversal_s": 285.08568323284857
+  },
+  "21700_b_p25C_2C|ORegan2022|two-way|resolved": {
+   "penalty_energy": -0.002516439676576221,
+   "penalty_capacity": -0.0034061463027328376,
+   "Q_coupled_Ah": 2.1741245653916996,
+   "Q_single_Ah": 2.16671917904161,
+   "t_cut_coupled_s": 782.6848435410118,
+   "spread_tavg": 0.06006556114471844,
+   "group_rate_range_C": [
+    1.7408455717247524,
+    2.393998215459409
+   ],
+   "reversal_s": 284.39280598885165
+  },
+  "21700_b_p25C_2C|ORegan2022|two-way|corrected": {
+   "penalty_energy": -0.004315489369087433,
+   "penalty_capacity": -0.005509687241626149,
+   "Q_coupled_Ah": 2.179292933846463,
+   "Q_single_Ah": 2.1672857113730832,
+   "t_cut_coupled_s": 784.5454561847267,
+   "spread_tavg": 0.06285028877588368,
+   "group_rate_range_C": [
+    1.736835003514241,
+    2.4186773431648585
+   ],
+   "reversal_s": 284.4385343976082
+  },
+  "21700_b_p25C_2C|ORegan2022|one-way|radial": {
+   "penalty_energy": -0.006502400997072222,
+   "penalty_capacity": -0.00794618053058993,
+   "Q_coupled_Ah": 2.754592353383814,
+   "Q_single_Ah": 2.7327038652556435,
+   "t_cut_coupled_s": 991.6532472181731,
+   "spread_tavg": 0.1104946910822568,
+   "group_rate_range_C": [
+    1.5440992414028174,
+    2.6935856023841205
+   ],
+   "reversal_s": 285.1463393760991
+  },
+  "21700_b_p25C_2C|ORegan2022|one-way|resolved": {
+   "penalty_energy": -0.0004430109583715147,
+   "penalty_capacity": -0.0008413523495668374,
+   "Q_coupled_Ah": 2.154538648915871,
+   "Q_single_Ah": 2.152725922761373,
+   "t_cut_coupled_s": 775.6339136097134,
+   "spread_tavg": 0.061513414291555685,
+   "group_rate_range_C": [
+    1.7413823260084638,
+    2.4056659700572176
+   ],
+   "reversal_s": 273.34869403624
+  },
+  "21700_b_p25C_2C|ORegan2022|one-way|corrected": {
+   "penalty_energy": 0.00030060752034666294,
+   "penalty_capacity": -4.673030040402981e-05,
+   "Q_coupled_Ah": 2.1531141155374223,
+   "Q_single_Ah": 2.153013499867999,
+   "t_cut_coupled_s": 775.1210815934721,
+   "spread_tavg": 0.06584570660847995,
+   "group_rate_range_C": [
+    1.7460601354885164,
+    2.433763357287466
+   ],
+   "reversal_s": 273.48602543249086
+  },
   "21700_b_p25C_2C|Chen2020|two-way|radial": {
    "penalty_energy": 1.8256190055909727e-05,
    "penalty_capacity": 1.735222404919412e-05,
@@ -248,6 +326,84 @@
    ],
    "reversal_s": 1362.0779428560663
   },
+  "21700_b_p25C_1.25C|ORegan2022|two-way|radial": {
+   "penalty_energy": 0.0004975163908109703,
+   "penalty_capacity": 0.0006705856705642166,
+   "Q_coupled_Ah": 3.975721989175183,
+   "Q_single_Ah": 3.978388051371271,
+   "t_cut_coupled_s": 2290.0158657649054,
+   "spread_tavg": 0.032755307406255055,
+   "group_rate_range_C": [
+    1.1257850291424805,
+    1.4200221305416838
+   ],
+   "reversal_s": 726.645991025295
+  },
+  "21700_b_p25C_1.25C|ORegan2022|two-way|resolved": {
+   "penalty_energy": -0.0004780286032265435,
+   "penalty_capacity": -0.000563040709388285,
+   "Q_coupled_Ah": 3.9517880617193124,
+   "Q_single_Ah": 3.9495630441656897,
+   "t_cut_coupled_s": 2276.2299235503237,
+   "spread_tavg": 0.024174161668741534,
+   "group_rate_range_C": [
+    1.133402211196903,
+    1.3761284266266856
+   ],
+   "reversal_s": 724.1741909021264
+  },
+  "21700_b_p25C_1.25C|ORegan2022|two-way|corrected": {
+   "penalty_energy": -0.00032592454353364,
+   "penalty_capacity": -0.0003972418885446194,
+   "Q_coupled_Ah": 3.9538271396288533,
+   "Q_single_Ah": 3.952256513868928,
+   "t_cut_coupled_s": 2277.4044324262195,
+   "spread_tavg": 0.02475933256059343,
+   "group_rate_range_C": [
+    1.1351880255435658,
+    1.3722408230674006
+   ],
+   "reversal_s": 724.3413092155171
+  },
+  "21700_b_p25C_1.25C|ORegan2022|one-way|radial": {
+   "penalty_energy": -0.0004025228938470127,
+   "penalty_capacity": -0.00044949400001048634,
+   "Q_coupled_Ah": 3.9314440742767167,
+   "Q_single_Ah": 3.9296769137539527,
+   "t_cut_coupled_s": 2264.5117867833887,
+   "spread_tavg": 0.03249223195472807,
+   "group_rate_range_C": [
+    1.1320949445319277,
+    1.4037514337284787
+   ],
+   "reversal_s": 666.2664996331424
+  },
+  "21700_b_p25C_1.25C|ORegan2022|one-way|resolved": {
+   "penalty_energy": 0.0004277309094304904,
+   "penalty_capacity": 0.0005208083399517172,
+   "Q_coupled_Ah": 3.9182512389851127,
+   "Q_single_Ah": 3.9202918969084024,
+   "t_cut_coupled_s": 2256.912713655425,
+   "spread_tavg": 0.025001130928202234,
+   "group_rate_range_C": [
+    1.1408894137148844,
+    1.3975280800444638
+   ],
+   "reversal_s": 666.8704707221706
+  },
+  "21700_b_p25C_1.25C|ORegan2022|one-way|corrected": {
+   "penalty_energy": 0.0007862020122393343,
+   "penalty_capacity": 0.0009386093211432023,
+   "Q_coupled_Ah": 3.919632709266324,
+   "Q_single_Ah": 3.923311713062699,
+   "t_cut_coupled_s": 2257.7084405374026,
+   "spread_tavg": 0.026131984372076696,
+   "group_rate_range_C": [
+    1.1443180057277198,
+    1.359029615836013
+   ],
+   "reversal_s": 666.7642857987668
+  },
   "21700_b_p25C_1.25C|Chen2020|two-way|radial": {
    "penalty_energy": 2.1035780068956456e-06,
    "penalty_capacity": 1.133170678402351e-06,
@@ -325,6 +481,84 @@
     1.2567706187156966
    ],
    "reversal_s": 2220.868017309974
+  },
+  "21700_a_m5C_2C|ORegan2022|two-way|radial": {
+   "penalty_energy": -0.010014375745221682,
+   "penalty_capacity": -0.011957025006809952,
+   "Q_coupled_Ah": 0.5242640123987347,
+   "Q_single_Ah": 0.5179953744923125,
+   "t_cut_coupled_s": 188.73504446354448,
+   "spread_tavg": 0.08384682510924832,
+   "group_rate_range_C": [
+    1.8088798779127948,
+    2.2165805846305506
+   ],
+   "reversal_s": null
+  },
+  "21700_a_m5C_2C|ORegan2022|two-way|resolved": {
+   "penalty_energy": -0.008319700643211192,
+   "penalty_capacity": -0.009952159302166641,
+   "Q_coupled_Ah": 0.5144122671142877,
+   "Q_single_Ah": 0.5092927542849776,
+   "t_cut_coupled_s": 185.18841616114355,
+   "spread_tavg": 0.07723141924821611,
+   "group_rate_range_C": [
+    1.8222174736772385,
+    2.2060028197507267
+   ],
+   "reversal_s": null
+  },
+  "21700_a_m5C_2C|ORegan2022|two-way|corrected": {
+   "penalty_energy": -0.010014375745221682,
+   "penalty_capacity": -0.011957025006809952,
+   "Q_coupled_Ah": 0.5242640123987347,
+   "Q_single_Ah": 0.5179953744923125,
+   "t_cut_coupled_s": 188.73504446354448,
+   "spread_tavg": 0.08384682510924832,
+   "group_rate_range_C": [
+    1.8088798779127948,
+    2.2165805846305506
+   ],
+   "reversal_s": null
+  },
+  "21700_a_m5C_2C|ORegan2022|one-way|radial": {
+   "penalty_energy": -0.0005546216088478939,
+   "penalty_capacity": -0.0006270360919209406,
+   "Q_coupled_Ah": 0.42313669857703606,
+   "Q_single_Ah": 0.422871376595212,
+   "t_cut_coupled_s": 152.32921148773298,
+   "spread_tavg": 0.045735288889921656,
+   "group_rate_range_C": [
+    1.9130917817623332,
+    2.0986323465271637
+   ],
+   "reversal_s": null
+  },
+  "21700_a_m5C_2C|ORegan2022|one-way|resolved": {
+   "penalty_energy": -0.0005209886415489251,
+   "penalty_capacity": -0.0005971286162465006,
+   "Q_coupled_Ah": 0.42105625605403946,
+   "Q_single_Ah": 0.42080483131449997,
+   "t_cut_coupled_s": 151.58025217945422,
+   "spread_tavg": 0.04304520131047519,
+   "group_rate_range_C": [
+    1.9174905781122304,
+    2.0927084767197885
+   ],
+   "reversal_s": null
+  },
+  "21700_a_m5C_2C|ORegan2022|one-way|corrected": {
+   "penalty_energy": -0.0005546216088478939,
+   "penalty_capacity": -0.0006270360919209406,
+   "Q_coupled_Ah": 0.42313669857703606,
+   "Q_single_Ah": 0.422871376595212,
+   "t_cut_coupled_s": 152.32921148773298,
+   "spread_tavg": 0.045735288889921656,
+   "group_rate_range_C": [
+    1.9130917817623332,
+    2.0986323465271637
+   ],
+   "reversal_s": null
   },
   "21700_a_m5C_2C|Chen2020|two-way|radial": {
    "penalty_energy": 3.2971754632571404e-05,
@@ -560,6 +794,58 @@
    ],
    "reversal_s": 1364.7582565794316
   },
+  "21700_b_p25C_3C|ORegan2022|two-way|radial": {
+   "penalty_energy": -0.006797349049053936,
+   "penalty_capacity": -0.009254771644466642,
+   "Q_coupled_Ah": 2.5611684669723203,
+   "Q_single_Ah": 2.537465437667483,
+   "t_cut_coupled_s": 614.6804320733569,
+   "spread_tavg": 0.18295150922718023,
+   "group_rate_range_C": [
+    2.0323628451887044,
+    4.028554059349629
+   ],
+   "reversal_s": 211.44546630502612
+  },
+  "21700_b_p25C_3C|ORegan2022|two-way|resolved": {
+   "penalty_energy": -0.007298302885450636,
+   "penalty_capacity": -0.010070040983533035,
+   "Q_coupled_Ah": 1.1684629959604047,
+   "Q_single_Ah": 1.1566965257033417,
+   "t_cut_coupled_s": 280.43111903049714,
+   "spread_tavg": 0.09259269432975356,
+   "group_rate_range_C": [
+    2.230246294416648,
+    4.1064006587805855
+   ],
+   "reversal_s": 162.4919396336157
+  },
+  "21700_b_p25C_3C|ORegan2022|one-way|radial": {
+   "penalty_energy": -0.012857529253925137,
+   "penalty_capacity": -0.016387227316097097,
+   "Q_coupled_Ah": 2.5733199176657147,
+   "Q_single_Ah": 2.5311503392178865,
+   "t_cut_coupled_s": 617.5967802397715,
+   "spread_tavg": 0.18402802560725068,
+   "group_rate_range_C": [
+    2.037561020280099,
+    4.137827212325286
+   ],
+   "reversal_s": 217.7217936417508
+  },
+  "21700_b_p25C_3C|ORegan2022|one-way|resolved": {
+   "penalty_energy": -0.01227061520149031,
+   "penalty_capacity": -0.016922621100838864,
+   "Q_coupled_Ah": 1.1787092659236726,
+   "Q_single_Ah": 1.1587624156283984,
+   "t_cut_coupled_s": 282.89022382168145,
+   "spread_tavg": 0.10055299116717178,
+   "group_rate_range_C": [
+    2.102022112995147,
+    4.095853280542878
+   ],
+   "reversal_s": 185.8563042816589
+  },
   "21700_b_p25C_3C|Chen2020|two-way|radial": {
    "penalty_energy": -7.500411614780322e-05,
    "penalty_capacity": -0.00010848739996960344,
@@ -654,22 +940,36 @@
   "21700|Chen2020|0C|resolved|single": 0.2875,
   "21700|Chen2020|0C|corrected|single": 0.2875,
   "21700|Chen2020|0C|radial|coupled": 0.28625,
+  "21700|Chen2020|0C|resolved|coupled": 0.28625,
+  "21700|Chen2020|0C|corrected|coupled": 0.28625,
   "21700|Chen2020|10C|radial|single": 0.43125,
   "21700|Chen2020|10C|resolved|single": 0.43125,
   "21700|Chen2020|10C|corrected|single": 0.43125,
+  "21700|Chen2020|10C|radial|coupled": 0.43,
+  "21700|Chen2020|10C|resolved|coupled": 0.43,
+  "21700|Chen2020|10C|corrected|coupled": 0.43,
   "21700|Chen2020|25C|radial|single": 0.7125,
   "21700|Chen2020|25C|resolved|single": 0.7125,
   "21700|Chen2020|25C|corrected|single": 0.7125,
+  "21700|Chen2020|25C|radial|coupled": 0.71,
+  "21700|Chen2020|25C|resolved|coupled": 0.71,
+  "21700|Chen2020|25C|corrected|coupled": 0.71,
   "4680|ORegan2022|0C|radial|single": 0.28125,
   "4680|ORegan2022|0C|resolved|single": 0.28125,
   "4680|ORegan2022|0C|corrected|single": 0.28125,
   "4680|ORegan2022|0C|resolved|coupled": 0.28,
+  "4680|ORegan2022|0C|radial|coupled": 0.28,
+  "4680|ORegan2022|0C|corrected|coupled": 0.28,
   "4680|ORegan2022|10C|radial|single": 0.375,
   "4680|ORegan2022|10C|resolved|single": 0.36875,
   "4680|ORegan2022|10C|corrected|single": 0.36875,
+  "4680|ORegan2022|10C|radial|coupled": 0.37,
   "4680|ORegan2022|25C|radial|single": 0.54375,
   "4680|ORegan2022|25C|resolved|single": 0.5375,
   "4680|ORegan2022|25C|corrected|single": 0.5375,
+  "4680|ORegan2022|25C|radial|coupled": 0.54625,
+  "4680|ORegan2022|25C|resolved|coupled": 0.53625,
+  "4680|ORegan2022|25C|corrected|coupled": 0.53625,
   "4680|Chen2020|0C|radial|single": 0.29375,
   "4680|Chen2020|0C|resolved|single": 0.2875,
   "4680|Chen2020|0C|corrected|single": 0.2875,
@@ -679,10 +979,15 @@
   "4680|Chen2020|10C|radial|single": 0.44375,
   "4680|Chen2020|10C|resolved|single": 0.4375,
   "4680|Chen2020|10C|corrected|single": 0.4375,
+  "4680|Chen2020|10C|radial|coupled": 0.43375,
+  "4680|Chen2020|10C|resolved|coupled": 0.43,
+  "4680|Chen2020|10C|corrected|coupled": 0.43,
   "4680|Chen2020|25C|radial|single": 0.7375,
   "4680|Chen2020|25C|resolved|single": 0.71875,
   "4680|Chen2020|25C|corrected|single": 0.71875,
-  "4680|Chen2020|25C|radial|coupled": 0.7175
+  "4680|Chen2020|25C|radial|coupled": 0.7175,
+  "4680|Chen2020|25C|resolved|coupled": 0.71,
+  "4680|Chen2020|25C|corrected|coupled": 0.71
  },
  "specification_limits_spec_C": {
   "0 to 25 C": 0.3,
