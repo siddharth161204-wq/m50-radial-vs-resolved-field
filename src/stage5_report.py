@@ -496,7 +496,7 @@ def figure(rows_d, rows_s, rows_l):
     a.set_xlim(0, 1200)
     a.set_xlabel("time since the heat was switched on (s)")
     a.set_ylabel("temperature rise (K per 100 kW/m$^3$)")
-    a.set_title("(a) Kernel: response to uniform heat, M50", loc="left")
+    a.set_title("(a) Kernel, M50, ends cooled: rise under uniform heat", loc="left")
     a.legend(frameon=False, loc="lower right")
     # (b) the shares over time in the main case, one-way heat (the proxy's heat), with the proxy marked for the
     # resolved kernel at group level: over the coupled run's own window and over the heat's full duration (Stage 4)
@@ -507,8 +507,8 @@ def figure(rows_d, rows_s, rows_l):
             continue
         r = SC.load_run(n)
         sh = r["I"] / r["meta"]["I_app_A"]
-        b.plot(r["t"], 100 * sh[:, 0], color=COL[label], lw=1.3, label=f"{NAME[label]}, innermost group")
-        b.plot(r["t"], 100 * sh[:, -1], color=COL[label], lw=1.1, ls="--", label=f"{NAME[label]}, outermost group")
+        b.plot(r["t"], 100 * sh[:, 0], color=COL[label], lw=1.3, label=NAME[label])
+        b.plot(r["t"], 100 * sh[:, -1], color=COL[label], lw=1.1, ls="--")
     n = RN.run_name("C", "21700_b_m5C_2C", "resolved", "ORegan2022", "one-way", False, S5.G_REG)
     if exists(n):
         r = SC.load_run(n)
@@ -526,10 +526,14 @@ def figure(rows_d, rows_s, rows_l):
                 b.plot([r["t"][-1] * 0.9, r["t"][-1] * 1.02], [100 * v] * 2, color="#0b0b0b", lw=0.8, ls=ls,
                        label=lab if j == 0 else None)
     b.axhline(100, color="#0b0b0b", lw=0.5)
+    lo_, hi_ = b.get_ylim()
+    b.set_ylim(min(lo_, 100 - 1.5 * (100 - lo_)), hi_ + 0.5)
+    b.text(0.02, 0.97, "innermost group (solid)", transform=b.transAxes, fontsize=5.6, va="top")
+    b.text(0.02, 0.40, "outermost group (dashed)", transform=b.transAxes, fontsize=5.6, va="top")
     b.set_xlabel("time (s)")
     b.set_ylabel("group current density, % of the cell mean")
     b.set_title("(b) Shares, M50, 2C, -5 C, one-way heat, ORegan2022", loc="left")
-    b.legend(frameon=False, loc="upper left", ncol=1, fontsize=5.2)
+    b.legend(frameon=False, loc="lower left", ncol=1, fontsize=5.2)
     # (c) the penalty by case and kernel, two-way heat
     c = ax[1, 0]
     cases = list(RN.DISCHARGE_CASES)
@@ -565,15 +569,20 @@ def figure(rows_d, rows_s, rows_l):
                 if pts:
                     xs, ys = zip(*pts)
                     d.plot(xs, ys, color=COL[label], ls=ls, marker=mk, ms=3.0,
-                           mfc=COL[label] if model == "coupled" else "white", lw=1.0,
-                           label=f"{'M50' if cell == '21700' else '4680'}, {NAME[label]}, {model}")
+                           mfc=COL[label] if model == "coupled" else "white", lw=1.0)
     d.step([0, 25, 45], [0.3, 0.7, 0.7], where="post", color="#0b0b0b", lw=0.8)
-    d.annotate("specification's maximum continuous charge", (1, 0.31), fontsize=5.5, va="bottom")
+    d.annotate("specification's maximum\ncontinuous charge", (12.5, 0.305), fontsize=5.5, va="bottom")
     d.set_xlim(-1, 27)
     d.set_xlabel("ambient temperature (C)")
     d.set_ylabel("plating-limited rate (specification's C, 4.85 A)")
-    d.set_title("(d) Largest constant-current rate with the margin at or above 0, ORegan2022", loc="left")
-    d.legend(frameon=False, loc="upper left", ncol=2, fontsize=4.8)
+    d.set_title("(d) Plating-limited rate, ORegan2022", loc="left")
+    from matplotlib.lines import Line2D
+    hd = [Line2D([], [], color=COL[lb], lw=1.2, label=NAME[lb]) for lb in LABELS]
+    hd += [Line2D([], [], color="#52514e", marker="o", ls="none", ms=3.5, label="M50"),
+           Line2D([], [], color="#52514e", marker="s", ls="none", ms=3.5, label="4680"),
+           Line2D([], [], color="#52514e", marker="o", ls="-", lw=1.0, ms=3.0, label="coupled (filled, solid)"),
+           Line2D([], [], color="#52514e", marker="o", mfc="white", ls=":", lw=1.0, ms=3.0, label="single-unit (open, dotted)")]
+    d.legend(handles=hd, frameon=False, loc="upper left", ncol=2, fontsize=5.4)
     for a_ in ax.ravel():
         a_.grid(True, color="#e6e5e1", lw=0.5)
         a_.set_axisbelow(True)
