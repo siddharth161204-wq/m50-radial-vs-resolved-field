@@ -1,0 +1,101 @@
+{
+ "what": "post hoc (D35): one DFN at the ambient temperature against the particle mesh; not a registered reading",
+ "pybamm": "26.9.0.0",
+ "registered_points_per_particle_radius": 20,
+ "results": {
+  "ORegan2022": {
+   "20": {
+    "discharge_2C_m5C": {
+     "t_cut_s": 125.72656889405242,
+     "capacity_Ah": 0.34924046915014556,
+     "energy_Wh": 1.1866442091015845
+    },
+    "discharge_2C_25C": {
+     "t_cut_s": 978.3663971833464,
+     "capacity_Ah": 2.7176844366204067,
+     "energy_Wh": 8.954605963535403
+    },
+    "charge_1455mA_0C": {
+     "margin_min_V": -0.19363257159891628,
+     "t_min_s": 7779.944516435014,
+     "t_first_negative_s": 7653.22858630127,
+     "t_end_s": 7779.944516435014,
+     "charge_Ah": 3.1443942420591515
+    },
+    "charge_3395mA_25C": {
+     "margin_min_V": -0.23729843562171238,
+     "t_min_s": 3008.5720831152653,
+     "t_first_negative_s": 2998.8462324285247,
+     "t_end_s": 3008.5720831152653,
+     "charge_Ah": 2.8372506172712013
+    },
+    "pulse_R_ohm": {
+     "-5": 0.04875383916071012,
+     "0": 0.04349022756237382,
+     "25": 0.023571015166157137
+    },
+    "plating_limited_rate_at_ambient": {
+     "0": {
+      "rate_spec_C": 0.28010253906250004,
+      "fails_at_spec_C": 0.28081054687500007
+     },
+     "10": {
+      "rate_spec_C": 0.36931152343749996,
+      "fails_at_spec_C": 0.37001953125
+     },
+     "25": {
+      "rate_spec_C": 0.535693359375,
+      "fails_at_spec_C": 0.5364013671875
+     }
+    },
+    "wall_s": 286.01875829696655
+   },
+   "40": {
+    "discharge_2C_m5C": {
+     "t_cut_s": 121.34613025856828,
+     "capacity_Ah": 0.3370725840515786,
+     "energy_Wh": 1.1135226981574955
+    },
+    "discharge_2C_25C": {
+     "t_cut_s": 1281.8984484771293,
+     "capacity_Ah": 3.5608290235475812,
+     "energy_Wh": 11.750572709539972
+    },
+    "charge_1455mA_0C": {
+     "margin_min_V": 0.019056275500726572,
+     "t_min_s": 10607.011938270996,
+     "t_first_negative_s": null,
+     "t_end_s": 10644.590945058791,
+     "charge_Ah": 4.302188840294595
+    },
+    "charge_3395mA_25C": {
+     "margin_min_V": 0.027390817780113413,
+     "t_min_s": 4546.263731767558,
+     "t_first_negative_s": null,
+     "t_end_s": 4549.398970374205,
+     "charge_Ah": 4.2903359734501185
+    },
+    "pulse_R_ohm": {
+     "-5": 0.049786327029199384,
+     "0": 0.04440520025675641,
+     "25": 0.024072884969563012
+    },
+    "plating_limited_rate_at_ambient": {
+     "0": {
+      "rate_spec_C": 0.40471191406250007,
+      "fails_at_spec_C": 0.40541992187500003
+     },
+     "10": {
+      "rate_spec_C": 0.6178222656250001,
+      "fails_at_spec_C": 0.6185302734375
+     },
+     "25": {
+      "rate_spec_C": 1.02421875,
+      "fails_at_spec_C": 1.0249267578125
+     }
+    },
+    "wall_s": 499.3042607307434
+   }
+  }
+ }
+}
