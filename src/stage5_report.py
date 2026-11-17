@@ -418,62 +418,76 @@ def paper_numbers(rows_d, rows_s, rows_c, rows_l):
 
 
 def summary_md(rows_d, rows_s, rows_c, rows_l, sc):
-    """Markdown tables of the registered readings, for the README (every number from the files above)."""
-    pc = lambda v: "" if v is None else f"{100 * v:+.2f}"
-    L = []
-    L.append("| Case | Kernel | Penalty, energy, ORegan2022 (%) | Chen2020 (%) | One-way heat, ORegan2022 (%) | "
-             "Coupled cut-off, ORegan2022 (s) | Share spread, ORegan2022 (%) | Spread vs resolved |")
-    L.append("|---|---|---|---|---|---|---|---|")
+    """Markdown tables of the readings under both sets, for the README (every number from the files above)."""
+    pc = lambda v, d=2: "" if v is None else f"{100 * v:+.{d}f}"
+    cname = lambda case: CASE_TICK[case].replace(chr(10), ", ")
+    L = ["Discharge, two-way heat. Penalty: the single-unit model's energy to 2.5 V over the coupled model's, less one. "
+         "Spread: the time-averaged share spread; against resolved: its relative error.", "",
+         "| Case | Kernel | ORegan2022: penalty (%) | cut-off, coupled (s) | spread (%) | against resolved | "
+         "Chen2020: penalty (%) | cut-off, coupled (s) | spread (%) | against resolved | innermost share below 1 from (s) |",
+         "|---|---|---|---|---|---|---|---|---|---|---|"]
     for case in RN.DISCHARGE_CASES:
         for label in LABELS:
-            a = find(rows_d, case=case, set="ORegan2022", heat="two-way", kernel=label)
-            b = find(rows_d, case=case, set="Chen2020", heat="two-way", kernel=label)
-            c = find(rows_d, case=case, set="ORegan2022", heat="one-way", kernel=label)
-            sh = find(rows_s, case=case, set="ORegan2022", heat="two-way", kernel=label)
-            if not a:
-                continue
-            err = sh.get("spread_rel_error") if sh else None
-            L.append(f"| {CASE_TICK[case].replace(chr(10), ', ')} | {NAME[label]} | {pc(a['penalty_energy'])} | "
-                     f"{pc(b['penalty_energy']) if b else ''} | {pc(c['penalty_energy']) if c else ''} | "
-                     f"{a['t_cut_coupled_s']:.0f} | {100 * sh['spread_tavg']:.2f} | "
-                     f"{'' if err is None or label == 'resolved' else f'{100 * err:+.1f} %'} |")
-    L.append("")
-    L.append("| Case | Kernel | Coupled spread, one-way (%) | Proxy, Stage 4 (%) | Proxy over the run's window, units (%) | groups (%) |")
-    L.append("|---|---|---|---|---|---|")
-    for case in RN.DISCHARGE_CASES:
-        for label in LABELS:
-            sh = find(rows_s, case=case, set="ORegan2022", heat="one-way", kernel=label)
-            if not sh or "proxy_window_group_spread" not in sh:
-                continue
-            p4 = sh.get("proxy_stage4_spread")
-            L.append(f"| {CASE_TICK[case].replace(chr(10), ', ')} | {NAME[label]} | {100 * sh['spread_tavg']:.2f} | "
-                     f"{'' if p4 is None else f'{100 * p4:.2f}'} | {100 * sh['proxy_window_unit_spread']:.2f} | "
-                     f"{100 * sh['proxy_window_group_spread']:.2f} |")
-    L.append("")
-    L.append("| Cell | Charge | Kernel | Margin, coupled (mV) | group | Margin, single-unit (mV) | Chen2020 coupled (mV) |")
-    L.append("|---|---|---|---|---|---|---|")
-    for cell in ("21700", "4680"):
-        for case in RN.CHARGE_CASES:
-            for label in LABELS:
-                a = find(rows_c, cell=cell, case=case, set="ORegan2022", kernel=label, model="coupled")
-                b = find(rows_c, cell=cell, case=case, set="ORegan2022", kernel=label, model="single")
-                c = find(rows_c, cell=cell, case=case, set="Chen2020", kernel=label, model="coupled")
-                if not a:
+            cells = []
+            for pset, dp in (("ORegan2022", 2), ("Chen2020", 3)):
+                d = find(rows_d, case=case, set=pset, heat="two-way", kernel=label)
+                sh = find(rows_s, case=case, set=pset, heat="two-way", kernel=label)
+                if not d:
+                    cells += ["", "", "", ""]
                     continue
-                chen = "" if not c else f"{1e3 * c['margin_V']:+.2f}"
-                L.append(f"| {'M50' if cell == '21700' else '4680'} | {case.replace('_', ' at ')} | {NAME[label]} | "
-                         f"{1e3 * a['margin_V']:+.2f} | {a['group']} | {1e3 * b['margin_V']:+.2f} | {chen} |")
-    L.append("")
-    L.append("| Cell | Ambient (C) | Kernel | Single-unit, ORegan2022 (C) | Coupled, ORegan2022 (C) | Single-unit, Chen2020 (C) | Coupled, Chen2020 (C) |")
-    L.append("|---|---|---|---|---|---|---|")
+                err = sh.get("spread_rel_error") if sh else None
+                cells += [pc(d["penalty_energy"], dp), f"{d['t_cut_coupled_s']:.0f}",
+                          f"{100 * sh['spread_tavg']:.2f}" if sh else "",
+                          "" if (err is None or label == "resolved") else f"{100 * err:+.1f} %"]
+            shc = find(rows_s, case=case, set="Chen2020", heat="two-way", kernel=label)
+            rev = "" if not shc or shc.get("reversal_s") is None else f"{shc['reversal_s']:.0f}"
+            if any(cells):
+                L.append(f"| {cname(case)} | {NAME[label]} | " + " | ".join(cells) + f" | {rev} |")
+    L += ["", "Stage 4's proxy (C3), one-way heat: the coupled time-averaged spread beside Stage 4's proxy and the proxy "
+          "over the coupled run's own window (units; groups).", "",
+          "| Case | Kernel | ORegan2022: coupled (%) | Stage 4 proxy (%) | proxy, run's window (%) | "
+          "Chen2020: coupled (%) | Stage 4 proxy (%) | proxy, run's window (%) |", "|---|---|---|---|---|---|---|---|"]
+    for case in RN.DISCHARGE_CASES:
+        for label in LABELS:
+            cells = []
+            for pset in SETS:
+                sh = find(rows_s, case=case, set=pset, heat="one-way", kernel=label)
+                if not sh or "proxy_window_group_spread" not in sh:
+                    cells += ["", "", ""]
+                    continue
+                p4 = sh.get("proxy_stage4_spread")
+                cells += [f"{100 * sh['spread_tavg']:.2f}", "" if p4 is None else f"{100 * p4:.2f}",
+                          f"{100 * sh['proxy_window_unit_spread']:.2f}; {100 * sh['proxy_window_group_spread']:.2f}"]
+            if any(cells):
+                L.append(f"| {cname(case)} | {NAME[label]} | " + " | ".join(cells) + " |")
+    L += ["", "Charge, two-way heat: the smallest margin (mV) and the group that holds it (1 innermost, 15 outermost).", "",
+          "| Cell | Charge | Kernel | ORegan2022: coupled | single-unit | Chen2020: coupled | single-unit |",
+          "|---|---|---|---|---|---|---|"]
+    for cell in ("21700", "4680"):
+        for case, (rate, Ta, reg) in RN.CHARGE_CASES.items():
+            for label in LABELS:
+                cells = []
+                for pset in SETS:
+                    a = find(rows_c, cell=cell, case=case, set=pset, kernel=label, model="coupled")
+                    b = find(rows_c, cell=cell, case=case, set=pset, kernel=label, model="single")
+                    cells += ["" if not a else f"{1e3 * a['margin_V']:+.2f} (group {a['group']})",
+                              "" if not b else f"{1e3 * b['margin_V']:+.2f}"]
+                if any(cells):
+                    lab = f"{rate:g}C at {Ta:g} C" + ("" if reg else ", outside the specification")
+                    L.append(f"| {'M50' if cell == '21700' else '4680'} | {lab} | {NAME[label]} | " + " | ".join(cells) + " |")
+    L += ["", "Plating-limited rate (specification's C, 4.85 A in the M50), two-way heat: the largest passing rate "
+          "(the fine search's where there is one).", "",
+          "| Cell | Ambient (C) | Kernel | ORegan2022: single-unit | coupled | Chen2020: single-unit | coupled |",
+          "|---|---|---|---|---|---|---|"]
     for cell in ("21700", "4680"):
         for Ta in (0.0, 10.0, 25.0):
             for label in LABELS:
                 v = [find(rows_l, cell=cell, set=ps, T_amb_C=Ta, kernel=label, model=m)
-                     for ps in ("ORegan2022", "Chen2020") for m in ("single", "coupled")]
-                f = lambda r: "" if not r or r["rate_spec_C"] is None else f"{r['rate_spec_C']:.4g}"
-                L.append(f"| {'M50' if cell == '21700' else '4680'} | {Ta:g} | {NAME[label]} | {f(v[0])} | {f(v[1])} | "
-                         f"{f(v[2])} | {f(v[3])} |")
+                     for ps in SETS for m in ("single", "coupled")]
+                f = lambda r: "" if not r or r["rate_spec_C"] is None else (
+                    f"{r['fine_rate_spec_C']:.4f}" if r.get("fine_rate_spec_C") else f"{r['rate_spec_C']:.4f}")
+                L.append(f"| {'M50' if cell == '21700' else '4680'} | {Ta:g} | {NAME[label]} | " +
+                         " | ".join(f(x) for x in v) + " |")
     return "\n".join(L) + "\n"
 
 
