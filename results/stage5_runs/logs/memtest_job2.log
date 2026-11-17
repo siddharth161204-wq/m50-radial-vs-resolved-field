@@ -1,0 +1,11 @@
+06:01:40 === 05:57:27 ('charge', '4680', 'ORegan2022', 'radial')
+06:01:40 D_4680_0.3C_0C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 7851 s, margin -191.39 mV, max resid 1.1e-10, 97 s
+06:01:40 D_4680_0.3C_0C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 7850 s, margin -189.39 mV, max resid 0.0e+00, 7 s
+06:01:40 D_4680_0.7C_25C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 3042 s, margin -235.22 mV, max resid 5.7e-10, 41 s
+06:01:40 D_4680_0.7C_25C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 3042 s, margin -233.64 mV, max resid 0.0e+00, 3 s
+06:01:40 D_4680_0.7C_0C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 2377 s, margin -290.27 mV, max resid 9.9e-13, 38 s
+06:01:40 D_4680_0.7C_0C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 2378 s, margin -269.22 mV, max resid 0.0e+00, 2 s
+06:01:40 D_4680_1C_25C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 1903 s, margin -253.15 mV, max resid 8.3e-13, 29 s
+06:01:40 D_4680_1C_25C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 1904 s, margin -252.38 mV, max resid 0.0e+00, 2 s
+06:01:40 D_4680_2C_25C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 728 s, margin -296.78 mV, max resid 3.6e-14, 24 s
+06:01:40 D_4680_2C_25C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 734 s, margin -241.08 mV, max resid 0.0e+00, 1 s

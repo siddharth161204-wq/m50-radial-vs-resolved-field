@@ -1,6 +1,6 @@
 # Stage 5: the independent read
 
-A separate checking agent did this read in two passes on branch stage5. The first pass ran while the runs were still being made, on the files then present (17 November 2026, from about 07:10 UTC). The second ran on the final files at commit 097e2af, and this README reports it. The agent did not see the runs being made. It was given predictions_stage5.md and DECISIONS.md D27 to D35, and was pointed to `src/stage5_*.py` to see what was done.
+A separate checking agent did this read in three passes on branch stage5. The first pass ran while the runs were still being made, on the files then present (17 November 2026, from about 07:10 UTC). The second ran on the final files at commit 097e2af, and this README reports it. A third pass checked the public texts at commit 0716381; what it added about the files is under "After the second pass". The agent did not see the runs being made. It was given predictions_stage5.md and DECISIONS.md D27 to D35, and was pointed to `src/stage5_*.py` to see what was done.
 
 Its scripts import nothing from `src/`. They work in three ways:
 - they recompute every reading from the stored kernels, runs and search records;
@@ -20,9 +20,9 @@ No coupled solve was run.
 - **The checks.** Every value of `results/stage5_checks.json` equals mine.
   - V1, V2, V5 and V6 hold.
   - V3 fails on four readings and V4 on five, as reported and as D35 states.
-- **D35.** It makes 64 statements that the files can test.
+- **D35** (at 097e2af). It makes 64 statements that the files can test.
   - 59 agree, three of them only to the one significant figure they are given to.
-  - 5 do not; they are listed below.
+  - 5 do not; they are listed below. All eight were corrected in commit fe19d0c (see "After the second pass").
 - **Summary and paper numbers.** All 546 numbers of `results/stage5_summary.md` and all 768 values of `results/stage5_paper_numbers.json` agree with my values.
 
 ## What does not follow from the files
@@ -49,7 +49,32 @@ Three statements of D35 hold only to the one significant figure they are given t
 
 Nothing else in D35, the scorecard, the four tables or the checks file differs from the files.
 
-**Note for the text pass (presentation only).** The searches' coarse rates are multiples of 0.00625C, and the summary's rate table prints them to four decimals. 33 of the printed rates fall exactly halfway between two four-decimal values, and they print rounded either way, by their binary representation: 0.36875 as 0.3688, but 0.28125 as 0.2812 and 0.54375 as 0.5437. Five decimals would show them exactly.
+**The summary's rate table.** At 097e2af it printed the searches' rates to four decimals, and 33 values that fall halfway were rounded either way by their binary representation (0.36875 as 0.3688, but 0.28125 as 0.2812). Since fe19d0c it prints every rate exactly (see "After the second pass").
+
+## After the second pass
+
+D35 was corrected in commit fe19d0c, after the second pass, and the runs' console logs were added in `results/stage5_runs/logs/`. The third pass checked both against the files with short scripts kept outside this folder. The scripts and `out/` files here are the second pass's.
+
+- **D35's corrections agree with the files.** The five statements in the table above now read 1,468 s; 4.29 to 4.30 A h; 0.01120 per K; a stoichiometry of 0.9842; and, for the non-monotonic margin, the 4680's single-unit search at 25 C "and two more such pairs", which are the three pairs listed above. The one-figure items now read 0.21 s, 0.011 mV and 3.0 to 5.3 %. D35 also gives the 4680 kernels' recorded 4.8 GB beside D28's 5.5 GB, and says V3's energies and capacities move by at most 0.15 % (0.147 %).
+- **The ripple, now stated for every ORegan2022 discharge, holds.** I removed a local cubic fitted over ±15 outputs (1 s apart) and read each run from 60 s to 20 s before its end.
+  - All 68 ORegan2022 discharge runs ripple, coupled and single-unit. The voltage's rms about the trend is 0.34 to 13.9 mV. Under Chen2020 it is at most 0.062 mV, with no regular period.
+  - The median spacing of the innermost share's upward zero crossings is 10.4 to 11.3 s at 2C and minus 5 C and 6.5 to 19.0 s in the other cases, as D35 says.
+  - The period drifts within a run: at 25 C it ranges from about 6 to 24 s depending on the window. No script in `src/` measures it.
+- **The summary's rate table** now prints each search's rate exactly (for example 0.2815625). All 72 entries equal `results/stage5_limit.csv` and my replay of the trials, and all 546 numbers of the summary still agree.
+- **What the logs confirm** (at 0716381):
+  - the 4680 kernel's second run resuming from step 1,600;
+  - the memory guard stopping the M50's 30-group kernels twice at 04:39, at 6,265 and 6,210 MB;
+  - the 30-group runs' peak of 4,099 MB;
+  - the four jobs that D35 says were stopped and run again.
+- **What the logs do not show:**
+  - where the first run of the 4680 kernel stopped (its last line is step 2,000 of 2,455);
+  - why its second run stopped (its loop ends at 04:42:39, three minutes after the guard's kills);
+  - the 2 GB that D35 gives for a 15-group coupled process;
+  - any line naming 22 of the 256 discharge and charge run files. These are the 4680's ORegan2022 charges under the radial and resolved kernels (20 files) and its one-way discharge under the end-corrected kernel (2).
+- **Two more stopped jobs.** Two jobs stopped before the runs were split are not among D35's four, and both were completed later in `wA.log`:
+  - the M50's ORegan2022 charges, after six of fifteen (`q_reg21700.log`);
+  - its coupled search at 0 C under the radial kernel, before any trial (`q_cl_21700_reg.log`).
+- **The cut-triangle subdivision.** D29 says the resolved cell's cut triangles are subdivided to 12 levels. `src/stage5_kernels.py` uses 10, and all 12 resolved kernels record depth 10. The kernels' own volume check bounds the effect: every inner group's volume lies within 3.1e-5 of its exact annulus. D35 does not mention the difference.
 
 ## The checks V3 and V4, recomputed
 
@@ -177,9 +202,9 @@ Every value equals `results/stage5_posthoc_mesh.json` exactly, apart from one en
   - the scorecard committed in 845ef02 predated the report code's last edit, so its brackets carried `held` and the mesh note was missing;
   - the ORegan2022 runs of four discharge cases were not yet listed among the runs still to be made.
 - **The reversal's tolerance.** With no tolerance on "having risen above 1", round-off of up to 2.2e-16 in the shares at t = 0 gives a false reversal near t = 0 in 18 runs: both sets at 1.25C and 25 C, and Chen2020 at 3C and 25 C. With any tolerance from 1e-12 to 1e-9 the readings are as stored.
-- **The ripple at 25 C.** It also appears at 2C and 25 C under ORegan2022, which D35 does not mention.
+- **The ripple at 25 C.** It also appears at 2C and 25 C under ORegan2022, which D35 at 097e2af did not mention (it does since fe19d0c).
 - **Near-zero passes.** One passing Chen2020 trial clears zero by 3.9 µV (the 4680's single-unit search at 10 C, radial kernel, 0.44375C). The next smallest clear it by 54 to 91 µV.
-- **Memory of the 4680 kernel jobs.** They record a peak of 4.83 GB. D35's "about 5.5 GB" is D28's figure from the cost test.
+- **Memory of the 4680 kernel jobs.** They record a peak of 4.83 GB. D35's "about 5.5 GB" at 097e2af was D28's figure from the cost test; since fe19d0c D35 gives both.
 - **Sign of d ln R/dT.** It is negative; D35 quotes its magnitude.
 - **Panel (c) of the figure.** It plots the size of each penalty on a log scale, with open markers where the single-unit model gives less energy. The two largest open markers are the 4680 under the radial kernel (−53.5 %: the coupled discharge runs to 843 s, the single-unit one to 363 s) and the M50 at 3C and 25 C under the end-corrected kernel (−48.9 %: 604 s against 278 s, the case D35 describes).
 
@@ -194,10 +219,7 @@ Every value equals `results/stage5_posthoc_mesh.json` exactly, apart from one en
   - their group volumes;
   - reciprocity and internal consistency.
 - **`tests/test_stage5.py` was not run**, because its second test runs a coupled solve.
-- **The machine's history in D35 is not in the files.** That covers the two-hour job limit, which jobs were stopped and run again, the memory a coupled process needed, and the 30-group runs running alone. The files record only:
-  - the 4680 kernel's resume flag (not the step it resumed from);
-  - the kernels' peak memories;
-  - which searches hold stored trials.
+- **The machine's history in D35.** At the second pass the files recorded only the 4680 kernel's resume flag, the kernels' peak memories and which searches hold stored trials. The console logs added in fe19d0c record most of the rest; what they do not show is under "After the second pass". The two-hour limit appears only in the workers' "time budget used" lines.
 
 ## Running
 
