@@ -85,10 +85,10 @@ def segment(cell, pset):
     """All registered runs of one cell under one parameter set, one job per kernel, so that two processes can share
     them (one going forward through the list, the other backward). One process per segment keeps the number of
     built models in a process at four."""
-    jobs = [("limit_coupled", cell, pset, T, lab) for T in (0.0, 25.0, 10.0) for lab in LABELS]
-    jobs += [("discharge", case, pset, lab) for case in RN.DISCHARGE_CASES if case.startswith(cell + "_")
-             for lab in LABELS]
+    jobs = [("discharge", case, pset, lab) for case in RN.DISCHARGE_CASES if case.startswith(cell + "_")
+            for lab in LABELS]
     jobs += [("charge", cell, pset, lab) for lab in LABELS]
+    jobs += [("limit_coupled", cell, pset, T, lab) for T in (0.0, 25.0, 10.0) for lab in LABELS]
     return jobs
 
 
