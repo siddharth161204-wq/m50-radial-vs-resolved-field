@@ -1,6 +1,6 @@
 # Stage 5: the independent read
 
-A separate checking agent did this read in three passes on branch stage5. The first pass ran while the runs were still being made, on the files then present (17 November 2026, from about 07:10 UTC). The second ran on the final files at commit 097e2af, and this README reports it. A third pass checked the public texts at commit 0716381; what it added about the files is under "After the second pass". The agent did not see the runs being made. It was given predictions_stage5.md and DECISIONS.md D27 to D35, and was pointed to `src/stage5_*.py` to see what was done.
+A separate checking agent did this read in three passes on branch stage5. The first pass ran while the runs were still being made, on the files then present (17 November 2026, from about 07:10 UTC). The second ran on the final files at commit 097e2af, and this README reports it. A third pass checked the public texts at commit 0716381; what it added about the files is under "After the second pass", and its findings on the texts under "The text pass". The agent did not see the runs being made. It was given predictions_stage5.md and DECISIONS.md D27 to D35, and was pointed to `src/stage5_*.py` to see what was done.
 
 Its scripts import nothing from `src/`. They work in three ways:
 - they recompute every reading from the stored kernels, runs and search records;
@@ -66,15 +66,29 @@ D35 was corrected in commit fe19d0c, after the second pass, and the runs' consol
   - the memory guard stopping the M50's 30-group kernels twice at 04:39, at 6,265 and 6,210 MB;
   - the 30-group runs' peak of 4,099 MB;
   - the four jobs that D35 says were stopped and run again.
-- **What the logs do not show:**
+- **What the logs do not show** (at 0716381; see "The text pass" for the logs added in 3a5da90):
   - where the first run of the 4680 kernel stopped (its last line is step 2,000 of 2,455);
   - why its second run stopped (its loop ends at 04:42:39, three minutes after the guard's kills);
   - the 2 GB that D35 gives for a 15-group coupled process;
   - any line naming 22 of the 256 discharge and charge run files. These are the 4680's ORegan2022 charges under the radial and resolved kernels (20 files) and its one-way discharge under the end-corrected kernel (2).
-- **Two more stopped jobs.** Two jobs stopped before the runs were split are not among D35's four, and both were completed later in `wA.log`:
+- **Two more stopped jobs.** Two jobs stopped before the runs were split were not among D35's four at 0716381 (they are since 3a5da90), and both were completed later in `wA.log`:
   - the M50's ORegan2022 charges, after six of fifteen (`q_reg21700.log`);
   - its coupled search at 0 C under the radial kernel, before any trial (`q_cl_21700_reg.log`).
-- **The cut-triangle subdivision.** D29 says the resolved cell's cut triangles are subdivided to 12 levels. `src/stage5_kernels.py` uses 10, and all 12 resolved kernels record depth 10. The kernels' own volume check bounds the effect: every inner group's volume lies within 3.1e-5 of its exact annulus. D35 does not mention the difference.
+- **The cut-triangle subdivision.** D29 says the resolved cell's cut triangles are subdivided to 12 levels. `src/stage5_kernels.py` uses 10, and all 12 resolved kernels record depth 10. The kernels' own volume check bounds the effect: every inner group's volume lies within 3.1e-5 of its exact annulus. D35 at 0716381 did not mention the difference; since 3a5da90 it does.
+
+## The text pass
+
+The third pass read the public texts at commit 0716381 against the files: the repository README's Stage 5 section and its Files, How to run and Versions entries, the note's header, Stage 5 section and page 4 of its PDF, D35, `CITATION.cff`, `.zenodo.json` and `results/stage5_runs/logs/README.md`. It also read the author's state document, which is outside the repository.
+
+It reported 37 findings: 17 in the README, 6 in the note, 7 in D35, 2 in the logs' README, 2 in `.zenodo.json` and 3 in the state document. Most were numbers that do not follow from the files at the precision given, or statements stronger than the files support. One was a How to run loop that would not finish, since it left out the single-unit searches, and one was D29's subdivision depth (above). There were no em dashes, schedules or R-squared values.
+
+Commit 3a5da90 corrected the findings, apart from two left on purpose:
+- Stage 1's sentence that the study does not compute current and energy differences, kept as Stage 1's record;
+- the archive's link to the v1.4.0 tag, which resolves once the tag is made.
+
+The memory-test logs added in 3a5da90 (`memtest_*.log`) name the 22 run files that no log named before. They show a 15-group process at 2.0 to 2.1 GB within a run. One process reached 3.0 GB by the end of the radial charges' ten runs (`memtest_rss2.log`); it ran before freed memory was returned after every run.
+
+A final check at 3a5da90 found the corrections right and reported eight smaller remaining points to the author.
 
 ## The checks V3 and V4, recomputed
 
