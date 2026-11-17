@@ -1,0 +1,35 @@
+### 10:44:32 checks_d30
+=== 10:44:34 ('v_discharge', 'm5C_2C', 30, 'radial')
+V_21700_b_m5C_2C_radial_ORegan2022_two-way_coupled_G30: event: Minimum voltage at 188.8 s (189 steps), held 0, max resid 5.3e-16, 70 s
+V_21700_b_m5C_2C_radial_ORegan2022_two-way_single_G30: event: Minimum voltage [V] at 186.5 s (187 steps), held 0, max resid 0.0e+00, 2 s
+V_21700_b_m5C_2C_radial_ORegan2022_one-way_coupled_G30: event: Minimum voltage at 152.3 s (153 steps), held 0, max resid 5.3e-16, 61 s
+V_21700_b_m5C_2C_radial_ORegan2022_one-way_single_G30: event: Minimum voltage [V] at 152.2 s (153 steps), held 0, max resid 0.0e+00, 2 s
+### 10:47:15 checks_d30
+=== 10:47:17 ('v_discharge', 'm5C_2C', 30, 'resolved')
+V_21700_b_m5C_2C_resolved_ORegan2022_two-way_coupled_G30: event: Minimum voltage at 170.4 s (171 steps), held 0, max resid 5.3e-16, 71 s
+V_21700_b_m5C_2C_resolved_ORegan2022_two-way_single_G30: event: Minimum voltage [V] at 169.7 s (170 steps), held 0, max resid 0.0e+00, 2 s
+V_21700_b_m5C_2C_resolved_ORegan2022_one-way_coupled_G30: event: Minimum voltage at 147.2 s (148 steps), held 0, max resid 5.3e-16, 61 s
+V_21700_b_m5C_2C_resolved_ORegan2022_one-way_single_G30: event: Minimum voltage [V] at 147.2 s (148 steps), held 0, max resid 0.0e+00, 1 s
+### 10:50:00 checks_d30
+=== 10:50:01 ('v_discharge', 'm5C_2C', 30, 'corrected')
+V_21700_b_m5C_2C_corrected_ORegan2022_two-way_coupled_G30: event: Minimum voltage at 171.8 s (172 steps), held 0, max resid 5.3e-16, 74 s
+V_21700_b_m5C_2C_corrected_ORegan2022_two-way_single_G30: event: Minimum voltage [V] at 171.1 s (172 steps), held 0, max resid 0.0e+00, 2 s
+V_21700_b_m5C_2C_corrected_ORegan2022_one-way_coupled_G30: event: Minimum voltage at 147.7 s (148 steps), held 0, max resid 7.1e-16, 62 s
+V_21700_b_m5C_2C_corrected_ORegan2022_one-way_single_G30: event: Minimum voltage [V] at 147.6 s (148 steps), held 0, max resid 0.0e+00, 2 s
+### 10:52:49 checks_d30
+=== 10:52:50 queue checks_d30 done
+### 10:52:51 checks_c30
+=== 10:52:52 ('v_charge', 'charge10', 30, 'radial')
+V_21700_0.3C_0C_radial_ORegan2022_two-way_coupled_G30: event: Maximum voltage at 7800 s, margin -192.86 mV, max resid 5.6e-11, 257 s
+V_21700_0.3C_0C_radial_ORegan2022_two-way_single_G30: event: Maximum voltage [V] at 7800 s, margin -192.48 mV, max resid 0.0e+00, 8 s
+### 10:57:45 checks_c30
+=== 10:57:47 ('v_charge', 'charge10', 30, 'resolved')
+V_21700_0.3C_0C_resolved_ORegan2022_two-way_coupled_G30: event: Maximum voltage at 7795 s, margin -193.02 mV, max resid 6.7e-14, 227 s
+V_21700_0.3C_0C_resolved_ORegan2022_two-way_single_G30: event: Maximum voltage [V] at 7795 s, margin -192.73 mV, max resid 0.0e+00, 7 s
+### 11:02:11 checks_c30
+=== 11:02:12 ('v_charge', 'charge10', 30, 'corrected')
+V_21700_0.3C_0C_corrected_ORegan2022_two-way_coupled_G30: event: Maximum voltage at 7796 s, margin -193.01 mV, max resid 1.5e-10, 228 s
+V_21700_0.3C_0C_corrected_ORegan2022_two-way_single_G30: event: Maximum voltage [V] at 7796 s, margin -192.71 mV, max resid 0.0e+00, 7 s
+### 11:06:35 checks_c30
+=== 11:06:36 queue checks_c30 done
+### 11:06:37 worker C done

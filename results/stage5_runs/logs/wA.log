@@ -1,0 +1,468 @@
+### 05:18:45 key_21700_ORegan2022
+=== 05:18:47 ('charge', '21700', 'ORegan2022', 'radial')
+=== 05:18:47 ('charge', '21700', 'ORegan2022', 'resolved')
+D_21700_0.7C_25C_resolved_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 3017 s, margin -236.66 mV, max resid 4.7e-11, 66 s
+D_21700_0.7C_25C_resolved_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 3017 s, margin -236.41 mV, max resid 0.0e+00, 5 s
+D_21700_0.7C_0C_resolved_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 2329 s, margin -282.09 mV, max resid 5.6e-12, 57 s
+D_21700_0.7C_0C_resolved_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 2330 s, margin -267.50 mV, max resid 0.0e+00, 4 s
+D_21700_1C_25C_resolved_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 1873 s, margin -255.73 mV, max resid 2.6e-12, 43 s
+D_21700_1C_25C_resolved_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 1873 s, margin -255.30 mV, max resid 0.0e+00, 3 s
+D_21700_2C_25C_resolved_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 713 s, margin -263.41 mV, max resid 6.7e-14, 33 s
+D_21700_2C_25C_resolved_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 715 s, margin -229.35 mV, max resid 0.0e+00, 2 s
+=== 05:22:32 ('charge', '21700', 'ORegan2022', 'corrected')
+D_21700_0.3C_0C_corrected_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 7796 s, margin -192.98 mV, max resid 3.5e-10, 128 s
+D_21700_0.3C_0C_corrected_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 7796 s, margin -192.71 mV, max resid 0.0e+00, 9 s
+D_21700_0.7C_25C_corrected_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 3017 s, margin -236.66 mV, max resid 9.6e-11, 57 s
+D_21700_0.7C_25C_corrected_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 3017 s, margin -236.40 mV, max resid 0.0e+00, 4 s
+D_21700_0.7C_0C_corrected_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 2330 s, margin -282.33 mV, max resid 3.1e-13, 52 s
+D_21700_0.7C_0C_corrected_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 2330 s, margin -267.52 mV, max resid 0.0e+00, 3 s
+D_21700_1C_25C_corrected_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 1873 s, margin -255.71 mV, max resid 5.1e-12, 40 s
+D_21700_1C_25C_corrected_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 1873 s, margin -255.26 mV, max resid 0.0e+00, 3 s
+D_21700_2C_25C_corrected_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 713 s, margin -263.95 mV, max resid 6.9e-13, 32 s
+D_21700_2C_25C_corrected_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 715 s, margin -229.44 mV, max resid 0.0e+00, 2 s
+=== 05:28:02 ('limit_coupled', '21700', 'ORegan2022', 0.0, 'resolved')
+  21700 ORegan2022 0 C resolved|coupled: start 0.18C
+    rate 0.18000C: pass  margin +38.24 mV group 15 at 18900 s (event: Maximum voltage, 290 s)
+    rate 0.23000C: pass  margin +27.72 mV group 15 at 14410 s (event: Maximum voltage, 227 s)
+    rate 0.28000C: pass  margin +14.80 mV group 15 at 9310 s (event: Maximum voltage, 190 s)
+    rate 0.33000C: fail  margin -0.26 mV group 15 at 6540 s (negative margin, 110 s)
+    rate 0.30500C: fail  margin -0.17 mV group 15 at 7470 s (negative margin, 123 s)
+    rate 0.29250C: fail  margin -2.93 mV group 13 at 8210 s (negative margin, 135 s)
+    rate 0.28625C: fail  margin -0.03 mV group 15 at 8640 s (negative margin, 144 s)
+    rate 0.28313C: fail  margin -3.66 mV group 1 at 9110 s (negative margin, 173 s)
+### 05:54:08 key_21700_ORegan2022
+=== 05:54:10 ('limit_coupled', '21700', 'ORegan2022', 0.0, 'resolved')
+  21700 ORegan2022 0 C resolved|coupled: start 0.18C
+    rate 0.18000C: pass  margin +38.24 mV group 15 at 18900 s (event: Maximum voltage, 290 s)
+    rate 0.23000C: pass  margin +27.72 mV group 15 at 14410 s (event: Maximum voltage, 227 s)
+    rate 0.28000C: pass  margin +14.80 mV group 15 at 9310 s (event: Maximum voltage, 190 s)
+    rate 0.33000C: fail  margin -0.26 mV group 15 at 6540 s (negative margin, 110 s)
+    rate 0.30500C: fail  margin -0.17 mV group 15 at 7470 s (negative margin, 123 s)
+    rate 0.29250C: fail  margin -2.93 mV group 13 at 8210 s (negative margin, 135 s)
+    rate 0.28625C: fail  margin -0.03 mV group 15 at 8640 s (negative margin, 144 s)
+    rate 0.28313C: fail  margin -3.66 mV group 1 at 9110 s (negative margin, 173 s)
+### 06:06:31 key_21700_ORegan2022
+=== 06:06:32 ('limit_coupled', '21700', 'ORegan2022', 0.0, 'resolved')
+  21700 ORegan2022 0 C resolved|coupled: start 0.18C
+    rate 0.18000C: pass  margin +38.24 mV group 15 at 18900 s (event: Maximum voltage, 290 s)
+    rate 0.23000C: pass  margin +27.72 mV group 15 at 14410 s (event: Maximum voltage, 227 s)
+    rate 0.28000C: pass  margin +14.80 mV group 15 at 9310 s (event: Maximum voltage, 190 s)
+    rate 0.33000C: fail  margin -0.26 mV group 15 at 6540 s (negative margin, 110 s)
+    rate 0.30500C: fail  margin -0.17 mV group 15 at 7470 s (negative margin, 123 s)
+    rate 0.29250C: fail  margin -2.93 mV group 13 at 8210 s (negative margin, 135 s)
+    rate 0.28625C: fail  margin -0.03 mV group 15 at 8640 s (negative margin, 144 s)
+    rate 0.28313C: fail  margin -3.66 mV group 1 at 9110 s (negative margin, 173 s)
+    rate 0.28156C: pass  margin +0.92 mV group 15 at 9210 s (event: Maximum voltage, 128 s)
+    rate 0.28234C: fail  margin -5.41 mV group 15 at 9160 s (negative margin, 147 s)
+  -> resolved|coupled: 0.28C (fails at 0.28625C), 10 trials, 284 s
+### 06:11:32 key_21700_ORegan2022
+=== 06:11:34 queue key_21700_ORegan2022 done
+### 06:11:34 seg_21700_Chen2020
+=== 06:11:36 ('discharge', '21700_b_m5C_2C', 'Chen2020', 'radial')
+C_21700_b_m5C_2C_radial_Chen2020_two-way_coupled_G15: event: Minimum voltage at 1708.0 s (1709 steps), held 0, max resid 5.3e-16, 138 s
+C_21700_b_m5C_2C_radial_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 1708.1 s (1709 steps), held 0, max resid 0.0e+00, 10 s
+C_21700_b_m5C_2C_radial_Chen2020_one-way_coupled_G15: event: Minimum voltage at 1708.1 s (1709 steps), held 1, max resid 7.1e-16, 139 s
+C_21700_b_m5C_2C_radial_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 1708.1 s (1709 steps), held 1, max resid 0.0e+00, 9 s
+### 06:19:45 seg_21700_Chen2020
+=== 06:19:46 ('discharge', '21700_b_m5C_2C', 'Chen2020', 'resolved')
+C_21700_b_m5C_2C_resolved_Chen2020_two-way_coupled_G15: event: Minimum voltage at 1707.4 s (1708 steps), held 0, max resid 8.9e-16, 136 s
+C_21700_b_m5C_2C_resolved_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 1707.5 s (1708 steps), held 0, max resid 0.0e+00, 10 s
+C_21700_b_m5C_2C_resolved_Chen2020_one-way_coupled_G15: event: Minimum voltage at 1707.5 s (1708 steps), held 0, max resid 7.1e-16, 103 s
+C_21700_b_m5C_2C_resolved_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 1707.5 s (1708 steps), held 0, max resid 0.0e+00, 7 s
+### 06:24:12 seg_21700_Chen2020
+=== 06:24:13 ('discharge', '21700_b_m5C_2C', 'Chen2020', 'corrected')
+C_21700_b_m5C_2C_corrected_Chen2020_two-way_coupled_G15: event: Minimum voltage at 1707.5 s (1708 steps), held 0, max resid 8.9e-16, 91 s
+C_21700_b_m5C_2C_corrected_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 1707.5 s (1708 steps), held 0, max resid 0.0e+00, 7 s
+C_21700_b_m5C_2C_corrected_Chen2020_one-way_coupled_G15: event: Minimum voltage at 1707.5 s (1708 steps), held 0, max resid 7.1e-16, 91 s
+C_21700_b_m5C_2C_corrected_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 1707.5 s (1708 steps), held 0, max resid 0.0e+00, 6 s
+### 06:27:35 seg_21700_Chen2020
+=== 06:27:36 ('discharge', '21700_b_p25C_2C', 'Chen2020', 'radial')
+C_21700_b_p25C_2C_radial_Chen2020_two-way_coupled_G15: event: Minimum voltage at 1724.3 s (1725 steps), held 0, max resid 7.1e-16, 94 s
+C_21700_b_p25C_2C_radial_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 1724.3 s (1725 steps), held 0, max resid 0.0e+00, 7 s
+C_21700_b_p25C_2C_radial_Chen2020_one-way_coupled_G15: event: Minimum voltage at 1724.3 s (1725 steps), held 0, max resid 7.1e-16, 90 s
+C_21700_b_p25C_2C_radial_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 1724.3 s (1725 steps), held 0, max resid 0.0e+00, 6 s
+### 06:31:01 seg_21700_Chen2020
+=== 06:31:02 ('discharge', '21700_b_p25C_2C', 'Chen2020', 'resolved')
+C_21700_b_p25C_2C_resolved_Chen2020_two-way_coupled_G15: event: Minimum voltage at 1723.9 s (1725 steps), held 0, max resid 7.1e-16, 93 s
+C_21700_b_p25C_2C_resolved_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 1723.9 s (1725 steps), held 0, max resid 0.0e+00, 7 s
+C_21700_b_p25C_2C_resolved_Chen2020_one-way_coupled_G15: event: Minimum voltage at 1723.9 s (1725 steps), held 0, max resid 8.9e-16, 91 s
+C_21700_b_p25C_2C_resolved_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 1723.9 s (1725 steps), held 0, max resid 0.0e+00, 7 s
+### 06:34:27 seg_21700_Chen2020
+=== 06:34:28 ('discharge', '21700_b_p25C_2C', 'Chen2020', 'corrected')
+C_21700_b_p25C_2C_corrected_Chen2020_two-way_coupled_G15: event: Minimum voltage at 1723.9 s (1725 steps), held 0, max resid 7.1e-16, 93 s
+C_21700_b_p25C_2C_corrected_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 1724.0 s (1725 steps), held 0, max resid 0.0e+00, 7 s
+C_21700_b_p25C_2C_corrected_Chen2020_one-way_coupled_G15: event: Minimum voltage at 1723.9 s (1725 steps), held 0, max resid 8.9e-16, 91 s
+C_21700_b_p25C_2C_corrected_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 1724.0 s (1725 steps), held 0, max resid 0.0e+00, 7 s
+### 06:40:09 seg_21700_Chen2020
+=== 06:40:10 ('discharge', '21700_b_p25C_1.25C', 'Chen2020', 'radial')
+C_21700_b_p25C_1.25C_radial_Chen2020_two-way_coupled_G15: event: Minimum voltage at 2852.3 s (2853 steps), held 0, max resid 7.1e-16, 146 s
+C_21700_b_p25C_1.25C_radial_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 2852.3 s (2853 steps), held 0, max resid 0.0e+00, 11 s
+C_21700_b_p25C_1.25C_radial_Chen2020_one-way_coupled_G15: event: Minimum voltage at 2852.3 s (2853 steps), held 0, max resid 5.7e-16, 142 s
+C_21700_b_p25C_1.25C_radial_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 2852.3 s (2853 steps), held 0, max resid 0.0e+00, 10 s
+### 06:45:27 seg_21700_Chen2020
+=== 06:45:28 ('discharge', '21700_b_p25C_1.25C', 'Chen2020', 'resolved')
+C_21700_b_p25C_1.25C_resolved_Chen2020_two-way_coupled_G15: event: Minimum voltage at 2852.1 s (2853 steps), held 0, max resid 7.1e-16, 143 s
+C_21700_b_p25C_1.25C_resolved_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 2852.1 s (2853 steps), held 0, max resid 0.0e+00, 11 s
+C_21700_b_p25C_1.25C_resolved_Chen2020_one-way_coupled_G15: event: Minimum voltage at 2852.1 s (2853 steps), held 0, max resid 7.1e-16, 140 s
+C_21700_b_p25C_1.25C_resolved_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 2852.1 s (2853 steps), held 0, max resid 0.0e+00, 11 s
+### 06:50:40 seg_21700_Chen2020
+=== 06:50:41 ('discharge', '21700_b_p25C_1.25C', 'Chen2020', 'corrected')
+C_21700_b_p25C_1.25C_corrected_Chen2020_two-way_coupled_G15: event: Minimum voltage at 2852.1 s (2853 steps), held 0, max resid 9.9e-16, 141 s
+C_21700_b_p25C_1.25C_corrected_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 2852.1 s (2853 steps), held 0, max resid 0.0e+00, 10 s
+C_21700_b_p25C_1.25C_corrected_Chen2020_one-way_coupled_G15: event: Minimum voltage at 2852.1 s (2853 steps), held 0, max resid 7.1e-16, 141 s
+C_21700_b_p25C_1.25C_corrected_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 2852.1 s (2853 steps), held 0, max resid 0.0e+00, 10 s
+### 07:01:07 seg_21700_Chen2020
+=== 07:01:08 ('discharge', '21700_a_m5C_2C', 'Chen2020', 'radial')
+C_21700_a_m5C_2C_radial_Chen2020_two-way_coupled_G15: event: Minimum voltage at 1708.0 s (1709 steps), held 0, max resid 5.3e-16, 91 s
+C_21700_a_m5C_2C_radial_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 1708.1 s (1709 steps), held 0, max resid 0.0e+00, 7 s
+C_21700_a_m5C_2C_radial_Chen2020_one-way_coupled_G15: event: Minimum voltage at 1708.1 s (1709 steps), held 1, max resid 7.1e-16, 93 s
+C_21700_a_m5C_2C_radial_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 1708.1 s (1709 steps), held 1, max resid 0.0e+00, 7 s
+### 07:06:20 seg_21700_Chen2020
+=== 07:06:21 ('discharge', '21700_a_m5C_2C', 'Chen2020', 'resolved')
+C_21700_a_m5C_2C_resolved_Chen2020_two-way_coupled_G15: event: Minimum voltage at 1708.0 s (1709 steps), held 0, max resid 7.1e-16, 93 s
+C_21700_a_m5C_2C_resolved_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 1708.0 s (1709 steps), held 0, max resid 0.0e+00, 7 s
+C_21700_a_m5C_2C_resolved_Chen2020_one-way_coupled_G15: event: Minimum voltage at 1708.0 s (1709 steps), held 1, max resid 5.3e-16, 100 s
+C_21700_a_m5C_2C_resolved_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 1708.0 s (1709 steps), held 1, max resid 0.0e+00, 7 s
+### 07:09:55 seg_21700_Chen2020
+=== 07:09:56 ('discharge', '21700_a_m5C_2C', 'Chen2020', 'corrected')
+### 07:09:57 seg_21700_Chen2020
+=== 07:09:58 ('discharge', '21700_b_p25C_3C', 'Chen2020', 'radial')
+C_21700_b_p25C_3C_radial_Chen2020_two-way_coupled_G15: event: Minimum voltage at 558.6 s (560 steps), held 0, max resid 3.6e-16, 39 s
+C_21700_b_p25C_3C_radial_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 558.5 s (560 steps), held 0, max resid 0.0e+00, 3 s
+C_21700_b_p25C_3C_radial_Chen2020_one-way_coupled_G15: event: Minimum voltage at 558.6 s (560 steps), held 0, max resid 3.6e-16, 41 s
+C_21700_b_p25C_3C_radial_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 558.6 s (560 steps), held 0, max resid 0.0e+00, 2 s
+### 07:11:30 seg_21700_Chen2020
+=== 07:11:31 ('discharge', '21700_b_p25C_3C', 'Chen2020', 'resolved')
+C_21700_b_p25C_3C_resolved_Chen2020_two-way_coupled_G15: event: Minimum voltage at 558.5 s (560 steps), held 0, max resid 3.6e-16, 37 s
+C_21700_b_p25C_3C_resolved_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 558.4 s (560 steps), held 0, max resid 0.0e+00, 3 s
+C_21700_b_p25C_3C_resolved_Chen2020_one-way_coupled_G15: event: Minimum voltage at 558.5 s (560 steps), held 0, max resid 3.6e-16, 38 s
+C_21700_b_p25C_3C_resolved_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 558.4 s (560 steps), held 0, max resid 0.0e+00, 2 s
+### 07:12:59 seg_21700_Chen2020
+=== 07:13:00 ('discharge', '21700_b_p25C_3C', 'Chen2020', 'corrected')
+C_21700_b_p25C_3C_corrected_Chen2020_two-way_coupled_G15: event: Minimum voltage at 558.5 s (560 steps), held 0, max resid 3.6e-16, 37 s
+C_21700_b_p25C_3C_corrected_Chen2020_two-way_single_G15: event: Minimum voltage [V] at 558.4 s (560 steps), held 0, max resid 0.0e+00, 3 s
+C_21700_b_p25C_3C_corrected_Chen2020_one-way_coupled_G15: event: Minimum voltage at 558.5 s (560 steps), held 0, max resid 3.6e-16, 36 s
+C_21700_b_p25C_3C_corrected_Chen2020_one-way_single_G15: event: Minimum voltage [V] at 558.4 s (560 steps), held 0, max resid 0.0e+00, 2 s
+### 07:14:24 seg_21700_Chen2020
+=== 07:14:26 ('charge', '21700', 'Chen2020', 'radial')
+D_21700_0.3C_0C_radial_Chen2020_two-way_coupled_G15: event: Maximum voltage at 10764 s, margin -1.31 mV, max resid 4.6e-16, 64 s
+D_21700_0.3C_0C_radial_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 10764 s, margin -1.25 mV, max resid 0.0e+00, 5 s
+D_21700_0.7C_25C_radial_Chen2020_two-way_coupled_G15: event: Maximum voltage at 4199 s, margin +0.92 mV, max resid 1.0e-15, 27 s
+D_21700_0.7C_25C_radial_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 4199 s, margin +1.12 mV, max resid 0.0e+00, 2 s
+D_21700_0.7C_0C_radial_Chen2020_two-way_coupled_G15: event: Maximum voltage at 3870 s, margin -41.96 mV, max resid 1.7e-15, 25 s
+D_21700_0.7C_0C_radial_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 3870 s, margin -41.54 mV, max resid 0.0e+00, 2 s
+D_21700_1C_25C_radial_Chen2020_two-way_coupled_G15: event: Maximum voltage at 2659 s, margin -14.60 mV, max resid 3.7e-16, 17 s
+D_21700_1C_25C_radial_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 2659 s, margin -14.11 mV, max resid 0.0e+00, 1 s
+D_21700_2C_25C_radial_Chen2020_two-way_coupled_G15: event: Maximum voltage at 910 s, margin -74.94 mV, max resid 9.2e-16, 7 s
+D_21700_2C_25C_radial_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 910 s, margin -73.58 mV, max resid 0.0e+00, 1 s
+### 07:19:35 seg_21700_Chen2020
+=== 07:19:36 ('charge', '21700', 'Chen2020', 'resolved')
+D_21700_0.3C_0C_resolved_Chen2020_two-way_coupled_G15: event: Maximum voltage at 10760 s, margin -1.35 mV, max resid 3.1e-16, 61 s
+D_21700_0.3C_0C_resolved_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 10760 s, margin -1.31 mV, max resid 0.0e+00, 5 s
+D_21700_0.7C_25C_resolved_Chen2020_two-way_coupled_G15: event: Maximum voltage at 4197 s, margin +0.83 mV, max resid 3.9e-16, 27 s
+D_21700_0.7C_25C_resolved_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 4197 s, margin +0.98 mV, max resid 0.0e+00, 2 s
+D_21700_0.7C_0C_resolved_Chen2020_two-way_coupled_G15: event: Maximum voltage at 3869 s, margin -42.07 mV, max resid 6.5e-16, 25 s
+D_21700_0.7C_0C_resolved_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 3869 s, margin -41.76 mV, max resid 0.0e+00, 2 s
+D_21700_1C_25C_resolved_Chen2020_two-way_coupled_G15: event: Maximum voltage at 2658 s, margin -14.74 mV, max resid 5.5e-16, 17 s
+D_21700_1C_25C_resolved_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 2658 s, margin -14.37 mV, max resid 0.0e+00, 1 s
+D_21700_2C_25C_resolved_Chen2020_two-way_coupled_G15: event: Maximum voltage at 907 s, margin -75.42 mV, max resid 3.7e-16, 7 s
+D_21700_2C_25C_resolved_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 907 s, margin -74.41 mV, max resid 0.0e+00, 0 s
+### 07:22:12 seg_21700_Chen2020
+=== 07:22:13 ('charge', '21700', 'Chen2020', 'corrected')
+D_21700_0.3C_0C_corrected_Chen2020_two-way_coupled_G15: event: Maximum voltage at 10761 s, margin -1.35 mV, max resid 4.6e-16, 66 s
+D_21700_0.3C_0C_corrected_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 10761 s, margin -1.30 mV, max resid 0.0e+00, 5 s
+D_21700_0.7C_25C_corrected_Chen2020_two-way_coupled_G15: event: Maximum voltage at 4198 s, margin +0.84 mV, max resid 1.4e-15, 28 s
+D_21700_0.7C_25C_corrected_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 4198 s, margin +0.99 mV, max resid 0.0e+00, 2 s
+D_21700_0.7C_0C_corrected_Chen2020_two-way_coupled_G15: event: Maximum voltage at 3869 s, margin -42.07 mV, max resid 6.5e-16, 25 s
+D_21700_0.7C_0C_corrected_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 3869 s, margin -41.74 mV, max resid 0.0e+00, 2 s
+D_21700_1C_25C_corrected_Chen2020_two-way_coupled_G15: event: Maximum voltage at 2658 s, margin -14.74 mV, max resid 5.5e-16, 18 s
+D_21700_1C_25C_corrected_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 2658 s, margin -14.35 mV, max resid 0.0e+00, 1 s
+D_21700_2C_25C_corrected_Chen2020_two-way_coupled_G15: event: Maximum voltage at 908 s, margin -75.41 mV, max resid 9.2e-16, 7 s
+D_21700_2C_25C_corrected_Chen2020_two-way_single_G15: event: Maximum voltage [V] at 908 s, margin -74.35 mV, max resid 0.0e+00, 1 s
+### 07:24:55 seg_21700_Chen2020
+=== 07:24:56 ('limit_coupled', '21700', 'Chen2020', 0.0, 'radial')
+  21700 Chen2020 0 C radial|coupled: start 0.18C
+    rate 0.18000C: pass  margin +18.88 mV group 15 at 19612 s (event: Maximum voltage, 108 s)
+    rate 0.23000C: pass  margin +8.71 mV group 15 at 14951 s (event: Maximum voltage, 100 s)
+    rate 0.28000C: pass  margin +1.23 mV group 15 at 11777 s (event: Maximum voltage, 84 s)
+    rate 0.33000C: fail  margin -0.03 mV group 15 at 8480 s (negative margin, 53 s)
+    rate 0.30500C: fail  margin -0.02 mV group 15 at 10130 s (negative margin, 68 s)
+    rate 0.29250C: fail  margin -0.01 mV group 15 at 11060 s (negative margin, 66 s)
+    rate 0.28625C: pass  margin +0.45 mV group 15 at 11442 s (event: Maximum voltage, 89 s)
+  -> radial|coupled: 0.28625C (fails at 0.2925C), 7 trials, 575 s
+### 07:34:32 seg_21700_Chen2020
+=== 07:34:33 ('limit_coupled', '21700', 'Chen2020', 0.0, 'resolved')
+  21700 Chen2020 0 C resolved|coupled: start 0.18C
+    rate 0.18000C: pass  margin +18.87 mV group 15 at 19612 s (event: Maximum voltage, 119 s)
+    rate 0.23000C: pass  margin +8.68 mV group 15 at 14950 s (event: Maximum voltage, 99 s)
+    rate 0.28000C: pass  margin +1.20 mV group 15 at 11774 s (event: Maximum voltage, 104 s)
+    rate 0.33000C: fail  margin -0.00 mV group 15 at 8470 s (negative margin, 85 s)
+    rate 0.30500C: fail  margin -0.03 mV group 15 at 10120 s (negative margin, 71 s)
+    rate 0.29250C: fail  margin -0.01 mV group 15 at 11050 s (negative margin, 63 s)
+    rate 0.28625C: pass  margin +0.41 mV group 15 at 11439 s (event: Maximum voltage, 70 s)
+  -> resolved|coupled: 0.28625C (fails at 0.2925C), 7 trials, 622 s
+### 07:44:56 seg_21700_Chen2020
+=== 07:44:57 ('limit_coupled', '21700', 'Chen2020', 0.0, 'corrected')
+  21700 Chen2020 0 C corrected|coupled: start 0.18C
+    rate 0.18000C: pass  margin +18.87 mV group 15 at 19612 s (event: Maximum voltage, 105 s)
+    rate 0.23000C: pass  margin +8.68 mV group 15 at 14950 s (event: Maximum voltage, 81 s)
+    rate 0.28000C: pass  margin +1.20 mV group 15 at 11774 s (event: Maximum voltage, 67 s)
+    rate 0.33000C: fail  margin -0.00 mV group 15 at 8470 s (negative margin, 48 s)
+    rate 0.30500C: fail  margin -0.03 mV group 15 at 10120 s (negative margin, 57 s)
+    rate 0.29250C: fail  margin -0.01 mV group 15 at 11050 s (negative margin, 64 s)
+    rate 0.28625C: pass  margin +0.41 mV group 15 at 11439 s (event: Maximum voltage, 66 s)
+  -> corrected|coupled: 0.28625C (fails at 0.2925C), 7 trials, 495 s
+### 07:53:43 seg_21700_Chen2020
+=== 07:53:44 ('limit_coupled', '21700', 'Chen2020', 25.0, 'radial')
+  21700 Chen2020 25 C radial|coupled: start 0.61C
+    rate 0.61000C: pass  margin +7.81 mV group 15 at 5056 s (event: Maximum voltage, 35 s)
+    rate 0.66000C: pass  margin +3.99 mV group 15 at 4538 s (event: Maximum voltage, 30 s)
+    rate 0.71000C: pass  margin +0.18 mV group 15 at 4122 s (event: Maximum voltage, 27 s)
+    rate 0.76000C: fail  margin -0.07 mV group 15 at 3660 s (negative margin, 24 s)
+    rate 0.73500C: fail  margin -0.10 mV group 15 at 3870 s (negative margin, 25 s)
+    rate 0.72250C: fail  margin -0.19 mV group 15 at 4000 s (negative margin, 26 s)
+    rate 0.71625C: fail  margin -0.01 mV group 15 at 4060 s (negative margin, 27 s)
+  -> radial|coupled: 0.71C (fails at 0.71625C), 7 trials, 200 s
+### 07:59:05 seg_21700_Chen2020
+=== 07:59:06 ('limit_coupled', '21700', 'Chen2020', 25.0, 'resolved')
+  21700 Chen2020 25 C resolved|coupled: start 0.61C
+    rate 0.61000C: pass  margin +7.74 mV group 15 at 5054 s (event: Maximum voltage, 35 s)
+    rate 0.66000C: pass  margin +3.91 mV group 15 at 4536 s (event: Maximum voltage, 30 s)
+    rate 0.71000C: pass  margin +0.09 mV group 15 at 4121 s (event: Maximum voltage, 28 s)
+    rate 0.76000C: fail  margin -0.19 mV group 15 at 3660 s (negative margin, 24 s)
+    rate 0.73500C: fail  margin -0.21 mV group 15 at 3870 s (negative margin, 25 s)
+    rate 0.72250C: fail  margin -0.11 mV group 15 at 3990 s (negative margin, 26 s)
+    rate 0.71625C: fail  margin -0.13 mV group 15 at 4060 s (negative margin, 26 s)
+  -> resolved|coupled: 0.71C (fails at 0.71625C), 7 trials, 201 s
+### 08:04:27 seg_21700_Chen2020
+=== 08:04:28 ('limit_coupled', '21700', 'Chen2020', 25.0, 'corrected')
+  21700 Chen2020 25 C corrected|coupled: start 0.61C
+    rate 0.61000C: pass  margin +7.75 mV group 15 at 5054 s (event: Maximum voltage, 34 s)
+    rate 0.66000C: pass  margin +3.91 mV group 15 at 4536 s (event: Maximum voltage, 30 s)
+    rate 0.71000C: pass  margin +0.09 mV group 15 at 4121 s (event: Maximum voltage, 27 s)
+    rate 0.76000C: fail  margin -0.18 mV group 15 at 3660 s (negative margin, 24 s)
+### 08:07:18 seg_21700_Chen2020
+=== 08:07:19 ('limit_coupled', '21700', 'Chen2020', 25.0, 'corrected')
+  21700 Chen2020 25 C corrected|coupled: start 0.61C
+    rate 0.61000C: pass  margin +7.75 mV group 15 at 5054 s (event: Maximum voltage, 34 s)
+    rate 0.66000C: pass  margin +3.91 mV group 15 at 4536 s (event: Maximum voltage, 30 s)
+    rate 0.71000C: pass  margin +0.09 mV group 15 at 4121 s (event: Maximum voltage, 27 s)
+    rate 0.76000C: fail  margin -0.18 mV group 15 at 3660 s (negative margin, 24 s)
+    rate 0.73500C: fail  margin -0.21 mV group 15 at 3870 s (negative margin, 28 s)
+    rate 0.72250C: fail  margin -0.11 mV group 15 at 3990 s (negative margin, 27 s)
+    rate 0.71625C: fail  margin -0.12 mV group 15 at 4060 s (negative margin, 27 s)
+  -> corrected|coupled: 0.71C (fails at 0.71625C), 7 trials, 90 s
+### 08:08:50 seg_21700_Chen2020
+=== 08:08:51 ('limit_coupled', '21700', 'Chen2020', 10.0, 'radial')
+  21700 Chen2020 10 C radial|coupled: start 0.33C
+    rate 0.33000C: pass  margin +11.06 mV group 15 at 10257 s (event: Maximum voltage, 65 s)
+    rate 0.38000C: pass  margin +5.40 mV group 15 at 8604 s (event: Maximum voltage, 55 s)
+    rate 0.43000C: pass  margin +0.40 mV group 15 at 7293 s (event: Maximum voltage, 47 s)
+    rate 0.48000C: fail  margin -0.11 mV group 15 at 5800 s (negative margin, 38 s)
+    rate 0.45500C: fail  margin -0.02 mV group 15 at 6460 s (negative margin, 42 s)
+    rate 0.44250C: fail  margin -0.04 mV group 15 at 6900 s (negative margin, 44 s)
+    rate 0.43625C: fail  margin -0.07 mV group 15 at 7130 s (negative margin, 46 s)
+  -> radial|coupled: 0.43C (fails at 0.43625C), 7 trials, 346 s
+### 08:15:52 seg_21700_Chen2020
+=== 08:15:53 ('limit_coupled', '21700', 'Chen2020', 10.0, 'resolved')
+  21700 Chen2020 10 C resolved|coupled: start 0.33C
+    rate 0.33000C: pass  margin +11.03 mV group 15 at 10256 s (event: Maximum voltage, 66 s)
+    rate 0.38000C: pass  margin +5.36 mV group 15 at 8601 s (event: Maximum voltage, 56 s)
+    rate 0.43000C: pass  margin +0.34 mV group 15 at 7290 s (event: Maximum voltage, 46 s)
+    rate 0.48000C: fail  margin -0.03 mV group 15 at 5790 s (negative margin, 41 s)
+    rate 0.45500C: fail  margin -0.01 mV group 15 at 6450 s (negative margin, 45 s)
+    rate 0.44250C: fail  margin -0.04 mV group 15 at 6890 s (negative margin, 47 s)
+    rate 0.43625C: fail  margin -0.07 mV group 15 at 7120 s (negative margin, 48 s)
+  -> resolved|coupled: 0.43C (fails at 0.43625C), 7 trials, 356 s
+### 08:21:50 seg_21700_Chen2020
+=== 08:21:51 ('limit_coupled', '21700', 'Chen2020', 10.0, 'corrected')
+  21700 Chen2020 10 C corrected|coupled: start 0.33C
+    rate 0.33000C: pass  margin +11.03 mV group 15 at 10256 s (event: Maximum voltage, 68 s)
+    rate 0.38000C: pass  margin +5.36 mV group 15 at 8601 s (event: Maximum voltage, 56 s)
+    rate 0.43000C: pass  margin +0.35 mV group 15 at 7291 s (event: Maximum voltage, 46 s)
+    rate 0.48000C: fail  margin -0.03 mV group 15 at 5790 s (negative margin, 37 s)
+    rate 0.45500C: fail  margin -0.01 mV group 15 at 6450 s (negative margin, 40 s)
+    rate 0.44250C: fail  margin -0.04 mV group 15 at 6890 s (negative margin, 41 s)
+    rate 0.43625C: fail  margin -0.07 mV group 15 at 7120 s (negative margin, 44 s)
+  -> corrected|coupled: 0.43C (fails at 0.43625C), 7 trials, 342 s
+### 08:27:33 seg_21700_Chen2020
+=== 08:27:34 queue seg_21700_Chen2020 done
+### 08:27:35 checks_d15
+=== 08:27:36 ('v2',)
+### 08:28:10 checks_d15
+=== 08:28:12 ('v_discharge', 'm5C_2C_half', 15, 'radial')
+V_21700_b_m5C_2C_m5C_2C_half_radial_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 189.0 s (379 steps), held 0, max resid 3.6e-16, 57 s
+V_21700_b_m5C_2C_m5C_2C_half_radial_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 186.7 s (374 steps), held 0, max resid 0.0e+00, 4 s
+V_21700_b_m5C_2C_m5C_2C_half_radial_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 152.4 s (305 steps), held 0, max resid 3.6e-16, 46 s
+V_21700_b_m5C_2C_m5C_2C_half_radial_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 152.3 s (305 steps), held 0, max resid 0.0e+00, 3 s
+### 08:30:12 checks_d15
+=== 08:30:14 ('v_discharge', 'm5C_2C_half', 15, 'resolved')
+V_21700_b_m5C_2C_m5C_2C_half_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 170.6 s (342 steps), held 0, max resid 3.6e-16, 48 s
+V_21700_b_m5C_2C_m5C_2C_half_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 169.8 s (340 steps), held 0, max resid 0.0e+00, 3 s
+V_21700_b_m5C_2C_m5C_2C_half_resolved_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 147.3 s (295 steps), held 0, max resid 3.6e-16, 40 s
+V_21700_b_m5C_2C_m5C_2C_half_resolved_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 147.2 s (295 steps), held 0, max resid 0.0e+00, 3 s
+### 08:31:58 checks_d15
+=== 08:31:59 ('v_discharge', 'm5C_2C_half', 15, 'corrected')
+V_21700_b_m5C_2C_m5C_2C_half_corrected_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 172.0 s (344 steps), held 0, max resid 5.3e-16, 50 s
+V_21700_b_m5C_2C_m5C_2C_half_corrected_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 171.2 s (343 steps), held 0, max resid 0.0e+00, 3 s
+V_21700_b_m5C_2C_m5C_2C_half_corrected_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 147.7 s (296 steps), held 0, max resid 3.6e-16, 40 s
+V_21700_b_m5C_2C_m5C_2C_half_corrected_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 147.7 s (296 steps), held 0, max resid 0.0e+00, 3 s
+### 08:33:46 checks_d15
+=== 08:33:47 queue checks_d15 done
+### 08:33:47 checks_c15
+=== 08:33:48 ('v_charge', 'charge10_half', 15, 'radial')
+V_21700_0.3C_0C_charge10_half_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 7800 s, margin -192.83 mV, max resid 7.9e-15, 168 s
+V_21700_0.3C_0C_charge10_half_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 7800 s, margin -192.48 mV, max resid 0.0e+00, 12 s
+### 08:38:58 checks_c15
+=== 08:39:00 ('v_charge', 'charge10_half', 15, 'resolved')
+V_21700_0.3C_0C_charge10_half_resolved_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 7795 s, margin -192.99 mV, max resid 6.1e-15, 162 s
+V_21700_0.3C_0C_charge10_half_resolved_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 7795 s, margin -192.74 mV, max resid 0.0e+00, 12 s
+### 08:42:05 checks_c15
+=== 08:42:06 ('v_charge', 'charge10_half', 15, 'corrected')
+V_21700_0.3C_0C_charge10_half_corrected_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 7796 s, margin -192.99 mV, max resid 8.1e-15, 176 s
+V_21700_0.3C_0C_charge10_half_corrected_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 7796 s, margin -192.72 mV, max resid 0.0e+00, 13 s
+### 08:45:26 checks_c15
+=== 08:45:27 queue checks_c15 done
+### 08:45:28 seg_21700_ORegan2022
+=== 08:45:29 ('discharge', '21700_b_m5C_2C', 'ORegan2022', 'radial')
+### 08:45:29 seg_21700_ORegan2022
+=== 08:45:30 ('discharge', '21700_b_m5C_2C', 'ORegan2022', 'resolved')
+### 08:45:31 seg_21700_ORegan2022
+=== 08:45:32 ('discharge', '21700_b_m5C_2C', 'ORegan2022', 'corrected')
+### 08:45:32 seg_21700_ORegan2022
+=== 08:45:34 ('discharge', '21700_b_p25C_2C', 'ORegan2022', 'radial')
+C_21700_b_p25C_2C_radial_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 1054.6 s (1055 steps), held 0, max resid 4.8e-15, 148 s
+C_21700_b_p25C_2C_radial_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 1063.9 s (1065 steps), held 0, max resid 0.0e+00, 9 s
+C_21700_b_p25C_2C_radial_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 991.7 s (992 steps), held 0, max resid 1.5e-14, 140 s
+C_21700_b_p25C_2C_radial_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 983.8 s (985 steps), held 0, max resid 0.0e+00, 8 s
+### 08:50:50 seg_21700_ORegan2022
+=== 08:50:51 ('discharge', '21700_b_p25C_2C', 'ORegan2022', 'resolved')
+C_21700_b_p25C_2C_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 782.7 s (783 steps), held 0, max resid 9.6e-14, 98 s
+C_21700_b_p25C_2C_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 780.0 s (781 steps), held 0, max resid 0.0e+00, 6 s
+C_21700_b_p25C_2C_resolved_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 775.6 s (776 steps), held 0, max resid 1.4e-15, 85 s
+C_21700_b_p25C_2C_resolved_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 775.0 s (776 steps), held 0, max resid 0.0e+00, 6 s
+### 08:56:18 seg_21700_ORegan2022
+=== 08:56:19 ('discharge', '21700_b_p25C_2C', 'ORegan2022', 'corrected')
+C_21700_b_p25C_2C_corrected_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 784.5 s (785 steps), held 0, max resid 1.2e-14, 90 s
+C_21700_b_p25C_2C_corrected_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 780.2 s (781 steps), held 0, max resid 0.0e+00, 6 s
+C_21700_b_p25C_2C_corrected_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 775.1 s (776 steps), held 0, max resid 8.2e-15, 84 s
+C_21700_b_p25C_2C_corrected_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 775.1 s (776 steps), held 0, max resid 0.0e+00, 6 s
+### 08:59:35 seg_21700_ORegan2022
+=== 08:59:36 ('discharge', '21700_b_p25C_1.25C', 'ORegan2022', 'radial')
+C_21700_b_p25C_1.25C_radial_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 2290.0 s (2291 steps), held 0, max resid 4.3e-16, 244 s
+C_21700_b_p25C_1.25C_radial_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 2291.6 s (2292 steps), held 0, max resid 0.0e+00, 18 s
+C_21700_b_p25C_1.25C_radial_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 2264.5 s (2265 steps), held 0, max resid 4.3e-16, 241 s
+C_21700_b_p25C_1.25C_radial_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 2263.5 s (2264 steps), held 0, max resid 0.0e+00, 17 s
+### 09:08:27 seg_21700_ORegan2022
+=== 09:08:28 ('discharge', '21700_b_p25C_1.25C', 'ORegan2022', 'resolved')
+C_21700_b_p25C_1.25C_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 2276.2 s (2277 steps), held 0, max resid 7.1e-16, 261 s
+C_21700_b_p25C_1.25C_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 2274.9 s (2275 steps), held 0, max resid 0.0e+00, 18 s
+C_21700_b_p25C_1.25C_resolved_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 2256.9 s (2257 steps), held 0, max resid 1.3e-15, 241 s
+C_21700_b_p25C_1.25C_resolved_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 2258.1 s (2259 steps), held 0, max resid 0.0e+00, 17 s
+### 09:17:36 seg_21700_ORegan2022
+=== 09:17:37 ('discharge', '21700_b_p25C_1.25C', 'ORegan2022', 'corrected')
+C_21700_b_p25C_1.25C_corrected_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 2277.4 s (2278 steps), held 0, max resid 7.1e-16, 234 s
+C_21700_b_p25C_1.25C_corrected_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 2276.5 s (2277 steps), held 0, max resid 0.0e+00, 16 s
+C_21700_b_p25C_1.25C_corrected_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 2257.7 s (2258 steps), held 0, max resid 8.5e-16, 231 s
+C_21700_b_p25C_1.25C_corrected_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 2259.8 s (2260 steps), held 0, max resid 0.0e+00, 16 s
+### 09:26:50 seg_21700_ORegan2022
+=== 09:26:51 ('discharge', '21700_a_m5C_2C', 'ORegan2022', 'radial')
+C_21700_a_m5C_2C_radial_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 188.7 s (189 steps), held 0, max resid 3.6e-16, 30 s
+C_21700_a_m5C_2C_radial_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 186.5 s (187 steps), held 0, max resid 0.0e+00, 2 s
+C_21700_a_m5C_2C_radial_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 152.3 s (153 steps), held 0, max resid 3.6e-16, 27 s
+C_21700_a_m5C_2C_radial_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 152.2 s (153 steps), held 0, max resid 0.0e+00, 1 s
+### 09:28:02 seg_21700_ORegan2022
+=== 09:28:03 ('discharge', '21700_a_m5C_2C', 'ORegan2022', 'resolved')
+C_21700_a_m5C_2C_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 185.2 s (186 steps), held 0, max resid 3.6e-16, 31 s
+C_21700_a_m5C_2C_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 183.3 s (184 steps), held 0, max resid 0.0e+00, 2 s
+C_21700_a_m5C_2C_resolved_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 151.6 s (152 steps), held 0, max resid 3.6e-16, 25 s
+C_21700_a_m5C_2C_resolved_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 151.5 s (152 steps), held 0, max resid 0.0e+00, 1 s
+### 09:29:13 seg_21700_ORegan2022
+=== 09:29:14 ('discharge', '21700_a_m5C_2C', 'ORegan2022', 'corrected')
+### 09:29:15 seg_21700_ORegan2022
+=== 09:29:16 ('discharge', '21700_b_p25C_3C', 'ORegan2022', 'radial')
+C_21700_b_p25C_3C_radial_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 614.7 s (616 steps), held 0, max resid 6.4e-15, 103 s
+C_21700_b_p25C_3C_radial_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 609.0 s (610 steps), held 0, max resid 0.0e+00, 6 s
+C_21700_b_p25C_3C_radial_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 617.6 s (619 steps), held 59, max resid 2.4e-14, 98 s
+C_21700_b_p25C_3C_radial_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 607.5 s (609 steps), held 49, max resid 0.0e+00, 5 s
+### 09:32:58 worker A: time budget used, stopping
+### 09:33:52 seg_21700_Chen2020
+=== 09:33:53 queue seg_21700_Chen2020 done
+### 09:33:53 checks_d15
+=== 09:33:54 queue checks_d15 done
+### 09:33:55 checks_c15
+=== 09:33:56 queue checks_c15 done
+### 09:33:56 seg_21700_ORegan2022
+=== 09:33:57 ('discharge', '21700_b_p25C_3C', 'ORegan2022', 'resolved')
+C_21700_b_p25C_3C_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 280.4 s (281 steps), held 0, max resid 4.7e-16, 43 s
+C_21700_b_p25C_3C_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 277.6 s (278 steps), held 0, max resid 0.0e+00, 3 s
+C_21700_b_p25C_3C_resolved_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 282.9 s (284 steps), held 0, max resid 1.2e-15, 39 s
+C_21700_b_p25C_3C_resolved_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 278.1 s (279 steps), held 0, max resid 0.0e+00, 3 s
+### 09:35:35 seg_21700_ORegan2022
+=== 09:35:36 ('discharge', '21700_b_p25C_3C', 'ORegan2022', 'corrected')
+C_21700_b_p25C_3C_corrected_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 604.2 s (605 steps), held 0, max resid 1.1e-14, 105 s
+C_21700_b_p25C_3C_corrected_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 277.8 s (279 steps), held 0, max resid 0.0e+00, 3 s
+C_21700_b_p25C_3C_corrected_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 605.3 s (607 steps), held 47, max resid 3.3e-14, 99 s
+C_21700_b_p25C_3C_corrected_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 278.4 s (279 steps), held 0, max resid 0.0e+00, 2 s
+### 09:41:00 seg_21700_ORegan2022
+=== 09:41:02 ('limit_coupled', '21700', 'ORegan2022', 0.0, 'radial')
+  21700 ORegan2022 0 C radial|coupled: start 0.18C
+    rate 0.18000C: pass  margin +38.31 mV group 15 at 18900 s (event: Maximum voltage, 230 s)
+    rate 0.23000C: pass  margin +27.82 mV group 15 at 14410 s (event: Maximum voltage, 176 s)
+    rate 0.28000C: pass  margin +16.13 mV group 15 at 9310 s (event: Maximum voltage, 134 s)
+    rate 0.33000C: fail  margin -0.71 mV group 15 at 6550 s (negative margin, 78 s)
+    rate 0.30500C: fail  margin -0.72 mV group 15 at 7480 s (negative margin, 88 s)
+    rate 0.29250C: fail  margin -0.87 mV group 13 at 8210 s (negative margin, 93 s)
+    rate 0.28625C: fail  margin -0.33 mV group 15 at 8660 s (negative margin, 102 s)
+  -> radial|coupled: 0.28C (fails at 0.28625C), 7 trials, 913 s
+### 09:56:16 seg_21700_ORegan2022
+=== 09:56:17 ('limit_coupled', '21700', 'ORegan2022', 0.0, 'corrected')
+  21700 ORegan2022 0 C corrected|coupled: start 0.18C
+    rate 0.18000C: pass  margin +38.24 mV group 15 at 18900 s (event: Maximum voltage, 208 s)
+    rate 0.23000C: pass  margin +27.73 mV group 15 at 14410 s (event: Maximum voltage, 168 s)
+    rate 0.28000C: pass  margin +14.89 mV group 15 at 9310 s (event: Maximum voltage, 136 s)
+    rate 0.33000C: fail  margin -0.24 mV group 15 at 6540 s (negative margin, 78 s)
+    rate 0.30500C: fail  margin -0.14 mV group 15 at 7470 s (negative margin, 88 s)
+    rate 0.29250C: fail  margin -2.75 mV group 13 at 8210 s (negative margin, 96 s)
+    rate 0.28625C: fail  margin -1.65 mV group 15 at 8650 s (negative margin, 97 s)
+  -> corrected|coupled: 0.28C (fails at 0.28625C), 7 trials, 882 s
+### 10:10:59 seg_21700_ORegan2022
+=== 10:11:01 ('limit_coupled', '21700', 'ORegan2022', 25.0, 'radial')
+  21700 ORegan2022 25 C radial|coupled: start 0.43C
+    rate 0.43000C: pass  margin +44.95 mV group 15 at 7820 s (event: Maximum voltage, 123 s)
+    rate 0.48000C: pass  margin +40.55 mV group 15 at 6945 s (event: Maximum voltage, 102 s)
+    rate 0.53000C: pass  margin +34.36 mV group 15 at 6210 s (event: Maximum voltage, 89 s)
+    rate 0.58000C: fail  margin -199.04 mV group 15 at 3988 s (event: Maximum voltage, 54 s)
+    rate 0.55500C: fail  margin -186.07 mV group 15 at 4280 s (event: Maximum voltage, 57 s)
+    rate 0.54250C: fail  margin -161.68 mV group 13 at 4563 s (event: Maximum voltage, 62 s)
+    rate 0.53625C: pass  margin +34.37 mV group 14 at 6100 s (event: Maximum voltage, 94 s)
+  -> radial|coupled: 0.53625C (fails at 0.5425C), 7 trials, 592 s
+### 10:20:53 seg_21700_ORegan2022
+=== 10:20:54 ('limit_coupled', '21700', 'ORegan2022', 25.0, 'resolved')
+  21700 ORegan2022 25 C resolved|coupled: start 0.43C
+    rate 0.43000C: pass  margin +44.88 mV group 15 at 7820 s (event: Maximum voltage, 122 s)
+    rate 0.48000C: pass  margin +40.57 mV group 15 at 6945 s (event: Maximum voltage, 113 s)
+    rate 0.53000C: pass  margin +34.25 mV group 15 at 6208 s (event: Maximum voltage, 100 s)
+    rate 0.58000C: fail  margin -0.30 mV group 15 at 3980 s (negative margin, 57 s)
+    rate 0.55500C: fail  margin -186.43 mV group 15 at 4276 s (event: Maximum voltage, 58 s)
+    rate 0.54250C: fail  margin -135.13 mV group 9 at 4560 s (negative margin, 61 s)
+    rate 0.53625C: pass  margin +34.19 mV group 14 at 6100 s (event: Maximum voltage, 89 s)
+  -> resolved|coupled: 0.53625C (fails at 0.5425C), 7 trials, 610 s
+### 10:33:20 seg_21700_ORegan2022
+=== 10:33:21 ('limit_coupled', '21700', 'ORegan2022', 25.0, 'corrected')
+  21700 ORegan2022 25 C corrected|coupled: start 0.43C
+    rate 0.43000C: pass  margin +44.88 mV group 15 at 7820 s (event: Maximum voltage, 117 s)
+    rate 0.48000C: pass  margin +40.57 mV group 15 at 6945 s (event: Maximum voltage, 100 s)
+    rate 0.53000C: pass  margin +34.25 mV group 15 at 6208 s (event: Maximum voltage, 88 s)
+    rate 0.58000C: fail  margin -199.19 mV group 15 at 3986 s (event: Maximum voltage, 56 s)
+    rate 0.55500C: fail  margin -186.41 mV group 15 at 4276 s (event: Maximum voltage, 61 s)
+    rate 0.54250C: fail  margin -103.28 mV group 9 at 4560 s (negative margin, 65 s)
+    rate 0.53625C: pass  margin +34.20 mV group 14 at 6100 s (event: Maximum voltage, 94 s)
+  -> corrected|coupled: 0.53625C (fails at 0.5425C), 7 trials, 591 s
+### 10:43:14 seg_21700_ORegan2022
+=== 10:43:15 queue seg_21700_ORegan2022 done
+### 10:43:15 seg_4680_ORegan2022 --reverse
+=== 10:43:16 queue seg_4680_ORegan2022 done
+### 10:43:16 seg_4680_Chen2020 --reverse
+=== 10:43:18 queue seg_4680_Chen2020 done
+### 10:43:18 worker A done

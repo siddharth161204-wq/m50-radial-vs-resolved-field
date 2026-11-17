@@ -94,6 +94,21 @@ def compare(base, alt, limit):
             "limit": limit}
 
 
+def energies_halved_step():
+    """The energies and capacities behind V3's penalties: registered against the halved step, two-way heat."""
+    out = {}
+    for label in L.LABELS:
+        for single in (False, True):
+            a = L.run_file("C", MAIN, label, PSET, "two-way", single)
+            b = L.run_file("V", f"{MAIN}_m5C_2C_half", label, PSET, "two-way", single, 15)
+            if os.path.exists(a) and os.path.exists(b):
+                ra, rb = L.load_run(a), L.load_run(b)
+                Ea, Qa = RD.energy_capacity(ra)
+                Eb, Qb = RD.energy_capacity(rb)
+                out[f"{label}|{'single' if single else 'coupled'}"] = {"energy": Eb / Ea - 1, "capacity": Qb / Qa - 1}
+    return out
+
+
 def v2():
     fc = os.path.join(L.RDIR, "V2_uniform_temperature_coupled.npz")
     fs = L.run_file("C", MAIN, "resolved", PSET, "one-way", True)
@@ -151,7 +166,8 @@ if __name__ == "__main__":
     res = {"V2": v2(),
            "V3": {"current_balance": RD.v3_residuals(),
                   "halved_step_discharge": compare(base_d, h_d, 0.01), "halved_step_charge": compare(base_c, h_c, 0.01),
-                  "coupling_rule": {"discharge": h_d_rule, "charge": h_c_rule}},
+                  "coupling_rule": {"discharge": h_d_rule, "charge": h_c_rule},
+                  "energies_halved_step": energies_halved_step()},
            "V4": {"doubled_groups_discharge": compare(base_d, g_d, 0.05), "doubled_groups_charge": compare(base_c, g_c, 0.05),
                   "coupling_rule": {"discharge": g_d_rule, "charge": g_c_rule}, "single_unit_G30_vs_G15": single_g30_vs_g15()},
            "registered_readings": {"discharge": base_d, "charge": base_c}}
@@ -190,7 +206,27 @@ if __name__ == "__main__":
         cmp["V3|residual"] = {"mine": res["V3"]["current_balance"]["max_rel_residual"],
                               "stored": st.get("V3", {}).get("max_current_balance_residual")}
         if "V6" in st:
-            cmp["V6"] = st["V6"]
+            mine6 = json.load(open(os.path.join(L.OUT, "v5_v6.json")))["V6"] if os.path.exists(os.path.join(L.OUT, "v5_v6.json")) else {}
+            cmp["V6"] = {"stored": st["V6"], "mine_margin_V": mine6.get("margin_recomputed_V"), "mine_group": mine6.get("group_recomputed"),
+                         "match": bool(mine6 and RD.same(mine6["margin_recomputed_V"], st["V6"]["margin_recomputed_V"], rtol=1e-9)
+                                       and mine6["group_recomputed"] == st["V6"]["group_recomputed"])}
+        if "V5" in st and os.path.exists(os.path.join(L.OUT, "v5_v6.json")):
+            m5 = json.load(open(os.path.join(L.OUT, "v5_v6.json")))["V5"]
+            cmp["V5"] = {k: {"mine": m5.get(k), "stored": st["V5"].get(k), "match": RD.same(m5.get(k), st["V5"].get(k), rtol=1e-9)}
+                         for k in ("steps_compared", "max_rel_share_difference", "step_of_max", "group_of_max",
+                                   "max_abs_voltage_difference_V", "within_0.5_percent")}
+            cmp["V5"]["secant_residual"] = {"mine": m5.get("route2_stored_resid_max"), "stored": st["V5"].get("max_current_balance_residual"),
+                                            "match": RD.same(m5.get("route2_stored_resid_max"), st["V5"].get("max_current_balance_residual"), rtol=1e-9)}
+        if "V1" in st and os.path.exists(os.path.join(L.OUT, "p1_v1.json")):
+            m1 = json.load(open(os.path.join(L.OUT, "p1_v1.json")))
+            cmp["V1"] = {"P1_max_abs_K": {"mine": m1["P1"]["max_abs_K"], "stored": st["V1"]["P1"]["max_abs_K"],
+                                          "match": RD.same(m1["P1"]["max_abs_K"], st["V1"]["P1"]["max_abs_K"], rtol=1e-7)},
+                         "P1_held": {"mine": m1["P1"]["held"], "stored": st["V1"]["P1"]["held"]},
+                         "reciprocity_worst_meta": {"stored": st["V1"].get("reciprocity_worst"), "held": st["V1"].get("reciprocity_held"),
+                                                    "mine_from_float64_steady_states": m1["V1_kernel_files"]["reciprocity_steady_f64_worst"],
+                                                    "mine_from_float32_steps": m1["V1_kernel_files"]["reciprocity_stored_f32_worst"],
+                                                    "mine_all_pairs_within_f32_rounding": m1["V1_kernel_files"]["reciprocity_all_within_f32_rounding"]},
+                         "kernels_listed": {"stored": len(st["V1"].get("kernels", {})), "mine": len(m1["V1_kernel_files"]["kernels"])}}
         res["vs_stored_checks"] = cmp
     else:
         res["vs_stored_checks"] = "results/stage5_checks.json not present yet"

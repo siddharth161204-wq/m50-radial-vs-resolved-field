@@ -1,0 +1,91 @@
+{
+ "summary_numbers_checked": 546,
+ "summary_not_reproduced": [
+  0,
+  []
+ ],
+ "summary_halfway_cases": [
+  33,
+  [
+   {
+    "at": "T4|21700|ORegan2022|0|radial|single|rate",
+    "shown": "0.2812",
+    "mine": 0.28125,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|Chen2020|0|radial|coupled|rate",
+    "shown": "0.2863",
+    "mine": 0.28625,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|ORegan2022|0|resolved|single|rate",
+    "shown": "0.2812",
+    "mine": 0.28125,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|Chen2020|0|resolved|coupled|rate",
+    "shown": "0.2863",
+    "mine": 0.28625,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|ORegan2022|0|corrected|single|rate",
+    "shown": "0.2812",
+    "mine": 0.28125,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|Chen2020|0|corrected|coupled|rate",
+    "shown": "0.2863",
+    "mine": 0.28625,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|ORegan2022|10|radial|single|rate",
+    "shown": "0.3688",
+    "mine": 0.36875,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|ORegan2022|10|radial|coupled|rate",
+    "shown": "0.3663",
+    "mine": 0.36624999999999996,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|Chen2020|10|radial|single|rate",
+    "shown": "0.4313",
+    "mine": 0.4312499999999999,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|ORegan2022|10|resolved|single|rate",
+    "shown": "0.3688",
+    "mine": 0.36875,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|ORegan2022|10|resolved|coupled|rate",
+    "shown": "0.3663",
+    "mine": 0.36624999999999996,
+    "note": "my value lies halfway between two displayed values"
+   },
+   {
+    "at": "T4|21700|Chen2020|10|resolved|single|rate",
+    "shown": "0.4313",
+    "mine": 0.4312499999999999,
+    "note": "my value lies halfway between two displayed values"
+   }
+  ]
+ ],
+ "paper_numbers_checked": 768,
+ "paper_numbers_not_reproduced": [
+  0,
+  []
+ ],
+ "paper_values_as_D27_quotes_them": true,
+ "note_on_the_rate_table": "the coarse rates are multiples of 0.00625C; at four decimals a halfway value is shown rounded by its binary representation (0.36875 as 0.3688, 0.54375 as 0.5437)"
+}

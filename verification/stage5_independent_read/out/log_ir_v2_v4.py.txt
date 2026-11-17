@@ -1,102 +1,289 @@
 {
- "V2": null,
+ "V2": {
+  "T_rule_max_abs_K": 2.3833927542682432e-07,
+  "max_abs_voltage_difference_full_steps_V": 7.486039934612165e-07,
+  "max_abs_voltage_difference_all_common_indices_V": 7.486039934612165e-07,
+  "t_cut_coupled_s": 147.18777034698854,
+  "t_cut_single_s": 147.18775121755348,
+  "capacity_rel_difference": 1.2996621601146785e-07,
+  "held": true,
+  "steps_compared": 148
+ },
  "V3": {
   "current_balance": {
-   "coupled_runs_checked": 106,
+   "coupled_runs_checked": 147,
    "max_rel_residual": 5.730940166870369e-10,
    "run_of_max": "D_4680_0.7C_25C_radial_ORegan2022_two-way_coupled_G15.npz",
    "held_1e-6": true
   },
   "halved_step_discharge": {
-   "readings": {},
-   "missing": [
-    "penalty_energy|radial",
-    "penalty_capacity|radial",
-    "spread_tavg|radial|two-way",
-    "spread_tavg|radial|one-way",
-    "penalty_energy|resolved",
-    "penalty_capacity|resolved",
-    "spread_tavg|resolved|two-way",
-    "spread_tavg|resolved|one-way",
-    "penalty_energy|corrected",
-    "penalty_capacity|corrected",
-    "spread_tavg|corrected|two-way",
-    "spread_tavg|corrected|one-way"
-   ],
+   "readings": {
+    "penalty_energy|radial": {
+     "registered": -0.010014375745221682,
+     "check": -0.010146344278562536,
+     "rel_change": 0.013177909107696673,
+     "within": false
+    },
+    "penalty_capacity|radial": {
+     "registered": -0.011957025006809952,
+     "check": -0.012116887331464765,
+     "rel_change": 0.01336974076442643,
+     "within": false
+    },
+    "spread_tavg|radial|two-way": {
+     "registered": 0.08384682510924832,
+     "check": 0.08443928719651084,
+     "rel_change": 0.00706600502154453,
+     "within": true
+    },
+    "spread_tavg|radial|one-way": {
+     "registered": 0.045735288889921656,
+     "check": 0.0460675948982305,
+     "rel_change": 0.007265855674567945,
+     "within": true
+    },
+    "penalty_energy|resolved": {
+     "registered": -0.0036325559509039484,
+     "check": -0.003642202287932328,
+     "rel_change": 0.002655523317123043,
+     "within": true
+    },
+    "penalty_capacity|resolved": {
+     "registered": -0.004232502262273008,
+     "check": -0.004239605397595492,
+     "rel_change": 0.0016782354461564175,
+     "within": true
+    },
+    "spread_tavg|resolved|two-way": {
+     "registered": 0.06078060674576022,
+     "check": 0.06119293859735693,
+     "rel_change": 0.006783937733979117,
+     "within": true
+    },
+    "spread_tavg|resolved|one-way": {
+     "registered": 0.03631557315251888,
+     "check": 0.03657608775029477,
+     "rel_change": 0.007173633104502475,
+     "within": true
+    },
+    "penalty_energy|corrected": {
+     "registered": -0.0039054213503624258,
+     "check": -0.003948026718181286,
+     "rel_change": 0.010909288395964278,
+     "within": false
+    },
+    "penalty_capacity|corrected": {
+     "registered": -0.004522179561177397,
+     "check": -0.004573016269982189,
+     "rel_change": 0.01124163870917938,
+     "within": false
+    },
+    "spread_tavg|corrected|two-way": {
+     "registered": 0.06411612549913899,
+     "check": 0.06454892228861599,
+     "rel_change": 0.006750201858077176,
+     "within": true
+    },
+    "spread_tavg|corrected|one-way": {
+     "registered": 0.03803586464427633,
+     "check": 0.03830869957693171,
+     "rel_change": 0.0071730966341116975,
+     "within": true
+    }
+   },
+   "missing": [],
    "all_within": false,
    "limit": 0.01
   },
   "halved_step_charge": {
-   "readings": {},
-   "missing": [
-    "margin_V|radial",
-    "charge_Ah|radial",
-    "margin_V|resolved",
-    "charge_Ah|resolved",
-    "margin_V|corrected",
-    "charge_Ah|corrected"
-   ],
-   "all_within": false,
+   "readings": {
+    "margin_V|radial": {
+     "registered": -0.19282600283622742,
+     "check": -0.19282756745815277,
+     "rel_change": 8.114164595784956e-06,
+     "within": true
+    },
+    "charge_Ah|radial": {
+     "registered": 3.152389538992106,
+     "check": 3.1523884399385653,
+     "rel_change": -3.4864141218449163e-07,
+     "within": true
+    },
+    "margin_V|resolved": {
+     "registered": -0.1929894983768463,
+     "check": -0.1929919570684433,
+     "rel_change": 1.2740027916846586e-05,
+     "within": true
+    },
+    "charge_Ah|resolved": {
+     "registered": 3.1506412389371925,
+     "check": 3.1506377868831006,
+     "rel_change": -1.095667145234458e-06,
+     "within": true
+    },
+    "margin_V|corrected": {
+     "registered": -0.1929839849472046,
+     "check": -0.19298622012138367,
+     "rel_change": 1.1582174446633786e-05,
+     "within": true
+    },
+    "charge_Ah|corrected": {
+     "registered": 3.150771902376004,
+     "check": 3.1507688027783627,
+     "rel_change": -9.83758182804273e-07,
+     "within": true
+    }
+   },
+   "missing": [],
+   "all_within": true,
    "limit": 0.01
   },
   "coupling_rule": {
-   "discharge": {},
-   "charge": {}
+   "discharge": {
+    "radial|two-way": {
+     "coupled_K": 2.3868543941318876e-07,
+     "single_K": 2.2055950843480332e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "radial|one-way": {
+     "coupled_K": 6.159539900352229e-07,
+     "single_K": 2.411108415145691e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "resolved|two-way": {
+     "coupled_K": 2.39659879497367e-07,
+     "single_K": 2.2913221187081945e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "resolved|one-way": {
+     "coupled_K": 5.894545904716608e-07,
+     "single_K": 2.275886101799074e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "corrected|two-way": {
+     "coupled_K": 2.3922296765732654e-07,
+     "single_K": 2.3199432064302528e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "corrected|one-way": {
+     "coupled_K": 4.983912176292904e-07,
+     "single_K": 2.3360141465644801e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    }
+   },
+   "charge": {
+    "radial": {
+     "coupled_K": 1.550058154053957e-08,
+     "kernel_ok": true,
+     "single_K": 9.156048641489889e-09
+    },
+    "resolved": {
+     "coupled_K": 1.4009345405963103e-08,
+     "kernel_ok": true,
+     "single_K": 8.612167146093697e-09
+    },
+    "corrected": {
+     "coupled_K": 1.3289961131590644e-08,
+     "kernel_ok": true,
+     "single_K": 8.399778567147465e-09
+    }
+   }
+  },
+  "energies_halved_step": {
+   "radial|coupled": {
+    "energy": 0.0013239498512276349,
+    "capacity": 0.001468463134650877
+   },
+   "radial|single": {
+    "energy": 0.0011904698795761615,
+    "capacity": 0.0013064286071686748
+   },
+   "resolved|coupled": {
+    "energy": 0.0007671732286658184,
+    "capacity": 0.0008001048016892387
+   },
+   "resolved|single": {
+    "energy": 0.0007574842956343808,
+    "capacity": 0.0007929657671341683
+   },
+   "corrected|coupled": {
+    "energy": 0.0007957084296079664,
+    "capacity": 0.0008330515030581243
+   },
+   "corrected|single": {
+    "energy": 0.0007529019831287176,
+    "capacity": 0.0007819413152099219
+   }
   }
  },
  "V4": {
   "doubled_groups_discharge": {
-   "readings": {},
-   "missing": [
-    "penalty_energy|radial",
-    "penalty_capacity|radial",
-    "spread_tavg|radial|two-way",
-    "spread_tavg|radial|one-way",
-    "penalty_energy|resolved",
-    "penalty_capacity|resolved",
-    "spread_tavg|resolved|two-way",
-    "spread_tavg|resolved|one-way",
-    "penalty_energy|corrected",
-    "penalty_capacity|corrected",
-    "spread_tavg|corrected|two-way",
-    "spread_tavg|corrected|one-way"
-   ],
-   "all_within": false,
-   "limit": 0.05
-  },
-  "doubled_groups_charge": {
-   "readings": {},
-   "missing": [
-    "margin_V|radial",
-    "charge_Ah|radial",
-    "margin_V|resolved",
-    "charge_Ah|resolved",
-    "margin_V|corrected",
-    "charge_Ah|corrected"
-   ],
-   "all_within": false,
-   "limit": 0.05
-  },
-  "coupling_rule": {
-   "discharge": {},
-   "charge": {}
-  },
-  "single_unit_G30_vs_G15": {}
- },
- "context_predictions_under_checks": {
-  "registered": {
-   "P2_radial_over_resolved_minus_1": 0.25938502189795165,
-   "P2_condition": true,
-   "P3_ratio_minus_1": -0.3446829634241082,
-   "P4_penalties": [
-    -0.010014375745221682,
-    -0.0036325559509039484
-   ],
-   "P4_condition": false,
-   "P7_0.3C_0C_radial_minus_resolved_mV": 0.16349554061889648
-  },
-  "halved_step": {},
-  "doubled_groups": {}
- },
- "vs_stored_checks": "results/stage5_checks.json not present yet"
-}
+   "readings": {
+    "penalty_energy|radial": {
+     "registered": -0.010014375745221682,
+     "check": -0.010085860785889467,
+     "rel_change": 0.0071382423114982885,
+     "within": true
+    },
+    "penalty_capacity|radial": {
+     "registered": -0.011957025006809952,
+     "check": -0.012042573070738527,
+     "rel_change": 0.007154627834252469,
+     "within": true
+    },
+    "spread_tavg|radial|two-way": {
+     "registered": 0.08384682510924832,
+     "check": 0.08787402379745975,
+     "rel_change": 0.048030425516579545,
+     "within": true
+    },
+    "spread_tavg|radial|one-way": {
+     "registered": 0.045735288889921656,
+     "check": 0.04805066393841891,
+     "rel_change": 0.05062556954805797,
+     "within": false
+    },
+    "penalty_energy|resolved": {
+     "registered": -0.0036325559509039484,
+     "check": -0.003658609604113905,
+     "rel_change": 0.007172264808054329,
+     "within": true
+    },
+    "penalty_capacity|resolved": {
+     "registered": -0.004232502262273008,
+     "check": -0.004262991842125641,
+     "rel_change": 0.007203677154388188,
+     "within": true
+    },
+    "spread_tavg|resolved|two-way": {
+     "registered": 0.06078060674576022,
+     "check": 0.0639558411437266,
+     "rel_change": 0.0522409131459991,
+     "within": false
+    },
+    "spread_tavg|resolved|one-way": {
+     "registered": 0.03631557315251888,
+     "check": 0.038272945489169395,
+     "rel_change": 0.053898979603871355,
+     "within": false
+    },
+    "penalty_energy|corrected": {
+     "registered": -0.0039054213503624258,
+     "check": -0.003933673644251012,
+     "rel_change": 0.007234121840903107,
+     "within": true
+    },
+    "penalty_capacity|corrected": {
+     "registered": -0.004522179561177397,
+     "check": -0.004554942140133522,
+     "rel_change": 0.007244864674854856,
+     "within": true
+    },
+    "spread_tavg|corrected|two-way": {
+     "regi

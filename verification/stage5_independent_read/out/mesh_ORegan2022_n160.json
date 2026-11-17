@@ -1,0 +1,42 @@
+{
+ "set": "ORegan2022",
+ "points_per_particle_radius": 160,
+ "pybamm": "26.9.0.0",
+ "initial_state": "initial_soc passed to the solve (the stored script's way)",
+ "initial_stoichiometries_x_n_y_p": {
+  "0": [
+   0.02956238686388328,
+   0.9572705997333886
+  ],
+  "1": [
+   0.9841951106298638,
+   0.2638452248927604
+  ]
+ },
+ "items": {
+  "discharge_2C_25C": {
+   "I_A": 10.0,
+   "t_cut_s": 1468.4976457328708,
+   "V_end": 2.4999999999998144,
+   "capacity_Ah": 4.079160127035752,
+   "energy_Wh": 13.596874276348188,
+   "termination": "event: Minimum voltage [V]",
+   "wall_s": 53.41930150985718,
+   "n_outputs": 24053
+  }
+ },
+ "stored": {
+  "discharge_2C_25C": {
+   "t_cut_s": 1468.4976457328708,
+   "capacity_Ah": 4.079160127035752,
+   "energy_Wh": 13.596874276348188
+  }
+ },
+ "diff": {
+  "discharge_2C_25C": {
+   "t_cut_s": 0.0,
+   "energy_Wh": 0.0
+  }
+ },
+ "peak_memory": "263540 kB"
+}

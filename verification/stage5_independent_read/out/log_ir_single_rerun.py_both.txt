@@ -12,7 +12,7 @@
  "max_abs_dT_K": 2.365727125308581e-07,
  "energy_mine_Wh": 1.5627128510439485,
  "energy_stored_Wh": 1.5627128510437929,
- "wall_s": 3.107938528060913
+ "wall_s": 2.2757396697998047
 }
 {
  "run": "D_21700_0.3C_0C_resolved_ORegan2022_two-way_single_G15",
@@ -28,7 +28,7 @@
  "max_abs_dT_K": 7.4374899849960485e-09,
  "energy_mine_Wh": 11.558297704574525,
  "energy_stored_Wh": 11.558297704574551,
- "wall_s": 11.687170028686523,
+ "wall_s": 8.299777507781982,
  "margin_min_mine_V": -0.1927340194263099,
  "margin_min_stored_V": -0.1927340179681778,
  "t_margin_min_mine_s": 7795.397428763949,

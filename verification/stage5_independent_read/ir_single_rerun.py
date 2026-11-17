@@ -163,9 +163,31 @@ def rerun_margin(cell, rate):
             "t_end_s": ts[-1], "status": str(status), "wall_s": time.time() - t0}
 
 
+def scan():
+    """D35 says the margin is not monotonic in the rate near the plating-limited rate (D32 took monotonicity as
+    given). One DFN can test it: the M50's single-unit model (0 C, two-way heat, resolved kernel, ORegan2022), each
+    rate charged to 4.2 V without stopping, its smallest margin over the whole charge."""
+    rates = [round(0.270 + 0.0025 * i, 4) for i in range(13)]
+    out = {}
+    for r in rates:
+        x = rerun_margin("21700", r)
+        out[f"{r:.4f}"] = {"min_margin_mV": 1e3 * x["min_margin_V"], "passed": x["passed"],
+                           "t_first_negative_s": x["t_first_negative_s"], "t_end_s": x["t_end_s"]}
+        print(r, json.dumps(out[f"{r:.4f}"]), flush=True)
+    m = [out[f"{r:.4f}"]["min_margin_mV"] for r in rates]
+    falls = all(b <= a + 1e-9 for a, b in zip(m, m[1:]))
+    return {"rates": rates, "by_rate": out, "min_margin_nonincreasing_in_rate": bool(falls),
+            "rises": [[rates[i], rates[i + 1], m[i], m[i + 1]] for i in range(len(m) - 1) if m[i + 1] > m[i] + 1e-9]}
+
+
 if __name__ == "__main__":
     which = sys.argv[1] if len(sys.argv) > 1 else "both"
     res = {}
+    if which == "scan":
+        res = {"single_unit_margin_scan": scan(), "peak_memory": L.mem_note()}
+        L.dump("single_rerun_scan.json", res)
+        print(json.dumps({k: v for k, v in res["single_unit_margin_scan"].items() if k != "by_rate"}, indent=1))
+        sys.exit(0)
     if which == "p9":
         res = {"p9_single_edges": p9_edges(), "peak_memory": L.mem_note()}
         L.dump("single_rerun_p9.json", res)

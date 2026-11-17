@@ -1,0 +1,10 @@
+=== 05:18:45 --model resolved --bc b --cell 21700 --grid charge10 --G 30
+  built in 22 s, peak memory so far 3.39 GB
+resolved_b_21700_charge10_G30.npz: 107 steps (archive 0), distance 9.5e-09, reciprocity 1.0e-15 (sampled 1.6e-03), loads partition 2.6e-14, sum vs w_vol 1.6e-14, 135 s
+=== 05:21:00 --model resolved --bc b --cell 21700 --grid m5C_2C --G 30
+  built in 19 s, peak memory so far 3.39 GB
+  resolved b 21700 m5C_2C step 500: rel distance to steady 9.47e-05 (431 s)
+  resolved b 21700 m5C_2C step 1000: rel distance to steady 7.69e-09 (844 s)
+  resolved b 21700 m5C_2C step 1500: rel distance to steady 6.34e-13 (1274 s)
+resolved_b_21700_m5C_2C_G30.npz: 1707 steps (archive 1707), distance 2.5e-14, reciprocity 3.7e-15 (sampled 1.6e-03), loads partition 2.6e-14, sum vs w_vol 1.6e-14, 1491 s
+=== 05:45:52 done

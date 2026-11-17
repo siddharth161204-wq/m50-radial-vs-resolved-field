@@ -8,7 +8,7 @@
    "first_negative_margin_V": null,
    "t_end_s": 11376.960162726584,
    "status": "event: Maximum voltage [V]",
-   "wall_s": 20.169641971588135,
+   "wall_s": 12.146395206451416,
    "stored_passed": true,
    "stored_min_margin_V": 0.005248057049581061,
    "stored_t_min_s": 9230.0,
@@ -23,7 +23,7 @@
    "first_negative_margin_V": -0.003303408549863495,
    "t_end_s": 11344.217764968971,
    "status": "event: Maximum voltage [V]",
-   "wall_s": 17.18831467628479,
+   "wall_s": 12.843792200088501,
    "stored_passed": false,
    "stored_min_margin_V": -0.0033034085499067927,
    "stored_t_min_s": 9180.0,
@@ -38,7 +38,7 @@
    "first_negative_margin_V": null,
    "t_end_s": 11317.510006088396,
    "status": "event: Maximum voltage [V]",
-   "wall_s": 18.424906969070435,
+   "wall_s": 11.536877155303955,
    "stored_passed": true,
    "stored_min_margin_V": 0.0027873527997977167,
    "stored_t_min_s": 9170.0,
@@ -53,7 +53,7 @@
    "first_negative_margin_V": -0.0020076100902256372,
    "t_end_s": 11284.831634676537,
    "status": "event: Maximum voltage [V]",
-   "wall_s": 17.352550268173218,
+   "wall_s": 11.861140251159668,
    "stored_passed": false,
    "stored_min_margin_V": -0.002007610090209428,
    "stored_t_min_s": 9120.0,
@@ -61,5 +61,5 @@
    "verdict_match": true
   }
  },
- "peak_memory": "272404 kB"
+ "peak_memory": "272616 kB"
 }

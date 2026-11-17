@@ -1,0 +1,115 @@
+{
+ "single_unit_margin_scan": {
+  "rates": [
+   0.27,
+   0.2725,
+   0.275,
+   0.2775,
+   0.28,
+   0.2825,
+   0.285,
+   0.2875,
+   0.29,
+   0.2925,
+   0.295,
+   0.2975,
+   0.3
+  ],
+  "by_rate": {
+   "0.2700": {
+    "min_margin_mV": 18.44800580054118,
+    "passed": true,
+    "t_first_negative_s": null,
+    "t_end_s": 11932.376920198294
+   },
+   "0.2725": {
+    "min_margin_mV": 19.301865531473116,
+    "passed": true,
+    "t_first_negative_s": null,
+    "t_end_s": 11832.484370957955
+   },
+   "0.2750": {
+    "min_margin_mV": 19.557923213423596,
+    "passed": true,
+    "t_first_negative_s": null,
+    "t_end_s": 11737.746305378503
+   },
+   "0.2775": {
+    "min_margin_mV": 18.701519421355012,
+    "passed": true,
+    "t_first_negative_s": null,
+    "t_end_s": 11584.024653404964
+   },
+   "0.2800": {
+    "min_margin_mV": 15.188265839029766,
+    "passed": true,
+    "t_first_negative_s": null,
+    "t_end_s": 11429.791326122715
+   },
+   "0.2825": {
+    "min_margin_mV": -11.269590405755064,
+    "passed": false,
+    "t_first_negative_s": 9150.0,
+    "t_end_s": 11323.740223847724
+   },
+   "0.2850": {
+    "min_margin_mV": -137.7876736999542,
+    "passed": false,
+    "t_first_negative_s": 8830.0,
+    "t_end_s": 9021.989202228424
+   },
+   "0.2875": {
+    "min_margin_mV": -163.26110419967733,
+    "passed": false,
+    "t_first_negative_s": 8570.0,
+    "t_end_s": 8577.831830684958
+   },
+   "0.2900": {
+    "min_margin_mV": -165.43604558406975,
+    "passed": false,
+    "t_first_negative_s": 8400.0,
+    "t_end_s": 8467.40717706914
+   },
+   "0.2925": {
+    "min_margin_mV": -176.29065406984836,
+    "passed": false,
+    "t_first_negative_s": 8210.0,
+    "t_end_s": 8239.541081943806
+   },
+   "0.2950": {
+    "min_margin_mV": -186.41857223539765,
+    "passed": false,
+    "t_first_negative_s": 7920.0,
+    "t_end_s": 8023.67507830617
+   },
+   "0.2975": {
+    "min_margin_mV": -190.24956309010514,
+    "passed": false,
+    "t_first_negative_s": 7790.0,
+    "t_end_s": 7900.059997344325
+   },
+   "0.3000": {
+    "min_margin_mV": -192.7340194263099,
+    "passed": false,
+    "t_first_negative_s": 7680.0,
+    "t_end_s": 7795.397428763949
+   }
+  },
+  "min_margin_nonincreasing_in_rate": false,
+  "rises": [
+   [
+    0.27,
+    0.2725,
+    18.44800580054118,
+    19.301865531473116
+   ],
+   [
+    0.2725,
+    0.275,
+    19.301865531473116,
+    19.557923213423596
+   ]
+  ]
+ },
+ "peak_memory": "287260 kB"
+}

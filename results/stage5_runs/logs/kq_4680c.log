@@ -1,0 +1,12 @@
+=== 03:36:16 --model resolved --bc b --cell 4680 --grid m5C_2C
+  built in 21 s, peak memory so far 4.04 GB
+  resolved b 4680 m5C_2C step 500: rel distance to steady 2.50e-02 (1216 s)
+  resolved b 4680 m5C_2C step 1000: rel distance to steady 5.78e-04 (2344 s)
+  resolved b 4680 m5C_2C step 1500: rel distance to steady 1.33e-05 (3455 s)
+=== 04:42:39 done
+=== 04:44:09 --model resolved --bc b --cell 4680 --grid m5C_2C
+  built in 20 s, peak memory so far 4.07 GB
+  resuming from step 1600
+  resolved b 4680 m5C_2C step 2000: rel distance to steady 3.07e-07 (893 s)
+resolved_b_4680_m5C_2C_G15.npz: 2455 steps (archive 1707), distance 1.0e-08, reciprocity 1.5e-14 (sampled 5.6e-04), loads partition 3.8e-14, sum vs w_vol 2.3e-14, 2060 s
+=== 05:18:30 done

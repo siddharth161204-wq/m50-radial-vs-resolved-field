@@ -484,8 +484,9 @@ def summary_md(rows_d, rows_s, rows_c, rows_l, sc):
             for label in LABELS:
                 v = [find(rows_l, cell=cell, set=ps, T_amb_C=Ta, kernel=label, model=m)
                      for ps in SETS for m in ("single", "coupled")]
+                exact = lambda x: f"{x:.8f}".rstrip("0").rstrip(".")      # the searches' rates are exact binary steps
                 f = lambda r: "" if not r or r["rate_spec_C"] is None else (
-                    f"{r['fine_rate_spec_C']:.4f}" if r.get("fine_rate_spec_C") else f"{r['rate_spec_C']:.4f}")
+                    exact(r["fine_rate_spec_C"]) if r.get("fine_rate_spec_C") else exact(r["rate_spec_C"]))
                 L.append(f"| {'M50' if cell == '21700' else '4680'} | {Ta:g} | {NAME[label]} | " +
                          " | ".join(f(x) for x in v) + " |")
     return "\n".join(L) + "\n"

@@ -1,0 +1,7 @@
+discharge_2C_25C {"I_A": 10.0, "t_cut_s": 1468.4976457328708, "V_end": 2.4999999999998144, "capacity_Ah": 4.079160127035752, "energy_Wh": 13.596874276348188, "termination": "event: Minimum voltage [V]", "wall_s": 53.41930150985718, "n_outputs": 24053}
+{
+ "discharge_2C_25C": {
+  "t_cut_s": 0.0,
+  "energy_Wh": 0.0
+ }
+} 263540 kB

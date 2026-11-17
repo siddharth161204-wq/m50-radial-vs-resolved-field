@@ -1,0 +1,26 @@
+=== 12:27:41 ('discharge', '21700_b_m5C_2C', 'ORegan2022')
+C_21700_b_m5C_2C_radial_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 188.7 s (189 steps), held 0, max resid 3.6e-16, 36 s
+C_21700_b_m5C_2C_radial_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 186.5 s (187 steps), held 0, max resid 0.0e+00, 2 s
+C_21700_b_m5C_2C_radial_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 152.3 s (153 steps), held 0, max resid 3.6e-16, 31 s
+C_21700_b_m5C_2C_radial_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 152.2 s (153 steps), held 0, max resid 0.0e+00, 2 s
+C_21700_b_m5C_2C_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 170.4 s (171 steps), held 0, max resid 3.6e-16, 32 s
+C_21700_b_m5C_2C_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 169.7 s (170 steps), held 0, max resid 0.0e+00, 2 s
+C_21700_b_m5C_2C_resolved_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 147.2 s (148 steps), held 0, max resid 3.6e-16, 28 s
+C_21700_b_m5C_2C_resolved_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 147.2 s (148 steps), held 0, max resid 0.0e+00, 2 s
+C_21700_b_m5C_2C_corrected_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 171.8 s (172 steps), held 0, max resid 3.6e-16, 32 s
+C_21700_b_m5C_2C_corrected_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 171.1 s (172 steps), held 0, max resid 0.0e+00, 2 s
+C_21700_b_m5C_2C_corrected_ORegan2022_one-way_coupled_G15: event: Minimum voltage at 147.7 s (148 steps), held 0, max resid 3.6e-16, 31 s
+C_21700_b_m5C_2C_corrected_ORegan2022_one-way_single_G15: event: Minimum voltage [V] at 147.6 s (148 steps), held 0, max resid 0.0e+00, 2 s
+=== 12:31:12 ('charge', '21700', 'ORegan2022')
+D_21700_0.3C_0C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 7800 s, margin -192.83 mV, max resid 3.8e-10, 116 s
+D_21700_0.3C_0C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 7800 s, margin -192.48 mV, max resid 0.0e+00, 8 s
+D_21700_0.7C_25C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 3019 s, margin -236.50 mV, max resid 4.5e-12, 49 s
+D_21700_0.7C_25C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 3019 s, margin -236.17 mV, max resid 0.0e+00, 4 s
+D_21700_0.7C_0C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 2334 s, margin -283.59 mV, max resid 2.6e-12, 46 s
+D_21700_0.7C_0C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 2334 s, margin -267.72 mV, max resid 0.0e+00, 3 s
+D_21700_1C_25C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 1877 s, margin -255.31 mV, max resid 7.5e-12, 36 s
+D_21700_1C_25C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 1877 s, margin -254.79 mV, max resid 0.0e+00, 2 s
+D_21700_2C_25C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 715 s, margin -268.13 mV, max resid 8.6e-15, 26 s
+D_21700_2C_25C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 717 s, margin -230.54 mV, max resid 0.0e+00, 1 s
+D_21700_0.3C_0C_resolved_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 7795 s, margin -192.99 mV, max resid 5.5e-13, 104 s
+D_21700_0.3C_0C_resolved_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 7795 s, margin -192.73 mV, max resid 0.0e+00, 7 s

@@ -1,0 +1,1092 @@
+{
+ "items": [
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, 25 C ends at 978 s with 20 points",
+   "files": 978.3664,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, 25 C ends at 1,282 s with 40 points",
+   "files": 1281.8984,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, 25 C ends at 1,456 s with 80 points",
+   "files": 1456.412,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, 25 C ends at 1,469 s with 160 points",
+   "files": 1468.4976,
+   "agrees": false,
+   "borderline": false,
+   "note": "1468.4976 s rounds to 1,468 s"
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, -5 C ends at 126 s with 20 points",
+   "files": 125.7266,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, -5 C ends at 121 s with 40 points",
+   "files": 121.3461,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, -5 C ends at 141 s with 80 points",
+   "files": 140.9066,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, -5 C ends at 186 s with 160 points",
+   "files": 186.0293,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, -5 C ends at 247 s with 320 points",
+   "files": 247.3404,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "20 points, charge_1455mA_0C: margin -193.6 mV, charge stops at 3.14 A h",
+   "files": [
+    -193.6326,
+    3.1444
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "20 points, charge_3395mA_25C: margin -237.3 mV, charge stops at 2.84 A h",
+   "files": [
+    -237.2984,
+    2.8373
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "40+ points, charge_1455mA_0C: margin +19.1 to +19.7 mV",
+   "files": [
+    19.0563,
+    19.6939,
+    19.5633
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "40+ points, charge_3395mA_25C: margin +27.4 to +28.6 mV",
+   "files": [
+    27.3908,
+    28.5648,
+    28.5905
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "40+ points: 4.30 A h charged",
+   "files": {
+    "charge_1455mA_0C|40": 4.3022,
+    "charge_1455mA_0C|80": 4.302,
+    "charge_1455mA_0C|160": 4.301,
+    "charge_3395mA_25C|40": 4.2903,
+    "charge_3395mA_25C|80": 4.2973,
+    "charge_3395mA_25C|160": 4.2978
+   },
+   "agrees": false,
+   "borderline": false,
+   "note": "the 0.7C, 25 C charge with 40 points stores 4.2903 A h, which rounds to 4.29"
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 rates at the ambient with 20 points: (0.28, 0.369, 0.536)",
+   "files": [
+    0.2801,
+    0.36931,
+    0.53569
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 rates at the ambient with 40 points: (0.405, 0.618, 1.024)",
+   "files": [
+    0.40471,
+    0.61782,
+    1.02422
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 rates at the ambient with 80 points: (0.43, 0.67, 1.228)",
+   "files": [
+    0.4302,
+    0.67021,
+    1.22812
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "Chen2020 discharge_2C_m5C within 0.2 s over the meshes",
+   "files": {
+    "spread_s": 0.2022,
+    "20": 1705.055,
+    "40": 1704.9014,
+    "80": 1704.8642,
+    "160": 1704.8551,
+    "320": 1704.8528
+   },
+   "agrees": true,
+   "borderline": true,
+   "note": "the spread is 0.2022 s (20 against the finest mesh), 0.2 s to one figure"
+  },
+  {
+   "topic": "mesh",
+   "claim": "Chen2020 discharge_2C_25C within 0.2 s over the meshes",
+   "files": {
+    "spread_s": 0.1736,
+    "20": 1722.4393,
+    "40": 1722.3054,
+    "80": 1722.2735,
+    "160": 1722.2658
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "Chen2020 charge_1455mA_0C: -1.51 mV at 20 points, within 0.01 mV over the meshes",
+   "files": {
+    "spread_mV": 0.00332,
+    "20": -1.51352,
+    "40": -1.511,
+    "80": -1.51034,
+    "160": -1.51021
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "Chen2020 charge_3395mA_25C: +0.48 mV at 20 points, within 0.01 mV over the meshes",
+   "files": {
+    "spread_mV": 0.01057,
+    "20": 0.47588,
+    "40": 0.48395,
+    "80": 0.48595,
+    "160": 0.48646
+   },
+   "agrees": true,
+   "borderline": true,
+   "note": "the spread is 0.0106 mV (20 against 160 points), 0.01 mV to one figure"
+  },
+  {
+   "topic": "mesh",
+   "claim": "Chen2020 rates within 0.001C over the meshes: 0.288, 0.431, 0.706 at 20 points",
+   "files": {
+    "largest_spread_C": 0.000708,
+    "20": [
+     0.28789,
+     0.43091,
+     0.70562
+    ],
+    "40": [
+     0.28789,
+     0.43091,
+     0.70632
+    ],
+    "80": [
+     0.28789,
+     0.43091,
+     0.70632
+    ]
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "mesh",
+   "claim": "pulse resistances move by 3 to 5 % between 20 and 160 points",
+   "files": {
+    "ORegan2022|-5": 3.182,
+    "ORegan2022|0": 3.128,
+    "ORegan2022|25": 3.031,
+    "Chen2020|-5": 3.78,
+    "Chen2020|0": 3.986,
+    "Chen2020|25": 5.31
+   },
+   "agrees": true,
+   "borderline": true,
+   "note": "the range is 3.03 to 5.31 % (Chen2020 at 25 C moves by 5.31 %)"
+  },
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022: |d ln R/dT| between -5 and 25 C 0.02423 (20 points) and 0.02427 (160), a 0.2 % move",
+   "files": [
+    0.02422554,
+    0.02427423,
+    0.201
+   ],
+   "agrees": true,
+   "borderline": false,
+   "note": "|d ln R/dT| = 0.02422554 and 0.02427423 per K, which round to 0.02423 and 0.02427; the move is 0.20 %; d ln R/dT itself is negative (R falls as T rises), and D35 quotes its magnitude"
+  },
+  {
+   "topic": "mesh",
+   "claim": "Chen2020: |d ln R/dT| between -5 and 25 C 0.01121 (20 points) and 0.01072 (160), a 4 % move",
+   "files": [
+    0.01120498,
+    0.01071703,
+    4.355
+   ],
+   "agrees": false,
+   "borderline": false,
+   "note": "|d ln R/dT| = 0.01120498 and 0.01071703 per K, which round to 0.01120 and 0.01072; the move is 4.35 %; d ln R/dT itself is negative (R falls as T rises), and D35 quotes its magnitude"
+  },
+  {
+   "topic": "diffusivity",
+   "claim": "ORegan2022 graphite diffusivity at 25 C: 1.4e-13 m2/s at a stoichiometry of 0.98",
+   "files": "9.9540e-14",
+   "agrees": false,
+   "borderline": false,
+   "note": "1.4e-13 is the value at 0.9842 (the 100 % stoichiometry of D27): 1.4113e-13"
+  },
+  {
+   "topic": "diffusivity",
+   "claim": "2.8e-16 m2/s at 0.80",
+   "files": "2.8130e-16",
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "diffusivity",
+   "claim": "varies about 500-fold with stoichiometry at 25 C",
+   "files": {
+    "ratio_0.98_to_0.80": 353.9,
+    "ratio_0.9842_to_0.80": 501.7,
+    "max_over_min_on_the_window_0.0296_to_0.9842": 538.6
+   },
+   "agrees": true,
+   "borderline": false,
+   "note": "about 500-fold holds on the window and for 0.9842 against 0.80; 0.98 against 0.80 gives 354"
+  },
+  {
+   "topic": "diffusivity",
+   "claim": "Chen2020's diffusivity is constant",
+   "files": "3.3e-14",
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "storage",
+   "claim": "the kernels agree with Stage 4's histories within 9.5e-7 K (P1)",
+   "files": 9.497845816497374e-07,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "machine",
+   "claim": "a memory limit of 6.27 GB shared by all jobs, two cores",
+   "files": {
+    "limit_bytes": 6266372096,
+    "cores": 2
+   },
+   "agrees": true,
+   "borderline": false,
+   "note": "read from this machine's cgroup now; the two-hour job limit is not in any file"
+  },
+  {
+   "topic": "machine",
+   "claim": "the 4680's main-grid resolved kernel resumed from its saved state (at step 1,600); its factorisation needs about 5.5 GB (D28)",
+   "files": {
+    "resolved_b_21700_charge10_G30": {
+     "resumed_from_checkpoint": false,
+     "peak_memory_GB": 3.386864
+    },
+    "resolved_b_21700_m5C_2C_G30": {
+     "resumed_from_checkpoint": false,
+     "peak_memory_GB": 3.391188
+    },
+    "resolved_b_4680_charge10_G15": {
+     "resumed_from_checkpoint": null,
+     "peak_memory_GB": 4.834692
+    },
+    "resolved_b_4680_m5C_2C_G15": {
+     "resumed_from_checkpoint": true,
+     "peak_memory_GB": 4.833376
+    }
+   },
+   "agrees": true,
+   "borderline": false,
+   "note": "the files record the resume but not its step; the 4680 kernel jobs record a peak of 4.83 GB, below D28's 5.5 GB"
+  },
+  {
+   "topic": "store",
+   "claim": "the searches record which trials came from the store: 17 of 700",
+   "files": {
+    "stored": 17,
+    "trials": 700
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "store",
+   "claim": "three of the four jobs run again were searches that resumed from their stored trials",
+   "files": [
+    "21700_Chen2020_25C|corrected|coupled: 4 of 7",
+    "21700_ORegan2022_0C|resolved|coupled: 8 of 10",
+    "4680_Chen2020_10C|corrected|coupled: 5 of 7"
+   ],
+   "agrees": true,
+   "borderline": false,
+   "note": "the files show which searches hold stored trials; the restarts themselves are not recorded"
+  },
+  {
+   "topic": "hold rule",
+   "claim": "acted in 15 runs: 12 Chen2020 for 1 to 7 steps, 3 ORegan2022 at 3C, 25 C for 47 to 59 steps",
+   "files": {
+    "21700_b_m5C_2C|Chen2020|radial|coupled": 1,
+    "21700_b_m5C_2C|Chen2020|radial|single": 1,
+    "21700_a_m5C_2C|Chen2020|radial|coupled": 1,
+    "21700_a_m5C_2C|Chen2020|radial|single": 1,
+    "21700_a_m5C_2C|Chen2020|resolved|coupled": 1,
+    "21700_a_m5C_2C|Chen2020|resolved|single": 1,
+    "4680_b_m5C_2C|Chen2020|radial|coupled": 6,
+    "4680_b_m5C_2C|Chen2020|radial|single": 7,
+    "4680_b_m5C_2C|Chen2020|resolved|coupled": 3,
+    "4680_b_m5C_2C|Chen2020|resolved|single": 3,
+    "4680_b_m5C_2C|Chen2020|corrected|coupled": 3,
+    "4680_b_m5C_2C|Chen2020|corrected|single": 3,
+    "21700_b_p25C_3C|ORegan2022|radial|coupled": 59,
+    "21700_b_p25C_3C|ORegan2022|radial|single": 49,
+    "21700_b_p25C_3C|ORegan2022|corrected|coupled": 47
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "hold rule",
+   "claim": "Chen2020: the M50's main case (radial), its insulated case (radial, resolved), the 4680 (all three)",
+   "files": [
+    "21700_a_m5C_2C|radial",
+    "21700_a_m5C_2C|resolved",
+    "21700_b_m5C_2C|radial",
+    "4680_b_m5C_2C|corrected",
+    "4680_b_m5C_2C|radial",
+    "4680_b_m5C_2C|resolved"
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "hold rule",
+   "claim": "ORegan2022 at 3C, 25 C: coupled and single-unit under the radial kernel, coupled under the end-corrected",
+   "files": [
+    "21700_b_p25C_3C|ORegan2022|corrected|coupled",
+    "21700_b_p25C_3C|ORegan2022|radial|coupled",
+    "21700_b_p25C_3C|ORegan2022|radial|single"
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "hold rule",
+   "claim": "those discharges ran past the 558 s of the registered heat",
+   "files": 558.281,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "hold rule",
+   "claim": "steps of about 1 s",
+   "files": 0.99985,
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "current balance",
+   "claim": "across every stored coupled run the largest residual is 5.7e-10 of I_app",
+   "files": {
+    "coupled_runs_checked": 147,
+    "max_rel_residual": 5.730940166870369e-10,
+    "run_of_max": "D_4680_0.7C_25C_radial_ORegan2022_two-way_coupled_G15.npz",
+    "held_1e-6": true
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "checks",
+   "claim": "V3: the halved step moves the main case's penalties under the radial and end-corrected kernels by 1.1 to 1.3 %",
+   "files": {
+    "penalty_energy|radial": 1.318,
+    "penalty_capacity|radial": 1.337,
+    "penalty_energy|corrected": 1.091,
+    "penalty_capacity|corrected": 1.124
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "checks",
+   "claim": "the energies behind them move by at most 0.13 %",
+   "files": {
+    "radial|coupled": {
+     "energy": 0.0013239498512276349,
+     "capacity": 0.001468463134650877
+    },
+    "radial|single": {
+     "energy": 0.0011904698795761615,
+     "capacity": 0.0013064286071686748
+    },
+    "resolved|coupled": {
+     "energy": 0.0007671732286658184,
+     "capacity": 0.0008001048016892387
+    },
+    "resolved|single": {
+     "energy": 0.0007574842956343808,
+     "capacity": 0.0007929657671341683
+    },
+    "corrected|coupled": {
+     "energy": 0.0007957084296079664,
+     "capacity": 0.0008330515030581243
+    },
+    "corrected|single": {
+     "energy": 0.0007529019831287176,
+     "capacity": 0.0007819413152099219
+    }
+   },
+   "agrees": true,
+   "borderline": false,
+   "note": "largest move of an energy 0.1324 %; the capacities behind the two capacity penalties move by up to 0.1468 %"
+  },
+  {
+   "topic": "checks",
+   "claim": "V4: 30 groups move five of the six spreads by 5.1 to 5.4 %, the sixth by 4.8 %",
+   "files": {
+    "spread_tavg|radial|two-way": 4.803,
+    "spread_tavg|radial|one-way": 5.063,
+    "spread_tavg|resolved|two-way": 5.224,
+    "spread_tavg|resolved|one-way": 5.39,
+    "spread_tavg|corrected|two-way": 5.135,
+    "spread_tavg|corrected|one-way": 5.304
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "checks",
+   "claim": "close to the 4.8 % that D28 found for the group-level proxy",
+   "files": 4.85,
+   "agrees": true,
+   "borderline": false,
+   "note": "from D28's spreads, 5.279 % with 15 groups and 5.535 % with 30"
+  },
+  {
+   "topic": "ripple",
+   "claim": "under ORegan2022 at -5 C the shares and the voltage ripple with a period of about 11 s; the single-unit model's voltage shows the same ripple",
+   "files": {
+    "ORegan2022|two-way|coupled": {
+     "V_period_s": 11.5,
+     "V_cycles": 5,
+     "V_rms_mV_60_140s": 0.4826,
+     "inner_share_period_s": 11.0,
+     "inner_share_rms_60_140s": 0.001571833348023856
+    },
+    "ORegan2022|two-way|single": {
+     "V_period_s": 11.5,
+     "V_cycles": 5,
+     "V_rms_mV_60_140s": 0.6015
+    },
+    "ORegan2022|one-way|coupled": {
+     "V_period_s": 10.3,
+     "V_cycles": 5,
+     "V_rms_mV_60_140s": 0.6201,
+     "inner_share_period_s": 10.8,
+     "inner_share_rms_60_140s": 0.0012256362858504384
+    },
+    "ORegan2022|one-way|single": {
+     "V_period_s": 10.4,
+     "V_cycles": 5,
+     "V_rms_mV_60_140s": 0.6652
+    },
+    "Chen2020|two-way|coupled": {
+     "V_period_s": null,
+     "V_cycles": 0,
+     "V_rms_mV_60_140s": 0.0017,
+     "inner_share_period_s": null,
+     "inner_share_rms_60_140s": 6.563941533347583e-07
+    },
+    "Chen2020|two-way|single": {
+     "V_period_s": null,
+     "V_cycles": 0,
+     "V_rms_mV_60_140s": 0.0017
+    },
+    "Chen2020|one-way|coupled": {
+     "V_period_s": null,
+     "V_cycles": 0,
+     "V_rms_mV_60_140s": 0.0017,
+     "inner_share_period_s": null,
+     "inner_share_rms_60_140s": 6.406740972571259e-07
+    },
+    "Chen2020|one-way|single": {
+     "V_period_s": null,
+     "V_cycles": 0,
+     "V_rms_mV_60_140s": 0.0017
+    }
+   },
+   "agrees": true,
+   "borderline": false,
+   "note": "main case, resolved kernel; median spacing of upward zero crossings of the detrended signal between 60 and 140 s; the ripple lengthens to about 14 s near the cut-off; Chen2020 shows none"
+  },
+  {
+   "topic": "3C at 25 C",
+   "claim": "the end-corrected field's innermost group is 0.2 K warmer than the resolved field's at 270 s",
+   "files": {
+    "registered_heat_field_K": 0.2183,
+    "two-way_coupled_runs_K": 0.1813
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "3C at 25 C",
+   "claim": "the coupled discharge under the end-corrected kernel runs to 604 s; its single-unit model and both models under the resolved kernel stop near 280 s",
+   "files": {
+    "two-way|radial|coupled": {
+     "t_cut_s": 614.68,
+     "T_g1_at_270s_C": 34.5311
+    },
+    "two-way|radial|single": {
+     "t_cut_s": 608.99,
+     "T_g1_at_270s_C": 31.7577
+    },
+    "two-way|resolved|coupled": {
+     "t_cut_s": 280.43,
+     "T_g1_at_270s_C": 32.9083
+    },
+    "two-way|resolved|single": {
+     "t_cut_s": 277.61,
+     "T_g1_at_270s_C": 30.7346
+    },
+    "two-way|corrected|coupled": {
+     "t_cut_s": 604.18,
+     "T_g1_at_270s_C": 33.0896
+    },
+    "two-way|corrected|single": {
+     "t_cut_s": 277.82,
+     "T_g1_at_270s_C": 30.8202
+    },
+    "one-way|radial|coupled": {
+     "t_cut_s": 617.6,
+     "T_g1_at_270s_C": 34.488
+    },
+    "one-way|radial|single": {
+     "t_cut_s": 607.48,
+     "T_g1_at_270s_C": 31.5232
+    },
+    "one-way|resolved|coupled": {
+     "t_cut_s": 282.89,
+     "T_g1_at_270s_C": 32.4031
+    },
+    "one-way|resolved|single": {
+     "t_cut_s": 278.1,
+     "T_g1_at_270s_C": 30.2191
+    },
+    "one-way|corrected|coupled": {
+     "t_cut_s": 605.32,
+     "T_g1_at_270s_C": 32.6211
+    },
+    "one-way|corrected|single": {
+     "t_cut_s": 278.37,
+     "T_g1_at_270s_C": 30.3226
+    }
+   },
+   "agrees": true,
+   "borderline": false,
+   "note": "two-way heat (registered); under one-way heat the same split, the end-corrected coupled run to 605 s"
+  },
+  {
+   "topic": "searches",
+   "claim": "in 25 failed trials the margin first goes below zero at the 4.2 V cut-off: 20 ORegan2022 at the barrier, 5 Chen2020 between -0.1 mV and zero",
+   "files": {
+    "n": 25,
+    "ORegan2022": 20,
+    "Chen2020": 5,
+    "ORegan2022_margin_mV_range": [
+     -199.19,
+     -160.85
+    ],
+    "Chen2020_margins_mV": [
+     -0.0962,
+     -0.0729,
+     -0.0399,
+     -0.0066,
+     -0.0025
+    ]
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "searches",
+   "claim": "some passing Chen2020 trials clear zero by a few microvolts",
+   "files": [
+    {
+     "search": "4680_Chen2020_10C|radial|single",
+     "rate": 0.44375,
+     "margin_uV": 3.91
+    },
+    {
+     "search": "4680_Chen2020_10C|resolved|single",
+     "rate": 0.4375,
+     "margin_uV": 54.18
+    },
+    {
+     "search": "21700_Chen2020_25C|resolved|single",
+     "rate": 0.7125,
+     "margin_uV": 62.95
+    },
+    {
+     "search": "4680_Chen2020_10C|corrected|single",
+     "rate": 0.4375,
+     "margin_uV": 67.89
+    },
+    {
+     "search": "21700_Chen2020_25C|corrected|single",
+     "rate": 0.7125,
+     "margin_uV": 73.69
+    },
+    {
+     "search": "4680_Chen2020_25C|radial|single",
+     "rate": 0.7375,
+     "margin_uV": 78.89
+    },
+    {
+     "search": "21700_Chen2020_25C|resolved|coupled",
+     "rate": 0.71,
+     "margin_uV": 88.85
+    },
+    {
+     "search": "21700_Chen2020_25C|corrected|coupled",
+     "rate": 0.71,
+     "margin_uV": 91.48
+    }
+   ],
+   "agrees": true,
+   "borderline": false,
+   "note": "1 passing trial clears zero by under 10 microvolts (3.91); the next smallest clear it by 54.18 microvolts or more"
+  },
+  {
+   "topic": "searches",
+   "claim": "under ORegan2022 near the plating-limited rate the margin is not monotonic in the rate; D32 took monotonicity as given",
+   "files": {
+    "passing_trials_whose_margin_rises_with_rate": [
+     {
+      "search": "21700_ORegan2022_25C|radial|coupled",
+      "rates": [
+       0.53,
+       0.53625
+      ],
+      "margins_mV": [
+       34.3633,
+       34.3681
+      ]
+     },
+     {
+      "search": "4680_ORegan2022_25C|radial|single",
+      "rates": [
+       0.5,
+       0.525
+      ],
+      "margins_mV": [
+       37.9679,
+       38.3701
+      ]
+     },
+     {
+      "search": "4680_ORegan2022_25C|radial|single",
+      "rates": [
+       0.5375,
+       0.54375
+      ],
+      "margins_mV": [
+       34.7722,
+       35.4344
+      ]
+     }
+    ],
+    "my_single_unit_scan_rises": [
+     [
+      0.27,
+      0.2725,
+      18.44800580054118,
+      19.301865531473116
+     ],
+     [
+      0.2725,
+      0.275,
+      19.301865531473116,
+      19.557923213423596
+     ]
+    ],
+    "searches_with_a_failing_rate_below_a_passing_one": []
+   },
+   "agrees": true,
+   "borderline": false,
+   "note": "holds: the smallest margin over a full charge rises with rate in two stored searches and in my scan of the M50's single-unit model at 0 C; the pass or fail outcome stays monotonic in every search"
+  },
+  {
+   "topic": "searches",
+   "claim": "D35's example: at 0 C in the M50's coupled search, minus 0.03 mV at 0.28625C and minus 3.66 mV at 0.283125C",
+   "files": {
+    "trials": {
+     "0.286250": {
+      "margin_mV": -0.02542816542844056,
+      "status": "negative margin",
+      "t_min_s": 8640.0,
+      "t_end_s": 8640.0,
+      "group": 15
+     },
+     "0.283125": {
+      "margin_mV": -3.6648281687545756,
+      "status": "negative margin",
+      "t_min_s": 9110.0,
+      "t_end_s": 9110.0,
+      "group": 1
+     }
+    }
+   },
+   "agrees": false,
+   "borderline": false,
+   "note": "the two values are as stored, but each is the first output below zero of a trial that D32's rule stopped there; its depth depends on where the crossing falls within the 10 s step and it is not the trial's smallest margin over a charge, so the pair does not show the non-monotonicity"
+  },
+  {
+   "topic": "scorecard",
+   "claim": "P9's Chen2020 bracket is read at the searches' 0.00625C",
+   "files": {
+    "21700": {
+     "single": 0.2875,
+     "coupled": 0.28625,
+     "e": 0.004366812227074135,
+     "resolution": "0.00625C"
+    },
+    "4680": {
+     "single": 0.2875,
+     "coupled": 0.28625,
+     "e": 0.004366812227074135,
+     "resolution": "0.00625C"
+    },
+    "condition_met": false
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "figure",
+   "claim": "panel (b) shows the main case's shares under Chen2020",
+   "files": "Chen2020",
+   "agrees": true,
+   "borderline": false,
+   "note": "from the figure code's set for panel (b); the image is checked by eye in the README"
+  },
+  {
+   "topic": "readings",
+   "claim": "C3's like-for-like proxy uses the run's own set's R(T)",
+   "files": "my recomputation with each run's own set reproduces every proxy column of results/stage5_shares.csv",
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "readings",
+   "claim": "the reversal's 'having risen above 1' is read as above 1 + 1e-12, so that round-off (about 2e-16) does not count",
+   "files": {
+    "tolerance_1e-9_gives_the_same_reading_everywhere": true,
+    "runs_with_a_false_reversal_at_zero_tolerance": [
+     "21700_b_p25C_1.25C|Chen2020|one-way|corrected",
+     "21700_b_p25C_1.25C|Chen2020|one-way|radial",
+     "21700_b_p25C_1.25C|Chen2020|one-way|resolved",
+     "21700_b_p25C_1.25C|Chen2020|two-way|corrected",
+     "21700_b_p25C_1.25C|Chen2020|two-way|radial",
+     "21700_b_p25C_1.25C|Chen2020|two-way|resolved",
+     "21700_b_p25C_1.25C|ORegan2022|one-way|corrected",
+     "21700_b_p25C_1.25C|ORegan2022|one-way|radial",
+     "21700_b_p25C_1.25C|ORegan2022|one-way|resolved",
+     "21700_b_p25C_1.25C|ORegan2022|two-way|corrected",
+     "21700_b_p25C_1.25C|ORegan2022|two-way|radial",
+     "21700_b_p25C_1.25C|ORegan2022|two-way|resolved",
+     "21700_b_p25C_3C|Chen2020|one-way|corrected",
+     "21700_b_p25C_3C|Chen2020|one-way|radial",
+     "21700_b_p25C_3C|Chen2020|one-way|resolved",
+     "21700_b_p25C_3C|Chen2020|two-way|corrected",
+     "21700_b_p25C_3C|Chen2020|two-way|radial",
+     "21700_b_p25C_3C|Chen2020|two-way|resolved"
+    ],
+    "largest_deviation_of_the_shares_from_1_at_t0": 2.568167900562912e-12
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "readings",
+   "claim": "with 30 groups the edges 45 k / 30 fall halfway for odd k and are rounded up",
+   "files": {
+    "corrected_b_21700_charge10_G30": true,
+    "corrected_b_21700_m5C_2C_G30": true,
+    "radial_lat_21700_charge10_G30": true,
+    "radial_lat_21700_m5C_2C_G30": true,
+    "resolved_b_21700_charge10_G30": true,
+    "resolved_b_21700_m5C_2C_G30": true
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "readings",
+   "claim": "V5: shares within 0.037 %, voltages up to 6.5 mV apart at the last full step",
+   "files": {
+    "max_rel_share_difference": 0.0003674257625722044,
+    "max_abs_dV_V": 0.006537299137077124,
+    "t_of_max_s": 169.97456473345085
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "consequences",
+   "claim": "the first fact of D27 (ORegan2022 discharges end long before the registered heat) holds in direction with the finer meshes",
+   "files": {
+    "cut_offs_s": {
+     "25 C|20": 978.4,
+     "25 C|40": 1281.9,
+     "25 C|80": 1456.4,
+     "25 C|160": 1468.5,
+     "-5 C|20": 125.7,
+     "-5 C|40": 121.3,
+     "-5 C|80": 140.9,
+     "-5 C|160": 186.0,
+     "-5 C|320": 247.3
+    },
+    "registered_heat_ends_s": {
+     "25": 1723.5,
+     "-5": 1706.7
+    }
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "consequences",
+   "claim": "the second fact of D27 (the surface reaches its limit before 4.2 V at the specification's limits) belongs to the 20-point mesh",
+   "files": {
+    "20": -193.633,
+    "40": 19.056,
+    "80": 19.694,
+    "160": 19.563
+   },
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "records",
+   "claim": "Stage 4's files are not edited",
+   "files": "2310bb6 2026-10-29T04:26:21+00:00",
+   "agrees": true,
+   "borderline": false,
+   "note": "the last commit touching Stage 4's results"
+  },
+  {
+   "topic": "records",
+   "claim": "the searches' trials store their margins and not their step outputs",
+   "files": [
+    "at_interface",
+    "charge_Ah",
+    "from_cache",
+    "group",
+    "min_margin_V",
+    "passed",
+    "rate",
+    "status",
+    "steps",
+    "t_end_s",
+    "t_min_s",
+    "wall_s"
+   ],
+   "agrees": true,
+   "borderline": false
+  },
+  {
+   "topic": "records",
+   "claim": "the runs read the stored (single-precision) kernels and do all arithmetic in double precision",
+   "files": "Kernel loads S_group, S_unit_uniform and S_unit with .astype(np.float64)",
+   "agrees": true,
+   "borderline": false,
+   "note": "from the code"
+  },
+  {
+   "topic": "records",
+   "claim": "runs and kernels are written to a temporary file and renamed",
+   "files": "save_run and the kernel writer use a .tmp file and os.replace",
+   "agrees": true,
+   "borderline": false,
+   "note": "from the code"
+  },
+  {
+   "topic": "records",
+   "claim": "the coupled model under ORegan2022 with a finer mesh was not run",
+   "files": "the coupled and single-unit models are built on PyBaMM's default mesh only",
+   "agrees": true,
+   "borderline": false,
+   "note": "from the code: no other mesh is built"
+  }
+ ],
+ "n": 64,
+ "n_agree": 59,
+ "borderline": [
+  {
+   "topic": "mesh",
+   "claim": "Chen2020 discharge_2C_m5C within 0.2 s over the meshes",
+   "files": {
+    "spread_s": 0.2022,
+    "20": 1705.055,
+    "40": 1704.9014,
+    "80": 1704.8642,
+    "160": 1704.8551,
+    "320": 1704.8528
+   },
+   "agrees": true,
+   "borderline": true,
+   "note": "the spread is 0.2022 s (20 against the finest mesh), 0.2 s to one figure"
+  },
+  {
+   "topic": "mesh",
+   "claim": "Chen2020 charge_3395mA_25C: +0.48 mV at 20 points, within 0.01 mV over the meshes",
+   "files": {
+    "spread_mV": 0.01057,
+    "20": 0.47588,
+    "40": 0.48395,
+    "80": 0.48595,
+    "160": 0.48646
+   },
+   "agrees": true,
+   "borderline": true,
+   "note": "the spread is 0.0106 mV (20 against 160 points), 0.01 mV to one figure"
+  },
+  {
+   "topic": "mesh",
+   "claim": "pulse resistances move by 3 to 5 % between 20 and 160 points",
+   "files": {
+    "ORegan2022|-5": 3.182,
+    "ORegan2022|0": 3.128,
+    "ORegan2022|25": 3.031,
+    "Chen2020|-5": 3.78,
+    "Chen2020|0": 3.986,
+    "Chen2020|25": 5.31
+   },
+   "agrees": true,
+   "borderline": true,
+   "note": "the range is 3.03 to 5.31 % (Chen2020 at 25 C moves by 5.31 %)"
+  }
+ ],
+ "disagree": [
+  {
+   "topic": "mesh",
+   "claim": "ORegan2022 2C, 25 C ends at 1,469 s with 160 points",
+   "files": 1468.4976,
+   "agrees": false,
+   "borderline": false,
+   "note": "1468.4976 s rounds to 1,468 s"
+  },
+  {
+   "topic": "mesh",
+   "claim": "40+ points: 4.30 A h charged",
+   "files": {
+    "charge_1455mA_0C|40": 4.3022,
+    "charge_1455mA_0C|80": 4.302,
+    "charge_1455mA_0C|160": 4.301,
+    "charge_3395mA_25C|40": 4.2903,
+    "charge_3395mA_25C|80": 4.2973,
+    "charge_3395mA_25C|160": 4.2978
+   },
+   "agrees": false,
+   "borderline": false,
+   "note": "the 0.7C, 25 C charge with 40 points stores 4.2903 A h, which rounds to 4.29"
+  },
+  {
+   "topic": "mesh",
+   "claim": "Chen2020: |d ln R/dT| between -5 and 25 C 0.01121 (20 points) and 0.01072 (160), a 4 % move",
+   "files": [
+    0.01120498,
+    0.01071703,
+    4.355
+   ],
+   "agrees": false,
+   "borderline": false,
+   "note": "|d ln R/dT| = 0.01120498 and 0.01071703 per K, which round to 0.01120 and 0.01072; the move is 4.35 %; d ln R/dT itself is negative (R falls as T rises), and D35 quotes its magnitude"
+  },
+  {
+   "topic": "diffusivity",
+   "claim": "ORegan2022 graphite diffusivity at 25 C: 1.4e-13 m2/s at a stoichiometry of 0.98",
+   "files": "9.9540e-14",
+   "agrees": false,
+   "borderline": false,
+   "note": "1.4e-13 is the value at 0.9842 (the 100 % stoichiometry of D27): 1.4113e-13"
+  },
+  {
+   "topic": "searches",
+   "claim": "D35's example: at 0 C in the M50's coupled search, minus 0.03 mV at 0.28625C and minus 3.66 mV at 0.283125C",
+   "files": {
+    "trials": {
+     "0.286250": {
+      "margin_mV": -0.02542816542844056,
+      "status": "negative margin",
+      "t_min_s": 8640.0,
+      "t_end_s": 8640.0,
+      "group": 15
+     },
+     "0.283125": {
+      "margin_mV": -3.6648281687545756,
+      "status": "negative margin",
+      "t_min_s": 9110.0,
+      "t_end_s": 9110.0,
+      "group": 1
+     }
+    }
+   },
+   "agrees": false,
+   "borderline": false,
+   "note": "the two values are as stored, but each is the first output below zero of a trial that D32's rule stopped there; its depth depends on where the crossing falls within the 10 s step and it is not the trial's smallest margin over a charge, so the pair does not show the non-monotonicity"
+  }
+ ],
+ "peak_memory": "218456 kB"
+}

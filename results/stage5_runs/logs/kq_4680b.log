@@ -1,0 +1,9 @@
+=== 12:52:02 --model resolved --bc b --cell 4680 --grid charge10
+  built in 26 s, peak memory so far 4.10 GB
+resolved_b_4680_charge10_G15.npz: 254 steps (archive 0), distance 9.7e-09, reciprocity 1.2e-15 (sampled 5.6e-04), loads partition 3.8e-14, sum vs w_vol 2.3e-14, 936 s
+=== 13:07:38 --model resolved --bc b --cell 4680 --grid m5C_2C
+  built in 26 s, peak memory so far 3.95 GB
+  resolved b 4680 m5C_2C step 500: rel distance to steady 2.50e-02 (1251 s)
+  resolved b 4680 m5C_2C step 1000: rel distance to steady 5.78e-04 (2527 s)
+  resolved b 4680 m5C_2C step 1500: rel distance to steady 1.33e-05 (3815 s)
+  resolved b 4680 m5C_2C step 2000: rel distance to steady 3.07e-07 (5139 s)

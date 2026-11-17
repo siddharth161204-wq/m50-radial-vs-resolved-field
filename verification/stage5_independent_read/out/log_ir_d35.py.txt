@@ -1,0 +1,73 @@
+ok   [mesh] ORegan2022 2C, 25 C ends at 978 s with 20 points
+ok   [mesh] ORegan2022 2C, 25 C ends at 1,282 s with 40 points
+ok   [mesh] ORegan2022 2C, 25 C ends at 1,456 s with 80 points
+DIFF [mesh] ORegan2022 2C, 25 C ends at 1,469 s with 160 points
+        note: 1468.4976 s rounds to 1,468 s
+ok   [mesh] ORegan2022 2C, -5 C ends at 126 s with 20 points
+ok   [mesh] ORegan2022 2C, -5 C ends at 121 s with 40 points
+ok   [mesh] ORegan2022 2C, -5 C ends at 141 s with 80 points
+ok   [mesh] ORegan2022 2C, -5 C ends at 186 s with 160 points
+ok   [mesh] ORegan2022 2C, -5 C ends at 247 s with 320 points
+ok   [mesh] 20 points, charge_1455mA_0C: margin -193.6 mV, charge stops at 3.14 A h
+ok   [mesh] 20 points, charge_3395mA_25C: margin -237.3 mV, charge stops at 2.84 A h
+ok   [mesh] 40+ points, charge_1455mA_0C: margin +19.1 to +19.7 mV
+ok   [mesh] 40+ points, charge_3395mA_25C: margin +27.4 to +28.6 mV
+DIFF [mesh] 40+ points: 4.30 A h charged
+        note: the 0.7C, 25 C charge with 40 points stores 4.2903 A h, which rounds to 4.29
+ok   [mesh] ORegan2022 rates at the ambient with 20 points: (0.28, 0.369, 0.536)
+ok   [mesh] ORegan2022 rates at the ambient with 40 points: (0.405, 0.618, 1.024)
+ok   [mesh] ORegan2022 rates at the ambient with 80 points: (0.43, 0.67, 1.228)
+EDGE [mesh] Chen2020 discharge_2C_m5C within 0.2 s over the meshes
+        note: the spread is 0.2022 s (20 against the finest mesh), 0.2 s to one figure
+ok   [mesh] Chen2020 discharge_2C_25C within 0.2 s over the meshes
+ok   [mesh] Chen2020 charge_1455mA_0C: -1.51 mV at 20 points, within 0.01 mV over the meshes
+EDGE [mesh] Chen2020 charge_3395mA_25C: +0.48 mV at 20 points, within 0.01 mV over the meshes
+        note: the spread is 0.0106 mV (20 against 160 points), 0.01 mV to one figure
+ok   [mesh] Chen2020 rates within 0.001C over the meshes: 0.288, 0.431, 0.706 at 20 points
+EDGE [mesh] pulse resistances move by 3 to 5 % between 20 and 160 points
+        note: the range is 3.03 to 5.31 % (Chen2020 at 25 C moves by 5.31 %)
+ok   [mesh] ORegan2022: |d ln R/dT| between -5 and 25 C 0.02423 (20 points) and 0.02427 (160), a 0.2 % move
+DIFF [mesh] Chen2020: |d ln R/dT| between -5 and 25 C 0.01121 (20 points) and 0.01072 (160), a 4 % move
+        note: |d ln R/dT| = 0.01120498 and 0.01071703 per K, which round to 0.01120 and 0.01072; the move is 4.35 %; d ln R/dT itself is negative (R falls as T rises), and D35 quotes its magnitude
+DIFF [diffusivity] ORegan2022 graphite diffusivity at 25 C: 1.4e-13 m2/s at a stoichiometry of 0.98
+        note: 1.4e-13 is the value at 0.9842 (the 100 % stoichiometry of D27): 1.4113e-13
+ok   [diffusivity] 2.8e-16 m2/s at 0.80
+ok   [diffusivity] varies about 500-fold with stoichiometry at 25 C
+ok   [diffusivity] Chen2020's diffusivity is constant
+ok   [storage] the kernels agree with Stage 4's histories within 9.5e-7 K (P1)
+ok   [machine] a memory limit of 6.27 GB shared by all jobs, two cores
+ok   [machine] the 4680's main-grid resolved kernel resumed from its saved state (at step 1,600); its factorisation needs abo
+ok   [store] the searches record which trials came from the store: 17 of 700
+ok   [store] three of the four jobs run again were searches that resumed from their stored trials
+ok   [hold rule] acted in 15 runs: 12 Chen2020 for 1 to 7 steps, 3 ORegan2022 at 3C, 25 C for 47 to 59 steps
+ok   [hold rule] Chen2020: the M50's main case (radial), its insulated case (radial, resolved), the 4680 (all three)
+ok   [hold rule] ORegan2022 at 3C, 25 C: coupled and single-unit under the radial kernel, coupled under the end-corrected
+ok   [hold rule] those discharges ran past the 558 s of the registered heat
+ok   [hold rule] steps of about 1 s
+ok   [current balance] across every stored coupled run the largest residual is 5.7e-10 of I_app
+ok   [checks] V3: the halved step moves the main case's penalties under the radial and end-corrected kernels by 1.1 to 1.3 %
+ok   [checks] the energies behind them move by at most 0.13 %
+ok   [checks] V4: 30 groups move five of the six spreads by 5.1 to 5.4 %, the sixth by 4.8 %
+ok   [checks] close to the 4.8 % that D28 found for the group-level proxy
+ok   [ripple] under ORegan2022 at -5 C the shares and the voltage ripple with a period of about 11 s; the single-unit model'
+ok   [3C at 25 C] the end-corrected field's innermost group is 0.2 K warmer than the resolved field's at 270 s
+ok   [3C at 25 C] the coupled discharge under the end-corrected kernel runs to 604 s; its single-unit model and both models unde
+ok   [searches] in 25 failed trials the margin first goes below zero at the 4.2 V cut-off: 20 ORegan2022 at the barrier, 5 Che
+ok   [searches] some passing Chen2020 trials clear zero by a few microvolts
+ok   [searches] under ORegan2022 near the plating-limited rate the margin is not monotonic in the rate; D32 took monotonicity 
+DIFF [searches] D35's example: at 0 C in the M50's coupled search, minus 0.03 mV at 0.28625C and minus 3.66 mV at 0.283125C
+        note: the two values are as stored, but each is the first output below zero of a trial that D32's rule stopped there; its depth depends on where the crossing falls within the 10 s step and it is not the trial's smallest margin over a charge, so the pair does not show the non-monotonicity
+ok   [scorecard] P9's Chen2020 bracket is read at the searches' 0.00625C
+ok   [figure] panel (b) shows the main case's shares under Chen2020
+ok   [readings] C3's like-for-like proxy uses the run's own set's R(T)
+ok   [readings] the reversal's 'having risen above 1' is read as above 1 + 1e-12, so that round-off (about 2e-16) does not cou
+ok   [readings] with 30 groups the edges 45 k / 30 fall halfway for odd k and are rounded up
+ok   [readings] V5: shares within 0.037 %, voltages up to 6.5 mV apart at the last full step
+ok   [consequences] the first fact of D27 (ORegan2022 discharges end long before the registered heat) holds in direction with the 
+ok   [consequences] the second fact of D27 (the surface reaches its limit before 4.2 V at the specification's limits) belongs to t
+ok   [records] Stage 4's files are not edited
+ok   [records] the searches' trials store their margins and not their step outputs
+ok   [records] the runs read the stored (single-precision) kernels and do all arithmetic in double precision
+ok   [records] runs and kernels are written to a temporary file and renamed
+ok   [records] the coupled model under ORegan2022 with a finer mesh was not run
+59 of 64 agree

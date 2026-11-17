@@ -20,6 +20,7 @@ import ir_lib as L  # noqa: E402
 T0 = time.time()
 RTOL_MATCH = 2e-7          # the CSVs are written with 9 significant digits
 MISMATCH = []
+COUNTS = {}              # values compared per table
 _KCACHE = {}
 
 
@@ -65,6 +66,8 @@ def compare_row(table, key, mine, stored, skip=()):
         n += 1
         if not ok:
             MISMATCH.append({"table": table, "key": key, "column": c, "mine": v, "stored": stored[c]})
+    COUNTS[table] = COUNTS.get(table, 0) + n
+    COUNTS[table + " rows"] = COUNTS.get(table + " rows", 0) + 1
     return n
 
 
@@ -406,6 +409,39 @@ def replay(trials, start, fine):
         return {"sequence": seq, "missing_trial_rate": float(e.args[0])}
 
 
+def replay_fn(fn, start, fine):
+    """Replay D32's rules against a synthetic outcome fn(rate) -> passed, growing the trial table as the rules ask."""
+    trials = []
+    while True:
+        r = replay(trials, start, fine)
+        x = r.get("missing_trial_rate")
+        if x is None:
+            return r
+        trials.append({"rate": x, "passed": bool(fn(x))})
+
+
+def synthetic_rule_check():
+    """The sequences that tests/test_stage5.py (test_search_follows_d32) expects for a margin that stays at or above
+    zero up to 0.3137C, obtained here from my own replay of D32's text (their test is not run: the same file runs a
+    coupled solve)."""
+    ok = lambda r: r <= 0.3137
+    close = lambda a, b: len(a) == len(b) and all(abs(x - y) < 1e-6 for x, y in zip(a, b))
+    s = replay_fn(ok, 0.05, True)
+    start = max(0.05, math.floor(round((s["rate"] - 0.10) * 100, 9)) / 100)
+    c = replay_fn(ok, start, False)
+    d = replay_fn(ok, 0.40, False)
+    res = {"single_sequence": s["sequence"], "single": [s["rate"], s["fail_above"], s["fine_rate"]], "coupled_start": start,
+           "coupled_sequence": c["sequence"], "coupled": [c["rate"], c["fail_above"]], "stepdown_sequence": d["sequence"],
+           "stepdown_rate": d["rate"]}
+    res["matches_the_test"] = bool(
+        close(s["sequence"], [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.325, 0.3125, 0.31875, 0.315625, 0.3140625, 0.31328125])
+        and abs(s["rate"] - 0.3125) < 1e-9 and abs(s["fail_above"] - 0.31875) < 1e-9 and abs(s["fine_rate"] - 0.31328125) < 1e-9
+        and abs(start - 0.21) < 1e-12 and close(c["sequence"], [0.21, 0.26, 0.31, 0.36, 0.335, 0.3225, 0.31625])
+        and abs(c["rate"] - 0.31) < 1e-9 and abs(c["fail_above"] - 0.31625) < 1e-9
+        and close(d["sequence"][:3], [0.4, 0.35, 0.3]) and abs(d["rate"] - 0.3125) < 1e-9)
+    return res
+
+
 def limit_part():
     stored = L.read_csv(os.path.join(L.RES, "stage5_limit.csv"))
     out, mine = {}, []
@@ -572,30 +608,70 @@ def scorecard(md, ms, mc, ml, P1):
                                                          (e["4680"]["e_range_from_brackets"][1] > 0.05) ==
                                                          (e["4680"]["e_range_from_brackets"][0] > 0.05))}
         sc[pset] = o
-    # against the stored scorecard
+    # against the stored scorecard: every entry, recursively (nested per-cell values of P9, P7's list, P8's holders)
     st = json.load(open(os.path.join(L.RES, "stage5_scorecard.json")))
-    comp = {}
+    comp = {"note_present": "note" in st, "note": st.get("note")}
+
+    def walk(mine, theirs, path, tol, diffs):
+        if isinstance(mine, dict) and isinstance(theirs, dict):
+            for k in mine:
+                if k in theirs:
+                    walk(mine[k], theirs[k], path + [k], tol, diffs)
+            return
+        if isinstance(mine, (list, tuple)) and isinstance(theirs, (list, tuple)):
+            if len(mine) != len(theirs):
+                diffs.append({"at": "/".join(path), "mine": mine, "stored": theirs})
+                return
+            for i, (a, b) in enumerate(zip(mine, theirs)):
+                walk(a, b, path + [str(i)], tol, diffs)
+            return
+        if isinstance(mine, bool) or isinstance(theirs, bool):
+            if bool(mine) != bool(theirs):
+                diffs.append({"at": "/".join(path), "mine": mine, "stored": theirs})
+            return
+        if isinstance(mine, (int, float)) and isinstance(theirs, (int, float)):
+            if not same(float(mine), float(theirs), rtol=tol, atol=1e-15):
+                diffs.append({"at": "/".join(path), "mine": mine, "stored": theirs})
+            return
+        if mine != theirs:
+            diffs.append({"at": "/".join(path), "mine": mine, "stored": theirs})
+
     for pset, skey in (("ORegan2022", "registered"), ("Chen2020", "brackets_Chen2020")):
         for P, v in sc[pset].items():
-            s = st[skey].get(P)
-            vk = "held" if pset == "ORegan2022" else ("condition_met" if "condition_met" in (s or {}) else "held")
-            key_note = None if pset == "ORegan2022" else ("bracket recorded as condition_met" if vk == "condition_met"
-                                                          else "bracket recorded with a 'held' key (a verdict), not condition_met")
+            s = st.get(skey, {}).get(P)
             if s is None:
-                comp[f"{pset}|{P}"] = {"mine": v.get("held"), "stored": "absent"}
+                comp[f"{pset}|{P}"] = {"verdict_mine": v.get("held"), "stored": "absent"}
+                MISMATCH.append({"table": "stage5_scorecard.json", "key": f"{skey}|{P}", "column": "(entry)", "mine": v, "stored": "absent"})
                 continue
-            num = {}
-            for kk, vv in v.items():
-                if isinstance(vv, float) and kk in s:
-                    tol = 1e-7 if P == "P1" else 1e-9          # P1: FFT against direct summation of float32 kernels
-                    num[kk] = {"mine": vv, "stored": s[kk], "match": same(vv, s[kk], rtol=tol, atol=1e-15)}
+            vk = "held" if pset == "ORegan2022" else "condition_met"
+            mine = dict(v)
+            if pset != "ORegan2022":
+                mine["condition_met"] = mine.pop("held")
+            diffs = []
+            walk(mine, s, [], 1e-7 if P == "P1" else 1e-9, diffs)          # P1: FFT against direct sums of float32
+            compared = []
+
+            def count(m, t, path):
+                if isinstance(m, dict) and isinstance(t, dict):
+                    for k in m:
+                        if k in t:
+                            count(m[k], t[k], path + [k])
+                elif isinstance(m, (list, tuple)) and isinstance(t, (list, tuple)):
+                    for i, (a, b) in enumerate(zip(m, t)):
+                        count(a, b, path + [str(i)])
+                else:
+                    compared.append("/".join(path))
+            count(mine, s, [])
+            only_stored = [k for k in s if k not in mine]
+            bad_key = pset != "ORegan2022" and ("held" in s or "condition_met" not in s)
             comp[f"{pset}|{P}"] = {"verdict_mine": v.get("held"), "verdict_stored": s.get(vk), "verdict_match": v.get("held") == s.get(vk),
-                                   "numbers": num, "stored_key": vk, "key_note": key_note}
-            if v.get("held") != s.get(vk) or not all(x["match"] for x in num.values()):
+                                   "values_compared": len(compared), "differences": diffs, "stored_only_keys": only_stored,
+                                   "bracket_key_ok": not bad_key}
+            if diffs or v.get("held") != s.get(vk) or bad_key:
                 MISMATCH.append({"table": "stage5_scorecard.json", "key": f"{skey}|{P}", "column": vk, "mine": v, "stored": s})
-        for P in st[skey]:
-            if P not in sc[pset] and P != "note":
-                comp[f"{pset}|{P}"] = {"mine": "not computable from the files present", "stored": st[skey][P]}
+        for P in st.get(skey, {}):
+            if P not in sc[pset]:
+                comp[f"{pset}|{P}"] = {"mine": "not computed", "stored": st[skey][P]}
     return sc, comp
 
 
@@ -610,6 +686,12 @@ def v3_residuals():
         if v > worst:
             worst, name = v, os.path.basename(p)
     v2 = os.path.join(L.RDIR, "V2_uniform_temperature_coupled.npz")
+    if os.path.exists(v2):
+        r = L.load_run(v2)
+        v = float(np.abs((r["I"].astype(float) @ L.group_w(r["meta"]["N"], r["I"].shape[1])) / r["meta"]["I_app_A"] - 1).max())
+        n += 1
+        if v > worst:
+            worst, name = v, os.path.basename(v2)
     return {"coupled_runs_checked": n, "max_rel_residual": worst, "run_of_max": name, "held_1e-6": bool(worst < 1e-6)}
 
 
@@ -626,10 +708,11 @@ if __name__ == "__main__":
         P1 = json.load(open(p1f))["P1"]
     sc, comp = scorecard(md, ms, mc, ml, P1)
     v3 = v3_residuals()
-    res = {"discharge": md, "shares": ms, "discharge_run_checks": dx, "discharge_missing": dmiss,
+    res = {"synthetic_rule_check": synthetic_rule_check(),
+           "discharge": md, "shares": ms, "discharge_run_checks": dx, "discharge_missing": dmiss,
            "charge": mc, "charge_run_checks": cx, "charge_missing": cmiss, "limits": lx, "limit_rows": ml,
            "scorecard_mine": sc, "scorecard_vs_stored": comp, "V3_current_balance": v3,
-           "n_mismatches": len(MISMATCH), "wall_s": time.time() - T0, "peak_memory": L.mem_note()}
+           "n_mismatches": len(MISMATCH), "values_compared": COUNTS, "wall_s": time.time() - T0, "peak_memory": L.mem_note()}
     L.dump("readings.json", res)
     csv_mtime = os.path.getmtime(os.path.join(L.RES, "stage5_discharge.csv"))
     for m in MISMATCH:
@@ -653,7 +736,8 @@ if __name__ == "__main__":
     print(json.dumps({"discharge_rows": len(md), "charge_rows": len(mc), "limit_rows": len(ml),
                       "mismatches": len(MISMATCH), "worst_T_rule_K": worstT, "V3": v3,
                       "limits_all_consistent": all(v["all_consistent"] for v in lx.values()),
-                      "scorecard_verdicts_match": {k: v.get("verdict_match") for k, v in comp.items()},
+                      "scorecard_verdicts_match": {k: v.get("verdict_match") for k, v in comp.items() if isinstance(v, dict)},
+                      "scorecard_differences": {k: v.get("differences") for k, v in comp.items() if isinstance(v, dict) and v.get("differences")},
                       "wall_s": res["wall_s"], "peak": res["peak_memory"]}, indent=1, default=str))
     print("mismatch categories:", json.dumps(res["mismatch_categories"]))
     for m in MISMATCH:

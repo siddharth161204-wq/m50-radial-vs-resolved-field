@@ -1,0 +1,34 @@
+=== 11:30:47 ir_inventory.py
+    exit 0
+=== 11:30:48 ir_p1_v1.py
+    exit 0
+=== 11:31:02 ir_readings.py
+    exit 0
+=== 11:31:06 ir_v5_v6.py
+    exit 0
+=== 11:31:07 ir_v2_v4.py
+    exit 0
+=== 11:31:09 ir_summary.py
+    exit 0
+=== 11:31:10 ir_single_rerun.py both
+    exit 0
+=== 11:31:22 ir_single_rerun.py p9
+    exit 0
+=== 11:32:13 ir_single_rerun.py scan
+    exit 0
+=== 11:34:33 ir_mesh.py 20 set=ORegan2022 items=c0,c25,d25,dm5
+    exit 0
+=== 11:34:52 ir_mesh.py 80 set=ORegan2022 items=c0,c25,d25,dm5
+    exit 0
+=== 11:36:22 ir_mesh.py 160 set=ORegan2022 items=d25
+    exit 0
+=== 11:37:18 ir_mesh.py 20 set=Chen2020 items=c0,c25,d25,dm5
+    exit 0
+=== 11:37:35 ir_mesh.py 160 set=Chen2020 items=c25
+    exit 0
+=== 11:37:45 ir_mesh.py 20 explicit set=ORegan2022 items=c0,d25
+    exit 0
+=== 11:38:00 ir_d35.py
+    exit 0
+=== 11:38:04 done
+exit 0

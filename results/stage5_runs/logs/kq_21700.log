@@ -1,0 +1,16 @@
+=== 12:15:10 --model resolved --bc b --cell 21700 --grid m5C_2C --units
+  resolved b 21700 m5C_2C step 500: rel distance to steady 9.49e-05 (180 s)
+  resolved b 21700 m5C_2C step 1000: rel distance to steady 7.71e-09 (362 s)
+  resolved b 21700 m5C_2C step 1500: rel distance to steady 6.34e-13 (544 s)
+resolved_b_21700_m5C_2C_G15.npz: 1707 steps (archive 1707), distance 2.5e-14, reciprocity 3.3e-15 (sampled 1.4e-03), loads partition 2.6e-14, sum vs w_vol 1.5e-14, 649 s
+=== 12:25:59 --model resolved --bc b --cell 21700 --grid charge10
+resolved_b_21700_charge10_G15.npz: 107 steps (archive 0), distance 9.5e-09, reciprocity 1.1e-15 (sampled 1.4e-03), loads partition 2.6e-14, sum vs w_vol 1.5e-14, 66 s
+=== 12:27:06 --model resolved --bc a --cell 21700 --grid m5C_2C
+  resolved a 21700 m5C_2C step 500: rel distance to steady 5.86e-04 (176 s)
+  resolved a 21700 m5C_2C step 1000: rel distance to steady 2.89e-07 (368 s)
+  resolved a 21700 m5C_2C step 1500: rel distance to steady 1.42e-10 (560 s)
+resolved_a_21700_m5C_2C_G15.npz: 1707 steps (archive 1707), distance 6.1e-12, reciprocity 5.0e-15 (sampled 1.2e-03), loads partition 2.6e-14, sum vs w_vol 1.5e-14, 658 s
+=== 12:38:04 --model resolved --bc b --cell 21700 --grid p25C_3C
+  resolved b 21700 p25C_3C step 500: rel distance to steady 9.59e-05 (191 s)
+resolved_b_21700_p25C_3C_G15.npz: 988 steps (archive 559), distance 9.9e-09, reciprocity 2.5e-15 (sampled 1.4e-03), loads partition 2.6e-14, sum vs w_vol 1.5e-14, 394 s
+=== 12:44:39 --model resolved --bc b --cell 21700 --grid p25C_2C

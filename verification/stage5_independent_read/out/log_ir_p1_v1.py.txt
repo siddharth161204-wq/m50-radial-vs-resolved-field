@@ -1,5 +1,5 @@
 P1 done 0 s 9.497845816497374e-07
-kernel checks done 2 s
+kernel checks done 1 s
 {
  "P1_max_abs_K": 9.497845816497374e-07,
  "P1_held": true,
@@ -73,6 +73,6 @@ kernel checks done 2 s
    "note": "80 elements per unit and the consistent capacity against the registered 20 and lumped; a size of the spatial discretisation error, not a check of the registered kernel"
   }
  },
- "wall_s": 18.64622187614441,
- "peak": "418040 kB"
+ "wall_s": 13.52116584777832,
+ "peak": "417668 kB"
 }

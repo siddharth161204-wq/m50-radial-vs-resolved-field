@@ -1,0 +1,50 @@
+{
+ "set": "Chen2020",
+ "points_per_particle_radius": 160,
+ "pybamm": "26.9.0.0",
+ "initial_state": "initial_soc passed to the solve (the stored script's way)",
+ "initial_stoichiometries_x_n_y_p": {
+  "0": [
+   0.02634579027064577,
+   0.853974674630047
+  ],
+  "1": [
+   0.9106180466524094,
+   0.26384522459132986
+  ]
+ },
+ "items": {
+  "charge_3395mA_25C": {
+   "I_A": 3.395,
+   "margin_min_V": 0.0004864560376516428,
+   "t_min_s": 4190.910655227293,
+   "t_end_s": 4190.910655227293,
+   "t_first_negative_s": null,
+   "V_end": 4.200000000000008,
+   "charge_Ah": 3.9522615762490725,
+   "n_outputs": 6319,
+   "margin_min_from_raw_potentials_V": 0.00048645603765163823,
+   "raw_vs_pybamm_node_margin_max_abs_V": 0.0,
+   "raw_vs_pybamm_interface_max_abs_V": 2.220446049250313e-16,
+   "termination": "event: Maximum voltage [V]",
+   "wall_s": 6.967113494873047
+  }
+ },
+ "stored": {
+  "charge_3395mA_25C": {
+   "margin_min_V": 0.0004864560376516428,
+   "t_min_s": 4190.910655227293,
+   "t_first_negative_s": null,
+   "t_end_s": 4190.910655227293,
+   "charge_Ah": 3.9522615762490725
+  }
+ },
+ "diff": {
+  "charge_3395mA_25C": {
+   "margin_min_V": 0.0,
+   "t_end_s": 0.0,
+   "charge_Ah": 0.0
+  }
+ },
+ "peak_memory": "257816 kB"
+}

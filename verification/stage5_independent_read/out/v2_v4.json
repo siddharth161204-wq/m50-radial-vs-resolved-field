@@ -1,87 +1,433 @@
 {
- "V2": null,
+ "V2": {
+  "T_rule_max_abs_K": 2.3833927542682432e-07,
+  "max_abs_voltage_difference_full_steps_V": 7.486039934612165e-07,
+  "max_abs_voltage_difference_all_common_indices_V": 7.486039934612165e-07,
+  "t_cut_coupled_s": 147.18777034698854,
+  "t_cut_single_s": 147.18775121755348,
+  "capacity_rel_difference": 1.2996621601146785e-07,
+  "held": true,
+  "steps_compared": 148
+ },
  "V3": {
   "current_balance": {
-   "coupled_runs_checked": 106,
+   "coupled_runs_checked": 147,
    "max_rel_residual": 5.730940166870369e-10,
    "run_of_max": "D_4680_0.7C_25C_radial_ORegan2022_two-way_coupled_G15.npz",
    "held_1e-6": true
   },
   "halved_step_discharge": {
-   "readings": {},
-   "missing": [
-    "penalty_energy|radial",
-    "penalty_capacity|radial",
-    "spread_tavg|radial|two-way",
-    "spread_tavg|radial|one-way",
-    "penalty_energy|resolved",
-    "penalty_capacity|resolved",
-    "spread_tavg|resolved|two-way",
-    "spread_tavg|resolved|one-way",
-    "penalty_energy|corrected",
-    "penalty_capacity|corrected",
-    "spread_tavg|corrected|two-way",
-    "spread_tavg|corrected|one-way"
-   ],
+   "readings": {
+    "penalty_energy|radial": {
+     "registered": -0.010014375745221682,
+     "check": -0.010146344278562536,
+     "rel_change": 0.013177909107696673,
+     "within": false
+    },
+    "penalty_capacity|radial": {
+     "registered": -0.011957025006809952,
+     "check": -0.012116887331464765,
+     "rel_change": 0.01336974076442643,
+     "within": false
+    },
+    "spread_tavg|radial|two-way": {
+     "registered": 0.08384682510924832,
+     "check": 0.08443928719651084,
+     "rel_change": 0.00706600502154453,
+     "within": true
+    },
+    "spread_tavg|radial|one-way": {
+     "registered": 0.045735288889921656,
+     "check": 0.0460675948982305,
+     "rel_change": 0.007265855674567945,
+     "within": true
+    },
+    "penalty_energy|resolved": {
+     "registered": -0.0036325559509039484,
+     "check": -0.003642202287932328,
+     "rel_change": 0.002655523317123043,
+     "within": true
+    },
+    "penalty_capacity|resolved": {
+     "registered": -0.004232502262273008,
+     "check": -0.004239605397595492,
+     "rel_change": 0.0016782354461564175,
+     "within": true
+    },
+    "spread_tavg|resolved|two-way": {
+     "registered": 0.06078060674576022,
+     "check": 0.06119293859735693,
+     "rel_change": 0.006783937733979117,
+     "within": true
+    },
+    "spread_tavg|resolved|one-way": {
+     "registered": 0.03631557315251888,
+     "check": 0.03657608775029477,
+     "rel_change": 0.007173633104502475,
+     "within": true
+    },
+    "penalty_energy|corrected": {
+     "registered": -0.0039054213503624258,
+     "check": -0.003948026718181286,
+     "rel_change": 0.010909288395964278,
+     "within": false
+    },
+    "penalty_capacity|corrected": {
+     "registered": -0.004522179561177397,
+     "check": -0.004573016269982189,
+     "rel_change": 0.01124163870917938,
+     "within": false
+    },
+    "spread_tavg|corrected|two-way": {
+     "registered": 0.06411612549913899,
+     "check": 0.06454892228861599,
+     "rel_change": 0.006750201858077176,
+     "within": true
+    },
+    "spread_tavg|corrected|one-way": {
+     "registered": 0.03803586464427633,
+     "check": 0.03830869957693171,
+     "rel_change": 0.0071730966341116975,
+     "within": true
+    }
+   },
+   "missing": [],
    "all_within": false,
    "limit": 0.01
   },
   "halved_step_charge": {
-   "readings": {},
-   "missing": [
-    "margin_V|radial",
-    "charge_Ah|radial",
-    "margin_V|resolved",
-    "charge_Ah|resolved",
-    "margin_V|corrected",
-    "charge_Ah|corrected"
-   ],
-   "all_within": false,
+   "readings": {
+    "margin_V|radial": {
+     "registered": -0.19282600283622742,
+     "check": -0.19282756745815277,
+     "rel_change": 8.114164595784956e-06,
+     "within": true
+    },
+    "charge_Ah|radial": {
+     "registered": 3.152389538992106,
+     "check": 3.1523884399385653,
+     "rel_change": -3.4864141218449163e-07,
+     "within": true
+    },
+    "margin_V|resolved": {
+     "registered": -0.1929894983768463,
+     "check": -0.1929919570684433,
+     "rel_change": 1.2740027916846586e-05,
+     "within": true
+    },
+    "charge_Ah|resolved": {
+     "registered": 3.1506412389371925,
+     "check": 3.1506377868831006,
+     "rel_change": -1.095667145234458e-06,
+     "within": true
+    },
+    "margin_V|corrected": {
+     "registered": -0.1929839849472046,
+     "check": -0.19298622012138367,
+     "rel_change": 1.1582174446633786e-05,
+     "within": true
+    },
+    "charge_Ah|corrected": {
+     "registered": 3.150771902376004,
+     "check": 3.1507688027783627,
+     "rel_change": -9.83758182804273e-07,
+     "within": true
+    }
+   },
+   "missing": [],
+   "all_within": true,
    "limit": 0.01
   },
   "coupling_rule": {
-   "discharge": {},
-   "charge": {}
+   "discharge": {
+    "radial|two-way": {
+     "coupled_K": 2.3868543941318876e-07,
+     "single_K": 2.2055950843480332e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "radial|one-way": {
+     "coupled_K": 6.159539900352229e-07,
+     "single_K": 2.411108415145691e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "resolved|two-way": {
+     "coupled_K": 2.39659879497367e-07,
+     "single_K": 2.2913221187081945e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "resolved|one-way": {
+     "coupled_K": 5.894545904716608e-07,
+     "single_K": 2.275886101799074e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "corrected|two-way": {
+     "coupled_K": 2.3922296765732654e-07,
+     "single_K": 2.3199432064302528e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "corrected|one-way": {
+     "coupled_K": 4.983912176292904e-07,
+     "single_K": 2.3360141465644801e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    }
+   },
+   "charge": {
+    "radial": {
+     "coupled_K": 1.550058154053957e-08,
+     "kernel_ok": true,
+     "single_K": 9.156048641489889e-09
+    },
+    "resolved": {
+     "coupled_K": 1.4009345405963103e-08,
+     "kernel_ok": true,
+     "single_K": 8.612167146093697e-09
+    },
+    "corrected": {
+     "coupled_K": 1.3289961131590644e-08,
+     "kernel_ok": true,
+     "single_K": 8.399778567147465e-09
+    }
+   }
+  },
+  "energies_halved_step": {
+   "radial|coupled": {
+    "energy": 0.0013239498512276349,
+    "capacity": 0.001468463134650877
+   },
+   "radial|single": {
+    "energy": 0.0011904698795761615,
+    "capacity": 0.0013064286071686748
+   },
+   "resolved|coupled": {
+    "energy": 0.0007671732286658184,
+    "capacity": 0.0008001048016892387
+   },
+   "resolved|single": {
+    "energy": 0.0007574842956343808,
+    "capacity": 0.0007929657671341683
+   },
+   "corrected|coupled": {
+    "energy": 0.0007957084296079664,
+    "capacity": 0.0008330515030581243
+   },
+   "corrected|single": {
+    "energy": 0.0007529019831287176,
+    "capacity": 0.0007819413152099219
+   }
   }
  },
  "V4": {
   "doubled_groups_discharge": {
-   "readings": {},
-   "missing": [
-    "penalty_energy|radial",
-    "penalty_capacity|radial",
-    "spread_tavg|radial|two-way",
-    "spread_tavg|radial|one-way",
-    "penalty_energy|resolved",
-    "penalty_capacity|resolved",
-    "spread_tavg|resolved|two-way",
-    "spread_tavg|resolved|one-way",
-    "penalty_energy|corrected",
-    "penalty_capacity|corrected",
-    "spread_tavg|corrected|two-way",
-    "spread_tavg|corrected|one-way"
-   ],
+   "readings": {
+    "penalty_energy|radial": {
+     "registered": -0.010014375745221682,
+     "check": -0.010085860785889467,
+     "rel_change": 0.0071382423114982885,
+     "within": true
+    },
+    "penalty_capacity|radial": {
+     "registered": -0.011957025006809952,
+     "check": -0.012042573070738527,
+     "rel_change": 0.007154627834252469,
+     "within": true
+    },
+    "spread_tavg|radial|two-way": {
+     "registered": 0.08384682510924832,
+     "check": 0.08787402379745975,
+     "rel_change": 0.048030425516579545,
+     "within": true
+    },
+    "spread_tavg|radial|one-way": {
+     "registered": 0.045735288889921656,
+     "check": 0.04805066393841891,
+     "rel_change": 0.05062556954805797,
+     "within": false
+    },
+    "penalty_energy|resolved": {
+     "registered": -0.0036325559509039484,
+     "check": -0.003658609604113905,
+     "rel_change": 0.007172264808054329,
+     "within": true
+    },
+    "penalty_capacity|resolved": {
+     "registered": -0.004232502262273008,
+     "check": -0.004262991842125641,
+     "rel_change": 0.007203677154388188,
+     "within": true
+    },
+    "spread_tavg|resolved|two-way": {
+     "registered": 0.06078060674576022,
+     "check": 0.0639558411437266,
+     "rel_change": 0.0522409131459991,
+     "within": false
+    },
+    "spread_tavg|resolved|one-way": {
+     "registered": 0.03631557315251888,
+     "check": 0.038272945489169395,
+     "rel_change": 0.053898979603871355,
+     "within": false
+    },
+    "penalty_energy|corrected": {
+     "registered": -0.0039054213503624258,
+     "check": -0.003933673644251012,
+     "rel_change": 0.007234121840903107,
+     "within": true
+    },
+    "penalty_capacity|corrected": {
+     "registered": -0.004522179561177397,
+     "check": -0.004554942140133522,
+     "rel_change": 0.007244864674854856,
+     "within": true
+    },
+    "spread_tavg|corrected|two-way": {
+     "registered": 0.06411612549913899,
+     "check": 0.06740827688828736,
+     "rel_change": 0.05134669887675258,
+     "within": false
+    },
+    "spread_tavg|corrected|one-way": {
+     "registered": 0.03803586464427633,
+     "check": 0.040053377207443966,
+     "rel_change": 0.053042374139146364,
+     "within": false
+    }
+   },
+   "missing": [],
    "all_within": false,
    "limit": 0.05
   },
   "doubled_groups_charge": {
-   "readings": {},
-   "missing": [
-    "margin_V|radial",
-    "charge_Ah|radial",
-    "margin_V|resolved",
-    "charge_Ah|resolved",
-    "margin_V|corrected",
-    "charge_Ah|corrected"
-   ],
-   "all_within": false,
+   "readings": {
+    "margin_V|radial": {
+     "registered": -0.19282600283622742,
+     "check": -0.19285954535007477,
+     "rel_change": 0.000173952233381236,
+     "within": true
+    },
+    "charge_Ah|radial": {
+     "registered": 3.152389538992106,
+     "check": 3.152389592713165,
+     "rel_change": 1.7041377198268037e-08,
+     "within": true
+    },
+    "margin_V|resolved": {
+     "registered": -0.1929894983768463,
+     "check": -0.1930154263973236,
+     "rel_change": 0.00013434938530521023,
+     "within": true
+    },
+    "charge_Ah|resolved": {
+     "registered": 3.1506412389371925,
+     "check": 3.150641252869844,
+     "rel_change": 4.422163746298224e-09,
+     "within": true
+    },
+    "margin_V|corrected": {
+     "registered": -0.1929839849472046,
+     "check": -0.19301080703735352,
+     "rel_change": 0.00013898609336027157,
+     "within": true
+    },
+    "charge_Ah|corrected": {
+     "registered": 3.150771902376004,
+     "check": 3.1507719236233496,
+     "rel_change": 6.743536618003532e-09,
+     "within": true
+    }
+   },
+   "missing": [],
+   "all_within": true,
    "limit": 0.05
   },
   "coupling_rule": {
-   "discharge": {},
-   "charge": {}
+   "discharge": {
+    "radial|two-way": {
+     "coupled_K": 2.3928160963748724e-07,
+     "single_K": 2.1052641407948158e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "radial|one-way": {
+     "coupled_K": 6.102952081477042e-07,
+     "single_K": 2.1774772740457138e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "resolved|two-way": {
+     "coupled_K": 2.3971256801758045e-07,
+     "single_K": 2.3794533809962104e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "resolved|one-way": {
+     "coupled_K": 6.264129321920109e-07,
+     "single_K": 2.392545397356116e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "corrected|two-way": {
+     "coupled_K": 2.4020477251696093e-07,
+     "single_K": 2.3593745090977336e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    },
+    "corrected|one-way": {
+     "coupled_K": 6.284814619839096e-07,
+     "single_K": 2.2723671566637904e-07,
+     "kernel_ok": true,
+     "dt_ok": true
+    }
+   },
+   "charge": {
+    "radial": {
+     "coupled_K": 1.5273959819150917e-08,
+     "kernel_ok": true,
+     "single_K": 8.788789390701268e-09
+    },
+    "resolved": {
+     "coupled_K": 8.235562509728567e-09,
+     "kernel_ok": true,
+     "single_K": 8.82181799832793e-09
+    },
+    "corrected": {
+     "coupled_K": 1.3634156581510126e-08,
+     "kernel_ok": true,
+     "single_K": 8.689520963889308e-09
+    }
+   }
   },
-  "single_unit_G30_vs_G15": {}
+  "single_unit_G30_vs_G15": {
+   "radial|two-way": {
+    "max_abs_dV": 3.6783149859331843e-09,
+    "t_cut_diff_s": 3.728061699348473e-07
+   },
+   "radial|one-way": {
+    "max_abs_dV": 4.030970224278008e-09,
+    "t_cut_diff_s": 7.137239776966453e-08
+   },
+   "resolved|two-way": {
+    "max_abs_dV": 6.639591099144582e-10,
+    "t_cut_diff_s": 3.5168170597899007e-08
+   },
+   "resolved|one-way": {
+    "max_abs_dV": 1.1762313789631662e-07,
+    "t_cut_diff_s": 2.765214873079458e-06
+   },
+   "corrected|two-way": {
+    "max_abs_dV": 1.088805188231845e-07,
+    "t_cut_diff_s": 6.120563966760528e-08
+   },
+   "corrected|one-way": {
+    "max_abs_dV": 3.85219169007911e-07,
+    "t_cut_diff_s": 2.6315751711081248e-06
+   }
+  }
  },
  "registered_readings": {
   "discharge": {
@@ -119,8 +465,328 @@
    "P4_condition": false,
    "P7_0.3C_0C_radial_minus_resolved_mV": 0.16349554061889648
   },
-  "halved_step": {},
-  "doubled_groups": {}
+  "halved_step": {
+   "P2_radial_over_resolved_minus_1": 0.25950033838321684,
+   "P2_condition": true,
+   "P3_ratio_minus_1": -0.33998195943658294,
+   "P4_penalties": [
+    -0.010146344278562536,
+    -0.003642202287932328
+   ],
+   "P4_condition": false,
+   "P7_0.3C_0C_radial_minus_resolved_mV": 0.16438961029052734
+  },
+  "doubled_groups": {
+   "P2_radial_over_resolved_minus_1": 0.255473372228862,
+   "P2_condition": true,
+   "P3_ratio_minus_1": -0.3093620438356348,
+   "P4_penalties": [
+    -0.010085860785889467,
+    -0.003658609604113905
+   ],
+   "P4_condition": false,
+   "P7_0.3C_0C_radial_minus_resolved_mV": 0.15588104724884033
+  }
  },
- "vs_stored_checks": "results/stage5_checks.json not present yet"
+ "vs_stored_checks": {
+  "V3|halved_step_discharge": {
+   "penalty_energy|radial": {
+    "mine": -0.010146344278562536,
+    "stored": -0.010146344278562536,
+    "match": true
+   },
+   "penalty_capacity|radial": {
+    "mine": -0.012116887331464765,
+    "stored": -0.012116887331464765,
+    "match": true
+   },
+   "spread_tavg|radial|two-way": {
+    "mine": 0.08443928719651084,
+    "stored": 0.08443928719651084,
+    "match": true
+   },
+   "spread_tavg|radial|one-way": {
+    "mine": 0.0460675948982305,
+    "stored": 0.0460675948982305,
+    "match": true
+   },
+   "penalty_energy|resolved": {
+    "mine": -0.003642202287932328,
+    "stored": -0.003642202287932328,
+    "match": true
+   },
+   "penalty_capacity|resolved": {
+    "mine": -0.004239605397595492,
+    "stored": -0.004239605397595492,
+    "match": true
+   },
+   "spread_tavg|resolved|two-way": {
+    "mine": 0.06119293859735693,
+    "stored": 0.06119293859735693,
+    "match": true
+   },
+   "spread_tavg|resolved|one-way": {
+    "mine": 0.03657608775029477,
+    "stored": 0.03657608775029477,
+    "match": true
+   },
+   "penalty_energy|corrected": {
+    "mine": -0.003948026718181286,
+    "stored": -0.003948026718181286,
+    "match": true
+   },
+   "penalty_capacity|corrected": {
+    "mine": -0.004573016269982189,
+    "stored": -0.004573016269982189,
+    "match": true
+   },
+   "spread_tavg|corrected|two-way": {
+    "mine": 0.06454892228861599,
+    "stored": 0.06454892228861599,
+    "match": true
+   },
+   "spread_tavg|corrected|one-way": {
+    "mine": 0.03830869957693171,
+    "stored": 0.03830869957693171,
+    "match": true
+   }
+  },
+  "V3|halved_step_discharge|all_within": {
+   "mine": false,
+   "stored": false
+  },
+  "V3|halved_step_charge": {
+   "margin_V|radial": {
+    "mine": -0.19282756745815277,
+    "stored": -0.19282756745815277,
+    "match": true
+   },
+   "charge_Ah|radial": {
+    "mine": 3.1523884399385653,
+    "stored": 3.1523884399385653,
+    "match": true
+   },
+   "margin_V|resolved": {
+    "mine": -0.1929919570684433,
+    "stored": -0.1929919570684433,
+    "match": true
+   },
+   "charge_Ah|resolved": {
+    "mine": 3.1506377868831006,
+    "stored": 3.1506377868831006,
+    "match": true
+   },
+   "margin_V|corrected": {
+    "mine": -0.19298622012138367,
+    "stored": -0.19298622012138367,
+    "match": true
+   },
+   "charge_Ah|corrected": {
+    "mine": 3.1507688027783627,
+    "stored": 3.1507688027783627,
+    "match": true
+   }
+  },
+  "V3|halved_step_charge|all_within": {
+   "mine": true,
+   "stored": true
+  },
+  "V4|doubled_groups_discharge": {
+   "penalty_energy|radial": {
+    "mine": -0.010085860785889467,
+    "stored": -0.010085860785889467,
+    "match": true
+   },
+   "penalty_capacity|radial": {
+    "mine": -0.012042573070738527,
+    "stored": -0.012042573070738527,
+    "match": true
+   },
+   "spread_tavg|radial|two-way": {
+    "mine": 0.08787402379745975,
+    "stored": 0.08787402379745975,
+    "match": true
+   },
+   "spread_tavg|radial|one-way": {
+    "mine": 0.04805066393841891,
+    "stored": 0.04805066393841891,
+    "match": true
+   },
+   "penalty_energy|resolved": {
+    "mine": -0.003658609604113905,
+    "stored": -0.003658609604113905,
+    "match": true
+   },
+   "penalty_capacity|resolved": {
+    "mine": -0.004262991842125641,
+    "stored": -0.004262991842125641,
+    "match": true
+   },
+   "spread_tavg|resolved|two-way": {
+    "mine": 0.0639558411437266,
+    "stored": 0.0639558411437266,
+    "match": true
+   },
+   "spread_tavg|resolved|one-way": {
+    "mine": 0.038272945489169395,
+    "stored": 0.038272945489169395,
+    "match": true
+   },
+   "penalty_energy|corrected": {
+    "mine": -0.003933673644251012,
+    "stored": -0.003933673644251012,
+    "match": true
+   },
+   "penalty_capacity|corrected": {
+    "mine": -0.004554942140133522,
+    "stored": -0.004554942140133522,
+    "match": true
+   },
+   "spread_tavg|corrected|two-way": {
+    "mine": 0.06740827688828736,
+    "stored": 0.06740827688828736,
+    "match": true
+   },
+   "spread_tavg|corrected|one-way": {
+    "mine": 0.040053377207443966,
+    "stored": 0.040053377207443966,
+    "match": true
+   }
+  },
+  "V4|doubled_groups_discharge|all_within": {
+   "mine": false,
+   "stored": false
+  },
+  "V4|doubled_groups_charge": {
+   "margin_V|radial": {
+    "mine": -0.19285954535007477,
+    "stored": -0.19285954535007477,
+    "match": true
+   },
+   "charge_Ah|radial": {
+    "mine": 3.152389592713165,
+    "stored": 3.152389592713165,
+    "match": true
+   },
+   "margin_V|resolved": {
+    "mine": -0.1930154263973236,
+    "stored": -0.1930154263973236,
+    "match": true
+   },
+   "charge_Ah|resolved": {
+    "mine": 3.150641252869844,
+    "stored": 3.150641252869844,
+    "match": true
+   },
+   "margin_V|corrected": {
+    "mine": -0.19301080703735352,
+    "stored": -0.19301080703735352,
+    "match": true
+   },
+   "charge_Ah|corrected": {
+    "mine": 3.1507719236233496,
+    "stored": 3.1507719236233496,
+    "match": true
+   }
+  },
+  "V4|doubled_groups_charge|all_within": {
+   "mine": true,
+   "stored": true
+  },
+  "V2": {
+   "mine": {
+    "T_rule_max_abs_K": 2.3833927542682432e-07,
+    "max_abs_voltage_difference_full_steps_V": 7.486039934612165e-07,
+    "max_abs_voltage_difference_all_common_indices_V": 7.486039934612165e-07,
+    "t_cut_coupled_s": 147.18777034698854,
+    "t_cut_single_s": 147.18775121755348,
+    "capacity_rel_difference": 1.2996621601146785e-07,
+    "held": true,
+    "steps_compared": 148
+   },
+   "stored": {
+    "max_abs_voltage_difference_V": 7.486039934612165e-07,
+    "capacity_rel_difference": 1.2996621601146785e-07,
+    "held": true
+   }
+  },
+  "V3|residual": {
+   "mine": 5.730940166870369e-10,
+   "stored": 5.730939205440121e-10
+  },
+  "V6": {
+   "stored": {
+    "run": "D_21700_0.3C_0C_resolved_ORegan2022_two-way_coupled_G15",
+    "margin_recomputed_V": -0.19298950550125937,
+    "margin_stored_V": -0.1929894983768463,
+    "abs_difference_V": 7.124413059500512e-09,
+    "group_recomputed": 15,
+    "group_stored": 15,
+    "node_min_max_abs_difference_V": 5.590231921814848e-08,
+    "interface_max_abs_difference_V": 7.63798198022414e-08
+   },
+   "mine_margin_V": -0.19298950550125937,
+   "mine_group": 15,
+   "match": true
+  },
+  "V5": {
+   "steps_compared": {
+    "mine": 171,
+    "stored": 171,
+    "match": true
+   },
+   "max_rel_share_difference": {
+    "mine": 0.0003674257625722044,
+    "stored": 0.0003674257625722044,
+    "match": true
+   },
+   "step_of_max": {
+    "mine": 165,
+    "stored": 165,
+    "match": true
+   },
+   "group_of_max": {
+    "mine": 15,
+    "stored": 15,
+    "match": true
+   },
+   "max_abs_voltage_difference_V": {
+    "mine": 0.006537299137077124,
+    "stored": 0.006537299137077124,
+    "match": true
+   },
+   "within_0.5_percent": {
+    "mine": true,
+    "stored": true,
+    "match": true
+   },
+   "secant_residual": {
+    "mine": 9.914535148425329e-09,
+    "stored": 9.914535148425329e-09,
+    "match": true
+   }
+  },
+  "V1": {
+   "P1_max_abs_K": {
+    "mine": 9.497845816497374e-07,
+    "stored": 9.497845780970238e-07,
+    "match": true
+   },
+   "P1_held": {
+    "mine": true,
+    "stored": true
+   },
+   "reciprocity_worst_meta": {
+    "stored": 2.6166387463835736e-14,
+    "held": true,
+    "mine_from_float64_steady_states": 5.666573304055942e-15,
+    "mine_from_float32_steps": 1.0081681116819254e-07,
+    "mine_all_pairs_within_f32_rounding": true
+   },
+   "kernels_listed": {
+    "stored": 34,
+    "mine": 34
+   }
+  }
+ }
 }
