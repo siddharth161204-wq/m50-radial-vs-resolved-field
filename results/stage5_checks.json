@@ -131,13 +131,123 @@
  },
  "V4": {
   "doubled_groups_discharge": {
-   "readings": {},
+   "readings": {
+    "penalty_energy|radial": {
+     "registered": -0.010014375745221682,
+     "check": -0.010085860785889467,
+     "rel_change": 0.0071382423114982885,
+     "within": true
+    },
+    "penalty_capacity|radial": {
+     "registered": -0.011957025006809952,
+     "check": -0.012042573070738527,
+     "rel_change": 0.007154627834252469,
+     "within": true
+    },
+    "spread_tavg|radial|two-way": {
+     "registered": 0.08384682510924832,
+     "check": 0.08787402379745975,
+     "rel_change": 0.048030425516579545,
+     "within": true
+    },
+    "spread_tavg|radial|one-way": {
+     "registered": 0.045735288889921656,
+     "check": 0.04805066393841891,
+     "rel_change": 0.05062556954805797,
+     "within": false
+    },
+    "penalty_energy|resolved": {
+     "registered": -0.0036325559509039484,
+     "check": -0.003658609604113905,
+     "rel_change": 0.007172264808054329,
+     "within": true
+    },
+    "penalty_capacity|resolved": {
+     "registered": -0.004232502262273008,
+     "check": -0.004262991842125641,
+     "rel_change": 0.007203677154388188,
+     "within": true
+    },
+    "spread_tavg|resolved|two-way": {
+     "registered": 0.06078060674576022,
+     "check": 0.0639558411437266,
+     "rel_change": 0.0522409131459991,
+     "within": false
+    },
+    "spread_tavg|resolved|one-way": {
+     "registered": 0.03631557315251888,
+     "check": 0.038272945489169395,
+     "rel_change": 0.053898979603871355,
+     "within": false
+    },
+    "penalty_energy|corrected": {
+     "registered": -0.0039054213503624258,
+     "check": -0.003933673644251012,
+     "rel_change": 0.007234121840903107,
+     "within": true
+    },
+    "penalty_capacity|corrected": {
+     "registered": -0.004522179561177397,
+     "check": -0.004554942140133522,
+     "rel_change": 0.007244864674854856,
+     "within": true
+    },
+    "spread_tavg|corrected|two-way": {
+     "registered": 0.06411612549913899,
+     "check": 0.06740827688828736,
+     "rel_change": 0.05134669887675258,
+     "within": false
+    },
+    "spread_tavg|corrected|one-way": {
+     "registered": 0.03803586464427633,
+     "check": 0.040053377207443966,
+     "rel_change": 0.053042374139146364,
+     "within": false
+    }
+   },
    "all_within": false,
    "limit": 0.05
   },
   "doubled_groups_charge": {
-   "readings": {},
-   "all_within": false,
+   "readings": {
+    "margin_V|radial": {
+     "registered": -0.19282600283622742,
+     "check": -0.19285954535007477,
+     "rel_change": 0.000173952233381236,
+     "within": true
+    },
+    "charge_Ah|radial": {
+     "registered": 3.152389538992106,
+     "check": 3.152389592713165,
+     "rel_change": 1.7041377198268037e-08,
+     "within": true
+    },
+    "margin_V|resolved": {
+     "registered": -0.1929894983768463,
+     "check": -0.1930154263973236,
+     "rel_change": 0.00013434938530521023,
+     "within": true
+    },
+    "charge_Ah|resolved": {
+     "registered": 3.1506412389371925,
+     "check": 3.150641252869844,
+     "rel_change": 4.422163746298224e-09,
+     "within": true
+    },
+    "margin_V|corrected": {
+     "registered": -0.1929839849472046,
+     "check": -0.19301080703735352,
+     "rel_change": 0.00013898609336027157,
+     "within": true
+    },
+    "charge_Ah|corrected": {
+     "registered": 3.150771902376004,
+     "check": 3.1507719236233496,
+     "rel_change": 6.743536618003532e-09,
+     "within": true
+    }
+   },
+   "all_within": true,
    "limit": 0.05
   }
  },
