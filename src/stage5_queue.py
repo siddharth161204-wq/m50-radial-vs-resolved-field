@@ -93,6 +93,13 @@ def segment(cell, pset):
 
 
 SEGMENTS = {f"seg_{cell}_{pset}": segment(cell, pset) for cell in ("21700", "4680") for pset in ("ORegan2022", "Chen2020")}
+# the jobs the predictions are scored on that are not yet run, first (the same jobs as in the segments above, so a
+# job claimed here is not run again there)
+SEGMENTS["key_21700_ORegan2022"] = ([("charge", "21700", "ORegan2022", lab) for lab in LABELS]
+                                    + [("limit_coupled", "21700", "ORegan2022", 0.0, "resolved")])
+SEGMENTS["key_4680_ORegan2022"] = ([("discharge", "4680_b_m5C_2C", "ORegan2022", lab) for lab in LABELS]
+                                   + [("charge", "4680", "ORegan2022", lab) for lab in LABELS]
+                                   + [("limit_coupled", "4680", "ORegan2022", 0.0, "resolved")])
 # the extra runs of checks V2 to V4 (D33), split so that a process holds one coupled model
 SEGMENTS["checks_d15"] = [("v2",)] + [("v_discharge", "m5C_2C_half", 15, lab) for lab in LABELS]
 SEGMENTS["checks_c15"] = [("v_charge", "charge10_half", 15, lab) for lab in LABELS]
