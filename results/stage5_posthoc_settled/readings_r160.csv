@@ -10,3 +10,14 @@ discharge,21700_b_m5C_2C,resolved,,spread_rel_error,0,0
 discharge,21700_b_m5C_2C,resolved,,inner_tavg,1.03142226,1.0505433
 discharge,21700_b_m5C_2C,resolved,,reversal_s,,
 discharge,21700_b_m5C_2C,resolved,,max_current_balance_residual,3.55271368e-16,7.88702437e-14
+discharge,21700_b_m5C_2C,corrected,,penalty_energy,-0.00390542135,-0.00944175329
+discharge,21700_b_m5C_2C,corrected,,penalty_capacity,-0.00452217956,-0.0100491866
+discharge,21700_b_m5C_2C,corrected,,t_cut_coupled_s,171.830942,424.299424
+discharge,21700_b_m5C_2C,corrected,,t_cut_single_s,171.053892,420.03556
+discharge,21700_b_m5C_2C,corrected,,Q_coupled_Ah,0.477308172,1.17860951
+discharge,21700_b_m5C_2C,corrected,,E_coupled_Wh,1.57984312,3.65631292
+discharge,21700_b_m5C_2C,corrected,,spread_tavg,0.0641161255,0.10131924
+discharge,21700_b_m5C_2C,corrected,,spread_rel_error,0.0548780101,0.0519488471
+discharge,21700_b_m5C_2C,corrected,,inner_tavg,1.03316376,1.05332222
+discharge,21700_b_m5C_2C,corrected,,reversal_s,,
+discharge,21700_b_m5C_2C,corrected,,max_current_balance_residual,3.55271368e-16,6.39488462e-15
