@@ -1,0 +1,60 @@
+{
+ "what": "Post hoc (D36), not scored: ORegan2022, the coupled and single-unit models with two-way heat, 160 points along each particle's radius (uniform, both particles), beside the registered readings at PyBaMM's default 20 points (results/stage5_discharge.csv, stage5_shares.csv, stage5_charge.csv, stage5_limit.csv). Penalty = single-unit energy (capacity) to 2.5 V over the coupled model's, less one. Spread = time average of the largest minus the smallest group share; its error = the kernel's spread over the resolved kernel's, less one. Margin = minimum of the negative electrode's surface potential difference over the charge, the electrode and the groups.",
+ "points": 160,
+ "discharge": {
+  "21700_b_m5C_2C|resolved": {
+   "penalty_energy": [
+    -0.00363255595,
+    -0.008412573646881083
+   ],
+   "penalty_capacity": [
+    -0.00423250226,
+    -0.008987508186668713
+   ],
+   "t_cut_coupled_s": [
+    170.426917,
+    418.4004018179536
+   ],
+   "t_cut_single_s": [
+    169.705585,
+    414.64002478130925
+   ],
+   "Q_coupled_Ah": [
+    0.473408104,
+    1.1622233383832044
+   ],
+   "E_coupled_Wh": [
+    1.56841019,
+    3.6064144846321455
+   ],
+   "spread_tavg": [
+    0.0607806067,
+    0.09631574836450787
+   ],
+   "spread_rel_error": [
+    0.0,
+    0.0
+   ],
+   "inner_tavg": [
+    1.03142226,
+    1.0505433028158107
+   ],
+   "reversal_s": [
+    null,
+    null
+   ],
+   "max_current_balance_residual": [
+    3.55271368e-16,
+    7.887024366937112e-14
+   ]
+  }
+ },
+ "charge": {},
+ "limit": {},
+ "readings_behind_P7_to_P9": {
+  "note": "Each pair is [registered at 20 points, post hoc]. Not scored: the registered verdicts stand.",
+  "P7_radial_minus_resolved_margin_mV_M50_coupled": {},
+  "P8_group_holding_the_minimum_coupled": {},
+  "P9_plating_limited_rate_0C_resolved_single_over_coupled_minus_1": {}
+ }
+}

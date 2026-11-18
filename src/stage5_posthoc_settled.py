@@ -132,6 +132,57 @@ def mesh(points, what):
                     log(f"{n} points {key}: {r['rate_spec_C']:.5f} to {r['fails_at_spec_C']:.5f}C, {len(r['trials'])} trials")
 
 
+READINGS = {"discharge_2C_25C": ("discharge_2C_25C", "t_cut_s"), "charge_1455mA_0C": ("charge_1455mA_0C", "margin_min_V"),
+            "charge_3395mA_25C": ("charge_3395mA_25C", "margin_min_V"), "rate_0C": ("rate_0C", "rate_spec_C"),
+            "rate_10C": ("rate_10C", "rate_spec_C"), "rate_25C": ("rate_25C", "rate_spec_C")}
+BESIDE = {"discharge_2C_m5C": ("discharge_2C_m5C", "t_cut_s")}
+
+
+def mesh_summary():
+    """The six readings (and the 2C discharge at minus 5 C beside them) against the points per particle radius, from
+    D35's check (20 to 320 points) and this one, the change of each from N to 2N points, and the coarsest N at which
+    each changes by less than 1 % on doubling. -> results/stage5_posthoc_settled/mesh_summary.json"""
+    d35 = load(os.path.join(C.RESULTS, "stage5_posthoc_mesh.json")).get("results", {}).get("ORegan2022", {})
+    d36 = load(MESH_JSON)
+    table, agree = {}, []
+    for name, (key, field) in {**READINGS, **BESIDE}.items():
+        vals = {}
+        for n, e in d35.items():
+            if key.startswith("rate_"):
+                v = e.get("plating_limited_rate_at_ambient", {}).get(key[5:-1])
+                v = v.get("rate_spec_C") if isinstance(v, dict) else v
+            else:
+                v = e.get(key, {}).get(field)
+            if v is not None:
+                vals[int(n)] = (float(v), "D35")
+        for n, e in d36.items():
+            v = e.get(key, {}).get(field)
+            if v is not None:
+                if int(n) in vals:
+                    agree.append({"reading": name, "points": int(n), "D35": vals[int(n)][0], "D36": float(v)})
+                vals[int(n)] = (float(v), "D36")
+        pts = sorted(vals)
+        changes = {n: vals[2 * n][0] / vals[n][0] - 1 for n in pts if 2 * n in vals}
+        settled = [n for n in sorted(changes) if abs(changes[n]) < 0.01]
+        table[name] = {"values": {str(n): vals[n][0] for n in pts}, "source": {str(n): vals[n][1] for n in pts},
+                       "change_on_doubling": {f"{n} to {2 * n}": changes[n] for n in sorted(changes)},
+                       "coarsest_settled_points": settled[0] if settled else None,
+                       "every_later_doubling_below_1_percent": bool(settled) and all(
+                           abs(changes[n]) < 0.01 for n in changes if n >= settled[0])}
+    six = [table[k]["coarsest_settled_points"] for k in READINGS]
+    out = {"what": ("Post hoc (D36): one DFN held at the ambient (ORegan2022, D23's window), as in D35, against the "
+                    "points per particle radius (uniform, both particles). Readings: the 2C discharge's cut-off time at "
+                    "25 C; the smallest margin at the specification's two charge limits (1.455 A at 0 C, 3.395 A at 25 C); "
+                    "the plating-limited rate at 0, 10 and 25 C (the largest rate whose margin stays at or above zero to "
+                    "4.2 V, by bisection to 0.001C). Recorded beside them: the 2C discharge at minus 5 C. The settled mesh "
+                    "is the coarsest N at which a reading changes by less than 1 % from N to 2N points."),
+           "readings": table, "settled_mesh_for_all_six": None if None in six else max(six),
+           "same_point_count_in_both_checks": agree}
+    with open(os.path.join(OUT, "mesh_summary.json"), "w") as f:
+        json.dump(out, f, indent=1)
+    return out
+
+
 # ---------------------------------------------------------------- 2. the runs at the settled mesh
 def set_particle_points(n):
     """Every DFN built in this process gets n points along each particle's radius (PyBaMM's default is 20)."""
@@ -153,10 +204,11 @@ def set_particle_points(n):
         os.environ["STAGE5_TRIAL_CACHE"] = os.path.join(os.environ["D36_TRIAL_CACHE"], f"r{n}")
 
 
-def collect_garbage_while_stepping(every=5):
-    """At 160 points each step's solution holds large arrays in reference cycles, which Python's collector frees too
-    late: memory then grows with the steps past the machine's limit. Collecting every few steps keeps it bounded.
-    The computation is unchanged."""
+def collect_garbage_while_stepping(every=1):
+    """At 160 points each step's solution holds large arrays (the solver's internal steps) in reference cycles, which
+    Python's collector frees too late: memory then grows with the steps past the machine's limit. Collecting after
+    every step keeps no more than two steps' solutions in memory. (Every five steps, as first tried, kept one run
+    within the limit but not two side by side.) The computation is unchanged."""
     import gc
     import stage5_coupled as SC
     step = SC.Stepper.step

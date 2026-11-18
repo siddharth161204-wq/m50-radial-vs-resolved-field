@@ -1,0 +1,12 @@
+part,case,kernel,model,reading,registered_20_points,post_hoc_160_points
+discharge,21700_b_m5C_2C,resolved,,penalty_energy,-0.00363255595,-0.00841257365
+discharge,21700_b_m5C_2C,resolved,,penalty_capacity,-0.00423250226,-0.00898750819
+discharge,21700_b_m5C_2C,resolved,,t_cut_coupled_s,170.426917,418.400402
+discharge,21700_b_m5C_2C,resolved,,t_cut_single_s,169.705585,414.640025
+discharge,21700_b_m5C_2C,resolved,,Q_coupled_Ah,0.473408104,1.16222334
+discharge,21700_b_m5C_2C,resolved,,E_coupled_Wh,1.56841019,3.60641448
+discharge,21700_b_m5C_2C,resolved,,spread_tavg,0.0607806067,0.0963157484
+discharge,21700_b_m5C_2C,resolved,,spread_rel_error,0,0
+discharge,21700_b_m5C_2C,resolved,,inner_tavg,1.03142226,1.0505433
+discharge,21700_b_m5C_2C,resolved,,reversal_s,,
+discharge,21700_b_m5C_2C,resolved,,max_current_balance_residual,3.55271368e-16,7.88702437e-14
