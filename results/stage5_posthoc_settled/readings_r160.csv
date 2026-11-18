@@ -87,6 +87,17 @@ discharge,21700_b_p25C_1.25C,resolved,,spread_rel_error,0,0
 discharge,21700_b_p25C_1.25C,resolved,,inner_tavg,1.00536185,1.00250472
 discharge,21700_b_p25C_1.25C,resolved,,reversal_s,724.174191,2369.26772
 discharge,21700_b_p25C_1.25C,resolved,,max_current_balance_residual,7.10542736e-16,9.38314315e-12
+discharge,21700_b_p25C_1.25C,corrected,,penalty_energy,-0.000325924544,2.21048178e-05
+discharge,21700_b_p25C_1.25C,corrected,,penalty_capacity,-0.000397241889,2.27105227e-05
+discharge,21700_b_p25C_1.25C,corrected,,t_cut_coupled_s,2277.40443,2603.71605
+discharge,21700_b_p25C_1.25C,corrected,,t_cut_single_s,2276.49975,2603.77518
+discharge,21700_b_p25C_1.25C,corrected,,Q_coupled_Ah,3.95382714,4.52034037
+discharge,21700_b_p25C_1.25C,corrected,,E_coupled_Wh,13.5299871,15.6177936
+discharge,21700_b_p25C_1.25C,corrected,,spread_tavg,0.0247593326,0.00659507715
+discharge,21700_b_p25C_1.25C,corrected,,spread_rel_error,0.0242064606,0.051410153
+discharge,21700_b_p25C_1.25C,corrected,,inner_tavg,1.00565747,1.00263096
+discharge,21700_b_p25C_1.25C,corrected,,reversal_s,724.341309,2368.91594
+discharge,21700_b_p25C_1.25C,corrected,,max_current_balance_residual,7.10542736e-16,7.531753e-15
 discharge,21700_a_m5C_2C,radial,,penalty_energy,-0.0100143757,-0.0132002248
 discharge,21700_a_m5C_2C,radial,,penalty_capacity,-0.011957025,-0.0136632364
 discharge,21700_a_m5C_2C,radial,,t_cut_coupled_s,188.735044,495.780288
@@ -330,3 +341,6 @@ charge,4680_0.7C_25C,corrected,single,t_min_s,3028.16315,4573.36342
 charge,4680_0.7C_25C,corrected,single,t_end_s,3028.16315,4573.36342
 charge,4680_0.7C_25C,corrected,single,charge_Ah,2.85572608,4.31293578
 charge,4680_0.7C_25C,corrected,single,max_current_balance_residual,0,0
+limit,21700_0C,resolved,single,rate_spec_C,0.28125,0.434375
+limit,21700_0C,resolved,single,fails_at_spec_C,0.28203125,0.43515625
+limit,21700_0C,resolved,single,n_trials,12,15

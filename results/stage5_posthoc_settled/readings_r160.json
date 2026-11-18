@@ -370,6 +370,52 @@
     9.383143151353579e-12
    ]
   },
+  "21700_b_p25C_1.25C|corrected": {
+   "penalty_energy": [
+    -0.000325924544,
+    2.2104817822388156e-05
+   ],
+   "penalty_capacity": [
+    -0.000397241889,
+    2.2710522715962966e-05
+   ],
+   "t_cut_coupled_s": [
+    2277.40443,
+    2603.716050381246
+   ],
+   "t_cut_single_s": [
+    2276.49975,
+    2603.7751821337542
+   ],
+   "Q_coupled_Ah": [
+    3.95382714,
+    4.520340365245219
+   ],
+   "E_coupled_Wh": [
+    13.5299871,
+    15.617793635735724
+   ],
+   "spread_tavg": [
+    0.0247593326,
+    0.006595077153618837
+   ],
+   "spread_rel_error": [
+    0.0242064606,
+    0.05141015302857066
+   ],
+   "inner_tavg": [
+    1.00565747,
+    1.0026309607401316
+   ],
+   "reversal_s": [
+    724.341309,
+    2368.915944416092
+   ],
+   "max_current_balance_residual": [
+    7.10542736e-16,
+    7.531752999057062e-15
+   ]
+  },
   "21700_a_m5C_2C|radial": {
    "penalty_energy": [
     -0.0100143757,
@@ -1411,7 +1457,22 @@
    ]
   }
  },
- "limit": {},
+ "limit": {
+  "21700|0C|resolved|single": {
+   "rate_spec_C": [
+    0.28125,
+    0.434375
+   ],
+   "fails_at_spec_C": [
+    0.28203125,
+    0.43515625
+   ],
+   "n_trials": [
+    12,
+    15
+   ]
+  }
+ },
  "readings_behind_P7_to_P9": {
   "note": "Each pair is [registered at 20 points, post hoc]. Not scored: the registered verdicts stand.",
   "P7_radial_minus_resolved_margin_mV_M50_coupled": {
