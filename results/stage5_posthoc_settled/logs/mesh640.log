@@ -1,0 +1,4 @@
+640 points charge_1455mA_0C: {'margin_min_V': 0.019329933648570267, 't_min_s': 10637.261718063994, 't_first_negative_s': None, 't_end_s': 10637.261718063994, 'charge_Ah': 4.299226611050864, 'wall_s': 744.0191485881805}
+640 points charge_3395mA_25C: {'margin_min_V': 0.02881128726111815, 't_min_s': 4558.974982838072, 't_first_negative_s': None, 't_end_s': 4558.974982838072, 'charge_Ah': 4.299366685204237, 'wall_s': 1560.0691730976105}
+640 points discharge_2C_25C: {'t_cut_s': 1469.5500269761937, 'capacity_Ah': 4.082083408267205, 'energy_Wh': 13.614301027000907, 'wall_s': 523.0288369655609}
+### done 640 check 10:49:18

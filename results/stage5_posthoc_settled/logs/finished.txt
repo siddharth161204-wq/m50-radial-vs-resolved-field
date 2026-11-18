@@ -1,0 +1,15 @@
+discharge:21700_b_m5C_2C:resolved
+discharge:21700_b_m5C_2C:corrected
+discharge:4680_b_m5C_2C:radial
+discharge:4680_b_m5C_2C:resolved
+discharge:4680_b_m5C_2C:corrected
+charge:21700:resolved:0.3C_0C
+charge:21700:radial:0.3C_0C
+charge:21700:corrected:0.3C_0C
+charge:21700:resolved:0.7C_25C
+charge:21700:radial:0.7C_25C
+retry:discharge:21700_b_m5C_2C:radial
+charge:21700:corrected:0.7C_25C
+discharge:21700_b_p25C_3C:resolved
+discharge:21700_b_p25C_3C:radial
+discharge:21700_b_p25C_3C:corrected

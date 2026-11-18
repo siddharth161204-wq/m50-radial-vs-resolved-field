@@ -1,0 +1,4 @@
+discharge:21700_b_m5C_2C:radial
+discharge:21700_b_m5C_2C:radial
+discharge:4680_b_m5C_2C:corrected
+charge:21700:radial:0.3C_0C

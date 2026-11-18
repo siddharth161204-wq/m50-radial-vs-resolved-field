@@ -1,0 +1,36 @@
+      25 C, 320 points: 1.04391C margin +10.209 mV
+      25 C, 320 points: 1.53516C margin -13.518 mV
+      25 C, 320 points: 1.28953C margin -2.659 mV
+      25 C, 320 points: 1.16672C margin +3.747 mV
+      25 C, 320 points: 1.22812C margin +0.423 mV
+      25 C, 320 points: 1.25883C margin -1.186 mV
+      25 C, 320 points: 1.24348C margin -0.392 mV
+      25 C, 320 points: 1.23580C margin +0.014 mV
+      25 C, 320 points: 1.23964C margin -0.189 mV
+      25 C, 320 points: 1.23772C margin -0.088 mV
+      25 C, 320 points: 1.23676C margin -0.037 mV
+320 points rate_25C: 1.23580 to 1.23676C, 11 trials
+      10 C, 320 points: 0.56968C margin +9.919 mV
+      10 C, 320 points: 0.83777C margin -14.832 mV
+      10 C, 320 points: 0.70373C margin -2.870 mV
+      10 C, 320 points: 0.63670C margin +3.422 mV
+      10 C, 320 points: 0.67021C margin +0.300 mV
+      10 C, 320 points: 0.68697C margin -1.282 mV
+      10 C, 320 points: 0.67859C margin -0.490 mV
+      10 C, 320 points: 0.67440C margin -0.095 mV
+      10 C, 320 points: 0.67231C margin +0.103 mV
+      10 C, 320 points: 0.67336C margin +0.004 mV
+      10 C, 320 points: 0.67388C margin -0.046 mV
+320 points rate_10C: 0.67336 to 0.67388C, 11 trials
+      0 C, 320 points: 0.36567C margin +9.925 mV
+      0 C, 320 points: 0.53775C margin -15.163 mV
+      0 C, 320 points: 0.45171C margin -3.073 mV
+      0 C, 320 points: 0.40869C margin +2.972 mV
+      0 C, 320 points: 0.43020C margin -0.051 mV
+      0 C, 320 points: 0.41945C margin +1.453 mV
+      0 C, 320 points: 0.42482C margin +0.701 mV
+      0 C, 320 points: 0.42751C margin +0.325 mV
+      0 C, 320 points: 0.42886C margin +0.137 mV
+      0 C, 320 points: 0.42953C margin +0.043 mV
+320 points rate_0C: 0.42953 to 0.43020C, 10 trials
+### done 11:03:01

@@ -211,7 +211,7 @@ Under ORegan2022 with the registered mesh the discharges end early: 170 s into t
 
 - The cause is ORegan2022's graphite diffusivity, a fit that varies about 500-fold with stoichiometry. Twenty points along the radius do not resolve the steep concentration profiles it produces.
 - Chen2020, whose diffusivity is constant, settles at 20 points in every row: discharges within 0.21 s, margins within 0.011 mV, rates within 0.001C.
-- Every ORegan2022 reading below therefore belongs to the 20-point mesh. The second fact of D27, the negative surface reaching its limit at both of the specification's charge limits, belongs to that mesh: with 40 points or more the margin stays positive to 4.2 V at both limits. The minus 5 C discharges under ORegan2022 have not settled at any mesh tried. What ORegan2022 gives in the coupled model with a finer mesh was not computed.
+- Every ORegan2022 reading below therefore belongs to the 20-point mesh. The second fact of D27, the negative surface reaching its limit at both of the specification's charge limits, belongs to that mesh: with 40 points or more the margin stays positive to 4.2 V at both limits. The minus 5 C discharges under ORegan2022 have not settled at any mesh tried. D36 (below) runs the coupled model under ORegan2022 with 160 points, post hoc.
 - Stage 4's pulse resistances move by 3.0 to 5.3 % with the mesh, and their temperature sensitivity, which sets the shares, by 0.2 % (ORegan2022) and 4 % (Chen2020).
 
 **Discharge** (`results/stage5_discharge.csv`, `results/stage5_shares.csv`, `results/stage5_summary.md`). Two-way heat. The penalty is the single-unit model's energy to 2.5 V over the coupled model's, less one; positive means the single-unit model gives more, as in the paper. The spread is the largest group share minus the smallest, time-averaged over the coupled discharge, in % of the cell's mean current density; its error is the radial or end-corrected kernel's against the resolved kernel's.
@@ -272,6 +272,38 @@ The plating-limited rate, the largest rate whose margin stays at or above zero t
 - **At the specification's limits the thermal model barely moves the margin.** Under Chen2020 the coupled model's margin under the radial kernel lies 0.04 to 0.09 mV above that under the resolved kernel in the M50 and 0.25 to 0.50 mV above it in the 4680; the end correction is within 0.01 mV of the resolved. In the single-unit model the radial kernel moves it by up to 0.14 mV (M50) and 0.93 mV (4680). The coupled model's margin lies 0.04 to 0.20 mV below the single-unit model's in the M50 and up to 0.9 mV below it in the 4680. At 2C and 25 C, outside the specification, the radial kernel's coupled margin lies up to 0.48 mV (M50) and 2.37 mV (4680) above the resolved kernel's, and the coupled model's margin up to 1.35 and 6.09 mV below the single-unit model's.
 - **The rates.** Under Chen2020 the M50's rates are the same under every kernel, and the single-unit and coupled brackets overlap at every ambient. In the 4680 the coupled model's rate lies 0.0075 to 0.02C below the single-unit model's at 10 and 25 C, where the brackets do not overlap, and the radial kernel raises the single-unit rate at 25 C from 0.719C to 0.738C. Under Chen2020 the specification's two limits lie at this model's plating-limited rates: 0.3C against 0.29C at 0 C, and 0.7C against 0.71C at 25 C.
 - **Under ORegan2022 the rates belong to the mesh.** At 20 points they are set by the barrier at the stoichiometric limit (D27); one cell at the ambient gives 0.40C, 0.62C and 1.02C with 40 points and 0.43C, 0.67C and 1.23C with 80, so they have not settled. The single-unit and coupled brackets overlap in every case. At 0 C, P9's refined rates are 0.28125C (single-unit) and 0.28156C (coupled) in the M50, and 0.28281C and 0.28234C in the 4680: equal within 0.001C in both cells, so the 4680's difference is not above 5 % and P9 failed. Under ORegan2022 the smallest margin of a passing charge is not always monotonic in the rate, but in all 72 searches pass and fail are (D35).
+
+**Post hoc: the registered set at a settled particle mesh** (D36, `src/stage5_posthoc_settled.py`, `results/stage5_posthoc_settled/`). Run at the author's request after the results above. It is not scored, and no registered reading or verdict is replaced. One cell held at the ambient, as in D35's check, settles at 80 points per particle radius in six readings: each moves by less than 1 % from 80 to 160 points and on every later doubling computed. Its 2C discharge at minus 5 C settles only at 640 points:
+
+| Points per particle radius | 20 (registered) | 40 | 80 | 160 | 320 | 640 | 1,280 |
+|---|---|---|---|---|---|---|---|
+| 2C discharge at 25 C: cut-off | 978 s | 1,282 s | 1,456 s | 1,468 s | 1,469 s | 1,470 s | |
+| 0.3C charge at 0 C: smallest margin | -193.63 mV | +19.06 mV | +19.69 mV | +19.56 mV | +19.38 mV | +19.33 mV | |
+| 0.7C charge at 25 C: smallest margin | -237.30 mV | +27.39 mV | +28.56 mV | +28.59 mV | +28.77 mV | +28.81 mV | |
+| Plating-limited rate at 0 C | 0.280C | 0.405C | 0.430C | 0.430C | 0.430C | | |
+| Plating-limited rate at 10 C | 0.369C | 0.618C | 0.670C | 0.671C | 0.673C | | |
+| Plating-limited rate at 25 C | 0.536C | 1.024C | 1.228C | 1.239C | 1.236C | | |
+| 2C discharge at minus 5 C: cut-off | 126 s | 121 s | 141 s | 186 s | 247 s | 258 s | 259 s |
+
+The coupled and single-unit models were then run with 160 points in both particles, the author's choice among the meshes the coupled model can carry on this machine: the six readings are settled there, and the minus 5 C discharges are not. The readings below are at 160 points, with the registered 20-point value in brackets (ORegan2022, two-way heat):
+
+| Case | Penalty: radial, resolved, end-corrected | Coupled cut-off: radial, resolved, end-corrected | Resolved: spread | Spread error: radial, end-corrected |
+|---|---|---|---|---|
+| M50, 2C, minus 5 C, ends cooled | -1.32 (-1.00), -0.84 (-0.36), -0.94 (-0.39) % | 496 (189), 418 (170), 424 (172) s | 9.63 (6.08) % | +33.8 (+37.9), +5.2 (+5.5) % |
+| 4680, 2C, minus 5 C, ends cooled | +4.21 (-53.53), -5.56 (+0.38), -5.93 (+0.44) % | 1,245 (843), 888 (333), 910 (334) s | 28.57 (21.90) % | +22.9 (+141.6), +3.9 (+0.6) % |
+| M50, 3C, 25 C, ends cooled | +0.20 (-0.68), +0.10 (-0.73), +0.12 (-48.92) % | 897 (615), 887 (280), 888 (604) s | 4.28 (9.26) % | +27.6 (+97.6), +4.7 (+77.0) % |
+
+| Cell, charge | Margin, coupled: radial, resolved, end-corrected | Single-unit, resolved |
+|---|---|---|
+| M50, 0.3C at 0 C | +19.80 (-192.83), +19.75 (-192.99), +19.76 (-192.98) mV | +19.83 (-192.73) mV |
+| M50, 0.7C at 25 C | +28.99 (-236.50), +28.92 (-236.66), +28.92 (-236.66) mV | +29.07 (-236.41) mV |
+
+- **Where 160 points settle, the penalty is small.** At 3C and 25 C, the one of the paper's three cases that 160 points settle, the single-unit model gives 0.10 to 0.20 % more energy than the multi-unit model, against the paper's 3.45 %, and the thermal model moves the penalty by 0.1 percentage points. The three kernels' discharges end within 10 s of one another: the early ends that the 20-point mesh gave, and their sensitivity to a fraction of a kelvin, are gone.
+- **At minus 5 C the readings have not settled.** There the penalty is -0.84 to -1.32 % in the M50 (the paper: 11.32 %) and -5.93 to +4.21 % in the 4680 (11.45 %). In the 4680 it reaches the paper's order in size, and the thermal model sets its sign: the radial field gives the paper's direction and the resolved and end-corrected fields the opposite one.
+- **The shares.** The radial kernel makes the spread 27.6 to 33.8 % too wide in the M50 and 22.9 % in the 4680; the end correction leaves 3.9 to 5.2 %.
+- **The margins at the specification's limits are positive**, about +20 mV at 0.3C and 0 C and +29 mV at 0.7C and 25 C, reached at 4.2 V and held by the outermost group in every case. The thermal model moves the coupled margin by under 0.1 mV (P7's reading: +0.05 and +0.08 mV, against +0.16 and +0.16 mV at 20 points).
+- **How the runs were made.** A coupled step at 160 points costs about 4 to 50 times one at 20 points. Each run saves its state every 20 steps and resumes after the machine's two-hour limit on a job; the solver keeps only each step's first and last states, and the garbage collector runs after every step. None of these changes a result: a stored registered run made again with them is identical to it. Four runs were stopped by the memory limit or a guard and resumed from their saved states, among them the main case under the radial kernel, which stopped twice in one step before the storage was changed (D36).
+- **Still running** when this was written: 2C at 25 C, the 4680's charges, P9's plating-limited rates, the insulated case and 1.25C at 25 C.
 
 **Checks** (`results/stage5_checks.json`, `results/stage5_v5.json`, `results/stage5_p1.json`).
 - V1: P1's comparison, worst 9.5e-7 K over every case, unit and archived time. Reciprocity (each group's mean taken with its own load as the weight): within 2.6e-14 of the largest value in all 34 kernels. The load-weighted group mean and the sampled group mean of D29 differ by up to 0.22 %. Every kernel reaches its discrete steady state within 1e-8.
@@ -492,7 +524,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `stage2_correction.py`, `stage2_ref33.py`, `stage2_split.py`, `stage2_report.py`: Stage 2
   - `stage3_enkf.py`, `stage3_report.py`, `stage3_relabel.py`: Stage 3
   - `stage4_units.py`, `stage4_RT.py`, `stage4_report.py`, `stage4_v2.py`, `stage4_v3.py`: Stage 4
-  - `stage5_common.py` (groups, kernels, convolution), `stage5_kernels.py` (the kernels), `stage5_coupled.py` (the coupled solve), `stage5_runs.py` (the discharge and charge runs and the searches), `stage5_queue.py` (the job lists the runs were made from), `stage5_v5.py`, `stage5_checks.py`, `stage5_report.py`, `stage5_posthoc_mesh.py` (D35): Stage 5
+  - `stage5_common.py` (groups, kernels, convolution), `stage5_kernels.py` (the kernels), `stage5_coupled.py` (the coupled solve), `stage5_runs.py` (the discharge and charge runs and the searches), `stage5_queue.py` (the job lists the runs were made from), `stage5_v5.py`, `stage5_checks.py`, `stage5_report.py`, `stage5_posthoc_mesh.py` (D35), `stage5_posthoc_settled.py` (D36): Stage 5
   - `make_figure.py`
 - `results/`:
   - `heat/`, `heat_summary.*`: the heat inputs
@@ -505,7 +537,7 @@ The resolved cell with these inputs, at 2C (`results/results_3d.csv`):
   - `stage2_*`: Stage 2's tables, scorecard and figure
   - `stage3_*`: Stage 3's runs with every core history, the series behind P5 and P7, the errors table, scorecard, checks, sensitivity, the paper's numbers and the figure
   - `stage4_*`: Stage 4's unit histories (`stage4_hist_*`), the unit-temperature readings with V1, the R(T) table, the per-unit table, the errors table, the scorecard, the checks, the paper's numbers and the figure
-  - `stage5_*`: Stage 5's kernels (`stage5_kernels/`), every run and search with the runs' logs (`stage5_runs/`, `stage5_runs/logs/`), the discharge, shares, charge and limit tables, the summary tables, P1's and V5's records, the checks, the scorecard, the paper's numbers, the post hoc mesh check and the figure
+  - `stage5_*`: Stage 5's kernels (`stage5_kernels/`), every run and search with the runs' logs (`stage5_runs/`, `stage5_runs/logs/`), the discharge, shares, charge and limit tables, the summary tables, P1's and V5's records, the checks, the scorecard, the paper's numbers, the post hoc mesh check, the post hoc runs at 160 points with their logs (`stage5_posthoc_settled/`, D36) and the figure
 - `verification/`: V0 to V4, the one-dimensional convergence check, the 3C cut-off check, the independent recomputation, the audit report (`reviews/`), and the independent reads of Stages 3, 4 and 5 (`stage3_independent_read/`, `stage4_independent_read/`, `stage5_independent_read/`: their scripts, outputs and findings).
 - `tests/test_stage5.py`: tests of Stage 5's machinery: the groups, the convolution against direct stepping, the cut-triangle integrals, the search rule of D32 and the coupled solve at one temperature.
 - `note/`: the one-page note (`radial_vs_resolved_note.pdf`), its source and the script that renders it.
@@ -557,6 +589,10 @@ for q in seg_21700_ORegan2022 seg_4680_ORegan2022 seg_21700_Chen2020 seg_4680_Ch
 python3 src/stage5_v5.py
 python3 src/stage5_posthoc_mesh.py
 python3 src/stage5_report.py
+# post hoc, D36: the mesh study, the runs at 160 points (one job each; see results/stage5_posthoc_settled/logs/queue.txt), the readings
+python3 src/stage5_posthoc_settled.py mesh --points 160,320,640 --what discharges,charges,rates_0,rates_10,rates_25
+python3 src/stage5_posthoc_settled.py runs --points 160 --job discharge:21700_b_m5C_2C:resolved
+python3 src/stage5_posthoc_settled.py report --points 160
 python3 src/stage5_checks.py report
 python3 tests/test_stage5.py
 ```

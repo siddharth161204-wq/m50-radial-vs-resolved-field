@@ -1,0 +1,42 @@
+640 points discharge_2C_m5C: {'t_cut_s': 257.7595293064591, 'capacity_Ah': 0.715998692517942, 'energy_Wh': 2.2977142892013904, 'wall_s': 60.51515293121338}
+1280 points discharge_2C_m5C: {'t_cut_s': 258.951484593169, 'capacity_Ah': 0.7193096794254695, 'energy_Wh': 2.3093427493897596, 'wall_s': 127.16218543052673}
+320 points discharge_2C_25C: {'t_cut_s': 1469.4161591653483, 'capacity_Ah': 4.081711553237079, 'energy_Wh': 13.611909251906004, 'wall_s': 154.35838794708252}
+320 points discharge_2C_m5C: {'t_cut_s': 247.34035814351776, 'capacity_Ah': 0.6870565503986605, 'energy_Wh': 2.200677721180049, 'wall_s': 183.87482261657715}
+320 points charge_1455mA_0C: {'margin_min_V': 0.01937847124918047, 't_min_s': 10638.152106698211, 't_first_negative_s': None, 't_end_s': 10638.152106698211, 'charge_Ah': 4.299586476457194, 'wall_s': 278.967413187027}
+320 points charge_3395mA_25C: {'margin_min_V': 0.028767071785867942, 't_min_s': 4558.644263961076, 't_first_negative_s': None, 't_end_s': 4558.644263961076, 'charge_Ah': 4.2990547989299595, 'wall_s': 495.6312165260315}
+      0 C, 160 points: 0.36567C margin +10.018 mV
+      0 C, 160 points: 0.53775C margin -15.246 mV
+      0 C, 160 points: 0.45171C margin -3.285 mV
+      0 C, 160 points: 0.40869C margin +3.270 mV
+      0 C, 160 points: 0.43020C margin -0.037 mV
+      0 C, 160 points: 0.41945C margin +1.610 mV
+      0 C, 160 points: 0.42482C margin +0.782 mV
+      0 C, 160 points: 0.42751C margin +0.371 mV
+      0 C, 160 points: 0.42886C margin +0.166 mV
+      0 C, 160 points: 0.42953C margin +0.065 mV
+160 points rate_0C: 0.42953 to 0.43020C, 10 trials
+      10 C, 160 points: 0.56968C margin +10.158 mV
+      10 C, 160 points: 0.83777C margin -14.773 mV
+      10 C, 160 points: 0.70373C margin -3.117 mV
+      10 C, 160 points: 0.63670C margin +3.429 mV
+      10 C, 160 points: 0.67021C margin +0.098 mV
+      10 C, 160 points: 0.68697C margin -1.537 mV
+      10 C, 160 points: 0.67859C margin -0.728 mV
+      10 C, 160 points: 0.67440C margin -0.315 mV
+      10 C, 160 points: 0.67231C margin -0.113 mV
+      10 C, 160 points: 0.67126C margin -0.008 mV
+      10 C, 160 points: 0.67074C margin +0.045 mV
+160 points rate_10C: 0.67074 to 0.67126C, 11 trials
+      25 C, 160 points: 1.04391C margin +10.200 mV
+      25 C, 160 points: 1.53516C margin -13.265 mV
+      25 C, 160 points: 1.28953C margin -2.495 mV
+      25 C, 160 points: 1.16672C margin +3.665 mV
+      25 C, 160 points: 1.22812C margin +0.551 mV
+      25 C, 160 points: 1.25883C margin -0.984 mV
+      25 C, 160 points: 1.24348C margin -0.217 mV
+      25 C, 160 points: 1.23580C margin +0.172 mV
+      25 C, 160 points: 1.23964C margin -0.036 mV
+      25 C, 160 points: 1.23772C margin +0.068 mV
+      25 C, 160 points: 1.23868C margin +0.015 mV
+160 points rate_25C: 1.23868 to 1.23964C, 11 trials
+### done 10:14:19

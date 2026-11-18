@@ -1,0 +1,11 @@
+### 09:35:20 start discharge:21700_b_m5C_2C:resolved
+=== 09:35:21 160 points discharge:21700_b_m5C_2C:resolved
+### 09:37:40 exit 137 discharge:21700_b_m5C_2C:resolved
+### 09:37:40 start discharge:21700_b_m5C_2C:radial
+=== 09:37:43 160 points discharge:21700_b_m5C_2C:radial
+### 09:41:51 start discharge:21700_b_m5C_2C:resolved
+=== 09:41:53 160 points discharge:21700_b_m5C_2C:resolved
+C_21700_b_m5C_2C_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 418.4 s (419 steps), held 0, max resid 7.9e-14, 1662 s
+C_21700_b_m5C_2C_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 414.6 s (415 steps), held 0, max resid 0.0e+00, 92 s
+### 10:11:58 done discharge:21700_b_m5C_2C:resolved
+### 10:11:58 worker D: every job done
