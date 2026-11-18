@@ -90,6 +90,10 @@ The memory-test logs added in 3a5da90 (`memtest_*.log`) name the 22 run files th
 
 A final check at 3a5da90 found the corrections right and reported eight smaller remaining points to the author.
 
+At commit 03aa5fa seven of the eight points are fixed. One is not: the logs' README says that `mem.log`'s highest use reaches the 6,266 MB limit at 04:42:35. In the file it reaches the limit at 04:39:15, when the memory guard stopped the M50's 30-group kernels, and at 04:42:35 the use is 5,693 MB. D35's "took the memory to the limit (mem.log)" therefore cites a sample that shows 5.7 GB, not the limit.
+
+After 03aa5fa this last point was fixed in the logs' README and D35, and both now agree with `mem.log`, `watchdog.log` and `kq_4680c.log`. Nothing further remains.
+
 ## The checks V3 and V4, recomputed
 
 Main case (M50, 2C, minus 5 C, ends cooled, ORegan2022). The penalties and spreads are in percent; "change" is the check's value over the registered one, less one. Limits: 1 % for V3, 5 % for V4.
