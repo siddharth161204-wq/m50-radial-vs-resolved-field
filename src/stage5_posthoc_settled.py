@@ -213,13 +213,34 @@ def collect_garbage_while_stepping(every=1):
     import stage5_coupled as SC
     step = SC.Stepper.step
 
+    beat = os.environ.get("D36_HEARTBEAT")
+
     def step_and_collect(self, dt, inputs):
         self._steps_since_gc = getattr(self, "_steps_since_gc", 0) + 1
         if self._steps_since_gc >= every:
             gc.collect()
             self._steps_since_gc = 0
-        return step(self, dt, inputs)
+        out = step(self, dt, inputs)
+        if beat:                                          # a step has ended (read by the slots' guard)
+            with open(beat, "a"):
+                os.utime(beat)
+        return out
     SC.Stepper.step = step_and_collect
+
+
+def keep_first_last_states():
+    """The solver keeps only the first and last states of each thermal step, not every internal step of it (PyBaMM's
+    store_first_last). The run reads only the last state of each step, and a step's states are the same either way
+    (checked on a stored registered run, and on 40 steps at 160 points, D36); a step that needs very many internal
+    steps then no longer fills the memory with them."""
+    import pybamm
+    import stage5_coupled as SC
+    init = SC.Stepper.__init__
+
+    def init_first_last(self, *a, **k):
+        init(self, *a, **k)
+        self.solver = pybamm.IDAKLUSolver(rtol=SC.RTOL, atol=SC.ATOL, store_first_last=True)
+    SC.Stepper.__init__ = init_first_last
 
 
 def resumable_run(kind, cell, pset, T_amb_C, I_app, kern, heat="two-way", single=False, G=None, oneway_T=None,
@@ -386,7 +407,11 @@ def use_resumable_runs():
 def runs(n, jobs):
     set_particle_points(n)
     collect_garbage_while_stepping()
+    keep_first_last_states()
     use_resumable_runs()                                  # before stage5_queue wraps the run
+    if os.environ.get("D36_HEARTBEAT"):
+        with open(os.environ["D36_HEARTBEAT"], "a"):
+            os.utime(os.environ["D36_HEARTBEAT"])
     import stage5_runs as RN                              # imported after the mesh is set
     import stage5_queue as Q                              # returns freed memory after every run (no reading changes)
     assert Q is not None
