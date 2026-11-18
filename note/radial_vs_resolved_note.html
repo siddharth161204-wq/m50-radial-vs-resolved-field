@@ -365,14 +365,15 @@ particle mesh than PyBaMM’s default.</li>
 settles at 80 points per particle radius in its 25 C discharge, its
 margins at the charge limits and its plating-limited rates, but its 2C
 discharge at minus 5 C needs 640. With 160 points in the coupled model
-the margins at the specification’s limits are positive (about +20 and
-+29 mV in the M50, held by the outermost group, and moved by the thermal
-model by under 0.1 mV), and at 3C and 25 C, which 160 points settle, the
-single-unit model’s penalty is 0.10 to 0.20 %, against the paper’s 3.45
-%. At minus 5 C, which they do not, it is about -1 % in the M50 and -5.9
-to +4.2 % in the 4680, where the thermal model sets its sign; the radial
-kernel makes the spread 23 to 34 % too wide, and the end correction
-leaves 4 to 5 %.</li>
+the margins at the specification’s limits are positive in both cells
+(about +20 mV at 0.3C and 0 C, +29 to +30 mV at 0.7C and 25 C), held by
+the outermost group and moved by the thermal model by under 0.4 mV, and
+in the discharges at 25 C, which 160 points settle, the single-unit
+model’s penalty is 0.002 to 0.20 %, against the paper’s 3.45 % at 3C. At
+minus 5 C, which they do not, it is about -1 % in the M50 and -5.9 to
++4.2 % in the 4680, where the thermal model sets its sign; the radial
+kernel makes the spread 23 to 35 % too wide (7 % with the ends
+insulated), and the end correction leaves 4 to 5 %.</li>
 </ol>
 <p><img src="../results/stage5_figure.png" /></p>
 <p>Figure 5. (a) The kernel: the rise of the M50’s innermost and

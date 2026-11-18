@@ -24,10 +24,11 @@ charge:4680:corrected:0.3C_0C
 charge:4680:resolved:0.7C_25C
 charge:4680:radial:0.7C_25C
 charge:4680:corrected:0.7C_25C
-p9:21700
-p9:4680
 discharge:21700_a_m5C_2C:resolved
 discharge:21700_a_m5C_2C:radial
 discharge:21700_b_p25C_1.25C:resolved
 discharge:21700_b_p25C_1.25C:radial
 discharge:21700_b_p25C_1.25C:corrected
+# P9's searches last: the longest jobs (each coupled trial is a full charge)
+p9:21700
+p9:4680

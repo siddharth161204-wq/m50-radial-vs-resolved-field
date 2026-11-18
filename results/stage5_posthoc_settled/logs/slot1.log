@@ -56,3 +56,67 @@ C_21700_b_p25C_3C_corrected_ORegan2022_two-way_single_G15: event: Minimum voltag
 ### 16:23:10 slot 1 done discharge:21700_b_p25C_3C:corrected (20 min)
 ### 16:23:10 slot 1 start discharge:21700_b_p25C_2C:radial (24 min left)
 === 16:23:11 160 points discharge:21700_b_p25C_2C:radial
+### 16:47:10 slot 1 stopped discharge:21700_b_p25C_2C:radial at its time limit (24 min); it resumes
+### 16:47:15 slot 1 start discharge:21700_b_p25C_2C:radial (113 min left)
+=== 16:47:16 160 points discharge:21700_b_p25C_2C:radial
+   C_21700_b_p25C_2C_radial_ORegan2022_two-way_coupled_G15: resumed at step 1380
+C_21700_b_p25C_2C_radial_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 1494.4 s (1495 steps), held 0, max resid 8.0e-13, 1679 s
+C_21700_b_p25C_2C_radial_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 1494.6 s (1496 steps), held 0, max resid 0.0e+00, 436 s
+### 16:59:39 slot 1 done discharge:21700_b_p25C_2C:radial (12 min)
+### 16:59:39 slot 1 start charge:4680:resolved:0.3C_0C (101 min left)
+=== 16:59:41 160 points charge:4680:resolved:0.3C_0C
+D_4680_0.3C_0C_resolved_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 10666 s, margin +19.95 mV, max resid 4.6e-16, 3593 s
+D_4680_0.3C_0C_resolved_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 10666 s, margin +20.20 mV, max resid 0.0e+00, 325 s
+### 18:05:32 slot 1 done charge:4680:resolved:0.3C_0C (65 min)
+### 18:05:32 slot 1 start charge:4680:corrected:0.3C_0C (35 min left)
+=== 18:05:33 160 points charge:4680:corrected:0.3C_0C
+### 18:40:32 slot 1 stopped charge:4680:corrected:0.3C_0C at its time limit (35 min); it resumes
+### 18:40:40 slot 1 start charge:4680:corrected:0.3C_0C (113 min left)
+=== 18:40:41 160 points charge:4680:corrected:0.3C_0C
+   D_4680_0.3C_0C_corrected_ORegan2022_two-way_coupled_G15: resumed at step 940
+D_4680_0.3C_0C_corrected_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 10666 s, margin +19.95 mV, max resid 4.6e-16, 3648 s
+D_4680_0.3C_0C_corrected_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 10666 s, margin +20.21 mV, max resid 0.0e+00, 345 s
+### 19:14:15 slot 1 done charge:4680:corrected:0.3C_0C (33 min)
+### 19:14:15 slot 1 start charge:4680:radial:0.7C_25C (80 min left)
+=== 19:14:17 160 points charge:4680:radial:0.7C_25C
+D_4680_0.7C_25C_radial_ORegan2022_two-way_coupled_G15: event: Maximum voltage at 4584 s, margin +29.55 mV, max resid 5.4e-15, 3444 s
+D_4680_0.7C_25C_radial_ORegan2022_two-way_single_G15: event: Maximum voltage [V] at 4584 s, margin +30.50 mV, max resid 0.0e+00, 188 s
+### 20:15:21 slot 1 done charge:4680:radial:0.7C_25C (61 min)
+### 20:15:21 slot 1 start discharge:21700_a_m5C_2C:resolved (19 min left)
+=== 20:15:22 160 points discharge:21700_a_m5C_2C:resolved
+### 20:34:21 slot 1 stopped discharge:21700_a_m5C_2C:resolved at its time limit (19 min); it resumes
+### 20:34:29 slot 1 start discharge:21700_a_m5C_2C:resolved (113 min left)
+=== 20:34:30 160 points discharge:21700_a_m5C_2C:resolved
+   C_21700_a_m5C_2C_resolved_ORegan2022_two-way_coupled_G15: resumed at step 380
+C_21700_a_m5C_2C_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 484.4 s (485 steps), held 0, max resid 3.4e-13, 1435 s
+C_21700_a_m5C_2C_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 479.2 s (480 steps), held 0, max resid 0.0e+00, 146 s
+### 20:44:05 slot 1 done discharge:21700_a_m5C_2C:resolved (9 min)
+### 20:44:05 slot 1 start discharge:21700_b_p25C_1.25C:resolved (104 min left)
+=== 20:44:06 160 points discharge:21700_b_p25C_1.25C:resolved
+C_21700_b_p25C_1.25C_resolved_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 2603.5 s (2604 steps), held 0, max resid 9.4e-12, 2954 s
+C_21700_b_p25C_1.25C_resolved_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 2603.5 s (2604 steps), held 0, max resid 0.0e+00, 742 s
+### 21:46:15 slot 1 done discharge:21700_b_p25C_1.25C:resolved (62 min)
+### 21:46:15 slot 1 start discharge:21700_b_p25C_1.25C:corrected (42 min left)
+=== 21:46:17 160 points discharge:21700_b_p25C_1.25C:corrected
+### 22:28:15 slot 1 stopped discharge:21700_b_p25C_1.25C:corrected at its time limit (42 min); it resumes
+### 22:28:22 slot 1 start discharge:21700_b_p25C_1.25C:corrected (113 min left)
+=== 22:28:24 160 points discharge:21700_b_p25C_1.25C:corrected
+   C_21700_b_p25C_1.25C_corrected_ORegan2022_two-way_coupled_G15: resumed at step 2400
+C_21700_b_p25C_1.25C_corrected_ORegan2022_two-way_coupled_G15: event: Minimum voltage at 2603.7 s (2604 steps), held 0, max resid 7.5e-15, 2820 s
+C_21700_b_p25C_1.25C_corrected_ORegan2022_two-way_single_G15: event: Minimum voltage [V] at 2603.8 s (2604 steps), held 0, max resid 0.0e+00, 705 s
+### 22:46:29 slot 1 done discharge:21700_b_p25C_1.25C:corrected (18 min)
+### 22:46:29 slot 1 start p9:4680 (95 min left)
+=== 22:46:30 160 points p9:4680
+  4680 ORegan2022 0 C resolved|single: start 0.05C
+    rate 0.05000C: pass  margin +73.14 mV group 1 at 72668 s (event: Maximum voltage [V], 770 s)
+    rate 0.10000C: pass  margin +58.25 mV group 1 at 35633 s (event: Maximum voltage [V], 384 s)
+    rate 0.15000C: pass  margin +46.81 mV group 1 at 23173 s (event: Maximum voltage [V], 312 s)
+    rate 0.20000C: pass  margin +37.25 mV group 1 at 16945 s (event: Maximum voltage [V], 252 s)
+    rate 0.25000C: pass  margin +27.97 mV group 1 at 13200 s (event: Maximum voltage [V], 180 s)
+    rate 0.30000C: pass  margin +20.20 mV group 1 at 10666 s (event: Maximum voltage [V], 144 s)
+    rate 0.35000C: pass  margin +13.65 mV group 1 at 8896 s (event: Maximum voltage [V], 120 s)
+    rate 0.40000C: pass  margin +6.12 mV group 1 at 7602 s (event: Maximum voltage [V], 102 s)
+    rate 0.45000C: fail  margin -0.14 mV group 1 at 6580 s (negative margin, 87 s)
+    rate 0.42500C: pass  margin +2.48 mV group 1 at 7079 s (event: Maximum voltage [V], 95 s)
+    rate 0.43750C: pass  margin +0.69 mV group 1 at 6841 s (event: Maximum voltage [V], 88 s)
+    rate 0.44375C: fail  margin -0.01 mV group 1 at 6720 s (negative margin, 90 s)

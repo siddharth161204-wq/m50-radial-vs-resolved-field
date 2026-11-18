@@ -287,23 +287,30 @@ The plating-limited rate, the largest rate whose margin stays at or above zero t
 
 The coupled and single-unit models were then run with 160 points in both particles, the author's choice among the meshes the coupled model can carry on this machine: the six readings are settled there, and the minus 5 C discharges are not. The readings below are at 160 points, with the registered 20-point value in brackets (ORegan2022, two-way heat):
 
-| Case | Penalty: radial, resolved, end-corrected | Coupled cut-off: radial, resolved, end-corrected | Resolved: spread | Spread error: radial, end-corrected |
+| Case | Penalty: radial, resolved, end-corrected | Coupled cut-off: radial, resolved | Resolved: spread | Spread error: radial, end-corrected |
 |---|---|---|---|---|
-| M50, 2C, minus 5 C, ends cooled | -1.32 (-1.00), -0.84 (-0.36), -0.94 (-0.39) % | 496 (189), 418 (170), 424 (172) s | 9.63 (6.08) % | +33.8 (+37.9), +5.2 (+5.5) % |
-| 4680, 2C, minus 5 C, ends cooled | +4.21 (-53.53), -5.56 (+0.38), -5.93 (+0.44) % | 1,245 (843), 888 (333), 910 (334) s | 28.57 (21.90) % | +22.9 (+141.6), +3.9 (+0.6) % |
-| M50, 3C, 25 C, ends cooled | +0.20 (-0.68), +0.10 (-0.73), +0.12 (-48.92) % | 897 (615), 887 (280), 888 (604) s | 4.28 (9.26) % | +27.6 (+97.6), +4.7 (+77.0) % |
+| M50, 2C, minus 5 C, ends cooled | -1.32 (-1.00), -0.84 (-0.36), -0.94 (-0.39) % | 496 (189), 418 (170) s | 9.63 (6.08) % | +33.8 (+37.9), +5.2 (+5.5) % |
+| M50, 2C, 25 C, ends cooled | +0.016 (+0.62), +0.012 (-0.25), +0.013 (-0.43) % | 1,494 (1,055), 1,490 (783) s | 1.82 (6.01) % | +31.6 (+94.1), +5.0 (+4.6) % |
+| M50, 1.25C, 25 C, ends cooled | +0.004 (+0.05), +0.002 (-0.05), +0.002 (-0.03) % | 2,606 (2,290), 2,604 (2,276) s | 0.63 (2.42) % | +34.7 (+35.5), +5.1 (+2.4) % |
+| M50, 2C, minus 5 C, ends insulated | -1.32 (-1.00), -1.06 (-0.83) % | 496 (189), 484 (185) s | 12.01 (7.72) % | +7.3 (+8.6) % |
+| 4680, 2C, minus 5 C, ends cooled | +4.21 (-53.53), -5.56 (+0.38), -5.93 (+0.44) % | 1,245 (843), 888 (333) s | 28.57 (21.90) % | +22.9 (+141.6), +3.9 (+0.6) % |
+| M50, 3C, 25 C, ends cooled | +0.20 (-0.68), +0.10 (-0.73), +0.12 (-48.92) % | 897 (615), 887 (280) s | 4.28 (9.26) % | +27.6 (+97.6), +4.7 (+77.0) % |
+
+With the ends insulated the end-corrected model is the radial model (D29).
 
 | Cell, charge | Margin, coupled: radial, resolved, end-corrected | Single-unit, resolved |
 |---|---|---|
 | M50, 0.3C at 0 C | +19.80 (-192.83), +19.75 (-192.99), +19.76 (-192.98) mV | +19.83 (-192.73) mV |
 | M50, 0.7C at 25 C | +28.99 (-236.50), +28.92 (-236.66), +28.92 (-236.66) mV | +29.07 (-236.41) mV |
+| 4680, 0.3C at 0 C | +20.23 (-191.39), +19.95 (-192.31), +19.95 (-192.30) mV | +20.20 (-191.42) mV |
+| 4680, 0.7C at 25 C | +29.55 (-235.22), +29.21 (-236.02), +29.21 (-236.01) mV | +29.69 (-235.21) mV |
 
-- **Where 160 points settle, the penalty is small.** At 3C and 25 C, the one of the paper's three cases that 160 points settle, the single-unit model gives 0.10 to 0.20 % more energy than the multi-unit model, against the paper's 3.45 %, and the thermal model moves the penalty by 0.1 percentage points. The three kernels' discharges end within 10 s of one another: the early ends that the 20-point mesh gave, and their sensitivity to a fraction of a kelvin, are gone.
+- **Where 160 points settle, the penalty is small.** At 3C and 25 C, the one of the paper's three cases that 160 points settle, the single-unit model gives 0.10 to 0.20 % more energy than the multi-unit model, against the paper's 3.45 %, and at 2C and 1.25C at 25 C 0.002 to 0.016 %. The thermal model moves it by at most 0.1 percentage points there. The three kernels' discharges end within 10 s of one another at 25 C: the early ends that the 20-point mesh gave, and their sensitivity to a fraction of a kelvin, are gone.
 - **At minus 5 C the readings have not settled.** There the penalty is -0.84 to -1.32 % in the M50 (the paper: 11.32 %) and -5.93 to +4.21 % in the 4680 (11.45 %). In the 4680 it reaches the paper's order in size, and the thermal model sets its sign: the radial field gives the paper's direction and the resolved and end-corrected fields the opposite one.
-- **The shares.** The radial kernel makes the spread 27.6 to 33.8 % too wide in the M50 and 22.9 % in the 4680; the end correction leaves 3.9 to 5.2 %.
-- **The margins at the specification's limits are positive**, about +20 mV at 0.3C and 0 C and +29 mV at 0.7C and 25 C, reached at 4.2 V and held by the outermost group in every case. The thermal model moves the coupled margin by under 0.1 mV (P7's reading: +0.05 and +0.08 mV, against +0.16 and +0.16 mV at 20 points).
+- **The shares.** The radial kernel makes the spread 27.6 to 34.7 % too wide in the cooled M50 cases, 7.3 % with the ends insulated and 22.9 % in the 4680; the end correction leaves 3.9 to 5.2 %. These are close to Chen2020's (31.5 to 35.9 %, 7.3 % and 83.9 %; 3.2 to 5.2 %), the 4680 apart. The innermost share falls below the mean before the end of every 25 C discharge.
+- **The margins at the specification's limits are positive**, about +20 mV at 0.3C and 0 C and +29 to +30 mV at 0.7C and 25 C in both cells, reached at 4.2 V and held by the outermost group in all twelve coupled cases. The thermal model moves the coupled margin by at most 0.07 mV in the M50 and 0.34 mV in the 4680 (P7's reading: +0.05 and +0.08 mV, against +0.16 and +0.16 mV at 20 points).
 - **How the runs were made.** A coupled step at 160 points costs about 4 to 50 times one at 20 points. Each run saves its state every 20 steps and resumes after the machine's two-hour limit on a job; the solver keeps only each step's first and last states, and the garbage collector runs after every step. None of these changes a result: a stored registered run made again with them is identical to it. Four runs were stopped by the memory limit or a guard and resumed from their saved states, among them the main case under the radial kernel, which stopped twice in one step before the storage was changed (D36).
-- **Still running** when this was written: 2C at 25 C, the 4680's charges, P9's plating-limited rates, the insulated case and 1.25C at 25 C.
+- **Still running** when this was written: P9's plating-limited rates at 0 C. The M50's single-unit rate is 0.434C (registered 0.281C).
 
 **Checks** (`results/stage5_checks.json`, `results/stage5_v5.json`, `results/stage5_p1.json`).
 - V1: P1's comparison, worst 9.5e-7 K over every case, unit and archived time. Reciprocity (each group's mean taken with its own load as the weight): within 2.6e-14 of the largest value in all 34 kernels. The load-weighted group mean and the sampled group mean of D29 differ by up to 0.22 %. Every kernel reaches its discrete steady state within 1e-8.
