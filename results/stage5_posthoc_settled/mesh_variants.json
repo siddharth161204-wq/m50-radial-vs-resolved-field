@@ -1,0 +1,62 @@
+{
+ "what": "post hoc (D36): tests made while choosing the mesh, not readings. One DFN at the ambient (ORegan2022), the 2C discharge at minus 5 C: the cut-off time on meshes other than uniform with equal points in both particles; and the coupled model's cost at 160 points.",
+ "discharge_2C_m5C_t_cut_s": [
+  {
+   "r_n": 640,
+   "r_p": 20,
+   "mesh": "uniform",
+   "t_cut_s": 258.94
+  },
+  {
+   "r_n": 80,
+   "r_p": 80,
+   "mesh": "graded toward the surface (PyBaMM Exponential1DSubMesh, side right, stretch 2.3)",
+   "t_cut_s": 231.38
+  },
+  {
+   "r_n": 160,
+   "r_p": 160,
+   "mesh": "graded, stretch 2.3",
+   "t_cut_s": 254.1
+  },
+  {
+   "r_n": 320,
+   "r_p": 320,
+   "mesh": "graded, stretch 2.3",
+   "t_cut_s": 258.37
+  },
+  {
+   "r_n": 640,
+   "r_p": 640,
+   "mesh": "graded, stretch 2.3",
+   "t_cut_s": 259.03
+  },
+  {
+   "r_n": 320,
+   "r_p": 20,
+   "mesh": "graded, stretch 2.3",
+   "t_cut_s": 255.57
+  },
+  {
+   "r_n": 160,
+   "r_p": 160,
+   "mesh": "graded, stretch 4",
+   "t_cut_s": 255.49
+  },
+  {
+   "r_n": 320,
+   "r_p": 320,
+   "mesh": "graded, stretch 4",
+   "t_cut_s": 258.54
+  }
+ ],
+ "coupled_cost_160_points": {
+  "groups": 15,
+  "case": "M50 2C minus 5 C, resolved kernel, two-way",
+  "build_s": 47,
+  "s_per_step_with_two_other_processes": 2.65,
+  "peak_memory_MB": 4557
+ },
+ "machine_memory_limit_MB": 6266,
+ "choice": "Uniform, 160 points per particle radius (both particles), chosen by the author on 18 November 2026 from four options put to him: a graded mesh at 160 points, uniform 160 points, fewer groups at the settled 640 points, or no coupled runs."
+}
