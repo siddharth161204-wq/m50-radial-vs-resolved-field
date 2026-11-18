@@ -18,8 +18,14 @@ each particle's radius, uniform). Everything else is as registered; the register
    format, so that the registered runs in results/stage5_runs/ are untouched.
 
    python3 src/stage5_posthoc_settled.py runs --points N --job discharge:21700_b_m5C_2C:resolved
-   python3 src/stage5_posthoc_settled.py runs --points N --job charge:21700:resolved
+   python3 src/stage5_posthoc_settled.py runs --points N --job charge:21700:resolved        (both limits)
+   python3 src/stage5_posthoc_settled.py runs --points N --job charge:21700:resolved:0.3C_0C (one of them)
    python3 src/stage5_posthoc_settled.py runs --points N --job p9:21700        (single-unit then coupled, refined)
+
+3. The readings (`report`), by the registered report's functions, each beside its registered value at 20 points;
+   nothing is scored and nothing registered is replaced.
+
+   python3 src/stage5_posthoc_settled.py report --points N
 """
 import argparse
 import fcntl
@@ -138,6 +144,7 @@ def set_particle_points(n):
         v["r_n"] = v["r_p"] = n
         return v
     pybamm.lithium_ion.DFN.default_var_pts = property(var_pts)
+    os.environ["D36_POINTS"] = str(n)                     # part of a checkpoint's name (resumable_run)
     S5.RUNDIR = os.path.join(OUT, f"runs_r{n}")
     os.makedirs(S5.RUNDIR, exist_ok=True)
     # the registered runs' stored trials are not this mesh's; a store of this mesh's own trials may be given
@@ -163,9 +170,171 @@ def collect_garbage_while_stepping(every=5):
     SC.Stepper.step = step_and_collect
 
 
+def resumable_run(kind, cell, pset, T_amb_C, I_app, kern, heat="two-way", single=False, G=None, oneway_T=None,
+                  fixed_T=None, max_steps=200000, store_potentials=False, stop_on_negative_margin=False, verbose=False,
+                  built=None, label="", every=20):
+    """src/stage5_coupled.py's run, line for line, with its state saved every `every` steps to a checkpoint
+    (directory D36_CHECKPOINTS) and resumed from it when the same run is started again. At 160 points a run can
+    outlast the machine's two-hour limit on a job. The state carried from one thermal step to the next is the
+    solver's last time and state vector, the convolution's heat history and the records, so a resumed run takes
+    the same steps as one that was never stopped (checked against a stored registered run, D36)."""
+    import hashlib
+    import numpy as np
+    import pybamm
+    import stage5_common as S5
+    import stage5_coupled as SC
+    t_wall = time.time()
+    soc = 1.0 if kind == "discharge" else 0.0
+    N = kern.N
+    G = kern.G
+    W = S5.group_weights(N, G) if not single else np.array([1.0])
+    Gm = 1 if single else G
+    if built is None:
+        built = SC.make(pset, soc, W, single)
+    st = built["stepper"]
+    st.sol = None
+    names = st.inputs
+    dt = kern.dt
+    Ta = T_amb_C
+    if heat == "two-way":
+        conv = kern.ave_convolver() if single else kern.group_convolver()
+    T_now = np.full(Gm, Ta)
+    rec = {k: [] for k in ("t", "V", "I", "T", "q", "resid", "mn_min", "mn_arg", "mi")}
+    pots = {"phi_s_n": [], "phi_e_n": []}
+    held_steps = 0
+    margin = kind == "charge"
+    k = 0
+    status = "max_steps"
+    W_arr = np.asarray(W, dtype=float)
+
+    def inputs_now(T):
+        return {"I_app": I_app, **{f"T{g + 1}": float(T[g]) + 273.15 for g in range(Gm)}}
+
+    def record(o, T_held):
+        rec["t"].append(o["t"])
+        rec["V"].append(o["V"])
+        rec["I"].append(o["I"])
+        rec["T"].append(np.asarray(T_held, dtype=float).copy())
+        rec["q"].append(o["Q"] / S5.V21700)
+        rec["resid"].append(abs(float(W_arr @ o["I"]) - I_app) / abs(I_app))
+        if margin:
+            rec["mn_min"].append(o["margin_nodes_min"])
+            rec["mn_arg"].append(o["margin_nodes_argmin"])
+            rec["mi"].append(o["margin_interface"])
+        if store_potentials:
+            pots["phi_s_n"].append(o["phi_s_n"])
+            pots["phi_e_n"].append(o["phi_e_n"])
+
+    # the checkpoint: one file per run, named by everything that defines the run
+    ident = json.dumps([kind, cell, pset, repr(float(T_amb_C)), repr(float(I_app)), os.path.basename(kern.path), heat,
+                        bool(single), G, max_steps, bool(store_potentials), bool(stop_on_negative_margin), label,
+                        None if oneway_T is None else hashlib.sha1(np.ascontiguousarray(oneway_T)).hexdigest(),
+                        os.environ.get("D36_POINTS")])
+    ck_dir = os.environ.get("D36_CHECKPOINTS")
+    ck = None
+    if ck_dir and heat in ("two-way", "one-way"):
+        os.makedirs(ck_dir, exist_ok=True)
+        ck = os.path.join(ck_dir, (label or f"{kind}_{cell}_{pset}_{T_amb_C:g}C_{abs(I_app):.6f}A_{'single' if single else 'coupled'}")
+                          + "_" + hashlib.sha1(ident.encode()).hexdigest()[:12] + ".npz")
+    wall_before, resumed_at = 0.0, []
+    if ck and os.path.exists(ck):
+        z = np.load(ck, allow_pickle=False)
+        assert str(z["ident"]) == ident
+        k = int(z["k"])
+        held_steps = int(z["held_steps"])
+        T_now = z["T_now"].astype(np.float64)
+        for key in rec:
+            if f"rec_{key}" in z.files:
+                arr = z[f"rec_{key}"]
+                rec[key] = [float(x) for x in arr] if arr.ndim == 1 else [row.copy() for row in arr]
+        for key in pots:
+            if f"pots_{key}" in z.files:
+                pots[key] = [row.copy() for row in z[f"pots_{key}"]]
+        if heat == "two-way":
+            conv.k = int(z["conv_k"])
+            conv.q[:conv.k + 1] = z["conv_q"]
+        inp_last = inputs_now(z["T_last"].astype(np.float64))
+        st.sol = pybamm.Solution(np.array([float(z["sol_t"])]), z["sol_y"].astype(np.float64).reshape(-1, 1), st.model,
+                                 inp_last)
+        wall_before = float(z["wall_s"])
+        resumed_at = [int(x) for x in z["resumed_at"]] + [k]
+        print(f"   {label or os.path.basename(ck)}: resumed at step {k}", flush=True)
+
+    def save_checkpoint():
+        arrs = {"ident": np.array(ident), "k": np.array(k), "held_steps": np.array(held_steps),
+                "T_now": np.asarray(T_now, dtype=np.float64), "T_last": np.asarray(rec["T"][-1], dtype=np.float64),
+                "sol_t": np.array(float(st.sol.t[-1])), "sol_y": np.asarray(st.sol.y)[:, -1].astype(np.float64),
+                "wall_s": np.array(wall_before + time.time() - t_wall), "resumed_at": np.array(resumed_at, dtype=np.int64)}
+        for key, v in rec.items():
+            if v:
+                arrs[f"rec_{key}"] = np.array(v)
+        for key, v in pots.items():
+            if v:
+                arrs[f"pots_{key}"] = np.array(v)
+        if heat == "two-way":
+            arrs["conv_k"] = np.array(conv.k)
+            arrs["conv_q"] = conv.q[:conv.k + 1]
+        tmp = ck + f".tmp{os.getpid()}"
+        with open(tmp, "wb") as f:
+            np.savez(f, **arrs)
+        os.replace(tmp, ck)
+
+    n_arch = None if oneway_T is None else oneway_T.shape[0] - 1
+    while k < max_steps:
+        inp = inputs_now(T_now)
+        sol = st.step(dt, inp)
+        if k == 0:
+            record(st.evaluate_at(0, inp, margin=margin, potentials=store_potentials), T_now)
+        k += 1
+        o = st.evaluate(inp, margin=margin, potentials=store_potentials)
+        record(o, T_now)                        # the temperature held over the step that ends here
+        if sol.termination != "final time":
+            status = sol.termination
+            break
+        if margin and stop_on_negative_margin and min(o["margin_nodes_min"].min(), o["margin_interface"].min()) < 0.0:
+            status = "negative margin"
+            break
+        # the temperature for the next step
+        q = o["Q"] / S5.V21700
+        if heat == "two-way":
+            T_now = Ta + conv.push(q)
+        elif heat == "one-way":
+            if k > n_arch:
+                held_steps += 1
+            T_now = np.asarray(oneway_T[min(k, n_arch)], dtype=float)
+        elif heat == "fixed":
+            T_now = np.asarray(fixed_T(k), dtype=float)
+        if verbose and k % 200 == 0:
+            print(f"   {label} step {k} t {o['t']:.0f} s V {o['V']:.4f}", flush=True)
+        if ck and k % every == 0:
+            save_checkpoint()
+    out = {"t": np.array(rec["t"]), "V": np.array(rec["V"]), "I": np.array(rec["I"]), "T": np.array(rec["T"]),
+           "q": np.array(rec["q"]), "resid": np.array(rec["resid"])}
+    if margin:
+        out.update({"margin_nodes_min": np.array(rec["mn_min"]), "margin_nodes_argmin": np.array(rec["mn_arg"]),
+                    "margin_interface": np.array(rec["mi"])})
+    if store_potentials:
+        out.update({k: np.array(v) for k, v in pots.items()})
+    out["meta"] = {"kind": kind, "cell": cell, "set": pset, "T_amb_C": Ta, "I_app_A": I_app, "heat": heat,
+                   "single": single, "G": Gm, "N": N, "W": list(map(float, W)), "dt": dt, "kernel": os.path.basename(kern.path),
+                   "status": status, "n_steps": k, "t_end": float(out["t"][-1]), "held_steps_past_archive": held_steps,
+                   "wall_s": wall_before + time.time() - t_wall, "label": label}
+    if resumed_at:
+        out["meta"]["resumed_at_steps"] = resumed_at
+    if ck and os.path.exists(ck):
+        os.remove(ck)
+    return out
+
+
+def use_resumable_runs():
+    import stage5_coupled as SC
+    SC.run = resumable_run
+
+
 def runs(n, jobs):
     set_particle_points(n)
     collect_garbage_while_stepping()
+    use_resumable_runs()                                  # before stage5_queue wraps the run
     import stage5_runs as RN                              # imported after the mesh is set
     import stage5_queue as Q                              # returns freed memory after every run (no reading changes)
     assert Q is not None
@@ -176,8 +345,8 @@ def runs(n, jobs):
             case, lab = rest
             RN.discharge(case, "ORegan2022", models=(lab,), heats=("two-way",))
         elif kind == "charge":
-            cell, lab = rest
-            RN.charge(cell, "ORegan2022", cases=("0.3C_0C", "0.7C_25C"), models=(lab,))
+            cell, lab, *case = rest                       # one case, or both of the specification's limits
+            RN.charge(cell, "ORegan2022", cases=tuple(case) or ("0.3C_0C", "0.7C_25C"), models=(lab,))
         elif kind == "p9":
             cell, = rest
             RN.limit(cell, "ORegan2022", 0.0, models=("resolved",), fine_resolved=True, which=("single",))
@@ -186,9 +355,110 @@ def runs(n, jobs):
             raise SystemExit(f"unknown job {job}")
 
 
+# ---------------------------------------------------------------- 3. the readings, beside the registered ones
+def report(n, rundir=None, outdir=OUT):
+    """The readings of the runs at n points, by the registered report's own functions (src/stage5_report.py), each
+    beside its registered value at 20 points (results/stage5_*.csv). Post hoc: nothing is scored and nothing in
+    the registered results is replaced. -> results/stage5_posthoc_settled/readings_r<n>.json and .csv"""
+    import csv
+    import stage5_common as S5
+    S5.RUNDIR = rundir or os.path.join(OUT, f"runs_r{n}")
+    import stage5_report as REP
+    rows_d, rows_s = REP.discharge_tables()
+    rows_c = REP.charge_tables()
+    rows_l = REP.limit_table()
+    reg = lambda f: [r for r in csv.DictReader(open(os.path.join(C.RESULTS, f))) if r["set"] == "ORegan2022"]
+    reg_d = {(r["case"], r["kernel"]): r for r in reg("stage5_discharge.csv") if r["heat"] == "two-way"}
+    reg_s = {(r["case"], r["kernel"]): r for r in reg("stage5_shares.csv") if r["heat"] == "two-way"}
+    reg_c = {(r["cell"], r["case"], r["kernel"], r["model"]): r for r in reg("stage5_charge.csv")}
+    reg_l = {(r["cell"], float(r["T_amb_C"]), r["kernel"], r["model"]): r for r in reg("stage5_limit.csv")}
+    num = lambda v: None if v in (None, "") else float(v)
+    out = {"what": (f"Post hoc (D36), not scored: ORegan2022, the coupled and single-unit models with two-way heat, "
+                    f"{n} points along each particle's radius (uniform, both particles), beside the registered "
+                    f"readings at PyBaMM's default 20 points (results/stage5_discharge.csv, stage5_shares.csv, "
+                    f"stage5_charge.csv, stage5_limit.csv). Penalty = single-unit energy (capacity) to 2.5 V over the "
+                    f"coupled model's, less one. Spread = time average of the largest minus the smallest group share; "
+                    f"its error = the kernel's spread over the resolved kernel's, less one. Margin = minimum of the "
+                    f"negative electrode's surface potential difference over the charge, the electrode and the groups."),
+           "points": n, "discharge": {}, "charge": {}, "limit": {}}
+    rows_csv = []
+    for d in rows_d:
+        if d["set"] != "ORegan2022" or d["heat"] != "two-way":
+            continue
+        key = (d["case"], d["kernel"])
+        sh = next(s for s in rows_s if s["set"] == "ORegan2022" and s["heat"] == "two-way"
+                  and (s["case"], s["kernel"]) == key)
+        rd, rs = reg_d[key], reg_s[key]
+        e = {"penalty_energy": [num(rd["penalty_energy"]), d["penalty_energy"]],
+             "penalty_capacity": [num(rd["penalty_capacity"]), d["penalty_capacity"]],
+             "t_cut_coupled_s": [num(rd["t_cut_coupled_s"]), d["t_cut_coupled_s"]],
+             "t_cut_single_s": [num(rd["t_cut_single_s"]), d["t_cut_single_s"]],
+             "Q_coupled_Ah": [num(rd["Q_coupled_Ah"]), d["Q_coupled_Ah"]],
+             "E_coupled_Wh": [num(rd["E_coupled_Wh"]), d["E_coupled_Wh"]],
+             "spread_tavg": [num(rs["spread_tavg"]), sh["spread_tavg"]],
+             "spread_rel_error": [num(rs.get("spread_rel_error")), sh.get("spread_rel_error")],
+             "inner_tavg": [num(rs["inner_tavg"]), sh["inner_tavg"]],
+             "reversal_s": [num(rs["reversal_s"]), sh["reversal_s"]],
+             "max_current_balance_residual": [num(rs["max_current_balance_residual"]), sh["max_current_balance_residual"]]}
+        out["discharge"][f"{d['case']}|{d['kernel']}"] = e
+        for q, (a, b) in e.items():
+            rows_csv.append({"part": "discharge", "case": d["case"], "kernel": d["kernel"], "model": "", "reading": q,
+                             "registered_20_points": a, f"post_hoc_{n}_points": b})
+    for r in rows_c:
+        if r["set"] != "ORegan2022":
+            continue
+        rr = reg_c[(r["cell"], r["case"], r["kernel"], r["model"])]
+        e = {"margin_V": [num(rr["margin_V"]), r["margin_V"]], "group": [int(rr["group"]), r["group"]],
+             "t_min_s": [num(rr["t_min_s"]), r["t_min_s"]], "t_end_s": [num(rr["t_end_s"]), r["t_end_s"]],
+             "charge_Ah": [num(rr["charge_Ah"]), r["charge_Ah"]],
+             "max_current_balance_residual": [num(rr["max_current_balance_residual"]), r["max_current_balance_residual"]]}
+        out["charge"][f"{r['cell']}|{r['case']}|{r['kernel']}|{r['model']}"] = e
+        for q, (a, b) in e.items():
+            rows_csv.append({"part": "charge", "case": f"{r['cell']}_{r['case']}", "kernel": r["kernel"],
+                             "model": r["model"], "reading": q, "registered_20_points": a, f"post_hoc_{n}_points": b})
+    for r in rows_l:
+        if r["set"] != "ORegan2022":
+            continue
+        rr = reg_l[(r["cell"], r["T_amb_C"], r["kernel"], r["model"])]
+        e = {"rate_spec_C": [num(rr["fine_rate_spec_C"]) or num(rr["rate_spec_C"]), r["fine_rate_spec_C"] or r["rate_spec_C"]],
+             "fails_at_spec_C": [num(rr["fine_fails_at_spec_C"]) or num(rr["fails_at_spec_C"]),
+                                 r["fine_fails_at_spec_C"] or r["fails_at_spec_C"]],
+             "n_trials": [int(rr["n_trials"]), r["n_trials"]]}
+        out["limit"][f"{r['cell']}|{r['T_amb_C']:g}C|{r['kernel']}|{r['model']}"] = e
+        for q, (a, b) in e.items():
+            rows_csv.append({"part": "limit", "case": f"{r['cell']}_{r['T_amb_C']:g}C", "kernel": r["kernel"],
+                             "model": r["model"], "reading": q, "registered_20_points": a, f"post_hoc_{n}_points": b})
+    # the readings behind P7 to P9, as the registered scorecard reads them (src/stage5_report.py), without verdicts
+    ch = out["charge"]
+    p7 = {c: [1e3 * (ch[f"21700|{c}|radial|coupled"][k][i] - ch[f"21700|{c}|resolved|coupled"][k][i])
+              for k, i in (("margin_V", 0), ("margin_V", 1))]
+          for c in ("0.3C_0C", "0.7C_25C") if f"21700|{c}|radial|coupled" in ch and f"21700|{c}|resolved|coupled" in ch}
+    p8 = {k.rsplit("|", 1)[0]: v["group"] for k, v in ch.items()
+          if k.endswith("|coupled") and k.split("|")[1] in ("0.3C_0C", "0.7C_25C")}
+    p9 = {}
+    for cell in ("21700", "4680"):
+        s_, c_ = out["limit"].get(f"{cell}|0C|resolved|single"), out["limit"].get(f"{cell}|0C|resolved|coupled")
+        if s_ and c_ and c_["rate_spec_C"][1]:
+            p9[cell] = {"single": s_["rate_spec_C"], "coupled": c_["rate_spec_C"],
+                        "e": [s_["rate_spec_C"][i] / c_["rate_spec_C"][i] - 1 for i in (0, 1)]}
+    out["readings_behind_P7_to_P9"] = {
+        "note": "Each pair is [registered at 20 points, post hoc]. Not scored: the registered verdicts stand.",
+        "P7_radial_minus_resolved_margin_mV_M50_coupled": p7, "P8_group_holding_the_minimum_coupled": p8,
+        "P9_plating_limited_rate_0C_resolved_single_over_coupled_minus_1": p9}
+    with open(os.path.join(outdir, f"readings_r{n}.json"), "w") as f:
+        json.dump(out, f, indent=1)
+    keys = ["part", "case", "kernel", "model", "reading", "registered_20_points", f"post_hoc_{n}_points"]
+    with open(os.path.join(outdir, f"readings_r{n}.csv"), "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=keys)
+        w.writeheader()
+        for r in rows_csv:
+            w.writerow({k: (f"{v:.9g}" if isinstance(v, float) else ("" if v is None else v)) for k, v in r.items()})
+    return out
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("what", choices=["mesh", "runs"])
+    ap.add_argument("what", choices=["mesh", "runs", "report"])
     ap.add_argument("--points", required=True, help="comma-separated points per particle radius")
     ap.add_argument("--what", dest="items", default="discharges,charges,rates_0,rates_10,rates_25")
     ap.add_argument("--job", action="append", default=[])
@@ -196,5 +466,7 @@ if __name__ == "__main__":
     pts = [int(x) for x in a.points.split(",")]
     if a.what == "mesh":
         mesh(pts, a.items.split(","))
-    else:
+    elif a.what == "runs":
         runs(pts[0], a.job)
+    else:
+        report(pts[0])
