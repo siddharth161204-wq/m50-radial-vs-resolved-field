@@ -6,3 +6,7 @@ results/stage5_kernels/checkpoints/
 results/stage5_runs/*.lock
 results/stage5_runs/*.tmp*
 results/stage5_kernels/*.tmp*
+results/stage5_posthoc_settled/*.lock
+results/stage5_posthoc_settled/*.tmp*
+results/stage5_posthoc_settled/runs_r*/*.lock
+results/stage5_posthoc_settled/runs_r*/*.tmp*
