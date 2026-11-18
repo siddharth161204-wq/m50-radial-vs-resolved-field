@@ -2,6 +2,52 @@
  "what": "Post hoc (D36), not scored: ORegan2022, the coupled and single-unit models with two-way heat, 160 points along each particle's radius (uniform, both particles), beside the registered readings at PyBaMM's default 20 points (results/stage5_discharge.csv, stage5_shares.csv, stage5_charge.csv, stage5_limit.csv). Penalty = single-unit energy (capacity) to 2.5 V over the coupled model's, less one. Spread = time average of the largest minus the smallest group share; its error = the kernel's spread over the resolved kernel's, less one. Margin = minimum of the negative electrode's surface potential difference over the charge, the electrode and the groups.",
  "points": 160,
  "discharge": {
+  "21700_b_m5C_2C|radial": {
+   "penalty_energy": [
+    -0.0100143757,
+    -0.013200224791719894
+   ],
+   "penalty_capacity": [
+    -0.011957025,
+    -0.013663236406469603
+   ],
+   "t_cut_coupled_s": [
+    188.735044,
+    495.78028844047753
+   ],
+   "t_cut_single_s": [
+    186.478335,
+    489.00632515384757
+   ],
+   "Q_coupled_Ah": [
+    0.524264012,
+    1.3771674678902153
+   ],
+   "E_coupled_Wh": [
+    1.71377617,
+    4.257637143322838
+   ],
+   "spread_tavg": [
+    0.0838468251,
+    0.12885407700226154
+   ],
+   "spread_rel_error": [
+    0.37949964,
+    0.33782978578551903
+   ],
+   "inner_tavg": [
+    1.04433421,
+    1.0693358373046342
+   ],
+   "reversal_s": [
+    null,
+    null
+   ],
+   "max_current_balance_residual": [
+    3.55271368e-16,
+    1.9539925233402757e-15
+   ]
+  },
   "21700_b_m5C_2C|resolved": {
    "penalty_energy": [
     -0.00363255595,
@@ -414,6 +460,32 @@
    "max_current_balance_residual": [
     4.54632241e-12,
     6.540341824006814e-16
+   ]
+  },
+  "21700|0.7C_25C|radial|single": {
+   "margin_V": [
+    -0.236168176,
+    0.02919175662100315
+   ],
+   "group": [
+    1,
+    1
+   ],
+   "t_min_s": [
+    3019.13722,
+    4566.092286474947
+   ],
+   "t_end_s": [
+    3019.13722,
+    4566.092286474947
+   ],
+   "charge_Ah": [
+    2.84721413,
+    4.306078697939568
+   ],
+   "max_current_balance_residual": [
+    0.0,
+    0.0
    ]
   },
   "21700|0.7C_25C|resolved|coupled": {
