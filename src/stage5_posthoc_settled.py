@@ -146,8 +146,26 @@ def set_particle_points(n):
         os.environ["STAGE5_TRIAL_CACHE"] = os.path.join(os.environ["D36_TRIAL_CACHE"], f"r{n}")
 
 
+def collect_garbage_while_stepping(every=5):
+    """At 160 points each step's solution holds large arrays in reference cycles, which Python's collector frees too
+    late: memory then grows with the steps past the machine's limit. Collecting every few steps keeps it bounded.
+    The computation is unchanged."""
+    import gc
+    import stage5_coupled as SC
+    step = SC.Stepper.step
+
+    def step_and_collect(self, dt, inputs):
+        self._steps_since_gc = getattr(self, "_steps_since_gc", 0) + 1
+        if self._steps_since_gc >= every:
+            gc.collect()
+            self._steps_since_gc = 0
+        return step(self, dt, inputs)
+    SC.Stepper.step = step_and_collect
+
+
 def runs(n, jobs):
     set_particle_points(n)
+    collect_garbage_while_stepping()
     import stage5_runs as RN                              # imported after the mesh is set
     import stage5_queue as Q                              # returns freed memory after every run (no reading changes)
     assert Q is not None
