@@ -121,3 +121,51 @@ C_21700_b_p25C_1.25C_radial_ORegan2022_two-way_single_G15: event: Minimum voltag
     rate 0.43516C: fail  margin -0.01 mV group 1 at 6869 s (event: Maximum voltage [V], 108 s)
   -> resolved|single: 0.43125C (fails at 0.4375C), 15 trials, 2737 s
   21700 ORegan2022 0 C resolved|coupled: start 0.33C
+### 23:34:15 slot 2 start p9:21700 (113 min left)
+=== 23:34:21 160 points p9:21700
+  21700 ORegan2022 0 C resolved|coupled: start 0.33C
+   charge_21700_ORegan2022_0C_1.600500A_coupled_374bf1da712a.npz: resumed at step 860
+    rate 0.33000C: pass  margin +15.99 mV group 15 at 9524 s (event: Maximum voltage, 2877 s)
+    rate 0.38000C: pass  margin +8.14 mV group 15 at 8058 s (event: Maximum voltage, 2632 s)
+### 01:05:40 slot 2 start p9:21700 (113 min left)
+=== 01:05:46 160 points p9:21700
+  21700 ORegan2022 0 C resolved|coupled: start 0.33C
+    rate 0.33000C: pass  margin +15.99 mV group 15 at 9524 s (event: Maximum voltage, 2877 s)
+    rate 0.38000C: pass  margin +8.14 mV group 15 at 8058 s (event: Maximum voltage, 2632 s)
+   charge_21700_ORegan2022_0C_2.085500A_coupled_71ddc96fe537.npz: resumed at step 640
+    rate 0.43000C: pass  margin +0.48 mV group 15 at 6967 s (event: Maximum voltage, 2207 s)
+    rate 0.48000C: fail  margin -0.22 mV group 15 at 5880 s (negative margin, 1444 s)
+    rate 0.45500C: fail  margin -0.22 mV group 15 at 6410 s (negative margin, 1753 s)
+    rate 0.44250C: fail  margin -0.28 mV group 15 at 6690 s (negative margin, 1879 s)
+### 02:58:40 slot 2 stopped p9:21700 at its time limit (113 min); it resumes
+### 02:59:42 slot 2 start p9:21700 (113 min left)
+=== 02:59:43 160 points p9:21700
+  21700 ORegan2022 0 C resolved|coupled: start 0.33C
+    rate 0.33000C: pass  margin +15.99 mV group 15 at 9524 s (event: Maximum voltage, 2877 s)
+    rate 0.38000C: pass  margin +8.14 mV group 15 at 8058 s (event: Maximum voltage, 2632 s)
+    rate 0.43000C: pass  margin +0.48 mV group 15 at 6967 s (event: Maximum voltage, 2207 s)
+    rate 0.48000C: fail  margin -0.22 mV group 15 at 5880 s (negative margin, 1444 s)
+    rate 0.45500C: fail  margin -0.22 mV group 15 at 6410 s (negative margin, 1753 s)
+    rate 0.44250C: fail  margin -0.28 mV group 15 at 6690 s (negative margin, 1879 s)
+   charge_21700_ORegan2022_0C_2.115813A_coupled_ac6dbf1e1f40.npz: resumed at step 580
+    rate 0.43625C: fail  margin -0.01 mV group 15 at 6830 s (negative margin, 1927 s)
+    rate 0.43312C: pass  margin +0.01 mV group 15 at 6907 s (event: Maximum voltage, 1934 s)
+    rate 0.43469C: fail  margin -0.04 mV group 15 at 6870 s (negative margin, 1875 s)
+### 04:52:42 slot 2 stopped p9:21700 at its time limit (113 min); it resumes
+### 04:52:59 slot 2 start p9:21700 (113 min left)
+=== 04:53:00 160 points p9:21700
+  21700 ORegan2022 0 C resolved|coupled: start 0.33C
+    rate 0.33000C: pass  margin +15.99 mV group 15 at 9524 s (event: Maximum voltage, 2877 s)
+    rate 0.38000C: pass  margin +8.14 mV group 15 at 8058 s (event: Maximum voltage, 2632 s)
+    rate 0.43000C: pass  margin +0.48 mV group 15 at 6967 s (event: Maximum voltage, 2207 s)
+    rate 0.48000C: fail  margin -0.22 mV group 15 at 5880 s (negative margin, 1444 s)
+    rate 0.45500C: fail  margin -0.22 mV group 15 at 6410 s (negative margin, 1753 s)
+    rate 0.44250C: fail  margin -0.28 mV group 15 at 6690 s (negative margin, 1879 s)
+    rate 0.43625C: fail  margin -0.01 mV group 15 at 6830 s (negative margin, 1927 s)
+    rate 0.43312C: pass  margin +0.01 mV group 15 at 6907 s (event: Maximum voltage, 1934 s)
+    rate 0.43469C: fail  margin -0.04 mV group 15 at 6870 s (negative margin, 1875 s)
+   charge_21700_ORegan2022_0C_2.104445A_coupled_d1416d07051a.npz: resumed at step 680
+    rate 0.43391C: fail  margin -0.06 mV group 15 at 6890 s (negative margin, 1917 s)
+  -> resolved|coupled: 0.43C (fails at 0.43625C), 10 trials, 146 s
+### 04:55:27 slot 2 done p9:21700 (2 min)
+### 04:55:27 slot 2: no job left for it
