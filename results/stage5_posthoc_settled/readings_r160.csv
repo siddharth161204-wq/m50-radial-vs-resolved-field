@@ -344,3 +344,12 @@ charge,4680_0.7C_25C,corrected,single,max_current_balance_residual,0,0
 limit,21700_0C,resolved,single,rate_spec_C,0.28125,0.434375
 limit,21700_0C,resolved,single,fails_at_spec_C,0.28203125,0.43515625
 limit,21700_0C,resolved,single,n_trials,12,15
+limit,21700_0C,resolved,coupled,rate_spec_C,0.2815625,0.433125
+limit,21700_0C,resolved,coupled,fails_at_spec_C,0.28234375,0.43390625
+limit,21700_0C,resolved,coupled,n_trials,10,10
+limit,4680_0C,resolved,single,rate_spec_C,0.2828125,0.4421875
+limit,4680_0C,resolved,single,fails_at_spec_C,0.28359375,0.44296875
+limit,4680_0C,resolved,single,n_trials,12,15
+limit,4680_0C,resolved,coupled,rate_spec_C,0.28234375,0.43546875
+limit,4680_0C,resolved,coupled,fails_at_spec_C,0.283125,0.43625
+limit,4680_0C,resolved,coupled,n_trials,10,10

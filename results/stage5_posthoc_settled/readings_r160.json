@@ -1471,6 +1471,48 @@
     12,
     15
    ]
+  },
+  "21700|0C|resolved|coupled": {
+   "rate_spec_C": [
+    0.2815625,
+    0.433125
+   ],
+   "fails_at_spec_C": [
+    0.28234375,
+    0.43390625
+   ],
+   "n_trials": [
+    10,
+    10
+   ]
+  },
+  "4680|0C|resolved|single": {
+   "rate_spec_C": [
+    0.2828125,
+    0.4421875
+   ],
+   "fails_at_spec_C": [
+    0.28359375,
+    0.44296875
+   ],
+   "n_trials": [
+    12,
+    15
+   ]
+  },
+  "4680|0C|resolved|coupled": {
+   "rate_spec_C": [
+    0.28234375,
+    0.43546875
+   ],
+   "fails_at_spec_C": [
+    0.283125,
+    0.43625
+   ],
+   "n_trials": [
+    10,
+    10
+   ]
   }
  },
  "readings_behind_P7_to_P9": {
@@ -1535,6 +1577,35 @@
     15
    ]
   },
-  "P9_plating_limited_rate_0C_resolved_single_over_coupled_minus_1": {}
+  "P9_plating_limited_rate_0C_resolved_single_over_coupled_minus_1": {
+   "21700": {
+    "single": [
+     0.28125,
+     0.434375
+    ],
+    "coupled": [
+     0.2815625,
+     0.433125
+    ],
+    "e": [
+     -0.0011098779134295356,
+     0.0028860028860029363
+    ]
+   },
+   "4680": {
+    "single": [
+     0.2828125,
+     0.4421875
+    ],
+    "coupled": [
+     0.28234375,
+     0.43546875
+    ],
+    "e": [
+     0.0016602102933038765,
+     0.015428776462145688
+    ]
+   }
+  }
  }
 }

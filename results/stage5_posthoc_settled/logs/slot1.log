@@ -179,3 +179,8 @@ C_21700_b_p25C_1.25C_corrected_ORegan2022_two-way_single_G15: event: Minimum vol
     rate 0.43625C: fail  margin -0.04 mV group 15 at 6864 s (event: Maximum voltage, 2057 s)
     rate 0.43312C: pass  margin +0.42 mV group 15 at 6923 s (event: Maximum voltage, 2028 s)
    charge_4680_ORegan2022_0C_2.108234A_coupled_698d951b236d.npz: resumed at step 620
+    rate 0.43469C: pass  margin +0.19 mV group 15 at 6894 s (event: Maximum voltage, 2043 s)
+    rate 0.43547C: pass  margin +0.07 mV group 15 at 6879 s (event: Maximum voltage, 2054 s)
+  -> resolved|coupled: 0.43C (fails at 0.43625C), 10 trials, 3005 s
+### 05:43:10 slot 1 done p9:4680 (50 min)
+### 05:43:10 slot 1: no job left for it
