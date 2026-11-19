@@ -622,7 +622,7 @@ V4 needs the paper's figure images in `verification/v4/`. They are extracted fro
 - v1.1.0 (21 October 2026): Stage 2 (D17, D18, predictions_stage2.md): the factor to the paper split into properties, heat and remainder with ref. 33's values, and a one-term end correction for the radial model. Stage 1's code, results and text are unchanged.
 - v1.2.0 (27 October 2026): Stage 3 (D19 to D21, predictions_stage3.md): ref. 33's core-temperature estimator against the resolved cell. Stage 1 and 2 code and results are unchanged.
 - v1.3.0 (29 October 2026): Stage 4 (D22 to D26, predictions_stage4.md): the radial field's thermal error carried to the current each unit draws. Stage 1 to 3 code and results are unchanged.
-- v1.4.0 (17 November 2026): Stage 5 (D27 to D35, predictions_stage5.md): the multi-unit model solved directly under the three thermal models through convolution kernels; the paper's discharge penalty, Stage 4's proxy against the coupled solve, and the plating margin and plating-limited rate on charge. Stage 1 to 4 code and results are unchanged.
+- v1.4.0 (19 November 2026): Stage 5 (D27 to D36, predictions_stage5.md): the multi-unit model solved directly under the three thermal models through convolution kernels; the paper's discharge penalty, Stage 4's proxy against the coupled solve, and the plating margin and plating-limited rate on charge; post hoc (D36, not scored), the registered set's readings repeated at a particle mesh shown to have settled at 25 C. Stage 1 to 4 code and results are unchanged.
 
 ## Tooling
 

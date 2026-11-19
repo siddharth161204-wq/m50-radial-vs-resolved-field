@@ -1,6 +1,6 @@
 # The axial blind spot of a radial cell model: the temperature field a multi-unit model assumes, tested on the LG M50 and a 4680
 
-Siddharth Satte, Independent researcher, Pune, India, 17 November 2026 (v1.4.0). doi.org/10.5281/zenodo.23320969. Predictions commit b92f9a8, public at 11:12 UTC on 12 October before any three-dimensional field was computed. [github.com/siddharth161204-wq/m50-radial-vs-resolved-field](https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field){.nobr}.
+Siddharth Satte, Independent researcher, Pune, India, 19 November 2026 (v1.4.0). doi.org/10.5281/zenodo.23320969. Predictions commit b92f9a8, public at 11:12 UTC on 12 October before any three-dimensional field was computed. [github.com/siddharth161204-wq/m50-radial-vs-resolved-field](https://github.com/siddharth161204-wq/m50-radial-vs-resolved-field){.nobr}.
 
 <div class="headline">
 
